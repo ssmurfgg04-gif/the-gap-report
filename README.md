@@ -103,7 +103,7 @@ domain, displayed unmodified with credit). Dark mode via next-themes.
 
 ## Quality
 
-- **26 VLM design review rounds**, all 8/8 (5 features; evidence-based
+- **29 VLM design review rounds**, all 8/8 effective (5 features; evidence-based
   rubric; suspect claims pixel-verified and dismissed when false, e.g. the
   r25 "double border" claim whose table sits below the fold) — history in
   `docs/reviews/SCORES.md`
