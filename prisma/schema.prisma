@@ -30,3 +30,49 @@ model Post {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
+
+// ————— KAMPS: Kenya Abduction Monitoring & Prediction System —————
+// All rows are SIMULATED demonstration data (deterministic seed), modeled on
+// the scale of published aggregates (Missing Voices, KNCHR, IPOA). No real
+// individuals, vehicles, or live case records are stored.
+
+model KampsZone {
+  id         Int              @id
+  name       String
+  county     String
+  lat        Float
+  lng        Float
+  population Int
+  urbanicity Float // 0 = rural, 1 = dense urban (drives capture probabilities)
+  incidents  KampsIncident[]
+  sightings  KampsSighting[]
+}
+
+model KampsIncident {
+  id             Int      @id
+  date           DateTime
+  zoneId         Int
+  zone           KampsZone @relation(fields: [zoneId], references: [id])
+  // capture-recapture lists (documented = captured by at least one)
+  inMissingVoices Boolean
+  inPoliceOB      Boolean
+  inMortuary      Boolean
+}
+
+model KampsSighting {
+  id          Int        @id
+  date        DateTime
+  zoneId      Int
+  zone        KampsZone  @relation(fields: [zoneId], references: [id])
+  vehicleKey  String     // groups sightings into one vehicle descriptor
+  platePartial String
+  make        String
+  model       String
+  color       String
+  source      String     // e.g. "field monitor (Tella)", "traffic camera still"
+}
+
+model KampsMeta {
+  key   String @id
+  value String
+}

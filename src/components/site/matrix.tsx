@@ -43,7 +43,7 @@ export function Matrix() {
       number="02"
       kicker="The Matrix"
       title="The definitive gap analysis"
-      lede="Eight capability dimensions against the eight organizations — plus the system this report assesses. Where every comparator fails, one column does not."
+      lede="Eight capability dimensions against the eight organizations, plus the system this report assesses. Where every comparator fails, one column does not."
     >
       <motion.div
         initial={{ opacity: 0, y: 16 }}
@@ -142,7 +142,7 @@ export function Matrix() {
         <p className="mt-6 max-w-2xl text-sm leading-[1.6] text-muted-foreground">
           No row is satisfied by any single comparator. Vehicle pattern recognition, spatial
           scan statistics, and bias-corrected prediction of individual abductions are absent
-          from the entire field — the three dimensions where integration, not invention,
+          from the entire field: the three dimensions where integration, not invention,
           becomes the innovation.
         </p>
       </motion.div>

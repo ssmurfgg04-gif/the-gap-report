@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "The Gap Report — Global Landscape: Who Else Is Doing This?",
+  title: "The Gap Report · Global Landscape: Who Else Is Doing This?",
   description:
     "A comparative assessment of eight global organizations against a proposed predictive early-warning system for state abductions of activists and journalists. The pieces exist; nobody has assembled them.",
   keywords: [
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     "predictive modeling",
   ],
   openGraph: {
-    title: "The Gap Report — Global Landscape",
+    title: "The Gap Report · Global Landscape",
     description:
       "Who else is building predictive early-warning systems for enforced disappearances? Eight organizations analyzed; the assembly does not exist anywhere.",
     type: "website",

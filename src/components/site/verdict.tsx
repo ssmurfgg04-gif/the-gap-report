@@ -6,17 +6,17 @@ const resolutions = [
   {
     number: "01",
     title: "Zone-level aggregate outputs",
-    body: "No individual rankings — the system cannot become a targeting list.",
+    body: "No individual rankings: the system cannot become a targeting list.",
   },
   {
     number: "02",
     title: "Verified civil society data",
-    body: "Not just open sources — Missing Voices, ATI records, encrypted field collection.",
+    body: "Not just open sources: Missing Voices, ATI records, encrypted field collection.",
   },
   {
     number: "03",
     title: "Vehicle pattern detection",
-    body: "The four-zone rule — a novel application turned against the state, not the citizen.",
+    body: "The four-zone rule: a novel application turned against the state, not the citizen.",
   },
   {
     number: "04",
@@ -36,23 +36,23 @@ export function Verdict() {
           transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
         >
           <p className="mb-6 flex items-center gap-4 font-mono text-[11px] uppercase tracking-[0.24em] text-muted-foreground">
-            <span className="text-[var(--accent-ink)]">05</span>
+            <span className="text-[var(--accent-ink)]">07</span>
             <span className="h-px w-10 bg-border" aria-hidden="true" />
             The Bottom Line
           </p>
 
           <h2 className="max-w-3xl text-4xl font-medium leading-[1.08] tracking-[-0.03em] text-foreground sm:text-5xl md:text-6xl">
-            The innovation is not any single component{" "}
-            <span className="text-[var(--accent-ink)]">— it is the integration.</span>
+            The innovation is not any single component.{" "}
+            <span className="text-[var(--accent-ink)]">It is the integration.</span>
           </h2>
 
           <div className="mt-10 grid gap-10 md:grid-cols-[1.4fr_1fr] md:gap-16">
             <div className="space-y-5 text-base leading-[1.6] text-muted-foreground md:text-[17px]">
               <p>
-                The Early Warning Project proves statistical risk modeling works — but at the
-                wrong scale. HRDAG proves bias correction works — but retrospectively.
-                Bellingcat proves vehicle tracking works — but case-specifically. Forensic
-                Architecture proves spatial analysis of state violence works — but
+                The Early Warning Project proves statistical risk modeling works, but at the
+                wrong scale. HRDAG proves bias correction works, but retrospectively.
+                Bellingcat proves vehicle tracking works, but case-specifically. Forensic
+                Architecture proves spatial analysis of state violence works, but
                 post-incident.
               </p>
               <p>
@@ -102,7 +102,8 @@ export function Footer() {
         </div>
         <p className="max-w-md text-sm leading-[1.6] text-muted-foreground">
           A global landscape assessment of predictive early-warning systems for enforced
-          disappearances — compiled from comparative analysis of eight organizations.
+          disappearances, compiled from comparative analysis of eight organizations, with the
+          KAMPS specification and a live simulated run of its statistical engine.
         </p>
       </div>
     </footer>

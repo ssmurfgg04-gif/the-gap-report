@@ -43,7 +43,7 @@ export function Hero() {
           </p>
           <div className="space-y-5 text-base leading-[1.6] text-muted-foreground md:text-[17px]">
             <p>
-              Several organizations globally are doing parts of what this system proposes —
+              Several organizations globally are doing parts of what this system proposes,
               but nobody combines predictive risk modeling, vehicle pattern detection, and
               bias-corrected statistical analysis into a single instrument for tracking state
               abductions of activists and journalists.
@@ -52,7 +52,7 @@ export function Hero() {
               The closest entities are the Early Warning Project for statistical risk
               forecasting, ACLED&rsquo;s CAST for conflict prediction, HRDAG for
               bias-corrected casualty estimation, and Forensic Architecture for state-violence
-              investigation. Each operates at a different scale, methodology, or context —
+              investigation. Each operates at a different scale, methodology, or context;
               none builds this for Kenya.
             </p>
           </div>

@@ -17,7 +17,7 @@ export function Players() {
       number="01"
       kicker="The Field"
       title="Eight players, eight partial answers"
-      lede="The organizations whose work comes closest to a predictive early-warning system for enforced disappearances — and the specific gap each one leaves open."
+      lede="The organizations whose work comes closest to a predictive early-warning system for enforced disappearances, and the specific gap each one leaves open."
     >
       <Accordion type="single" collapsible className="border-t border-border">
         {players.map((player, i) => (

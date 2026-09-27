@@ -15,13 +15,13 @@ export function Outlook() {
   return (
     <Section
       id="outlook"
-      number="04"
+      number="06"
       kicker="Outlook"
       title="First mover, by default"
       lede="Nobody globally is building a bias-corrected, vehicle-aware, statistically rigorous early warning system for state abductions of journalists and activists. The conditions for building it now are unusually aligned."
     >
-      <div className="grid gap-16 lg:grid-cols-[1.2fr_1fr] lg:gap-20">
-        <div>
+      <div className="grid gap-16 lg:grid-cols-[minmax(0,1.2fr)_minmax(0,1fr)] lg:gap-20">
+        <div className="min-w-0">
           <h3 className="mb-6 font-mono text-[11px] uppercase tracking-[0.2em] text-muted-foreground">
             Why now
           </h3>
@@ -46,7 +46,7 @@ export function Outlook() {
           </ol>
 
           <h3 className="mb-6 mt-14 font-mono text-[11px] uppercase tracking-[0.2em] text-muted-foreground">
-            Export potential — if it works in Kenya
+            Export potential, if it works in Kenya
           </h3>
           <div className="grid gap-px overflow-hidden rounded-lg border border-border bg-border sm:grid-cols-2">
             {exportRegions.map((r, i) => (
@@ -62,11 +62,11 @@ export function Outlook() {
             ))}
           </div>
           <p className="mt-4 text-sm leading-[1.6] text-muted-foreground">
-            This is not just a Kenya system — it is a prototype for a globally exportable tool.
+            This is not just a Kenya system; it is a prototype for a globally exportable tool.
           </p>
         </div>
 
-        <div>
+        <div className="min-w-0">
           <h3 className="mb-6 font-mono text-[11px] uppercase tracking-[0.2em] text-muted-foreground">
             Strategic partnerships
           </h3>

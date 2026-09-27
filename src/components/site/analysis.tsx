@@ -46,9 +46,16 @@ export function Analysis() {
             The result
           </p>
           <p className="mt-6 max-w-xl text-xl font-medium leading-snug tracking-[-0.01em] text-foreground md:text-2xl">
-            The pieces exist at eight different organizations. The assembly does not exist
-            anywhere.
+            The assembly did not exist anywhere. It is specified below, and the engine
+            is already running.
           </p>
+          <a
+            href="#system"
+            className="mt-6 inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.14em] text-[var(--accent-ink)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--accent-ink)]"
+          >
+            The blueprint
+            <span aria-hidden="true" className="transition-transform duration-300 group-hover:translate-x-1">↓</span>
+          </a>
         </motion.article>
       </div>
 

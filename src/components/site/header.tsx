@@ -7,6 +7,7 @@ const sections = [
   { id: "field", label: "The Field" },
   { id: "matrix", label: "The Matrix" },
   { id: "analysis", label: "Analysis" },
+  { id: "system", label: "The System" },
   { id: "outlook", label: "Outlook" },
   { id: "verdict", label: "Verdict" },
 ];

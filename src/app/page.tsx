@@ -3,6 +3,8 @@ import { Hero } from "@/components/site/hero";
 import { Players } from "@/components/site/players";
 import { Matrix } from "@/components/site/matrix";
 import { Analysis } from "@/components/site/analysis";
+import { SystemBlueprint } from "@/components/site/system-blueprint";
+import { SystemLive } from "@/components/site/system-live";
 import { Outlook } from "@/components/site/outlook";
 import { Verdict, Footer } from "@/components/site/verdict";
 
@@ -15,6 +17,8 @@ export default function Home() {
         <Players />
         <Matrix />
         <Analysis />
+        <SystemBlueprint />
+        <SystemLive />
         <Outlook />
         <Verdict />
       </main>
