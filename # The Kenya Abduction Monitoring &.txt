@@ -1,0 +1,804 @@
+# The Kenya Abduction Monitoring & Prediction System (KAMPS): Final Implementation Plan
+
+## Executive Summary
+
+**KAMPS is a modular early-warning system built on verified data, cross-validated sources, and ethical methodological standards that produces zone-level risk assessments and identifies suspected abduction vehicles through pattern recognition.** The system addresses Kenya's documented pattern of enforced disappearances — 423 cases recorded by Missing Voices since 2019, 125 police killings and 6 disappearances in 2025 alone, and 69 killings and 19 disappearances in the first eight months of 2026.【turn0search8】【turn0search12】【turn0search14】
+
+The plan that follows represents the integration of everything discussed: aggregate risk scoring corrected for population and reporting bias, vehicle re-identification for pattern detection, secure data infrastructure, and rigorous verification following the Berkeley Protocol.
+
+---
+
+## Part 1: The Data Layer — Sources, Reliability & Access
+
+### 1.1 Primary Incident Data Sources
+
+| Source | Type | Access Method | Reliability Tier | Key Limitation |
+|---|---|---|---|---|
+| **Missing Voices Coalition** | Civil society database (1,461 killings, 423 disappearances since 2019) | Partnership with Amnesty Kenya, HAKI Africa, KHRC | Tier 1 (verified, multi-source) | Underrepresents rural incidents |
+| **KNCHR reports** | Government human rights commission | Public reports, press releases | Tier 1 (official mandate) | Publication delays |
+| **ACLED** | Georeferenced conflict events (1997-present) | Free API with registration | Tier 2 (media-derived, geocoded) | Depends on news coverage |
+| **UCDP GED** | Uppsala Conflict Data Program Georeferenced Event Dataset | Public download | Tier 2 (academic standard) | Strict fatality threshold (25+ deaths) excludes many abductions |
+| **Kenya Police Digital OB** | Digitized Occurrence Book (76 stations in Nairobi) | Access to Information Act 2016 request | Tier 3 (official but potentially manipulated) | Only digitized in select stations |
+
+### 1.2 The Missing Voices Partnership
+
+Missing Voices is the foundation. It is a coalition of civil society organizations including Amnesty International Kenya, Peace Brigades International Kenya, International Justice Mission, HAKI Africa, and the Mathare Social Justice Centre that has documented and verified data on police killings and enforced disappearances since August 2018.【turn2search14】【turn0search8】
+
+**Access strategy:** Formal partnership via Amnesty Kenya or KHRC, not scraping. Their database includes victim profiles, dates, locations, responsible agency, and verification status. Their verification methodology is documented in their annual reports.
+
+### 1.3 Complementary Data Sources (The Uncovered Data)
+
+**Hospital and mortuary records — the unclaimed bodies goldmine:**
+
+In March 2026, Kenyatta National Hospital issued a public notice listing **480 unclaimed bodies** — 102 adults and 378 children — at its mortuary.【turn1search10】【turn1search11】【turn1search12】 In August 2026, Nairobi Funeral Home had **473 unclaimed bodies** awaiting disposal.【turn5search0】
+
+Amnesty Kenya documented that **120 bodies were dropped off by police officers from 22 different police stations across Nairobi between May 2023 and April 2024**, with Kasarani station accounting for the most cases.【turn6search9】【turn6search11】 These bodies — mostly male, marked as accidents, mob violence, medical conditions, and shootings — represent potential undocumented enforced disappearances.
+
+**Access method:** File Access to Information Act 2016 requests with county governments and hospitals for anonymized unclaimed body registries. Kenya's ATI Act allows citizens to request information from state bodies and even private companies performing public functions.【turn6search0】【turn6search1】【turn6search2】
+
+**IPOA (Independent Policing Oversight Authority) data:**
+
+Between July 2019 and June 2020, IPOA received 161 complaints regarding deaths resulting from police actions.【turn5search3】 Their reports and investigation summaries are publicly accessible and represent an official accountability mechanism.
+
+**Court records:**
+
+Kenya Law (kenyalaw.org) hosts a repository of over 275,000 judicial decisions, including habeas corpus applications, inquest reports, and criminal cases related to abductions and disappearances.【turn4search2】 These provide verified, legally-tested incident data.
+
+### 1.4 The Denominator Data (Fixing Population Bias)
+
+**Meta High Resolution Settlement Layer (HRSL):**
+
+This provides population estimates at **30-meter resolution** by combining census data with high-resolution satellite imagery and computer vision — far more granular than county-level census data.【turn4search7】【turn4search8】 Available for free for non-commercial use, it enables:
+
+- Accurate population-at-risk calculations for small areas
+- Detection of informal settlements where census may undercount
+- Gridded population data for spatial scan statistics
+
+**Humanitarian OpenStreetMap Team (HOT) building footprints:**
+
+HOT has extracted building footprint data for Kenya, providing structure counts that enable population estimation even where census data is outdated.【turn2search5】
+
+### 1.5 Data Source Reliability Hierarchy
+
+```
+TIER 1 (Highest reliability — use as anchor):
+├── Missing Voices verified database
+├── KNCHR official reports  
+├── Court judgments and inquest findings
+└── IPOA investigation summaries
+
+TIER 2 (Medium reliability — use for corroboration):
+├── ACLED events (media-derived, geocoded)
+├── UCDP GED (academic standard, strict criteria)
+├── Hospital/mortuary registries (official records)
+└── Mainstream news reports (Daily Nation, Standard)
+
+TIER 3 (Lower reliability — use only with verification):
+├── Social media reports (X/Twitter, Facebook)
+├── Citizen journalism
+├── Police OB records (subject to manipulation)
+└── Anonymous tips
+```
+
+---
+
+## Part 2: Data Ingestion & Quality Assurance
+
+### 2.1 The Ingestion Pipeline
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│              SOURCE-SPECIFIC COLLECTORS                       │
+├─────────────────────────────────────────────────────────────┤
+│ Missing Voices API/CSV sync (weekly)                         │
+│ ACLED API poll (weekly)                                      │
+│ KNCHR press release scraper (daily)                          │
+│ Kenya Law court records parser (daily)                        │
+│ News RSS feeds (continuous)                                  │
+│ Mortuary/hospital ATI requests (monthly)                      │
+│ IPOA report monitor (quarterly)                               │
+│ Social media monitors (continuous, anonymized)               │
+└──────────────────┬──────────────────────────────────────────┘
+                   │
+┌──────────────────▼──────────────────────────────────────────┐
+│              RAW DATA LAKE (Schema-on-Read)                   │
+├─────────────────────────────────────────────────────────────┤
+│ PostgreSQL JSONB columns for flexible ingestion              │
+│ Each record tagged with: source, timestamp, collector_id,  │
+│ raw_content, verification_status (pending/verified/rejected)│
+└──────────────────┬──────────────────────────────────────────┘
+                   │
+┌──────────────────▼──────────────────────────────────────────┐
+│              VALIDATION & CLEANING ENGINE                      │
+├─────────────────────────────────────────────────────────────┤
+│ 1. Schema validation (required fields present?)              │
+│ 2. Geocoding validation (is location plausible?)             │
+│ 3. Temporal validation (is date within reasonable range?)    │
+│ 4. Source credibility scoring                                │
+│ 5. Duplicate detection                                       │
+└──────────────────┬──────────────────────────────────────────┘
+                   │
+┌──────────────────▼──────────────────────────────────────────┐
+│              VERIFIED DATA WAREHOUSE                           │
+├─────────────────────────────────────────────────────────────┤
+│ PostgreSQL + PostGIS                                        │
+│ Only records passing validation and verification enter      │
+└─────────────────────────────────────────────────────────────┘
+```
+
+### 2.2 Entity Resolution (Deduplication)
+
+The same incident will appear in multiple sources with variations. **Splink** is the solution.
+
+**Splink** is a Python package for probabilistic record linkage (entity resolution) developed by the UK Ministry of Justice Analytical Services. It deduplicates and links records from datasets that lack unique identifiers.【turn1search0】【turn1search1】【turn1search2】
+
+**Key capabilities:**
+- Links a million records on a laptop in approximately one minute
+- Term frequency adjustments and fuzzy matching logic
+- Unsupervised learning — no training data required
+- Interactive outputs for reviewing match decisions
+- Scales to Spark for 100+ million records
+
+**Implementation for KAMPS:**
+
+```python
+from splink import splink_datasets
+import splink.comparison_library as cl
+
+# Define comparison for linking incident records
+settings = {
+    "link_type": "dedupe_only",
+    "comparisons": [
+        cl.exact_match("victim_name"),
+        cl.jaro_winkler_at_thresholds("victim_name", 0.8),
+        cl.date_of_birth_comparison("incident_date"),
+        cl.geographic_distance_comparison(
+            "latitude", "longitude", 
+            km_thresholds=[1, 5, 10]
+        ),
+        cl.exact_match("source_type"),
+    ],
+    "blocking_rules_to_generate_predictions": [
+        "l.victim_name_first_letter = r.victim_name_first_letter",
+        "l.incident_month = r.incident_month",
+    ]
+}
+
+# Run linkage
+linker = Splink(df_incidents, settings)
+results = linker.predict()
+```
+
+**Alternative tools:**
+- **OpenRefine** for interactive data cleaning and reconciliation【turn1search5】【turn1search6】
+- **Python Record Linkage Toolkit** for simpler use cases
+- **Dedupe.io** for machine learning-based deduplication
+
+### 2.3 Verification Framework (Berkeley Protocol Standard)
+
+The **Berkeley Protocol on Digital Open Source Investigations** sets international standards for conducting online research of alleged human rights violations. It requires:【turn0search3】【turn0search4】
+
+1. **Chain of custody preservation** — every data point must have a documented provenance
+2. **Verification before analysis** — no unverified data enters the analytical pipeline
+3. **Protection of sources** — the safety of witnesses, victims, and first responders is paramount
+4. **Professional methodology** — investigations must meet standards suitable for legal proceedings
+
+**Verification checklist for each incident:**
+
+```
+□ Source reliability assessed (Tier 1/2/3)
+□ At least two independent sources confirm key details
+□ Geolocation verified (if location-based claim)
+□ Temporal verification (date/time cross-checked)
+□ Content authentication (if media: EXIF, reverse image search, 
+  frame analysis for AI-generation)
+□ Witness/source protection assessed
+□ Documentation of verification decision and rationale
+```
+
+### 2.4 Geolocation & Chronolocation (Bellingcat Method)
+
+For incidents with visual evidence, apply **Bellingcat's geolocation and chronolocation techniques**:【turn3search9】【turn3search10】【turn3search12】
+
+**Geolocation:**
+- Match landmarks in imagery to satellite basemaps
+- Use shadow analysis (SunCalc) to determine time of day
+- Cross-reference with OpenStreetMap for building layouts
+- Verify with Google Earth historical imagery
+
+**Chronolocation:**
+- Extract EXIF metadata from images/videos
+- Analyze social media post timestamps (accounting for timezone)
+- Cross-reference weather data for the claimed date/time
+- Match vegetation growth or construction changes to known imagery dates
+
+**WITNESS Video as Evidence methodology** provides step-by-step guidance for verifying citizen footage for evidentiary purposes.【turn5search5】【turn5search6】【turn5search9】
+
+---
+
+## Part 3: Risk Assessment Engine (Corrected for Bias)
+
+### 3.1 The Multi-Stage Analytical Pipeline
+
+```
+Stage 1: Rate Calculation
+├── Crude rate = incidents / population × 100,000
+├── Using HRSL 30m gridded population data
+└── Output: Raw per-capita rates by sub-location
+
+Stage 2: Empirical Bayes Smoothing
+├── Poisson-Gamma model: shrink small-area rates toward global mean
+├── Prevents spurious high rates from low-population areas
+└── Output: Stabilized rate estimates
+
+Stage 3: Multiple Systems Estimation (MSE)
+├── Estimate underreporting by zone using capture-recapture
+├── Compare overlap between Missing Voices, police OB, 
+│   hospital records, news reports, court records
+└── Output: Underreporting adjustment factors by zone
+
+Stage 4: Spatial Scan Statistics
+├── SaTScan: detect statistically significant clusters
+├── Adjusts for population, tests against random distribution
+└── Output: Significant clusters with relative risk ratios
+
+Stage 5: Temporal Anomaly Detection
+├── Rolling 90-day baseline per zone
+├── Flag zones with >2 standard deviations from baseline
+└── Output: Temporal alert flags
+
+Stage 6: Composite Risk Index
+├── Weighted aggregation of all indicators
+├── Weights determined by expert judgment + sensitivity analysis
+└── Output: Final zone-level risk score (0-100)
+```
+
+### 3.2 The SaTScan Implementation
+
+SaTScan is free software that analyzes spatial, temporal, and space-time data using spatial scan statistics.【turn0search17】【turn0search18】【turn0search19】
+
+**Configuration for Kenya abductions:**
+
+```
+Probability model: Poisson (count data)
+Scan for: High rates only
+Spatial window: Variable size, up to 50% of population at risk
+Time adjustment: Yes (adjust for temporal trends)
+Monte Carlo: 999 replications for p-value estimation
+Population file: HRSL-derived population by sub-location
+Case file: Verified incidents with coordinates and dates
+Coordinates: Sub-location centroids (or incident coordinates when known)
+
+Output:
+- Primary cluster(s): geographic areas with significantly 
+  elevated risk (p < 0.05)
+- Relative risk: "Risk inside cluster is X× higher than outside"
+- Log likelihood ratio: strength of evidence
+```
+
+**What SaTScan does NOT do:** It does not simply flag "where most incidents occur" — it identifies areas where incidents are **significantly more common than expected** given the population at risk. This solves the "Nairobi always wins" problem.
+
+### 3.3 MSE for Underreporting
+
+The **Human Rights Data Analysis Group (HRDAG)** pioneered Multiple Systems Estimation for human rights documentation.【turn0search7】【turn0search8】【turn0search9】
+
+**Kenya-specific implementation:**
+
+```
+Datasets for MSE:
+1. Missing Voices verified incidents
+2. Kenya Police OB records (via ATI Act request)
+3. KNH/mortuary unclaimed bodies registry
+4. Nairobi Funeral Home records
+5. News reports (Daily Nation, Standard, The Star)
+6. Court records (habeas corpus, inquest files)
+7. IPOA complaints database
+
+For each zone (sub-county):
+- Compile case lists from each source
+- Deduplicate using Splink
+- Model capture probabilities for each source
+- Estimate total unobserved cases
+
+Example result:
+- Nairobi: 20 documented, MSE estimates 25 total (factor: 1.25)
+- Turkana: 3 documented, MSE estimates 8 total (factor: 2.67)
+
+Adjusted count = Documented × Underreporting Factor
+```
+
+**Critical assumption:** The datasets must be *independent* — the probability of a case appearing in Missing Voices should not depend on whether it appeared in police OB records. If they are correlated, MSE underestimates the true count.
+
+### 3.4 Spatial Regression for Excess Risk
+
+Identify zones with **more incidents than predicted by their characteristics**:
+
+```python
+# Python implementation using PySAL
+from pysal.model import spreg
+from pysal.lib import weights
+import geopandas as gpd
+
+# Load zones with incident counts and covariates
+zones = gpd.read_file("kenya_subcounties_with_data.shp")
+
+# Spatial weights matrix
+w = weights.Queen.from_dataframe(zones)
+
+# Spatial lag model: incidents ~ population + poverty + urbanicity + W_incidents
+model = spreg.ML_Lag(
+    zones[['log_population', 'poverty_rate', 'urbanicity']].values,
+    zones['incident_count'].values,
+    w=w,
+    name_y='incident_count',
+    name_x=['log_population', 'poverty_rate', 'urbanicity']
+)
+
+# Residuals = excess risk beyond what covariates predict
+zones['excess_risk'] = model.u
+
+# Map zones with significantly positive residuals
+```
+
+**R alternative using `spatialreg`:**
+
+```r
+library(spatialreg)
+library(spdep)
+
+nb <- poly2nb(kenya_zones)
+lw <- nb2listw(nb, style = "W")
+
+model <- lagsarlm(
+  incident_count ~ log_population + poverty_rate + urbanicity,
+  data = kenya_zones,
+  listw = lw
+)
+
+kenya_zones$excess_risk <- residuals(model)
+```
+
+---
+
+## Part 4: Vehicle Re-Identification System
+
+### 4.1 Evidence Base (Why This Matters)
+
+The pattern is documented in public reporting:
+- **Koimburi case (May 2025):** Silver Subaru Forester, Reg. No. KDG 803B, used to block MP before alleged abduction【turn2search1】【turn2search2】
+- **Kibet Bull case (Dec 2024):** White Subaru linked to abduction of X cartoonist. Senator Okiya Omtatah publicly identified the vehicle【turn2search0】【turn2search3】
+
+### 4.2 Technical Stack
+
+**Primary detection model: YOLOv8**
+
+GitHub repo: `rafayabrar/Vehicle-Re-Identification-Using-YOLO` implements vehicle re-ID with three modes: single reference image, two-stage video database, and cross-camera matching.【turn3search3】
+
+```
+Pipeline:
+1. Detect vehicles in frames (YOLOv8)
+2. Extract appearance features (OSNet/RepNet embeddings)
+3. Match across cameras/time using Re-ID algorithm
+4. Flag vehicles matching pattern criteria
+```
+
+**License plate recognition:**
+
+GitHub repo: `Zackly23/YOLOV8_IND_ANPR` demonstrates automatic plate detection using YOLOv8 with character segmentation and OCR recognition.【turn1search4】
+
+**Kenya-specific plate context:**
+- **GK prefix** = Government of Kenya vehicles【turn5search14】
+- **CG prefix** = County Government fleet【turn5search12】
+- **KDF/KHM** = Kenya Defence Forces【turn5search11】
+- Standard civilian plates follow regional coding
+
+### 4.3 The "4-Zone Rule" Implementation
+
+```python
+# Vehicle pattern correlation logic
+VEHICLE_PATTERN_THRESHOLD = 4
+TIME_WINDOW_DAYS = 30
+RADIUS_KM = 25
+
+def flag_recurring_vehicle(vehicle_descriptor, sightings):
+    """
+    vehicle_descriptor: {
+        'make': 'Subaru',
+        'model': 'Forester', 
+        'color': 'Silver',
+        'plate_partial': 'KDG'
+    }
+    """
+    # Spatial clustering of sightings
+    clusters = cluster_sightings(
+        sightings, 
+        radius_km=RADIUS_KM,
+        time_window=TIME_WINDOW_DAYS
+    )
+    
+    for cluster in clusters:
+        if len(cluster.sightings) >= VEHICLE_PATTERN_THRESHOLD:
+            if cluster.overlaps_with_incident_locations():
+                return {
+                    'flag': 'SUSPECTED_ABDUCTION_VEHICLE',
+                    'confidence': calculate_confidence(cluster),
+                    'sightings': cluster.sightings
+                }
+    
+    return None
+```
+
+### 4.4 Imagery Sources
+
+| Source | Resolution | Cost | Use Case |
+|---|---|---|---|
+| **Sentinel-2** | 10m, 5-day revisit | Free | Site verification, change detection |
+| **Planet Labs E&R Program** | ~3m daily | Free for NGOs/universities | Vehicle presence detection |
+| **Bing Maps Aerial** | Variable | Free web access | Geolocation reference【turn2search8】【turn2search9】 |
+| **Google Earth** | Historical + current | Free | Historical comparison |
+| **Maxar/WorldView** | 30cm | Commercial ($$$) | Make/model ID (only for confirmed targets) |
+
+**Ethical note:** The Engine Room cautions that satellite imagery, while powerful evidence, should not stand alone — it doesn't show causality and can harm local populations if misused.【turn3search14】 Satellite imagery privileges a landscape aesthetic that renders humans insignificant, potentially overlooking affected people.【turn3search15】
+
+---
+
+## Part 5: Technical Architecture
+
+### 5.1 System Design
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│                 AIR-GAPPED MASTER DATABASE                    │
+│  (No internet connection. Manual data transfer only.)        │
+│  ┌─────────────────────────────────────────────────────┐    │
+│  │ PostgreSQL + PostGIS (LUKS encrypted)               │    │
+│  │ - Master incident database (verified only)         │    │
+│  │ - Vehicle sighting database                        │    │
+│  │ - Network analysis graphs                          │    │
+│  │ - Risk scores by zone                              │    │
+│  │ - Audit trail of all changes                       │    │
+│  └─────────────────────────────────────────────────────┘    │
+└─────────────────────────────────────────────────────────────┘
+                              │ (encrypted USB transfer)
+┌─────────────────────────────────────────────────────────────┐
+│              ANALYSIS WORKSTATION (Tails OS)                 │
+│  - Never internet-connected during analysis                 │
+│  - QGIS for spatial analysis                               │
+│  - Gephi for network analysis                              │
+│  - Python: pandas, networkx, geopandas, splink            │
+│  - R: spatialreg, spdep, SpatialEpi, Rcapture            │
+│  - SaTScan for cluster detection                           │
+└─────────────────────────────────────────────────────────────┘
+                              │
+┌─────────────────────────────────────────────────────────────┐
+│           DATA COLLECTION SERVER (VPN/Tor)                   │
+│  - Runs automated collectors (news, ACLED, RSS)             │
+│  - Receives Tella submissions from field monitors           │
+│  - Outbound-only connections via Tor                        │
+│  - No inbound access from analysis workstation              │
+└─────────────────────────────────────────────────────────────┘
+                              │
+┌─────────────────────────────────────────────────────────────┐
+│           PUBLIC-FACING ALERT SYSTEM (Tor Hidden Service)    │
+│  - Aggregate risk outputs only                             │
+│  - No raw data, no individual names, no locations           │
+│  - Access via Tor Browser only                              │
+│  - Read-only, no user input                                │
+└─────────────────────────────────────────────────────────────┘
+```
+
+### 5.2 Data Pipeline Orchestration
+
+**Prefect** is a workflow orchestration framework for building data pipelines in Python — the simplest way to elevate a script into a production workflow with scheduling, caching, retries, and event-based automations.【turn2search15】【turn2search16】
+
+```python
+# Example Prefect flow for daily data ingestion
+from prefect import flow, task
+import pandas as pd
+
+@task(retries=3, retry_delay_seconds=300)
+def fetch_acled_data():
+    """Fetch latest ACLED events for Kenya"""
+    # API call with authentication
+    ...
+
+@task(retries=2)
+def fetch_news_feeds():
+    """Scrape configured news RSS feeds"""
+    ...
+
+@task
+def validate_and_clean(raw_data):
+    """Apply validation rules, flag for review"""
+    ...
+
+@task
+def run_entity_resolution(new_records, existing_db):
+    """Deduplicate using Splink"""
+    ...
+
+@task
+def update_risk_scores():
+    """Recalculate zone-level risk with new data"""
+    ...
+
+@flow(name="kamps-daily-ingestion")
+def daily_pipeline():
+    acled = fetch_acled_data()
+    news = fetch_news_feeds()
+    all_data = validate_and_clean([acled, news])
+    deduplicated = run_entity_resolution(all_data)
+    update_risk_scores()
+
+# Schedule: daily at 06:00 EAT
+daily_pipeline.serve(name="daily-ingestion", cron="0 6 * * *")
+```
+
+### 5.3 Field Data Collection
+
+**Tella app** (tella.app) is designed for activists, journalists, and human rights defenders documenting injustice in challenging environments.【turn1search2】【turn1search3】【turn1search4】
+
+**Key features:**
+- Encrypts photos, videos, and audio recordings on capture
+- Works with limited or no internet connectivity
+- Can hide data from device search
+- Secure sharing with organization via "Connections" feature
+- Produces high-quality documentation for research, advocacy, or transitional justice
+
+**Deployment:** Train 5-10 trusted field monitors across high-risk zones on Tella usage, OPSEC protocols, and verification methodology.
+
+---
+
+## Part 6: Legal & Ethical Framework
+
+### 6.1 Kenya Data Protection Act 2019 Compliance
+
+The Office of the Data Protection Commissioner (ODPC) enforces Kenya's primary data protection statute.【turn0search17】
+
+**Lawful basis options:**
+- **Legitimate interests** (human rights documentation)
+- **Public task** (if working with registered CSO)
+- **Consent** (from data subjects where possible)
+
+**Required compliance measures:**
+- Data Protection Impact Assessment (DPIA) before deployment
+- Documented lawful basis for each processing activity
+- Data minimization: collect only what is necessary
+- Data subject rights procedures (access, rectification, erasure)
+- Cross-border transfer assessments if any data leaves Kenya
+
+### 6.2 Access to Information Act 2016
+
+Every Kenyan citizen has the right to access information held by the state under Article 35 of the Constitution and the ATI Act 2016.【turn6search0】【turn6search1】【turn6search2】
+
+**Strategic ATI requests for KAMPS:**
+
+1. **Police OB records:** Request anonymized abduction/disappearance reports from digitized stations【turn0search11】【turn0search12】【turn0search13】
+2. **Hospital mortuary registries:** Request unclaimed bodies data with dates, causes of death, originating police stations
+3. **IPOA investigation summaries:** Request aggregate data on complaints received and investigation outcomes
+4. **County government disposal records:** Request documentation of body disposals, including which police stations originated the bodies
+
+### 6.3 Ethical Principles (Berkeley Protocol + OHCHR)
+
+**OHCHR Human Rights-Based Approach to Data (HRBAD)** espouses six key principles:【turn0search17】
+
+1. **Participation** — affected communities must be involved in all stages of the data lifecycle
+2. **Self-identification** — people must be able to self-identify rather than be externally categorized
+3. **Data disaggregation** — data must be disaggregated to reveal inequalities
+4. **Privacy** — data collection must protect individual privacy
+5. **Transparency** — methodology must be open and documented
+6. **Accountability** — data collectors must be accountable to data subjects
+
+**Do No Harm principles for satellite imagery:**【turn3search14】【turn3search15】
+- Never publish imagery that could identify specific individuals or homes without consent
+- Consider whether publishing location data could enable retaliation
+- Satellite imagery should complement, not replace, ground-truth verification
+- Always consider the perspective of people on the ground who may be endangered by publication
+
+---
+
+## Part 7: Partnership Integration
+
+### 7.1 Civil Society Partners
+
+| Organization | Role | Contact Point |
+|---|---|---|
+| **Missing Voices Coalition** | Primary data partner, legitimacy | Via Amnesty Kenya |
+| **Amnesty International Kenya** | Advocacy, international pressure, coordination | amnestykenya.org |
+| **HAKI Africa** | Coast region network, community trust | Part of Missing Voices |
+| **Mathare Social Justice Centre** | Grassroots data collection, urban Nairobi | Part of Missing Voices |
+| **Kenya Human Rights Commission (KHRC)** | Research, documentation, policy advocacy | khrc.or.ke |
+| **Peace Brigades International Kenya** | Protective accompaniment, international observer | Part of Missing Voices |
+| **Kenya Union of Journalists (KUJ)** | Journalist safety alerts, network access | Via Media Council of Kenya |
+
+### 7.2 Technical/Methodological Partners
+
+| Organization | Role | Engagement |
+|---|---|---|
+| **HRDAG (Human Rights Data Analysis Group)** | MSE methodology, statistical guidance | Consultation on statistical methods |
+| **Bellingcat** | OSINT training, verification methodology | Training workshops |
+| **Berkeley Human Rights Center** | Investigations Lab training, Berkeley Protocol | Capacity building |
+| **The Engine Room** | Responsible data guidance | Methodological support |
+| **WITNESS Media Lab** | Video verification methodology | Training on citizen footage verification |
+| **Tactical Tech** | Holistic security framework | Security protocols |
+
+---
+
+## Part 8: Implementation Roadmap
+
+### Phase 1: Foundation (Weeks 1-4)
+
+**Week 1: Partnership & Legal**
+- Formal partnership agreement with Missing Voices Coalition
+- DPIA (Data Protection Impact Assessment) with ODPC guidelines
+- Legal review of ATI Act request strategy
+- Threat modeling workshop with partner CSOs
+
+**Week 2: Data Infrastructure**
+- Set up PostgreSQL + PostGIS on encrypted server
+- Deploy Tella app for pilot field data collection (3-5 monitors)
+- Configure Prefect for automated data collection
+
+**Week 3: Historical Data Ingestion**
+- Load Missing Voices historical data (423 disappearances, 1,461 killings)
+- Load ACLED Kenya data (1997-present)
+- Load KNCHR reports and press releases
+- Begin Splink entity resolution on combined dataset
+
+**Week 4: Initial Analysis**
+- Generate crude rate maps (per 100,000 using HRSL population)
+- Apply Empirical Bayes smoothing
+- Identify top 5 sub-counties by adjusted rate
+
+### Phase 2: Advanced Analytics (Weeks 5-8)
+
+**Week 5: Spatial Scan Statistics**
+- Configure and run SaTScan on verified incident data
+- Identify statistically significant clusters
+- Document relative risk ratios for each cluster
+
+**Week 6: MSE Estimation**
+- File ATI requests for police OB, hospital, and mortuary data
+- Begin MSE modeling with available datasets
+- Generate underreporting factors by zone
+
+**Week 7: Spatial Regression**
+- Fit spatial lag models with population, poverty, urbanicity covariates
+- Identify zones with excess risk beyond predicted levels
+- Map residual risk
+
+**Week 8: Network Analysis**
+- Map activist/journalist social networks using Gephi
+- Identify high-centrality clusters (bridges between communities)
+- Calculate network visibility scores by zone
+
+### Phase 3: Vehicle Detection (Weeks 9-12)
+
+**Week 9: Model Training**
+- Fine-tune YOLOv8 on Kenyan vehicle types
+- Test on sample satellite imagery of known abduction zones
+- Validate accuracy against manually labeled test set
+
+**Week 10: Citizen Reporting Pipeline**
+- Deploy Tella → secure server → analyst workflow
+- Train monitors on vehicle documentation protocol
+- Test end-to-end pipeline with dummy data
+
+**Week 11: Pattern Detection**
+- Implement "4-zone rule" logic
+- Test against historical Subaru Forester cases
+- Calibrate confidence scoring
+
+**Week 12: Integration**
+- Integrate vehicle detection with risk scoring engine
+- Deploy secure Tor hidden service for aggregate outputs
+- Conduct security audit of full system
+
+### Phase 4: Pilot & Launch (Months 4-6)
+
+**Month 4: Pilot Operation**
+- Run full system in "shadow mode" (generate outputs, don't publish)
+- Compare system predictions against known outcomes
+- Refine weights and thresholds
+
+**Month 5: Partner Review**
+- Share aggregate outputs with trusted CSO partners
+- Gather feedback on usefulness and accuracy
+- Adjust methodology based on field realities
+
+**Month 6: Public Launch**
+- Deploy public-facing Tor hidden service
+- Publish methodology documentation
+- Begin quarterly public aggregate risk reports
+- Establish ongoing monitoring and evaluation
+
+---
+
+## Part 9: Key GitHub Repositories & Tools
+
+| Purpose | Repository/Tool | Language | Notes |
+|---|---|---|---|
+| **Entity Resolution** | `moj-analytical-services/splink` | Python | Fast, scalable, probabilistic record linkage【turn1search0】 |
+| **Vehicle Re-ID** | `rafayabrar/Vehicle-Re-Identification-Using-YOLO` | Python | YOLOv8 + multi-mode【turn3search3】 |
+| **ANPR** | `Zackly23/YOLOV8_IND_ANPR` | Python | YOLOv8 + OCR【turn1search4】 |
+| **Spatial Regression** | `pysal/spreg` | Python | ML_Lag, ML_Error models |
+| **Spatial Scan** | SaTScan (standalone) | — | Free from satscan.org【turn0search19】 |
+| **Rate Smoothing** | R `SpatialEpi` | R | `eBayes()` function |
+| **MSE** | R `Rcapture` | R | Capture-recapture models |
+| **Workflow** | `PrefectHQ/prefect` | Python | Pipeline orchestration【turn2search15】 |
+| **Data Cleaning** | OpenRefine | Java/Web | Interactive reconciliation【turn1search5】 |
+| **OSINT Toolkit** | `bellingcat/toolkit` | — | Curated tool directory |
+| **Missing Persons DB** | `InnovateInk/missing-persons-db` | Docker | Reference architecture【turn0search9】 |
+
+---
+
+## Part 10: Critical Success Factors
+
+### 10.1 What Makes This System Different
+
+**Not just a heatmap.** The system produces statistically defensible risk assessments that:
+- Adjust for population density (no more "Nairobi always wins")
+- Estimate underreporting (MSE reveals hidden rural risk)
+- Identify excess risk beyond what demographics predict
+- Flag temporal anomalies (zones with sudden risk elevation)
+- Document methodology transparently (Berkeley Protocol compliance)
+
+**Not just data collection.** The system integrates:
+- Verified data only (multi-source confirmation required)
+- Entity resolution (deduplication prevents double-counting)
+- Chain of custody (every data point has documented provenance)
+- Source reliability hierarchy (Tier 1/2/3 classification)
+
+**Not just prediction.** The system provides:
+- Actionable intelligence for CSO protective response
+- Evidence base for advocacy and legal accountability
+- Public awareness of geographic risk patterns
+- Documentation suitable for international mechanisms
+
+### 10.2 What Could Go Wrong (And Mitigations)
+
+| Risk | Mitigation |
+|---|---|
+| Database compromise creates kill list | Air-gapped master, aggregate-only outputs, no individual rankings |
+| System predicts wrong zone, CSO deploys resources incorrectly | Confidence intervals, multiple indicators, human review before action |
+| Adversary learns of system and changes tactics | Regular methodology review, adapt detection thresholds |
+| Data subjects harmed by publication | Strict output controls, no individual-identifying data, community consultation before publication |
+| Legal challenge under Data Protection Act | DPIA conducted, lawful basis documented, data minimization enforced |
+| Partner organization infiltrated | Need-to-know compartmentalization, code names, verification protocols |
+
+### 10.3 The Philosophical Commitment
+
+**The system exists to protect people, not to predict them.**
+
+Every design decision — aggregate outputs, strict verification, community consultation, ethical review — flows from this principle. A system that identifies "who will be kidnapped next" is functionally a targeting list. A system that identifies "which zones have statistically elevated risk after adjusting for population and underreporting" is a protective tool.
+
+The difference is not semantic. It is the difference between a weapon and a shield.
+
+---
+
+## Immediate Next Steps (This Week)
+
+1. **Contact Amnesty Kenya** to initiate Missing Voices Coalition partnership
+2. **File DPIA notification** with ODPC guidelines
+3. **Schedule threat modeling workshop** with partner CSOs (Berkeley Protocol framework)
+4. **Begin ATI Act requests** for police OB, hospital mortuary, and IPOA data
+5. **Set up development environment** (Tails OS, encrypted storage, Tor for research)
+6. **Deploy Tella** with first 3 field monitors in highest-risk zones (per initial analysis)
+7. **Download HRSL population data** for Kenya from Meta
+8. **Install Splink, PySAL, SaTScan** and validate on sample data
+
+The technology is the easy part. The hard part is building this in a way that protects rather than endangers the people it's meant to serve — and earning the trust of communities who have learned through bitter experience that promises of protection can be used as bait.
+
+---
+
+**Sources:**
+
+- Missing Voices database: https://missingvoices.or.ke【turn0search7】
+- Berkeley Protocol: https://www.ohchr.org/en/publications/policy-and-methodological-publications/berkeley-protocol-digital-open-source【turn0search3】
+- Splink entity resolution: https://github.com/moj-analytical-services/splink【turn1search0】
+- SaTScan software: https://www.satscan.org【turn0search19】
+- Meta HRSL population data: https://data.humdata.org/search?q=high+resolution+settlement+layer【turn4search8】
+- Kenya ATI Act 2016 handbook: https://katibainstitute.org【turn6search0】
+- ACLED data: https://acleddata.com【turn1search5】
+- WITNESS Video as Evidence: https://www.witness.org【turn5search5】
+- Prefect workflow: https://github.com/PrefectHQ/prefect【turn2search15】
