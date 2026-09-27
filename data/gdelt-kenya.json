@@ -1451,5 +1451,7 @@
       "month": "2026-09",
       "volume": 43
     }
-  ]
+  ],
+  "lastAttemptAt": "2026-09-27T16:48:39.004Z",
+  "attemptNote": "This run's fetch was rate limited; the timeline below is the last successful pull."
 }
