@@ -111,7 +111,7 @@ export function vehicleAlert(
     color: string; make: string; model: string; platePartial: string;
     clusterSightings: number; zones: string[]; incidentOverlap: number;
     vehicleKey: string;
-    confidence: number; lastSeen: Date | string; simulated?: boolean;
+    confidence: number; lastSeen: Date | string;
     status: string;
   },
   asOf: Date
@@ -121,11 +121,9 @@ export function vehicleAlert(
     severity: "info",
     kind: "vehicle",
     asOf: fmtDate(asOf),
-    title: `VEHICLE PATTERN · ${v.color} ${v.make} ${v.model} (${v.platePartial})${v.simulated ? " [DEMO]" : ""}`,
+    title: `VEHICLE PATTERN · ${v.color} ${v.make} ${v.model} (${v.platePartial})`,
     message:
-      (v.simulated
-        ? `DEMONSTRATION RECORD (synthetic sighting log, not a real vehicle). `
-        : `Publicly documented pattern vehicle. `) +
+      `Publicly documented pattern vehicle. ` +
       `${v.clusterSightings} sightings in a 30-day window across ${v.zones.join(", ")}, ` +
       `with ${v.incidentOverlap} documented incidents co-located in time and space. ` +
       `${v.status === "flagged" ? "Meets the four-zone rule threshold." : "Below the live-feed threshold: held as a documented reference pattern."} ` +

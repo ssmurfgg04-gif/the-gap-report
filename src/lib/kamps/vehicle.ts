@@ -47,8 +47,6 @@ export type VehicleAssessment = {
   lastSeen: Date;
   totalSightings: number;
   sightings: Sighting[];       // full chronological series for the timeline UI
-  /** true only for labeled demonstration records (no live Tella feed yet) */
-  simulated?: boolean;
   /** one-paragraph public-record summary with provenance */
   summary?: string;
   sourceUrls?: string[];

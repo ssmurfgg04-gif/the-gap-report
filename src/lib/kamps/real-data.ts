@@ -9,10 +9,9 @@
  *   - incidents-public-record.json (29 sourced incidents 2024-2026)
  *   - vehicles-public-record.json (documented vehicle patterns, with sources)
  *
- * Every record returned here is REAL and traceable to its source URL. The only
- * synthetic rows in the system are the labeled demonstration sightings in
- * vehicles-public-record.json (marked simulated: true), which exist because
- * the live Tella sighting feed has not been deployed yet.
+ * Every record returned here is real and traceable to its source URL.
+ * Vehicle records carry documented sighting events with the source that
+ * reported them; there are no synthetic rows anywhere in the system.
  */
 import fs from "fs";
 import path from "path";
@@ -345,18 +344,17 @@ export function loadPublicRecordIncidents(): PublicIncident[] {
   return incCache;
 }
 
-// ————— vehicles: real documented patterns + labeled demo sightings —————
+// ————— vehicles: documented pattern records —————
 export type VehicleCase = {
   vehicleKey: string;
   platePartial: string;
   make: string;
   model: string;
   color: string;
-  simulated: boolean;
   summary: string;
   sourceUrls: string[];
   sourceNames: string[];
-  /** documented sighting events (real) or demo feed (simulated) */
+  /** documented sighting events with reporting sources */
   sightings: Array<{ id: number; date: string; zoneName: string; source: string }>;
 };
 

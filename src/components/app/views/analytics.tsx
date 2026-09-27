@@ -151,8 +151,9 @@ function ForecastCard({ forecast, analysis }: { forecast: KampsAnalysis["forecas
         </div>
       </div>
 
-      {/* county projections */}
-      <div className="matrix-scroll overflow-x-auto">
+      {/* county projections: table on desktop, stacked rows on mobile */}
+      <div className="relative">
+        <div className="matrix-scroll hidden overflow-x-auto md:block">
         <table className="w-full min-w-[560px] border-collapse text-left text-sm">
           <caption className="sr-only">Projected composite index by county</caption>
           <thead>
@@ -190,6 +191,29 @@ function ForecastCard({ forecast, analysis }: { forecast: KampsAnalysis["forecas
             })}
           </tbody>
         </table>
+        </div>
+        <ul className="grid gap-px overflow-hidden rounded-lg border border-border bg-border md:hidden">
+          {rows.map((r) => {
+            const delta = r.projectedIndex - r.currentIndex;
+            return (
+              <li key={r.zoneId} className="flex items-center justify-between gap-3 bg-background px-4 py-3.5">
+                <span className="min-w-0">
+                  <span className="block truncate text-sm font-medium text-foreground">{r.county}</span>
+                  <span className="mt-0.5 block font-mono text-[10px] uppercase tracking-[0.12em] text-muted-foreground">
+                    {r.band}
+                  </span>
+                </span>
+                <span className="shrink-0 text-sm tabular-nums text-foreground/85">
+                  {r.currentIndex.toFixed(1)}
+                  <span className="text-muted-foreground"> → </span>
+                  <span className={delta > 0.5 ? "text-[var(--accent-ink)]" : "text-foreground"}>
+                    {r.projectedIndex.toFixed(1)}
+                  </span>
+                </span>
+              </li>
+            );
+          })}
+        </ul>
       </div>
       <p className="border-t border-border p-5 text-sm leading-[1.6] text-muted-foreground">
         Projections adjust each county&apos;s composite index by its forecasted organized-violence
@@ -252,9 +276,9 @@ export function AnalyticsView({ kamps }: { kamps: KampsState }) {
   return (
     <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6 md:py-14">
       <ViewHeader
-        kicker="Methods"
+        kicker="The statistics"
         title="Analytics"
-        lede="The statistical core on the working surface: what the walk-forward backtested forecast projects, how much the lists miss, and how every county ranks once the correction is applied."
+        lede="Forecast, undercount, and the full 47-county ranking. The forecast is backtested walk-forward, not a straight line extended from hope, and the undercount comes from capture-recapture on two lists that do not talk to each other."
       />
       <AnalysisGate kamps={kamps}>{(analysis) => <AnalyticsBody analysis={analysis} />}</AnalysisGate>
     </div>

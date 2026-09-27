@@ -10,9 +10,9 @@ export function VehiclesView({ kamps }: { kamps: KampsState }) {
   return (
     <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6 md:py-14">
       <ViewHeader
-        kicker="Field Signals"
+        kicker="The cars"
         title="Vehicles"
-        lede="Partial plates and composite descriptors from field monitors, assessed by the four-zone sighting rule. Aggregate pattern analysis only: no full plates, no persons."
+        lede="The vehicles public reporting has tied to abductions: partial plates, make, color, and the sightings on record, each with its source. The four-zone rule watches for one vehicle resurfacing across abduction and dump sites inside a 30-day window. Descriptors only: no full plates, no owners, no people."
       />
       <AnalysisGate kamps={kamps}>
         {(analysis) => (

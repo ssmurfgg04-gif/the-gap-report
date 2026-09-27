@@ -108,11 +108,6 @@ function VehicleCard({ vehicle, rangeStart, rangeEnd }: { vehicle: VehicleAssess
           </p>
         </div>
         <div className="flex items-center gap-2">
-          {vehicle.simulated && (
-            <span className="inline-flex items-center rounded-full border border-dashed border-muted-foreground/70 px-2.5 py-0.5 font-mono text-[10px] uppercase tracking-[0.14em] text-muted-foreground">
-              Demo
-            </span>
-          )}
           <span
             className={cn(
               "inline-flex items-center rounded-full px-2.5 py-0.5 font-mono text-[10px] font-medium uppercase tracking-[0.14em]",
@@ -205,11 +200,10 @@ export function VehiclePanel({ analysis }: { analysis: KampsAnalysis }) {
       </div>
 
       <p className="mt-5 max-w-3xl text-sm leading-[1.6] text-muted-foreground">
-        The four-zone rule is the civil-society analog of law-enforcement ANPR pattern analysis, turned
-        toward state actors instead of citizens. A vehicle is flagged only when sighting density and
-        incident overlap coincide. The first cards below are real, publicly documented pattern vehicles
-        with their sources. Cards marked Demo carry a synthetic sighting log, clearly labeled, that
-        exercises the rule end to end until the encrypted Tella field feed deploys in Phase 3.
+        The four-zone rule is the civil-society analog of law-enforcement ANPR pattern analysis,
+        pointed at state actors instead of citizens. A vehicle is flagged only when sighting
+        density and incident overlap coincide. Every card below is a real, publicly documented
+        vehicle with the source that reported it.
       </p>
 
       {/* flagged + monitoring */}

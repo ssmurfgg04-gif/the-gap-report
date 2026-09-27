@@ -12,8 +12,10 @@ async function main() {
   if (!parliament || parliament.county !== "Nairobi") {
     throw new Error("REGRESSION: 'Nairobi (outside Parliament)' incident lost");
   }
-  if (o.documentedTotal !== 227) {
-    throw new Error(`REGRESSION: documentedTotal expected 227, got ${o.documentedTotal}`);
+  // 227 through the 2026-09-26 data refresh; +2: Githurai (June 2026) and
+  // Kiprotich (Sept 2026). If this regresses, an ER pair or the window broke.
+  if (o.documentedTotal !== 229) {
+    throw new Error(`REGRESSION: documentedTotal expected 229, got ${o.documentedTotal}`);
   }
   console.log(`asOf ${a.asOf.slice(0, 10)} | window ${a.dataWindow.start} to ${a.dataWindow.end} | ${o.zones} counties`);
   console.log(`documented ${o.documentedTotal} (located ${o.documentedLocated}, unlocated ${o.unlocatedIncidents})`);
@@ -38,7 +40,7 @@ async function main() {
 
   console.log("\nVehicles:");
   for (const v of a.vehicles) {
-    console.log(`  ${v.vehicleKey} ${v.status.padEnd(10)} ${v.simulated ? "DEMO" : "REAL"} ${v.color} ${v.make} ${v.model} (${v.platePartial}) n=${v.clusterSightings} inc=${v.incidentOverlap} conf ${v.confidence}`);
+    console.log(`  ${v.vehicleKey} ${v.status.padEnd(10)} ${v.color} ${v.make} ${v.model} (${v.platePartial}) n=${v.clusterSightings} inc=${v.incidentOverlap} conf ${v.confidence}`);
   }
 
   console.log("\nTemporal (recent months):");

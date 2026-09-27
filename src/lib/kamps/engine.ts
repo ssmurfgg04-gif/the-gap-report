@@ -9,8 +9,9 @@
  *   - historical covariate: UCDP GED organized-violence events (1989-2022)
  *   - temporal: real Missing Voices monthly series (2020-2026)
  *   - forecast: Holt-Winters + walk-forward backtest on real UCDP panels
- *   - vehicles: publicly documented pattern vehicles + clearly labeled
- *     demonstration records for the four-zone rule
+ *   - vehicles: publicly documented pattern vehicles (Koimburi Forester,
+ *     Kibet Bull white Subaru, the KNCHR-documented June 2026 Subaru unit)
+ *     assessed with the four-zone rule
  *
  * The engine reads /data files (the ingested "warehouse") and caches the
  * computation in module scope. Nothing here fabricates numbers: when a
@@ -143,7 +144,6 @@ export type KampsForecast = {
 
 export type KampsAnalysis = {
   asOf: string;
-  simulated: false;
   groundTruth: null;
   dataWindow: { start: string; end: string };
   overview: {
@@ -225,9 +225,16 @@ async function compute(): Promise<KampsAnalysis> {
   const manifest = loadManifest();
 
   // ————— observation window —————
-  // MV monthly series defines the end; the wave begins with June 2024 protests
+  // asOf tracks the data, not the clock: the latest of the MV monthly series
+  // and the newest curated incident. The wave begins with June 2024 protests.
+  const unionDates = [...mvVictims, ...prIncidents]
+    .map(v => v.date)
+    .filter(Boolean)
+    .sort()
+    .at(-1);
   const lastMonth = monthly.length ? monthly[monthly.length - 1].month : "2026-08";
-  const asOf = endOfMonth(lastMonth);
+  const latestIncidentEnd = unionDates ? endOfMonth(unionDates.slice(0, 7)) : endOfMonth(lastMonth);
+  const asOf = latestIncidentEnd > endOfMonth(lastMonth) ? latestIncidentEnd : endOfMonth(lastMonth);
   const windowStart = new Date("2024-06-01T00:00:00Z");
 
   // ————— entity resolution: MV victims vs public-record incidents —————
@@ -435,11 +442,7 @@ async function compute(): Promise<KampsAnalysis> {
     }
     const zones = [...new Set(sorted.map(s => s.zoneName))];
     const last = sorted[sorted.length - 1];
-    const simulated = vc.simulated;
     const meetsThreshold = best.n >= VEHICLE_RULE.threshold;
-    const status: VehicleAssessmentJSON["status"] = simulated
-      ? (meetsThreshold ? "flagged" : "cleared")
-      : "monitoring";
     // incident overlap: documented incidents in the sighting zones around the window
     const winStart = new Date(new Date(best.start).getTime() - VEHICLE_RULE.incidentLeadDays * DAY);
     const winEnd = new Date(new Date(best.start).getTime() + (VEHICLE_RULE.windowDays + VEHICLE_RULE.incidentLeadDays) * DAY);
@@ -447,15 +450,17 @@ async function compute(): Promise<KampsAnalysis> {
       zones.some(z => countyNames.has(z) && u.county === z) &&
       new Date(u.date) >= winStart && new Date(u.date) <= winEnd
     ).length;
-    const confidence = simulated
-      ? Math.min(0.95, 0.5 + 0.07 * (best.n - VEHICLE_RULE.threshold) + 0.09 * Math.min(incidentOverlap, 3))
-      : Math.min(0.75, 0.45 + 0.1 * vc.sourceUrls.length);
+    // documented pattern vehicles: flagged when the cluster meets the
+    // four-zone rule AND overlaps verified incidents; otherwise monitored
+    const status: VehicleAssessmentJSON["status"] = meetsThreshold && incidentOverlap >= 1
+      ? "flagged"
+      : "monitoring";
+    const confidence = Math.min(0.85, 0.4 + 0.08 * Math.min(best.n, 6) + 0.08 * Math.min(incidentOverlap, 3) + 0.05 * vc.sourceUrls.length);
     return {
       vehicleKey: vc.vehicleKey,
       platePartial: vc.platePartial,
       make: vc.make, model: vc.model, color: vc.color,
       status,
-      simulated,
       summary: vc.summary,
       sourceUrls: vc.sourceUrls,
       sourceNames: vc.sourceNames,
@@ -470,15 +475,13 @@ async function compute(): Promise<KampsAnalysis> {
       sightings: sorted,
     };
   });
-  // REAL documented vehicles always sort before DEMO records, then by
-  // status and confidence, so the actionable public-record patterns lead.
+  // sort: flagged first, then monitoring, by confidence
   vehiclesOut.sort((a, b) => {
-    if (a.simulated !== b.simulated) return a.simulated ? 1 : -1;
     const order = { flagged: 0, monitoring: 1, cleared: 2 } as const;
     return order[a.status] - order[b.status] || b.confidence - a.confidence;
   });
 
-  // vehicle signal: counties with real documented vehicle activity + demo flags
+  // vehicle signal: counties with documented vehicle pattern activity
   const vehicleZoneIds = new Set<number>();
   for (const v of vehiclesOut) {
     if (v.status === "cleared") continue;
@@ -510,7 +513,7 @@ async function compute(): Promise<KampsAnalysis> {
     const drivers: string[] = [];
     if (cluster) drivers.push(`Spatial cluster: RR ${cluster.rr.toFixed(2)} (p = ${cluster.p < 0.001 ? "< 0.001" : cluster.p.toFixed(3)})`);
     if (t.flagged) drivers.push(`Temporal anomaly: +${t.z.toFixed(1)} sigma over 90-day baseline`);
-    if (ucdpPct[i] >= 0.75) drivers.push(`Historical organized-violence burden: ${ucdpByCounty[i].events} UCDP events 2013-2022`);
+    if (ucdpPct[i] >= 0.75) drivers.push(`Historical organized-violence burden: ${ucdpByCounty[i].events} UCDP events 2013-2025`);
     if (vehicleZoneIds.has(c.id)) drivers.push("Documented vehicle pattern activity");
     if (counts[i] > 0 && counts[i] / (c.population / 1e5) >= 0.1) drivers.push(`${counts[i]} documented incidents, EB rate ${eb[i].ratePer100k.toFixed(2)} per 100k`);
     if (drivers.length === 0) drivers.push(`EB-smoothed rate ${eb[i].ratePer100k.toFixed(2)} per 100k, ${ucdpByCounty[i].events} historical UCDP events`);
@@ -683,14 +686,13 @@ async function compute(): Promise<KampsAnalysis> {
   const significant = clusters.filter(c => c.p <= 0.05);
   const top = [...zones].sort((a, b) => b.index - a.index)[0];
   const flaggedVehicles = vehiclesOut.filter(v => v.status === "flagged").length;
-  const documentedVehicles = vehiclesOut.filter(v => !v.simulated).length;
+  const documentedVehicles = vehiclesOut.length;
 
   const captureMV = documentedTotal ? Math.round((inWindow.filter(u => u.lists.mv).length / documentedTotal) * 1000) / 10 : 0;
   const captureNews = documentedTotal ? Math.round((inWindow.filter(u => u.lists.news).length / documentedTotal) * 1000) / 10 : 0;
 
   return {
     asOf: asOf.toISOString(),
-    simulated: false,
     groundTruth: null,
     dataWindow: { start: windowStart.toISOString().slice(0, 10), end: asOf.toISOString().slice(0, 10) },
     overview: {

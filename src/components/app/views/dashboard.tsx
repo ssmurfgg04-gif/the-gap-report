@@ -25,34 +25,8 @@ const SEV_LABEL: Record<Severity, string> = {
   critical: "Critical",
   elevated: "Elevated",
   watch: "Watch",
-  info: "Informational",
+  info: "Info",
 };
-
-function KpiCell({
-  value,
-  label,
-  accent = false,
-  suffix,
-}: {
-  value: number;
-  label: string;
-  accent?: boolean;
-  suffix?: string;
-}) {
-  return (
-    <div className="flex flex-col bg-background p-6 pb-8 md:p-7 md:pb-9">
-      <p className="text-4xl font-medium tabular-nums tracking-[-0.03em] md:text-5xl">
-        <CountUp value={value} className={accent ? "text-[var(--accent-ink)]" : "text-foreground"} />
-        {suffix ? (
-          <span className={accent ? "text-[var(--accent-ink)]" : "text-foreground"}>{suffix}</span>
-        ) : null}
-      </p>
-      <p className="mt-3 font-mono text-[10px] uppercase leading-[1.6] tracking-[0.16em] text-muted-foreground">
-        {label}
-      </p>
-    </div>
-  );
-}
 
 /** Ticking Nairobi clock + data-as-of line. Renders a placeholder until mounted. */
 function LiveClock({ asOf }: { asOf: string }) {
@@ -92,13 +66,94 @@ function UpdatedFlash({ show }: { show: boolean }) {
   );
 }
 
+/** Primary stat: one number worth the whole screen, estimate directly under it. */
+function HeadlineStat({ analysis }: { analysis: KampsAnalysis }) {
+  const o = analysis.overview;
+  return (
+    <div className="flex flex-col justify-between gap-8 bg-background p-6 pb-8 md:p-8 md:pb-10">
+      <div>
+        <p className="font-mono text-[10px] uppercase leading-[1.6] tracking-[0.16em] text-muted-foreground">
+          Documented incidents since June 2024
+        </p>
+        <p className="mt-4 text-6xl font-medium tabular-nums tracking-[-0.04em] text-foreground md:text-7xl">
+          <CountUp value={o.documentedTotal} />
+        </p>
+        <p className="mt-3 max-w-md text-sm leading-[1.6] text-muted-foreground">
+          Deduplicated by entity resolution. Each one is a person with a name and a source
+          URL. {o.unlocatedIncidents > 0 ? `${o.unlocatedIncidents} of them carry no resolvable county.` : ""}
+        </p>
+      </div>
+      <div className="rounded-lg border border-dashed border-[var(--accent-ink)]/60 bg-[var(--accent-ink)]/[0.03] p-5">
+        {analysis.mse.method === "not-estimable" ? (
+          <>
+            <p className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+              <span className="font-mono text-[10px] uppercase tracking-[0.14em] text-[var(--accent-ink)]">
+                the floor, not the number
+              </span>
+            </p>
+            <p className="mt-2.5 text-sm leading-[1.6] text-muted-foreground">
+              Capture-recapture cannot run yet: the two live lists share zero matched cases,
+              and the method needs overlap to see the unseen. The police occurrence-book and
+              mortuary lists that would fix this are pending Access to Information requests.
+              Treat the documented count as the floor.
+            </p>
+          </>
+        ) : (
+          <>
+            <p className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+              <span className="text-3xl font-medium tabular-nums tracking-[-0.03em] text-[var(--accent-ink)]">
+                <CountUp value={o.estimatedTotal} />
+              </span>
+              <span className="font-mono text-[10px] uppercase tracking-[0.14em] text-[var(--accent-ink)]">
+                estimated true total
+              </span>
+            </p>
+            <p className="mt-2.5 text-sm leading-[1.6] text-muted-foreground">
+              Capture-recapture on two independent lists, so the number to plan around is
+              higher than the number you can cite. Interval {o.estimateCI[0]} to {o.estimateCI[1]}.
+            </p>
+          </>
+        )}
+      </div>
+    </div>
+  );
+}
+
+function SideStat({
+  value,
+  label,
+  note,
+}: {
+  value: number | string;
+  label: string;
+  note?: string;
+}) {
+  return (
+    <div className="flex items-baseline justify-between gap-4 bg-background px-6 py-5 md:px-7">
+      <p className="min-w-0">
+        <span className="font-mono text-[10px] uppercase leading-[1.6] tracking-[0.16em] text-muted-foreground">
+          {label}
+        </span>
+        {note ? (
+          <span className="mt-1 block font-mono text-[9px] uppercase tracking-[0.12em] text-muted-foreground/70">
+            {note}
+          </span>
+        ) : null}
+      </p>
+      <p className="shrink-0 text-3xl font-medium tabular-nums tracking-[-0.03em] text-foreground">
+        {value}
+      </p>
+    </div>
+  );
+}
+
 function TopZones({ analysis }: { analysis: KampsAnalysis }) {
   const zones = [...analysis.zones].sort((a, b) => b.index - a.index).slice(0, 5);
   return (
     <div className="min-w-0">
       <div className="mb-4 flex items-center justify-between gap-4">
         <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-muted-foreground">
-          Top 5 risk zones
+          Where risk holds up
         </p>
         <p className="font-mono text-[10px] uppercase tracking-[0.12em] text-muted-foreground">
           composite index, 0 to 100
@@ -111,7 +166,7 @@ function TopZones({ analysis }: { analysis: KampsAnalysis }) {
             initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4, delay: Math.min(i * 0.06, 0.3), ease: [0.22, 1, 0.36, 1] }}
-            className="bg-background p-5"
+            className="bg-background p-5 transition-colors duration-150 hover:bg-foreground/[0.02]"
           >
             <div className="flex flex-wrap items-center gap-x-3 gap-y-1.5">
               <span className="font-mono text-[11px] tabular-nums text-[var(--accent-ink)]">
@@ -135,6 +190,10 @@ function TopZones({ analysis }: { analysis: KampsAnalysis }) {
           </motion.li>
         ))}
       </ol>
+      <p className="mt-3 text-sm leading-[1.6] text-muted-foreground">
+        Scores correct for population and reporting bias. A county does not make this list
+        just for being big or loud; it has to be statistically hot after adjustment.
+      </p>
     </div>
   );
 }
@@ -145,14 +204,14 @@ function RecentAlerts({ analysis, onOpenAlerts }: { analysis: KampsAnalysis; onO
     <div className="min-w-0">
       <div className="mb-4 flex items-center justify-between gap-4">
         <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-muted-foreground">
-          Recent alerts
+          Latest signals
         </p>
         <button
           type="button"
           onClick={onOpenAlerts}
           className="inline-flex min-h-[44px] items-center font-mono text-[10px] uppercase tracking-[0.14em] text-muted-foreground underline decoration-border underline-offset-4 transition-colors hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent-ink)]"
         >
-          View all {analysis.alerts.length} alerts ({analysis.overview.activeAlerts} action-level)
+          All {analysis.alerts.length} alerts
         </button>
       </div>
       <div className="grid gap-px overflow-hidden rounded-lg border border-border bg-border">
@@ -186,13 +245,13 @@ function PipelineStrip({ live }: { live: boolean }) {
     <div className="min-w-0">
       <div className="mb-4 flex items-center justify-between gap-4">
         <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-muted-foreground">
-          System status
+          Engine status
         </p>
         <p className="font-mono text-[10px] uppercase tracking-[0.12em] text-muted-foreground">
-          six-stage pipeline
+          six stages, recomputed on refresh
         </p>
       </div>
-      <ol className="flex flex-wrap gap-2">
+      <ol className="flex flex-wrap gap-2 gap-y-2.5">
         {pipeline.map((s, i) => (
           <motion.li
             key={s.stage}
@@ -221,8 +280,8 @@ function PipelineStrip({ live }: { live: boolean }) {
         ))}
       </ol>
       <p className="mt-4 max-w-2xl text-sm leading-[1.6] text-muted-foreground">
-        All six stages recompute on every refresh. Aggregate zone-level output only: the dashboard
-        never displays individuals, plates, or case-level records.
+        Zone-level aggregate output only. The dashboard never shows individuals, plates, or
+        case-level records.
       </p>
     </div>
   );
@@ -258,9 +317,13 @@ export function DashboardView({
   return (
     <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6 md:py-14">
       <ViewHeader
-        kicker="Operations"
-        title="Monitoring dashboard"
-        lede="Protective posture at a glance: bias-corrected totals, the zones that matter most, and the state of the six-stage pipeline. Auto-refreshes every 60 seconds while this tab is visible."
+        kicker="Kenya, live"
+        title="The count, corrected"
+        lede={
+          kamps.analysis && kamps.analysis.mse.method !== "not-estimable"
+            ? "Every number here traces to a source you can open. The documented count is the floor, not the number; capture-recapture puts the true total higher. Risk scores adjust for population and reporting bias, so a county cannot top this list just by being big. Refreshes every 60 seconds while the tab is open."
+            : "Every number here traces to a source you can open. The documented count is the floor; the undercount estimate is pending a third list. Risk scores adjust for population and reporting bias, so a county cannot top this list just by being big. Refreshes every 60 seconds while the tab is open."
+        }
       />
 
       {kamps.error && <EngineErrorCard error={kamps.error} />}
@@ -299,6 +362,7 @@ function DashboardBody({
   onOpenAlerts: () => void;
 }) {
   const topZone = [...analysis.zones].sort((a, b) => b.index - a.index)[0];
+  const o = analysis.overview;
 
   return (
     <motion.div
@@ -323,21 +387,32 @@ function DashboardBody({
             className={`h-1.5 w-1.5 rounded-full ${loading ? "animate-pulse bg-[var(--accent-ink)]" : "bg-border"}`}
             aria-hidden="true"
           />
-          {loading ? "fetching" : "refresh now"}
+          {loading ? "fetching" : "refresh"}
         </button>
       </div>
 
-      {/* KPI row */}
-      <dl className="grid grid-cols-2 gap-px overflow-hidden rounded-lg border border-border bg-border md:grid-cols-4">
-        <KpiCell value={analysis.overview.documentedTotal} label="Documented incidents in the warehouse" />
-        <KpiCell
-          value={analysis.overview.estimatedTotal}
-          label={`Adjusted true-total estimate (x${analysis.overview.underreportingFactor.toFixed(2)})`}
-          accent
-        />
-        <KpiCell value={analysis.overview.significantClusters} label="Significant spatial clusters, pop-adjusted" />
-        <KpiCell value={analysis.overview.documentedVehicles} label={`Documented vehicle patterns (${analysis.overview.flaggedVehicles} demo flags)`} />
-      </dl>
+      {/* headline stat + side rail */}
+      <div className="grid gap-px overflow-hidden rounded-lg border border-border bg-border lg:grid-cols-[minmax(0,1.6fr)_minmax(0,1fr)]">
+        <HeadlineStat analysis={analysis} />
+        <div className="grid gap-px bg-border">
+          <SideStat
+            value={analysis.mse.method === "not-estimable" ? "x1.00" : `x${o.underreportingFactor.toFixed(2)}`}
+            label="Underreporting factor"
+            note={analysis.mse.method === "not-estimable" ? "not yet estimable, unadjusted" : "estimate over documented"}
+          />
+          <SideStat
+            value={o.significantClusters}
+            label="Significant clusters"
+            note="population-adjusted"
+          />
+          <SideStat
+            value={o.documentedVehicles}
+            label="Pattern vehicles"
+            note="publicly documented"
+          />
+          <SideStat value={monitoredCounties} label="Counties scored" note="of 47" />
+        </div>
+      </div>
 
       {/* zones + mini map */}
       <div className="mt-10 grid gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,420px)] lg:gap-14">
@@ -346,7 +421,7 @@ function DashboardBody({
         <div className="min-w-0">
           <div className="mb-4 flex items-center justify-between gap-4">
             <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-muted-foreground">
-              National coverage
+              National picture
             </p>
             <p className="font-mono text-[10px] uppercase tracking-[0.12em] text-muted-foreground">
               {analysis.overview.zones} zones · {monitoredCounties} counties
@@ -355,9 +430,9 @@ function DashboardBody({
           <div className="rounded-lg border border-border p-4">
             <CountyRiskMap zones={analysis.zones} selectedKey={null} onSelect={onOpenMap} compact />
             <p className="mt-4 text-sm leading-[1.6] text-muted-foreground">
-              Select a county to open the full risk map.{" "}
+              Tap a county to open the full map.{" "}
               {topZone
-                ? `Current highest-risk zone: ${topZone.name} (${topZone.county}) at index ${topZone.index.toFixed(1)}.`
+                ? `Hottest right now: ${topZone.name} (${topZone.county}) at index ${topZone.index.toFixed(1)}.`
                 : ""}
             </p>
           </div>

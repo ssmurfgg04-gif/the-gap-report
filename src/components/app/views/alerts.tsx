@@ -10,9 +10,9 @@ export function AlertsView({ kamps }: { kamps: KampsState }) {
   return (
     <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6 md:py-14">
       <ViewHeader
-        kicker="Output"
+        kicker="What just happened"
         title="Alerts"
-        lede="The aggregate alert feed: zone-level findings, recommended protective actions, and data-quality notices. Every message names a zone and a statistic, never a person."
+        lede="The feed the rest of the app is here to produce: zone-level findings, protective actions worth taking, and the moments the data itself shifted. Every message names a zone and a statistic, never a person."
       />
       <AnalysisGate kamps={kamps}>
         {(analysis) => (

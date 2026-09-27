@@ -17,20 +17,20 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "KAMPS · Kenya Abduction Monitoring & Prediction System",
   description:
-    "A working early-warning system for enforced disappearances in Kenya: real ingested data (Missing Voices, public-record curation, KNBS 2019 census, UCDP GED), a six-stage bias-corrected statistical engine, a walk-forward backtested forecast, and aggregate-only protective alerts. Includes the Gap Report landscape analysis.",
+    "Kenya's enforced-disappearance count, corrected. Real data you can check (Missing Voices, KNCHR, sourced news, UCDP 1989-2025), a six-stage bias-corrected engine, a backtested forecast, and pattern vehicles. Aggregate output only.",
   keywords: [
-    "early warning system",
     "enforced disappearances",
     "Kenya",
-    "human rights",
-    "OSINT",
-    "bias correction",
-    "predictive modeling",
+    "abductions",
+    "early warning",
+    "human rights data",
+    "Missing Voices",
+    "KNCHR",
   ],
   openGraph: {
-    title: "KAMPS · Kenya Abduction Monitoring & Prediction System",
+    title: "KAMPS · the count, corrected",
     description:
-      "Real data, real statistics: a bias-corrected early-warning instrument for enforced disappearances in Kenya, with the full landscape analysis of who else is doing this.",
+      "Bias-corrected zone risk, capture-recapture undercount, pattern vehicles, and an analyst you can question. Built on sources you can open.",
     type: "website",
   },
 };
@@ -46,6 +46,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-background text-foreground`}
       >
         <ThemeProvider attribute="class" defaultTheme="light" enableSystem={false} disableTransitionOnChange>
+          <div className="grain-overlay" aria-hidden="true" />
           {children}
           <Toaster />
         </ThemeProvider>

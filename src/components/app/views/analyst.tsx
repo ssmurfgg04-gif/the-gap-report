@@ -10,9 +10,10 @@ import { ViewHeader } from "../view-header";
 const MAX_CHARS = 500;
 
 const SUGGESTED = [
-  "What is the current highest-risk zone and why?",
-  "How much underreporting does MSE estimate?",
-  "Which clusters are statistically significant?",
+  "Which county is hottest right now, and why?",
+  "How bad is the undercount?",
+  "What happened in June 2026?",
+  "Where were pattern vehicles seen?",
 ];
 
 type Exchange = {
@@ -79,9 +80,9 @@ export function AnalystView() {
   return (
     <div className="mx-auto max-w-3xl px-4 py-10 sm:px-6 md:py-14">
       <ViewHeader
-        kicker="Assistant"
+        kicker="Ask the engine"
         title="Analyst"
-        lede="Ask the engine about what it computed: rankings, intervals, cluster significance, and method limits. Answers quote the same aggregate statistics shown across the app, never case-level detail."
+        lede="Type a question, get the numbers the engine actually computed: rankings, intervals, clusters, what the data cannot support. It quotes the same aggregate stats you see across the app and refuses to go finer, because finer would mean naming people."
       />
 
       <motion.div

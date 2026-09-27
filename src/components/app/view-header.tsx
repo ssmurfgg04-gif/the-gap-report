@@ -20,11 +20,11 @@ export function ViewHeader({
           <span className="h-px w-10 bg-border" aria-hidden="true" />
           {kicker}
         </p>
-        <h1 className="mt-4 text-3xl font-medium tracking-[-0.02em] text-foreground sm:text-4xl">
+        <h1 className="display-balance mt-4 text-3xl font-medium tracking-[-0.025em] text-foreground sm:text-4xl md:text-[2.6rem] md:leading-[1.08]">
           {title}
         </h1>
         {lede ? (
-          <p className="mt-4 max-w-2xl text-base leading-[1.6] text-muted-foreground">{lede}</p>
+          <p className="lede mt-4 max-w-2xl text-base leading-[1.6] text-muted-foreground">{lede}</p>
         ) : null}
       </div>
       {aside ? <div className="shrink-0">{aside}</div> : null}

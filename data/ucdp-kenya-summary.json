@@ -1,15 +1,14 @@
 {
-  "dataset": "UCDP GED v23.1 (Uppsala Conflict Data Program - Georeferenced Event Dataset)",
-  "source_url": "https://ucdp.uu.se/downloads/ged/ged231-csv.zip",
-  "country": "Kenya (country_id 501, Gleditsch-Ward numeric country code)",
-  "events_total": 1126,
-  "date_min": "1989-01-01",
-  "date_max": "2022-12-30",
-  "by_type": {
-    "onesided": 304,
-    "nonstate": 561,
-    "statebased": 261
+  "version": "UCDP GED v26.1 (replaces v23.1)",
+  "kenya_events": 1246,
+  "coverage": "1989-01-01..2025-12-31",
+  "type_of_violence": {
+    "state_based": 345,
+    "non_state": 572,
+    "one_sided": 329
   },
+  "deaths_best": 6725,
+  "deaths_civilians": 1400,
   "by_year": {
     "1989": 3,
     "1990": 1,
@@ -22,7 +21,7 @@
     "1997": 11,
     "1998": 15,
     "1999": 8,
-    "2000": 16,
+    "2000": 18,
     "2001": 18,
     "2002": 5,
     "2003": 2,
@@ -44,9 +43,12 @@
     "2019": 51,
     "2020": 65,
     "2021": 54,
-    "2022": 31
+    "2022": 31,
+    "2023": 57,
+    "2024": 30,
+    "2025": 31
   },
-  "deaths_total": 6302,
-  "civilians_deaths_total": 1327,
-  "notes": "Deaths use the 'best' estimate column; date range from date_start/date_end. Dataset version ged231 covers events through 2023-12-31 (UCDP releases lag ~1 year). All original GED columns retained. NOTE: the task brief said Kenya country_id=470, but in UCDP GED Kenya is country_id=501 (Gleditsch-Ward); filtering was done on country_id=501 AND country='Kenya' (1126 rows, 0 mismatches). Citation: Sundberg & Melander (2013) JPR 50(1); HEG v23.1 by Pettersson, H\u00f6gbladh & \u00d6berg (2019/2021). License: free for scholarly/reference use with citation."
+  "source": "https://ucdp.uu.se/downloads/ UCDP GED v26.1 CSV",
+  "license": "CC BY 4.0",
+  "retrieved_at": "2026-09-27"
 }

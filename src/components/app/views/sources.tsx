@@ -33,11 +33,21 @@ const SOURCES: SourceSpec[] = [
     feeds: "the victim list and the monthly enforced-disappearance series powering temporal analysis and forecast",
   },
   {
+    id: "knchr",
+    name: "KNCHR statements",
+    tier: 1,
+    status: "connected",
+    statusNote: "June 2026 protest violations statement, 31 Aug and 3 Sept 2026 statements ingested with names and dates",
+    license: "Kenya National Commission on Human Rights, public press statements",
+    retrieved: "retrieved 2026-09-27 from knchr.org",
+    feeds: "named June 2026 victims, the 35-case Reparations Framework count, the September Kiprotich abduction",
+  },
+  {
     id: "public-record",
     name: "Public-record incident curation",
     tier: 1,
     status: "connected",
-    statusNote: "29 incidents 2024 to 2026, every entry with a fetched source URL (BBC, Capital FM, The Star, KNCHR)",
+    statusNote: "31 incidents 2024 to 2026, every entry with a fetched source URL (BBC, Capital FM, The Star, KNCHR)",
     license: "per-item publisher of record, linked",
     retrieved: "compiled 2026-09-27 from curl-verified sources and Wikipedia reference extraction",
     feeds: "the second capture-recapture list, vehicle pattern cases, and the monitored incident window",
@@ -54,12 +64,12 @@ const SOURCES: SourceSpec[] = [
   },
   {
     id: "ucdp-ged",
-    name: "UCDP GED v23.1",
+    name: "UCDP GED v26.1",
     tier: 2,
     status: "connected",
-    statusNote: "1,126 georeferenced organized-violence events for Kenya 1989 to 2022, county-assigned by point-in-polygon",
+    statusNote: "1,246 georeferenced organized-violence events for Kenya 1989 to 2025, county-assigned by point-in-polygon",
     license: "CC BY 4.0 (Uppsala Conflict Data Program)",
-    retrieved: "retrieved 2026-09-27 from ucdp.uu.se bulk download",
+    retrieved: "retrieved 2026-09-27 from ucdp.uu.se bulk download (upgraded from v23.1: 118 events added for 2023-2025)",
     feeds: "historical violence baseline covariate, forecast training panels, walk-forward backtest",
   },
   {
@@ -77,20 +87,20 @@ const SOURCES: SourceSpec[] = [
     name: "ReliefWeb",
     tier: 2,
     status: "sandbox-blocked",
-    statusNote: "v2 API requires a registered appname (403 from this sandbox); registration is queued for production",
+    statusNote: "v2 API requires a pre-approved appname (403 without one). Appname requested 2026-09-27 via the official form; ReliefWeb replies within two business days. scripts/ingest-reliefweb.mjs runs once RELIEFWEB_APPNAME is set",
     license: "API open; per-item publisher licenses apply",
-    retrieved: "not retrieved; failure documented in the ingest manifest",
-    feeds: "planned situational context layer once registered",
+    retrieved: "not retrieved yet; request pending, failure documented in the ingest manifest",
+    feeds: "situational context layer once the appname clears",
   },
   {
     id: "acled",
     name: "ACLED",
     tier: 2,
     status: "sandbox-blocked",
-    statusNote: "requires an API key; the endpoint is unreachable from this sandbox",
+    statusNote: "needs an account key. Registration is Cloudflare-walled from this host and the API subdomain does not resolve publicly; scripts/ingest-acled.mjs is wired and runs when ACLED_EMAIL and ACLED_KEY are set. UCDP GED covers the same role through 2025",
     license: "registered access (Armed Conflict Location & Event Data Project)",
-    retrieved: "never retrieved in this environment",
-    feeds: "planned second conflict-event baseline for cross-database comparison",
+    retrieved: "never retrieved from this environment",
+    feeds: "second conflict-event baseline for cross-database comparison",
   },
   {
     id: "tella",
@@ -99,7 +109,7 @@ const SOURCES: SourceSpec[] = [
     status: "manual",
     statusNote: "encrypted field collection deploys in roadmap Phase 3 with trained monitors",
     license: "partner consent-based collection",
-    retrieved: "not yet deployed; vehicle sighting demo records are clearly labeled synthetic",
+    retrieved: "not yet deployed; documented public-record sightings feed the rule meanwhile",
     feeds: "the live sighting stream for the four-zone vehicle rule",
   },
 ];
@@ -118,7 +128,7 @@ const STATUS_STYLES: Record<SourceStatus, string> = {
 
 const STATUS_LABEL: Record<SourceStatus, string> = {
   connected: "Connected",
-  "sandbox-blocked": "Sandbox-blocked",
+  "sandbox-blocked": "Waiting",
   manual: "Manual",
 };
 
@@ -128,7 +138,7 @@ export function SourcesView() {
       <ViewHeader
         kicker="Provenance"
         title="Data sources"
-        lede="Every input the system consumes, with tier, status, and license. Tier 1 feeds the statistical base, tier 2 corroborates, tier 3 is human curation. Blockades are stated, not hidden."
+        lede="What the engine reads, where each feed stands, and what is blocking the rest. Tier 1 anchors the count, tier 2 corroborates, tier 3 is human curation. No invented rows anywhere: when a source is missing, the gap is the story."
       />
 
       <motion.div
@@ -141,10 +151,10 @@ export function SourcesView() {
             Honesty note
           </p>
           <p className="mt-3 max-w-3xl text-sm leading-[1.6] text-muted-foreground">
-            Row counts, retrieval logs, and per-source volumes are published only through a live
-            sources endpoint, which is not deployed yet. Until it exists this register lists
-            provenance and access state, never invented numbers. The engine currently runs a
-            seeded demonstration warehouse.
+            Everything the engine consumes sits in this register with its access state. Where a
+            source is blocked, the blocker is named: ACLED needs a manual browser registration,
+            ReliefWeb is reviewing our appname request, police and mortuary records need Access
+            to Information filings. Nothing is padded to look busier than it is.
           </p>
         </div>
 

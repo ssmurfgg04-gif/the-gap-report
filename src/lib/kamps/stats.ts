@@ -406,13 +406,30 @@ export type RiskComponents = {
   ucdpBaseline: number;      // 0-1 (historical organized-violence burden, UCDP)
 };
 
+/**
+ * Composite weights, calibrated 2026-09-27 by walk-forward validation
+ * (scripts/calibrate-weights.ts): components built from incidents before
+ * each cutoff, scored against counties that actually record incidents
+ * after it. Folds: 2026-01-01 and 2025-07-01 cutoffs.
+ *
+ *   current -> AUC 0.657 / 0.545, rho 0.332 / 0.178
+ *   tuned   -> AUC 0.694 / 0.590, rho 0.408 / 0.277
+ *
+ * Unconstrained coordinate ascent pushes the last two weights to zero
+ * (overfits two sparse folds), so temporal and UCDP keep plan-mandated
+ * floors: the six-stage pipeline stays intact and every indicator still
+ * contributes. EB rate, spatial clustering, and the MSE adjustment gain;
+ * the historical-violence covariate loses the most, which matches the
+ * data: 2013-2022 organized-violence burden barely separates the 2025-26
+ * abduction map.
+ */
 export const RISK_WEIGHTS = {
-  ebRate: 0.28,
-  mseAdjusted: 0.12,
-  cluster: 0.22,
-  ucdpBaseline: 0.2,
+  ebRate: 0.3,
+  mseAdjusted: 0.16,
+  cluster: 0.28,
+  ucdpBaseline: 0.1,
   temporal: 0.1,
-  vehicle: 0.08,
+  vehicle: 0.06,
 } as const;
 
 export function compositeRisk(c: RiskComponents): number {

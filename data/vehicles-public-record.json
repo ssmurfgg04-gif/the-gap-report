@@ -59,131 +59,37 @@
     ]
   },
   {
-    "vehicleKey": "D1",
-    "platePartial": "KDG 4·7B",
+    "vehicleKey": "R3",
+    "platePartial": "unmarked",
     "make": "Subaru",
-    "model": "Forester",
-    "color": "Silver",
-    "simulated": true,
-    "summary": "DEMONSTRATION RECORD, NOT A REAL VEHICLE. Six synthetic sightings inside one 30-day window across the Nairobi metro, co-located with documented incidents: constructed to exercise the four-zone rule end to end before the Tella field feed exists.",
-    "sourceUrls": [],
+    "model": "Station Wagon (multiple units)",
+    "color": "Unmarked / concealed",
+    "simulated": false,
+    "summary": "Pattern documented by KNCHR during the 25 June 2026 protests: three Subaru station wagons carrying more than ten armed men in civilian clothes took six arrested protesters from an isolated area where a police truck had abandoned them; a concealed Subaru was used in a separate Githurai abduction; and Subaru vehicles were used again when the six were dumped on Langata Road and Ngong Road at about 04:00 on 27 June. The make recurs across abduction, transfer and dump sites in the same 48-hour window, which is exactly the pattern the four-zone rule is built to surface.",
+    "sourceUrls": [
+      "https://www.knchr.org/Articles/ArtMID/2432/ArticleID/1258/Enforced-Disappearances-Torture-and-other-Human-Rights-Violations-following-the-25th-June-2026-Protests-Marking-the-2nd-Anniversary-of-the-2024-Gen-Z-Protests"
+    ],
     "sourceNames": [
-      "KAMPS demonstration dataset"
+      "KNCHR (29 June 2026 statement)"
     ],
     "sightings": [
       {
         "id": 1,
-        "date": "2026-07-04",
+        "date": "2026-06-25",
         "zoneName": "Nairobi",
-        "source": "simulated traffic camera still"
+        "source": "KNCHR: three station wagons, abduction of six Parliament protesters"
       },
       {
         "id": 2,
-        "date": "2026-07-09",
+        "date": "2026-06-25",
         "zoneName": "Nairobi",
-        "source": "simulated field monitor (Tella)"
+        "source": "KNCHR: concealed Subaru, Githurai abduction"
       },
       {
         "id": 3,
-        "date": "2026-07-15",
+        "date": "2026-06-27",
         "zoneName": "Nairobi",
-        "source": "simulated citizen report"
-      },
-      {
-        "id": 4,
-        "date": "2026-07-21",
-        "zoneName": "Kiambu",
-        "source": "simulated OSINT geolocation"
-      },
-      {
-        "id": 5,
-        "date": "2026-07-27",
-        "zoneName": "Nairobi",
-        "source": "simulated field monitor (Tella)"
-      },
-      {
-        "id": 6,
-        "date": "2026-08-03",
-        "zoneName": "Nairobi",
-        "source": "simulated traffic camera still"
-      }
-    ]
-  },
-  {
-    "vehicleKey": "D2",
-    "platePartial": "KCX 9·1Y",
-    "make": "Subaru",
-    "model": "Legacy",
-    "color": "White",
-    "simulated": true,
-    "summary": "DEMONSTRATION RECORD, NOT A REAL VEHICLE. Five synthetic sightings in a 30-day window in central Nairobi and Dagoretti: exercises the four-zone rule at exactly the threshold.",
-    "sourceUrls": [],
-    "sourceNames": [
-      "KAMPS demonstration dataset"
-    ],
-    "sightings": [
-      {
-        "id": 1,
-        "date": "2026-06-08",
-        "zoneName": "Nairobi",
-        "source": "simulated traffic camera still"
-      },
-      {
-        "id": 2,
-        "date": "2026-06-14",
-        "zoneName": "Nairobi",
-        "source": "simulated citizen report"
-      },
-      {
-        "id": 3,
-        "date": "2026-06-22",
-        "zoneName": "Nairobi",
-        "source": "simulated field monitor (Tella)"
-      },
-      {
-        "id": 4,
-        "date": "2026-06-29",
-        "zoneName": "Nairobi",
-        "source": "simulated OSINT geolocation"
-      },
-      {
-        "id": 5,
-        "date": "2026-07-03",
-        "zoneName": "Nairobi",
-        "source": "simulated traffic camera still"
-      }
-    ]
-  },
-  {
-    "vehicleKey": "D3",
-    "platePartial": "KBY 3·6T",
-    "make": "Toyota",
-    "model": "Axio",
-    "color": "Blue",
-    "simulated": true,
-    "summary": "DEMONSTRATION RECORD, NOT A REAL VEHICLE. Three synthetic sightings spread over 90 days: never reaches the 30-day density threshold, proving the rule does not over-flag ordinary traffic.",
-    "sourceUrls": [],
-    "sourceNames": [
-      "KAMPS demonstration dataset"
-    ],
-    "sightings": [
-      {
-        "id": 1,
-        "date": "2026-05-02",
-        "zoneName": "Nakuru",
-        "source": "simulated citizen report"
-      },
-      {
-        "id": 2,
-        "date": "2026-06-18",
-        "zoneName": "Nakuru",
-        "source": "simulated citizen report"
-      },
-      {
-        "id": 3,
-        "date": "2026-08-01",
-        "zoneName": "Nakuru",
-        "source": "simulated traffic camera still"
+        "source": "KNCHR: Subaru vehicles dumping victims on Langata Road and Ngong Road"
       }
     ]
   }

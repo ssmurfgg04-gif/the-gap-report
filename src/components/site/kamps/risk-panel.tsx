@@ -57,8 +57,12 @@ export function RiskPanel({ analysis }: { analysis: KampsAnalysis }) {
           <p className="mb-4 font-mono text-[11px] uppercase tracking-[0.2em] text-muted-foreground">
             All {analysis.zones.length} zones, ranked by composite index
           </p>
-          <div className="matrix-scroll max-h-[520px] overflow-auto rounded-lg border border-border">
-            <table className="w-full min-w-[720px] border-collapse text-left text-sm">
+          <div className="relative">
+            <p className="pointer-events-none absolute -top-8 right-1 font-mono text-[10px] uppercase tracking-[0.18em] text-muted-foreground md:hidden">
+              Swipe for all columns →
+            </p>
+            <div className="matrix-scroll max-h-[520px] overflow-auto rounded-lg border border-border pr-1">
+            <table className="w-full min-w-[760px] border-collapse text-left text-sm">
               <caption className="sr-only">Zone risk assessment table, ranked by composite index</caption>
               <thead className="sticky top-0 z-10">
                 <tr className="border-b border-border">
@@ -134,12 +138,13 @@ export function RiskPanel({ analysis }: { analysis: KampsAnalysis }) {
                 })}
               </tbody>
             </table>
+            </div>
           </div>
           <p className="mt-4 text-sm leading-[1.6] text-muted-foreground">
             Doc. = documented incidents in the warehouse (deduplicated). EB = Empirical Bayes
             smoothed rate per 100,000 on census denominators. Adj. = estimate adjusted by the
             capture-recapture factor. Temporal = z-score against the county&apos;s own rolling
-            90-day baseline. UCDP = organized-violence events 2013-2022 in the drivers column.
+            90-day baseline. UCDP = organized-violence events 2013-2025 in the drivers column.
           </p>
         </div>
       </div>

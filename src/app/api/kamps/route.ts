@@ -6,7 +6,7 @@ export const dynamic = "force-dynamic";
 /**
  * GET /api/kamps
  * Full KAMPS analysis: six-stage risk pipeline output, vehicle assessments,
- * and the aggregate alert feed. All underlying data is simulated.
+ * and the aggregate alert feed over the real ingested datasets.
  */
 export async function GET() {
   try {

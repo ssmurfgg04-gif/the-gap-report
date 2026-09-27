@@ -86,7 +86,7 @@ function renderDigest(a: KampsAnalysis): string {
   );
   for (const v of [...flagged, ...monitoring].slice(0, 8)) {
     lines.push(
-      `${v.vehicleKey} (${v.color} ${v.make} ${v.model}, plate ${v.platePartial}${v.simulated ? ", DEMONSTRATION RECORD NOT A REAL VEHICLE" : ", publicly documented with sources"}): ${v.status}, ${v.clusterSightings} clustered sightings in ${v.zones.length} zones, incident overlap ${v.incidentOverlap}, ${v.confidence} confidence, last seen ${v.lastSeen.slice(0, 10)}.`
+      `${v.vehicleKey} (${v.color} ${v.make} ${v.model}, plate ${v.platePartial}, publicly documented with sources): ${v.status}, ${v.clusterSightings} clustered sightings in ${v.zones.length} zones, incident overlap ${v.incidentOverlap}, ${v.confidence} confidence, last seen ${v.lastSeen.slice(0, 10)}.`
     );
   }
 
@@ -144,7 +144,7 @@ const SYSTEM_PROMPT = [
   "4. Cite the exact numbers from the digest that you used in your answer.",
   "5. Keep answers under 200 words. No markdown headers, no bullet symbols, no tables. Plain sentences only.",
   "6. If asked about anything outside the digest (policy recommendations, legal advice, future events, real identities), decline and point to what the digest does cover.",
-  "7. All figures come from REAL ingested datasets (Missing Voices, curated public-record incidents, KNBS 2019 census, UCDP GED); say so when quoting totals or estimates. The only synthetic rows are vehicle records labeled DEMO in the digest.",
+  "7. All figures come from real ingested datasets (Missing Voices, curated public-record incidents, KNCHR statements, KNBS 2019 census, UCDP GED 1989-2025); say so when quoting totals or estimates. Every vehicle record is publicly documented with sources.",
   "8. The zone list in the digest covers every monitored county. Never claim a county is uncovered unless it is genuinely absent from the list.",
 ].join(" ");
 

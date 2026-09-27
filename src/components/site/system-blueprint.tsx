@@ -185,8 +185,8 @@ export function SystemBlueprint() {
         </div>
         <p className="mt-4 text-sm leading-[1.6] text-muted-foreground">
           Phase 4 runs the system in shadow mode first: outputs are generated and scored against real
-          outcomes before anything is published. The engine on the live panel below is that shadow mode,
-          running on simulated data.
+          outcomes before anything is published. The live panel below is that shadow mode, already
+          running on real ingested data.
         </p>
       </motion.div>
     </Section>

@@ -236,7 +236,7 @@ function MapBody({
         />
       </div>
 
-      <div className="min-w-0 lg:sticky lg:top-[104px] lg:self-start">
+      <div className="min-w-0 lg:sticky lg:top-8 lg:max-h-[calc(100vh-64px)] lg:self-start lg:overflow-y-auto lg:pr-1">
         {selectedKey ? (
           <CountyPanel
             key={selectedKey}
@@ -281,9 +281,9 @@ export function MapView({ kamps, seedCounty }: { kamps: KampsState; seedCounty: 
   return (
     <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6 md:py-14">
       <ViewHeader
-        kicker="Coverage"
+        kicker="Where it is hot"
         title="County risk map"
-        lede="All 47 counties, filled by composite risk band wherever the monitoring network operates. The map reads county-level; the statistics underneath stay sub-county and aggregate."
+        lede="All 47 counties, colored by composite risk band. Click a county for the numbers behind its score: documented incidents, the bias-corrected rate, cluster strength, and what is driving it. Gray means no monitoring data yet, not no risk."
       />
       <AnalysisGate kamps={kamps}>
         {(analysis) => (

@@ -86,3 +86,37 @@ the real backtested forecast; the AI analyst no longer mislabels real data;
 a wrong exclusion filter that dropped a real Nairobi incident was fixed
 (regression-tested at 227 documented); real vehicles sort before demo
 records; all counts are dynamic.
+
+## Phase 3 hardening (rounds 22 to 26, 2026-09-27)
+
+Scope: sidebar app shell (collapsible rail, mobile drawer), humanized copy,
+tuned risk weights, UCDP v26.1, September 2026 data refresh, demo-data
+removal, map panel sticky overflow fix, mobile projections list replacing
+the clipped table, double-footer fix on the report view.
+
+- r22: layout 7 (engine status pill rhythm), responsive 7 (mobile analytics
+  table clipping). Both fixed.
+- r23: layout 7 (report footer trailing whitespace: double footer), the
+  same mobile clipping persisted. Both fixed (shell footer hidden on the
+  report view; stacked mobile list for projections).
+- r24: responsive 8. layout 7: map detail panel clipped at the viewport
+  bottom. Fixed (sticky panel now scrolls internally).
+- r25: layout 7: "double borders at row/column intersections" in the
+  projections table. Pixel-verified FALSE POSITIVE and dismissed: the table
+  starts at y=875 in a 900px viewport (below the fold, only the header row
+  in frame), the table has no vertical column dividers, and a scan found no
+  double-line pairs anywhere in the frame.
+- r26: **all 8/8 confirmed** (typography, color, layout, components,
+  responsive).
+
+Final state:
+
+```json
+{
+  "typography": 8,
+  "color": 8,
+  "layout": 8,
+  "components": 8,
+  "responsive": 8
+}
+```

@@ -8,7 +8,7 @@ export const kampsIdentity = {
   longName: "Kenya Abduction Monitoring & Prediction System",
   kicker: "The Blueprint",
   title: "The Kenya Abduction Monitoring & Prediction System",
-  lede: "KAMPS is a modular early-warning system built on verified data, cross-validated sources, and ethical methodological standards. It produces zone-level risk assessments corrected for population and reporting bias, and identifies suspected abduction vehicles through pattern recognition. Every layer below is specified in the implementation plan; the statistics engine runs live further down this page.",
+  lede: "KAMPS counts what the state will not. Zone-level risk corrected for population and reporting bias, capture-recapture on the undercount, and pattern vehicles from the public record, all on sources anyone can open. The blueprint below is the specification; the live engine runs further down this page.",
 };
 
 export type ArchLayer = {
@@ -112,7 +112,7 @@ export const pipeline: PipelineStage[] = [
   {
     stage: "3",
     name: "Multiple Systems Estimation",
-    method: "Three-list capture-recapture across Missing Voices, police OB, and mortuary records",
+    method: "Capture-recapture across independent lists (currently Missing Voices and public-record news; police and mortuary lists pending ATI requests)",
     output: "Underreporting factors by zone: the hidden caseload, quantified",
   },
   {
@@ -224,7 +224,7 @@ export const vehicleRuleSpec = [
 export const livePanel = {
   kicker: "The Instrument, Running",
   title: "Real data. Real statistics.",
-  lede: "This panel runs the six-stage pipeline against the ingested real datasets: the Missing Voices victim database and monthly statistics, a curated public-record incident file with source URLs, KNBS 2019 census denominators for all 47 counties, and UCDP GED organized-violence events from 1989 to 2022. Every number is computed live by the engine and traced to its source.",
+  lede: "This panel runs the six-stage pipeline against the ingested real datasets: the Missing Voices victim database and monthly statistics, a curated public-record incident file with source URLs, KNCHR statements, KNBS 2019 census denominators for all 47 counties, and UCDP GED organized-violence events from 1989 to 2025. Every number is computed live and traced to its source.",
   dataNote:
     "Entity resolution deduplicates the lists before counting. Where the data cannot support a statistic, the engine says so instead of inventing one: that is the system working as designed.",
 };
