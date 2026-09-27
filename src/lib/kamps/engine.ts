@@ -20,7 +20,7 @@
  */
 import {
   loadCounties, loadMissingVoices, loadPublicRecordIncidents,
-  loadUcdp, loadVehicleCases, loadManifest,
+  loadUcdp, loadVehicleCases, loadManifest, loadAcledAggregates,
   type County, type MonthlyPoint, type PublicIncident, type MvVictim,
 } from "./real-data";
 import {
@@ -83,6 +83,7 @@ export type ZoneAssessment = {
     clusterScore: number;
     temporalScore: number;
     vehicleScore: number;
+    acledRecent: number;
     ucdpBaseline: number;
   };
   index: number;
@@ -92,6 +93,10 @@ export type ZoneAssessment = {
   /** historical organized-violence covariate (real, UCDP) */
   ucdpEvents: number;
   ucdpCivilianDeaths: number;
+  /** ACLED trailing-12-month corroboration (real, weekly aggregates) */
+  acledAbductions12m: number;
+  acledEvents12m: number;
+  acledVacEvents12m: number;
 };
 
 export type MSE2Result = {
@@ -181,6 +186,8 @@ export type KampsAnalysis = {
   temporal: {
     series: MonthlyPoint[];
     recent: Array<{ month: string; ed: number; baseline: number; z: number; flagged: boolean }>;
+    /** ACLED national monthly corroborating series (June 2024 onward) */
+    acledMonthly?: Array<{ month: string; abductions: number; vacEvents: number; events: number }>;
   };
   forecast: KampsForecast;
   provenance: {
@@ -223,6 +230,7 @@ async function compute(): Promise<KampsAnalysis> {
   const ucdp = loadUcdp();
   const vehicleCases = loadVehicleCases();
   const manifest = loadManifest();
+  const acled = loadAcledAggregates();
 
   // ————— observation window —————
   // asOf tracks the data, not the clock: the latest of the MV monthly series
@@ -235,6 +243,10 @@ async function compute(): Promise<KampsAnalysis> {
   const lastMonth = monthly.length ? monthly[monthly.length - 1].month : "2026-08";
   const latestIncidentEnd = unionDates ? endOfMonth(unionDates.slice(0, 7)) : endOfMonth(lastMonth);
   const asOf = latestIncidentEnd > endOfMonth(lastMonth) ? latestIncidentEnd : endOfMonth(lastMonth);
+  // ACLED weekly aggregates run to their last published Saturday; the window
+  // honors whichever real source is furthest forward.
+  const acledWeekEnd = new Date(new Date(acled.lastWeek).getTime() + 6 * DAY);
+  const asOfEffective = acledWeekEnd > asOf ? acledWeekEnd : asOf;
   const windowStart = new Date("2024-06-01T00:00:00Z");
 
   // ————— entity resolution: MV victims vs public-record incidents —————
@@ -421,6 +433,25 @@ async function compute(): Promise<KampsAnalysis> {
   });
   const ucdpPct = percentileRanks(ucdpByCounty.map(u => u.rate));
 
+  // ————— ACLED covariate: current 12-month burden per county —————
+  // abductions weighted 3x over general violence-against-civilians, per 100k
+  // of census population; percentile-ranked across the 47 counties.
+  const acledByCounty = counties.map(c => {
+    const w = acled.countyWindow.get(c.name);
+    const abd = w?.abductions ?? 0;
+    const vac = w?.vacEvents ?? 0;
+    const burden = abd * 3 + vac;
+    return {
+      abductions: abd,
+      events: w?.events ?? 0,
+      vacEvents: vac,
+      fatalities: w?.fatalities ?? 0,
+      rate: burden / (c.population / 1e5),
+    };
+  });
+  const acledPct = percentileRanks(acledByCounty.map(u => u.rate));
+  const acledNational = acled.monthlyNational.filter(m => m.month >= "2024-06");
+
   // ————— vehicles —————
   const countyNames = new Set(counties.map(c => c.name));
   const vehiclesOut: VehicleAssessmentJSON[] = vehicleCases.map(vc => {
@@ -503,16 +534,19 @@ async function compute(): Promise<KampsAnalysis> {
       clusterScore: cluster ? Math.min(1, Math.max(0, (cluster.rr - 1) / 3)) : 0,
       temporalScore: Math.min(1, Math.max(0, (t.z - 1) / 2.5)),
       vehicleScore: vehicleZoneIds.has(c.id) ? 1 : 0,
+      acledRecent: acledPct[i],
       ucdpBaseline: ucdpPct[i],
     };
     const index = compositeRisk(components);
     const band = riskBand(index);
     const confidence: ZoneAssessment["confidence"] =
-      counts[i] >= 8 ? "high" : counts[i] >= 3 ? "medium" : ucdpByCounty[i].events >= 40 ? "medium" : "low";
+      counts[i] >= 8 ? "high" : counts[i] >= 3 ? "medium" : ucdpByCounty[i].events >= 40 || acledByCounty[i].abductions + acledByCounty[i].vacEvents >= 15 ? "medium" : "low";
 
     const drivers: string[] = [];
     if (cluster) drivers.push(`Spatial cluster: RR ${cluster.rr.toFixed(2)} (p = ${cluster.p < 0.001 ? "< 0.001" : cluster.p.toFixed(3)})`);
     if (t.flagged) drivers.push(`Temporal anomaly: +${t.z.toFixed(1)} sigma over 90-day baseline`);
+    if (acledByCounty[i].abductions > 0) drivers.push(`ACLED corroborates: ${acledByCounty[i].abductions} abduction/forced-disappearance events in the trailing 12 months`);
+    if (acledByCounty[i].vacEvents > 0 && acledByCounty[i].abductions === 0) drivers.push(`ACLED: ${acledByCounty[i].vacEvents} violence-against-civilians events in the trailing 12 months`);
     if (ucdpPct[i] >= 0.75) drivers.push(`Historical organized-violence burden: ${ucdpByCounty[i].events} UCDP events 2013-2025`);
     if (vehicleZoneIds.has(c.id)) drivers.push("Documented vehicle pattern activity");
     if (counts[i] > 0 && counts[i] / (c.population / 1e5) >= 0.1) drivers.push(`${counts[i]} documented incidents, EB rate ${eb[i].ratePer100k.toFixed(2)} per 100k`);
@@ -546,22 +580,39 @@ async function compute(): Promise<KampsAnalysis> {
         clusterScore: Math.round(components.clusterScore * 1000) / 1000,
         temporalScore: Math.round(components.temporalScore * 1000) / 1000,
         vehicleScore: components.vehicleScore,
+        acledRecent: Math.round(components.acledRecent * 1000) / 1000,
         ucdpBaseline: Math.round(components.ucdpBaseline * 1000) / 1000,
       },
       index, band, confidence, drivers,
       ucdpEvents: ucdpByCounty[i].events,
       ucdpCivilianDeaths: ucdpByCounty[i].civDeaths,
+      acledAbductions12m: acledByCounty[i].abductions,
+      acledEvents12m: acledByCounty[i].events,
+      acledVacEvents12m: acledByCounty[i].vacEvents,
     };
   });
 
   // ————— forecast (real panels) —————
-  // UCDP county-month panels 2010-2022 (all organized-violence event types)
+  // UCDP county-month panels 2010-2022 joined with ACLED county-month panels
+  // 2023-2026 (weekly aggregates summed by month): one continuous, current
+  // county-month series per county.
   const panels: CountyMonth[] = [];
   const countyMonths = new Map<string, number>();
+  const addPanel = (county: string, month: string, n = 1) => {
+    const key = `${county}|${month}`;
+    countyMonths.set(key, (countyMonths.get(key) ?? 0) + n);
+  };
   for (const e of ucdp) {
     if (e.year < 2010) continue;
-    const key = `${e.county ?? "Unlocated"}|${e.dateStart.slice(0, 7)}`;
-    countyMonths.set(key, (countyMonths.get(key) ?? 0) + 1);
+    if (!e.county) continue;
+    addPanel(e.county, e.dateStart.slice(0, 7));
+  }
+  const ucdpLastMonth = "2022-12";
+  for (const [county, months] of acled.panels) {
+    for (const [month, n] of months) {
+      if (month <= ucdpLastMonth) continue; // avoid double-counting the UCDP overlap
+      addPanel(county, month, n);
+    }
   }
   for (const [key, n] of countyMonths) {
     const [county, month] = key.split("|");
@@ -609,7 +660,7 @@ async function compute(): Promise<KampsAnalysis> {
   const forecast: KampsForecast = {
     generatedAt: new Date().toISOString(),
     horizonDays: 90,
-    method: "Holt-Winters (seasonal 12, grid-searched) on the Missing Voices monthly series; county trend factors from walk-forward backtested UCDP GED panels (2010-2022).",
+    method: "Holt-Winters (seasonal 12, grid-searched) on the Missing Voices monthly series; county trend factors from walk-forward backtested county-month panels (UCDP GED 2010-2022 joined to ACLED weekly aggregates 2023-2026).",
     national: {
       series: edSeries.slice(-30).map(m => ({ month: m.month, ed: m.ed })),
       forecastMonths: fcMonths,
@@ -625,7 +676,7 @@ async function compute(): Promise<KampsAnalysis> {
       nPredictions: fc.backtest.nPredictions,
       leadTimeDays: fc.backtest.leadTimeDays,
       coverage95: Math.round(fc.national.metrics.coverage95 * 1000) / 1000,
-      trainedOn: "UCDP GED county-month panels, 2010-2022, walk-forward",
+      trainedOn: "UCDP GED 2010-2022 joined to ACLED weekly aggregates 2023-2026, walk-forward",
     },
     projections,
   };
@@ -660,7 +711,7 @@ async function compute(): Promise<KampsAnalysis> {
   if (spike) {
     alerts.push({
       id: "temporal-spike", severity: "elevated", kind: "zone-risk",
-      asOf: asOf.toISOString().slice(0, 10),
+      asOf: asOfEffective.toISOString().slice(0, 10),
       title: `ELEVATED · national temporal anomaly (${spike.month})`,
       message:
         `The enforced-disappearance series deviates +${spike.z.toFixed(1)} sigma above its trailing 12-month baseline: ` +
@@ -679,6 +730,35 @@ async function compute(): Promise<KampsAnalysis> {
       confidence: "high",
     });
   }
+  // ACLED corroboration alert: abduction-coded events in the national series
+  {
+    const abdSeries = acled.monthlyNational.filter(m => m.month >= "2020-01");
+    const last = abdSeries[abdSeries.length - 1];
+    if (last && last.abductions > 0) {
+      const baseline = abdSeries.slice(-13, -1);
+      const mean = baseline.reduce((s, x) => s + x.abductions, 0) / Math.max(baseline.length, 1);
+      const abd12m = acledByCounty.reduce((s, u) => s + u.abductions, 0);
+      const vac12m = acledByCounty.reduce((s, u) => s + u.vacEvents, 0);
+      alerts.push({
+        id: "acled-corroboration", severity: "watch", kind: "zone-risk",
+        asOf: acled.lastWeek,
+        title: `WATCH · ACLED corroborates ${abd12m} abduction-coded events (trailing 12 months)`,
+        message:
+          `ACLED's Kenya weekly aggregates record ${last.abductions} abduction/forced-disappearance events in ${last.month} and ${abd12m} in the trailing 12 months, ` +
+          `alongside ${vac12m} violence-against-civilians events. This is an independent, conflict-coded count: it will not match the civil-society documented tally exactly, and the gap between the two is itself information about scope and definitions.`,
+        drivers: [
+          `ACLED abduction events, trailing 12 months: ${abd12m}`,
+          `ACLED violence-against-civilians events, trailing 12 months: ${vac12m}`,
+          `Aggregates through week of ${acled.lastWeek} (file refreshed Mondays)`,
+        ],
+        actions: [
+          "Reconcile ACLED-coded abductions against the documented case files for scope differences",
+          "Watch the next Monday file for week-over-week movement in abduction counts",
+        ],
+        confidence: "medium",
+      });
+    }
+  }
   alerts.push(dataAlert(documentedTotal, mse.estimated, asOf, mse));
   const sevOrder = { critical: 0, elevated: 1, watch: 2, info: 3 } as const;
   alerts.sort((a, b) => sevOrder[a.severity] - sevOrder[b.severity]);
@@ -692,9 +772,9 @@ async function compute(): Promise<KampsAnalysis> {
   const captureNews = documentedTotal ? Math.round((inWindow.filter(u => u.lists.news).length / documentedTotal) * 1000) / 10 : 0;
 
   return {
-    asOf: asOf.toISOString(),
+    asOf: asOfEffective.toISOString(),
     groundTruth: null,
-    dataWindow: { start: windowStart.toISOString().slice(0, 10), end: asOf.toISOString().slice(0, 10) },
+    dataWindow: { start: windowStart.toISOString().slice(0, 10), end: asOfEffective.toISOString().slice(0, 10) },
     overview: {
       zones: counties.length,
       documentedTotal,
@@ -722,7 +802,7 @@ async function compute(): Promise<KampsAnalysis> {
     alerts,
     weights: RISK_WEIGHTS,
     vehicleRule: VEHICLE_RULE,
-    temporal: { series: edSeries.slice(-30), recent: recentTemporal },
+    temporal: { series: edSeries.slice(-30), recent: recentTemporal, acledMonthly: acledNational },
     forecast,
     provenance: {
       files: manifest.files.map(f => ({

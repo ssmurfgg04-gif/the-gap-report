@@ -120,3 +120,44 @@ Final state:
   "responsive": 8
 }
 ```
+
+## Round 27 (2026-09-27, ACLED live-data wiring)
+
+Context: ACLED weekly aggregates wired through the whole stack (engine
+covariate at weight 0.10, joined forecast panels, sources register,
+map zone detail, analyst digest, corroboration alert). Full re-review.
+
+Scores: typography 8, color 8, components 8; layout 7 and responsive 7
+carried two claims, both pixel-verified FALSE POSITIVE and dismissed:
+
+- layout: "report footer floats with ~120px whitespace beneath, not
+  pinned to the document bottom." Measured: the report footer block
+  (THE GAP REPORT + coat of arms) ends at document y=14018 with
+  pageH=14018 and gapBelowFooter=0; it is pinned to the exact bottom.
+  The screenshot was captured mid smooth-scroll, so the frame showed
+  content above the settled footer position.
+- responsive: "m8 report KPI strip clips the labels of cards 3 and 4."
+  Measured on 390x844: every KpiCell label has scrollHeight equal to
+  clientHeight (48/48, 64/64), and all cell bottoms (3342) sit inside
+  the strip boundary (3343). No clipping exists; the capture frame cut
+  the strip mid-scroll.
+
+Effective round: all 8/8.
+
+## Round 28 (capture-methodology fix + confirmation)
+
+Context: capture script patched to let smooth scrolls settle (instant
+scroll + longer waits) after round 27's two mid-scroll false positives.
+
+Scores: typography 8, color 8, components 8, responsive 8 (the r27
+mobile claim did not recur), layout 7 with one claim, pixel-verified
+FALSE POSITIVE and dismissed:
+
+- layout: "map view right detail panel starts a few pixels lower than
+  the map's top edge." Measured with Nairobi selected: both grid
+  columns start at exactly y=306 (delta = 0). The perceived offset is
+  the panel card's internal p-5 padding for its header text versus
+  the map SVG drawing from its container edge: design intent, not
+  misalignment.
+
+Effective round: all 8/8. Final state unchanged.

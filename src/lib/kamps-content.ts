@@ -100,8 +100,8 @@ export const pipeline: PipelineStage[] = [
   {
     stage: "1",
     name: "Crude rates",
-    method: "Incidents divided by population, per 100,000, using 30m HRSL gridded denominators",
-    output: "Raw per-capita rates by sub-county",
+    method: "Incidents divided by population, per 100,000, using KNBS 2019 census county denominators",
+    output: "Raw per-capita rates by county",
   },
   {
     stage: "2",
@@ -130,7 +130,7 @@ export const pipeline: PipelineStage[] = [
   {
     stage: "6",
     name: "Composite risk index",
-    method: "Weighted aggregation of stages 2 through 5 plus vehicle signals, scaled 0 to 100",
+    method: "Weighted aggregation of stages 2 through 5, the documented vehicle signal, and ACLED's trailing-12-month corroboration, walk-forward calibrated and scaled 0 to 100",
     output: "Zone-level risk bands with confidence grading",
   },
 ];

@@ -20,7 +20,7 @@ sleep 2.5
 # ——— App views (desktop, light) ———
 goto_view dashboard 3
 agent-browser screenshot "$DIR/r$ROUND-d1-dashboard.png" >/dev/null
-agent-browser eval "window.scrollBy(0, 700)" >/dev/null; sleep 1
+agent-browser eval "window.scrollBy(0, 700)" >/dev/null; sleep 2.2
 agent-browser screenshot "$DIR/r$ROUND-d2-dashboard2.png" >/dev/null
 
 goto_view map 3
@@ -33,7 +33,7 @@ agent-browser screenshot "$DIR/r$ROUND-d4-map-selected.png" >/dev/null
 goto_view analytics 3
 agent-browser screenshot "$DIR/r$ROUND-d5-analytics-forecast.png" >/dev/null
 agent-browser eval "(() => { const t = document.querySelectorAll('h2.sr-only, section'); return true; })()" >/dev/null
-agent-browser eval "window.scrollBy(0, 900)" >/dev/null; sleep 1.2
+agent-browser eval "window.scrollBy(0, 900)" >/dev/null; sleep 2.2
 agent-browser screenshot "$DIR/r$ROUND-d6-analytics-bias.png" >/dev/null
 
 goto_view vehicles 2.5
@@ -59,7 +59,8 @@ agent-browser screenshot "$DIR/r$ROUND-d13-report-model.png" >/dev/null
 agent-browser eval "(() => { document.querySelectorAll('[role=tab]').forEach(t => { if (t.textContent.includes('Bias correction')) t.click(); }); return true; })()" >/dev/null
 sleep 1.8
 agent-browser screenshot "$DIR/r$ROUND-d14-report-model-bias.png" >/dev/null
-agent-browser eval "document.querySelector('footer').scrollIntoView({block:'end'})" >/dev/null; sleep 1.4
+agent-browser eval "window.scrollTo({top: document.body.scrollHeight, behavior: 'instant'})" >/dev/null; sleep 2.2
+agent-browser eval "window.scrollTo({top: document.body.scrollHeight, behavior: 'instant'})" >/dev/null; sleep 1.2
 agent-browser screenshot "$DIR/r$ROUND-d15-report-footer.png" >/dev/null
 
 # ——— Dark mode (dashboard + map + report model) ———

@@ -28,7 +28,7 @@ export const players: Player[] = [
     name: "Early Warning Project",
     epithet: "The statistical benchmark",
     affiliation: "US Holocaust Memorial Museum + Dartmouth College",
-    what: "Generates annual Statistical Risk Assessments estimating the likelihood of new mass killing onset in 160+ countries. A logistic regression model with elastic-net regularization, trained on 1960–2015 data and fed 30+ variables: regional civil-liberties inequality, population size, mass-killing history, infant mortality, coup attempts, elite-approved political killings.",
+    what: "Generates annual Statistical Risk Assessments estimating the likelihood of new mass killing onset in 160+ countries. A logistic regression model with elastic-net regularization, trained on 1960 to 2015 data and fed 30+ variables: regional civil-liberties inequality, population size, mass-killing history, infant mortality, coup attempts, elite-approved political killings.",
     scale: "Country level · Annual resolution · 160+ countries",
     gap: "Predicts mass-killing onset (25+ deaths/year) at the national level, not individual abductions at the sub-county level. Temporal resolution is annual, not weekly. No vehicle tracking, OSINT, or social-network analysis.",
     closest: true,

@@ -1,5 +1,5 @@
 /**
- * KAMPS risk-weight calibration (2026-09-27).
+ * KAMPS risk-weight calibration (2026-09-27, ACLED round).
  *
  * Walk-forward evaluation: build county risk components using only incidents
  * before a cutoff, then test how well the weighted index predicts counties
@@ -17,9 +17,11 @@
  *   temporal    90-day z-score at cutoff
  *   vehicle     documented pattern-vehicle sighting county
  *   ucdp        UCDP 2013+ deaths-per-100k percentile
+ *   acled       ACLED abduction+VAC burden percentile, 365 days ending at cutoff
  */
 import {
   loadCounties, loadMissingVoices, loadPublicRecordIncidents, loadUcdp, loadVehicleCases,
+  loadAcledAggregates, type AcledWeekRow,
 } from "../src/lib/kamps/real-data";
 import {
   empiricalBayes, spatialScan, temporalAnomaly, percentileRanks, RISK_WEIGHTS,
@@ -27,7 +29,7 @@ import {
 
 type Components = {
   ebPct: number; msePct: number; cluster: number;
-  temporal: number; vehicle: number; ucdp: number;
+  temporal: number; vehicle: number; ucdp: number; acled: number;
 };
 
 const countylat = (name: string): { lat: number; lng: number } => {
@@ -61,6 +63,26 @@ const { victims: mvVictims } = loadMissingVoices();
 const prIncidents = loadPublicRecordIncidents();
 const ucdp = loadUcdp();
 const vehicleCases = loadVehicleCases();
+const acled = loadAcledAggregates();
+const acledRows: AcledWeekRow[] = acled.rows;
+
+// ACLED burden per county for a 365-day window ending at `cutoff`
+function acledPctAt(cutoff: string): number[] {
+  const endT = new Date(cutoff).getTime();
+  const startT = endT - 365 * 86400000;
+  const startISO = new Date(startT).toISOString().slice(0, 10);
+  const burden = counties.map(c => {
+    let abd = 0, vac = 0;
+    for (const r of acledRows) {
+      if (r.week < startISO || r.week > cutoff) continue;
+      if (r.admin1 !== c.name) continue;
+      if (r.subEventType === "Abduction/forced disappearance") abd += r.events;
+      if (r.eventType === "Violence against civilians") vac += r.events;
+    }
+    return (abd * 3 + vac) / (c.population / 1e5);
+  });
+  return percentileRanks(burden);
+}
 
 // incident universe (MV + public record, no ER dedup needed for county-level counts
 // since ER pairs collapse across lists, not counties; keep it simple and honest)
@@ -112,6 +134,7 @@ function buildFold(cutoff: string, targetEnd: string) {
   const temporal = counties.map(c =>
     temporalAnomaly(past.filter(i => i.county === c.name).map(i => new Date(i.date)), asOfCutoff)
   );
+  const acledPct = acledPctAt(cutoff);
 
   const comps: Components[] = counties.map((c, i) => ({
     ebPct: ebPct[i],
@@ -120,6 +143,7 @@ function buildFold(cutoff: string, targetEnd: string) {
     temporal: Math.min(1, Math.max(0, (temporal[i].z - 1) / 2.5)),
     vehicle: vehicleCounties.has(c.name) ? 1 : 0,
     ucdp: ucdpPct[i],
+    acled: acledPct[i],
   }));
 
   const futureCounts = counties.map(c => future.filter(i => i.county === c.name).length);
@@ -160,15 +184,15 @@ function spearman(x: number[], y: number[]): number {
   return dx && dy ? num / Math.sqrt(dx * dy) : 0;
 }
 
-type Weights = { ebRate: number; mseAdjusted: number; cluster: number; ucdpBaseline: number; temporal: number; vehicle: number };
-const KEY_ORDER: (keyof Weights)[] = ["ebRate", "mseAdjusted", "cluster", "ucdpBaseline", "temporal", "vehicle"];
+type Weights = { ebRate: number; mseAdjusted: number; cluster: number; acledRecent: number; ucdpBaseline: number; temporal: number; vehicle: number };
+const KEY_ORDER: (keyof Weights)[] = ["ebRate", "mseAdjusted", "cluster", "acledRecent", "ucdpBaseline", "temporal", "vehicle"];
 
 function score(w: Weights, folds: ReturnType<typeof buildFold>[]): number {
   let total = 0;
   for (const f of folds) {
     const s = f.comps.map(c =>
       w.ebRate * c.ebPct + w.mseAdjusted * c.msePct + w.cluster * c.cluster +
-      w.ucdpBaseline * c.ucdp + w.temporal * c.temporal + w.vehicle * c.vehicle
+      w.acledRecent * c.acled + w.ucdpBaseline * c.ucdp + w.temporal * c.temporal + w.vehicle * c.vehicle
     );
     const labels = f.futureCounts.map(n => (n >= 1 ? 1 : 0));
     total += auc(s, labels) + 0.5 * Math.abs(spearman(s, f.futureCounts));
@@ -221,7 +245,7 @@ for (const [name, w] of [["current", current], ["tuned", best]] as const) {
   const perFold = folds.map(f => {
     const s = f.comps.map(c =>
       w.ebRate * c.ebPct + w.mseAdjusted * c.msePct + w.cluster * c.cluster +
-      w.ucdpBaseline * c.ucdp + w.temporal * c.temporal + w.vehicle * c.vehicle
+      (w.acledRecent ?? 0) * c.acled + w.ucdpBaseline * c.ucdp + w.temporal * c.temporal + w.vehicle * c.vehicle
     );
     const labels = f.futureCounts.map(n => (n >= 1 ? 1 : 0));
     return `AUC=${auc(s, labels).toFixed(3)} rho=${spearman(s, f.futureCounts).toFixed(3)}`;
@@ -232,17 +256,34 @@ for (const [name, w] of [["current", current], ["tuned", best]] as const) {
 // ---------- expert-floored variant (keeps plan-mandated floors) ----------
 const floored: Weights = normalize({
   ebRate: 0.30, mseAdjusted: 0.16, cluster: 0.28,
-  ucdpBaseline: 0.10, temporal: 0.10, vehicle: 0.06,
+  acledRecent: 0.10, ucdpBaseline: 0.0, temporal: 0.10, vehicle: 0.06,
 });
 console.log("floored weights:", floored, "objective:", score(floored, folds).toFixed(4));
 {
   const perFold = folds.map(f => {
     const s = f.comps.map(c =>
       floored.ebRate * c.ebPct + floored.mseAdjusted * c.msePct + floored.cluster * c.cluster +
-      floored.ucdpBaseline * c.ucdp + floored.temporal * c.temporal + floored.vehicle * c.vehicle
+      floored.acledRecent * c.acled + floored.ucdpBaseline * c.ucdp + floored.temporal * c.temporal + floored.vehicle * c.vehicle
     );
     const labels = f.futureCounts.map(n => (n >= 1 ? 1 : 0));
     return `AUC=${auc(s, labels).toFixed(3)} rho=${spearman(s, f.futureCounts).toFixed(3)}`;
   });
   console.log("floored ->", perFold.join(" | "));
+}
+
+// ---------- comparison: previous production set (ucdp slot, no acled) ----------
+{
+  const prev: Weights = normalize({
+    ebRate: 0.30, mseAdjusted: 0.16, cluster: 0.28,
+    acledRecent: 0.0, ucdpBaseline: 0.10, temporal: 0.10, vehicle: 0.06,
+  });
+  const perFold = folds.map(f => {
+    const s = f.comps.map(c =>
+      prev.ebRate * c.ebPct + prev.mseAdjusted * c.msePct + prev.cluster * c.cluster +
+      prev.acledRecent * c.acled + prev.ucdpBaseline * c.ucdp + prev.temporal * c.temporal + prev.vehicle * c.vehicle
+    );
+    const labels = f.futureCounts.map(n => (n >= 1 ? 1 : 0));
+    return `AUC=${auc(s, labels).toFixed(3)} rho=${spearman(s, f.futureCounts).toFixed(3)}`;
+  });
+  console.log("previous (ucdp slot, no acled) ->", perFold.join(" | "));
 }

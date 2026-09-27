@@ -96,11 +96,11 @@ const SOURCES: SourceSpec[] = [
     id: "acled",
     name: "ACLED",
     tier: 2,
-    status: "sandbox-blocked",
-    statusNote: "needs an account key. Registration is Cloudflare-walled from this host and the API subdomain does not resolve publicly; scripts/ingest-acled.mjs is wired and runs when ACLED_EMAIL and ACLED_KEY are set. UCDP GED covers the same role through 2025",
-    license: "registered access (Armed Conflict Location & Event Data Project)",
-    retrieved: "never retrieved from this environment",
-    feeds: "second conflict-event baseline for cross-database comparison",
+    status: "connected",
+    statusNote: "17,193 Kenya county-week rows 1997 to the week of 2026-09-12, from the official Africa aggregated file (myACLED account, OAuth login verified). Includes 299 abduction/forced-disappearance county-weeks; 45 abduction events in the trailing 12 months. Event-level REST access needs Research Partner tier, so the weekly aggregate file is the feed, refreshed Mondays",
+    license: "ACLED registered access, non-commercial use, attribution required",
+    retrieved: "retrieved 2026-09-27 from acleddata.com/aggregated/aggregated-data-africa (xlsx parsed to JSON)",
+    feeds: "the trailing-12-month corroboration covariate (weight 0.10), county-month forecast panels 2023-2026 joined to UCDP, the national abduction corroboration alert",
   },
   {
     id: "tella",
@@ -152,8 +152,8 @@ export function SourcesView() {
           </p>
           <p className="mt-3 max-w-3xl text-sm leading-[1.6] text-muted-foreground">
             Everything the engine consumes sits in this register with its access state. Where a
-            source is blocked, the blocker is named: ACLED needs a manual browser registration,
-            ReliefWeb is reviewing our appname request, police and mortuary records need Access
+            source is blocked, the blocker is named: ReliefWeb is reviewing our appname request,
+            ACLED event-level REST needs a tier upgrade, police and mortuary records need Access
             to Information filings. Nothing is padded to look busier than it is.
           </p>
         </div>

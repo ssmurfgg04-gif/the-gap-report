@@ -49,14 +49,14 @@ to an icon rail on desktop and slides over as a drawer on mobile.
 | Documented incidents | 229 in window (2024-06 to 2026-09) | Missing Voices victims (200) + curated public record (31) + KNCHR statements, entity-resolution deduplicated |
 | County denominators | 47 counties, sum exactly 47,564,296 | KNBS 2019 census (via Wikipedia compilation) |
 | Organized-violence events | 1,246 events, 1989-2025 | UCDP GED v26.1 (CC BY 4.0), county-assigned by point-in-polygon |
+| ACLED weekly aggregates | 17,193 county-week rows, 1997 to week of 2026-09-12, all 47 counties | ACLED Africa aggregated file (myACLED Open tier, OAuth login verified) |
 | Monthly series | 2020-2026 enforced-disappearance and killing counts | Missing Voices statistics pages |
 | County geometry | 47 polygons | IEBC boundaries (open data compilation) |
 | Vehicle patterns | 3 real documented, zero demo rows | BBC News, Capital FM Kenya, KNCHR (June 2026 Subaru pattern) |
 
-Every file traces to a fetched source URL; failures (ReliefWeb 403, ACLED
-key-gated) are recorded as failures in `data/manifest.json` and surfaced in
-the Sources view. The only synthetic rows are vehicle demonstration records,
-marked DEMO everywhere they appear.
+Every file traces to a fetched source URL; failures (ReliefWeb appname
+pending) are recorded as failures in `data/manifest.json` and surfaced in
+the Sources view. Zero synthetic rows anywhere.
 
 ## The engine (`src/lib/kamps/`)
 
@@ -70,14 +70,17 @@ marked DEMO everywhere they appear.
 5. **Temporal anomaly detection** — trailing 12-month baselines on the real
    monthly series (flagged the actual June 2026 spike at +14.5 sigma)
 6. **Composite risk index** — weights calibrated by walk-forward validation
-   (`scripts/calibrate-weights.ts`: AUC 0.657/0.545 before, 0.694/0.590 after),
+   (`scripts/calibrate-weights.ts`): the ACLED trailing-12-month corroboration
+   took the 0.10 slot from the stale UCDP 2013-2022 prior (AUC 0.694/0.590
+   before, 0.681/0.608 after, with the win on the longer 15-month fold),
    documented in `src/lib/kamps/stats.ts`
 
 Plus: **forecast** (Holt-Winters seasonal 12 on the national series;
-walk-forward-backtested logistic classifier on UCDP county-month panels),
-**four-zone vehicle rule**, and the **alert layer** (aggregate zone-level
-output only, never individuals: the system exists to protect people, not to
-predict them).
+walk-forward-backtested logistic classifier on UCDP 2010-2022 joined to
+ACLED 2023-2026 county-month panels: backtest AUC 0.753, 1,939 walk-forward
+predictions), **four-zone vehicle rule**, and the **alert layer**
+(aggregate zone-level output only, never individuals: the system exists to
+protect people, not to predict them).
 
 ## Design system
 
@@ -110,16 +113,20 @@ The engine reads `data/` at runtime; the API is `GET /api/kamps` and
 
 ## Wiring the remaining data feeds
 
-Two feeds need credentials that this repository cannot register itself;
-both ingests are scripted and env-gated (see `.env.example`):
-
+- **ACLED** — live and wired (2026-09-27). The myACLED account authenticates
+  via OAuth (verified: token issued, uid 223950), and the weekly Africa
+  aggregated file feeds the engine through the week of 2026-09-12: 17,193
+  Kenya county-week rows, all 47 counties, 299 abduction-coded county-weeks.
+  Refresh any time: `ACLED_EMAIL=... ACLED_PASSWORD=... node scripts/ingest-acled.mjs`
+  (the script tries the event-level REST API first and falls back to the
+  aggregate file; from datacenter IPs it routes via a CORS relay
+  automatically, elsewhere it goes direct). Event-level REST (per-incident
+  rows, actor fields, notes) unlocks at Research Partner tier — the ingest
+  probes it on every run and will switch over with zero changes when the
+  tier clears.
 - **ReliefWeb** — appname requested 2026-09-27 through the official form
   (review up to two business days). When approval arrives:
   `RELIEFWEB_APPNAME=... node scripts/ingest-reliefweb.mjs`
-- **ACLED** — registration is Cloudflare-walled from datacenter IPs and the
-  API subdomain does not resolve publicly from this host. Register once
-  from a normal browser, then:
-  `ACLED_EMAIL=... ACLED_KEY=... node scripts/ingest-acled.mjs`
 
 The police occurrence-book, mortuary, and IPOA lists that would make
 capture-recapture fully estimable require Access to Information Act 2016

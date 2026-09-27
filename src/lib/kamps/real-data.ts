@@ -303,6 +303,104 @@ export function loadMissingVoices(): { victims: MvVictim[]; monthly: MonthlyPoin
   return mvCache;
 }
 
+// ————— ACLED weekly aggregates (Open tier download file) —————
+export type AcledWeekRow = {
+  week: string;          // ISO Saturday of the ACLED week
+  admin1: string;        // ACLED county name (needs normalization, see below)
+  eventType: string;
+  subEventType: string;
+  events: number;
+  fatalities: number;
+};
+
+export type AcledMonthlyNational = { month: string; abductions: number; vacEvents: number; events: number };
+
+export type AcledAggregates = {
+  rows: AcledWeekRow[];
+  lastWeek: string;
+  firstWeek: string;
+  /** national monthly abduction + violence-against-civilians + all-event counts */
+  monthlyNational: AcledMonthlyNational[];
+  /** per census-county aggregates for the trailing window (months back from lastWeek) */
+  countyWindow: Map<string, { abductions: number; vacEvents: number; events: number; fatalities: number }>;
+  /** county-month total-event panels (all disorder types), month keys YYYY-MM */
+  panels: Map<string, Map<string, number>>; // county -> month -> events
+  /** census-name-normalized admin1 -> census county name */
+  normalize: (admin1: string) => string | null;
+};
+
+const ACLED_ABD_SUB = "Abduction/forced disappearance";
+
+/** Normalize an ACLED admin1 label to a census county name, or null. */
+function acledCountyKey(admin1: string): string {
+  return admin1.toLowerCase().replace(/[-–—'’\s]+/g, "");
+}
+
+let acledCache: AcledAggregates | null = null;
+export function loadAcledAggregates(): AcledAggregates {
+  if (acledCache) return acledCache;
+  const file = path.join(DATA, "acled-kenya-aggregates.json");
+  if (!fs.existsSync(file)) throw new Error("data/acled-kenya-aggregates.json missing (run scripts/ingest-acled.mjs)");
+  const raw = readJson<{
+    kenyaRows: AcledWeekRow[];
+    coverage: { firstWeek: string; lastWeek: string };
+    countyCentroids: Record<string, [number, number]>;
+  }>("acled-kenya-aggregates.json");
+
+  const counties = loadCounties();
+  const countyByKey = new Map(counties.map(c => [acledCountyKey(c.name), c.name]));
+  const normalize = (admin1: string): string | null => countyByKey.get(acledCountyKey(admin1)) ?? null;
+
+  const rows = raw.kenyaRows.map(r => ({
+    ...r,
+    admin1: normalize(r.admin1) ?? r.admin1, // normalized where possible
+  }));
+
+  // national monthly series (abductions, VAC events, all events)
+  const monthly = new Map<string, { abductions: number; vacEvents: number; events: number }>();
+  for (const r of rows) {
+    const month = r.week.slice(0, 7);
+    let m = monthly.get(month);
+    if (!m) { m = { abductions: 0, vacEvents: 0, events: 0 }; monthly.set(month, m); }
+    m.events += r.events;
+    if (r.subEventType === ACLED_ABD_SUB) m.abductions += r.events;
+    if (r.eventType === "Violence against civilians") m.vacEvents += r.events;
+  }
+  const monthlyNational: AcledMonthlyNational[] =
+    [...monthly.entries()]
+      .sort((a, b) => a[0].localeCompare(b[0]))
+      .map(([month, v]) => ({ month, ...v }));
+
+  // trailing window per county (365 days before the last published week)
+  const lastWeek = raw.coverage.lastWeek;
+  const windowStart = new Date(new Date(lastWeek).getTime() - 365 * 86400000)
+    .toISOString().slice(0, 10);
+  const countyWindow = new Map<string, { abductions: number; vacEvents: number; events: number; fatalities: number }>();
+  const panels = new Map<string, Map<string, number>>();
+  for (const r of rows) {
+    const county = countyByKey.get(acledCountyKey(r.admin1));
+    if (!county) continue;
+    const month = r.week.slice(0, 7);
+    let p = panels.get(county);
+    if (!p) { p = new Map(); panels.set(county, p); }
+    p.set(month, (p.get(month) ?? 0) + r.events);
+    if (r.week >= windowStart) {
+      let w = countyWindow.get(county);
+      if (!w) { w = { abductions: 0, vacEvents: 0, events: 0, fatalities: 0 }; countyWindow.set(county, w); }
+      w.events += r.events;
+      w.fatalities += r.fatalities;
+      if (r.subEventType === ACLED_ABD_SUB) w.abductions += r.events;
+      if (r.eventType === "Violence against civilians") w.vacEvents += r.events;
+    }
+  }
+
+  acledCache = {
+    rows, lastWeek, firstWeek: raw.coverage.firstWeek,
+    monthlyNational, countyWindow, panels, normalize,
+  };
+  return acledCache;
+}
+
 // ————— public-record incidents (curated, sourced) —————
 export type PublicIncident = {
   id: string;

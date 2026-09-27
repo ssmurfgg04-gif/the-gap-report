@@ -47,7 +47,7 @@ function renderDigest(a: KampsAnalysis): string {
   const o = a.overview;
   lines.push(
     `KAMPS (Kenya Abduction Monitoring & Prediction System) analysis digest, as of ${a.asOf.slice(0, 10)}.`,
-    `Data: REAL ingested datasets (Missing Voices victims and monthly statistics, curated public-record incidents with source URLs, KNBS 2019 census county populations, UCDP GED organized-violence events 1989-2022). Monitoring window ${a.dataWindow.start} to ${a.dataWindow.end}. ${a.zones} counties monitored.`,
+    `Data: REAL ingested datasets (Missing Voices victims and monthly statistics, curated public-record incidents with source URLs, KNBS 2019 census county populations, UCDP GED organized-violence events 1989-2025, ACLED Kenya weekly county aggregates 1997 through the week of 2026-09-12). Monitoring window ${a.dataWindow.start} to ${a.dataWindow.end}. ${a.zones} counties monitored.`,
     `Overview: ${o.documentedTotal} documented incidents in the window (${o.documentedLocated} county-located, ${o.unlocatedIncidents} without a resolvable county); adjusted estimate of the true total is ${o.estimatedTotal} (95% CI ${o.estimateCI[0]} to ${o.estimateCI[1]}), underreporting factor ${o.underreportingFactor}x.`
   );
 
@@ -63,9 +63,14 @@ function renderDigest(a: KampsAnalysis): string {
   const topZones = [...a.zones].sort((x, y) => y.index - x.index);
   for (const z of topZones) {
     lines.push(
-      `${z.name} (${z.county} county): index ${z.index}, band ${z.band}, confidence ${z.confidence}. Documented incidents ${z.documented} (crude rate ${z.crudeRate} per 100k). EB-smoothed rate ${z.ebRate} per 100k (CI ${z.ebCI[0]} to ${z.ebCI[1]}). MSE-adjusted estimate ${z.mseEstimated} (x${z.mseFactor} underreporting, ${z.mseConfidence} confidence). Cluster RR ${z.clusterRR ?? "none"}, temporal anomaly z ${z.temporalZ} (recent ${z.temporalCurrent} vs baseline ${z.temporalBaseline}), vehicle signal ${z.vehicleSignal ? "present" : "none"}. Drivers: ${z.drivers.join("; ")}.`
+      `${z.name} (${z.county} county): index ${z.index}, band ${z.band}, confidence ${z.confidence}. Documented incidents ${z.documented} (crude rate ${z.crudeRate} per 100k). EB-smoothed rate ${z.ebRate} per 100k (CI ${z.ebCI[0]} to ${z.ebCI[1]}). MSE-adjusted estimate ${z.mseEstimated} (x${z.mseFactor} underreporting, ${z.mseConfidence} confidence). ACLED trailing-12-month corroboration: ${z.acledAbductions12m} abduction events and ${z.acledVacEvents12m} violence-against-civilians events. Cluster RR ${z.clusterRR ?? "none"}, temporal anomaly z ${z.temporalZ} (recent ${z.temporalCurrent} vs baseline ${z.temporalBaseline}), vehicle signal ${z.vehicleSignal ? "present" : "none"}. Drivers: ${z.drivers.join("; ")}.`
     );
   }
+  const abd12 = a.zones.reduce((s, z) => s + z.acledAbductions12m, 0);
+  const vac12 = a.zones.reduce((s, z) => s + z.acledVacEvents12m, 0);
+  lines.push(
+    `ACLED national corroboration: ${abd12} abduction/forced-disappearance events and ${vac12} violence-against-civilians events in the trailing 12 months (independent conflict-coded counts; they will not match the civil-society documented tally because ACLED applies conflict-coding scope rules).`
+  );
 
   const sigClusters = a.clusters.filter((c) => c.p <= 0.05);
   if (sigClusters.length > 0) {
@@ -96,16 +101,21 @@ function renderDigest(a: KampsAnalysis): string {
     `Alert feed: ${a.alerts.length} total (${Object.entries(bySev).map(([k, c]) => `${c} ${k}`).join(", ")}). Alert titles: ${a.alerts.slice(0, 12).map((al) => `[${al.severity}] ${al.title}`).join("; ")}.`
   );
   lines.push(
-    `Composite index weights: EB rate ${a.weights.ebRate}, MSE-adjusted ${a.weights.mseAdjusted}, cluster ${a.weights.cluster}, UCDP historical baseline ${a.weights.ucdpBaseline}, temporal ${a.weights.temporal}, vehicle ${a.weights.vehicle}.`
+    `Composite index weights: EB rate ${a.weights.ebRate}, MSE-adjusted ${a.weights.mseAdjusted}, cluster ${a.weights.cluster}, ACLED trailing-12-month ${a.weights.acledRecent}, UCDP historical baseline ${a.weights.ucdpBaseline}, temporal ${a.weights.temporal}, vehicle ${a.weights.vehicle}.`
   );
   const f = a.forecast;
   lines.push(
-    `Forecast: ${f.method} Backtest on real UCDP county-month panels: AUC ${f.backtest.auc}, Brier ${f.backtest.brier}, hit rate ${f.backtest.hitRate}, ${f.backtest.nPredictions} predictions, 95% interval coverage ${f.backtest.coverage95}. National 3-month enforced-disappearance forecast: ${f.national.forecastMonths.map((mm, i) => `${mm} mean ${f.national.mean[i]} (95% PI ${f.national.lower95[i]} to ${f.national.upper95[i]})`).join("; ")}. Recent national monthly series: ${f.national.series.slice(-6).map(p => `${p.month}: ${p.ed}`).join(", ")}.`
+    `Forecast: ${f.method} Backtest on real county-month panels (UCDP GED 2010-2022 joined to ACLED weekly aggregates 2023-2026): AUC ${f.backtest.auc}, Brier ${f.backtest.brier}, hit rate ${f.backtest.hitRate}, ${f.backtest.nPredictions} predictions, 95% interval coverage ${f.backtest.coverage95}. National 3-month enforced-disappearance forecast: ${f.national.forecastMonths.map((mm, i) => `${mm} mean ${f.national.mean[i]} (95% PI ${f.national.lower95[i]} to ${f.national.upper95[i]})`).join("; ")}. Recent national monthly series: ${f.national.series.slice(-6).map(p => `${p.month}: ${p.ed}`).join(", ")}.`
   );
   const tr = a.temporal.recent;
   if (tr.length) {
     lines.push(
       `Temporal anomalies (real Missing Voices monthly series, trailing 12-month baseline): ${tr.map(r => `${r.month}: ${r.ed} cases vs baseline ${r.baseline} (z ${r.z}${r.flagged ? ", FLAGGED" : ""})`).join("; ")}.`
+    );
+  }
+  if (a.temporal.acledMonthly?.length) {
+    lines.push(
+      `ACLED national monthly corroborating series (abductions / VAC events, June 2024 onward): ${a.temporal.acledMonthly.map(p => `${p.month}: ${p.abductions}/${p.vacEvents}`).join(", ")}.`
     );
   }
   lines.push(

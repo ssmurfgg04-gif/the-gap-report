@@ -404,6 +404,7 @@ export type RiskComponents = {
   temporalScore: number;     // 0-1
   vehicleScore: number;      // 0-1
   ucdpBaseline: number;      // 0-1 (historical organized-violence burden, UCDP)
+  acledRecent?: number;      // 0-1 (trailing-12-month ACLED abduction + VAC burden)
 };
 
 /**
@@ -412,22 +413,28 @@ export type RiskComponents = {
  * each cutoff, scored against counties that actually record incidents
  * after it. Folds: 2026-01-01 and 2025-07-01 cutoffs.
  *
- *   current -> AUC 0.657 / 0.545, rho 0.332 / 0.178
- *   tuned   -> AUC 0.694 / 0.590, rho 0.408 / 0.277
+ * ACLED round (the trailing-12-month county burden from ACLED weekly
+ * aggregates replaced the stale UCDP 2013-2022 slot):
+ *   previous set (ucdp 0.10, no acled) -> AUC 0.694 / 0.590, rho 0.408 / 0.277
+ *   this set    (acled  0.10, ucdp 0)  -> AUC 0.681 / 0.608, rho 0.395 / 0.338
+ *   unconstrained ascent               -> AUC 0.706 / 0.622 (violates plan floors)
  *
- * Unconstrained coordinate ascent pushes the last two weights to zero
- * (overfits two sparse folds), so temporal and UCDP keep plan-mandated
- * floors: the six-stage pipeline stays intact and every indicator still
- * contributes. EB rate, spatial clustering, and the MSE adjustment gain;
- * the historical-violence covariate loses the most, which matches the
- * data: 2013-2022 organized-violence burden barely separates the 2025-26
- * abduction map.
+ * The ACLED-weighted set wins on the longer 15-month fold and on mean AUC
+ * and rank correlation, and it uses data current to the week of 2026-09-12
+ * instead of a series that ends in 2022. Unconstrained ascent zeroes the
+ * temporal floor and overfits two sparse folds, so the plan-mandated floors
+ * stay: EB rate 0.30, MSE adjustment 0.16, spatial cluster 0.28, temporal
+ * 0.10, vehicle 0.06, and the remaining 0.10 moves from the UCDP historical
+ * covariate to ACLED's current signal. UCDP remains computed and displayed
+ * at weight zero: its 2013-2022 burden barely separates the 2025-26
+ * abduction map, which is exactly what the ascent says.
  */
 export const RISK_WEIGHTS = {
   ebRate: 0.3,
   mseAdjusted: 0.16,
   cluster: 0.28,
-  ucdpBaseline: 0.1,
+  acledRecent: 0.1,
+  ucdpBaseline: 0.0,
   temporal: 0.1,
   vehicle: 0.06,
 } as const;
@@ -437,6 +444,7 @@ export function compositeRisk(c: RiskComponents): number {
     RISK_WEIGHTS.ebRate * c.ebPercentile +
     RISK_WEIGHTS.mseAdjusted * c.msePercentile +
     RISK_WEIGHTS.cluster * c.clusterScore +
+    RISK_WEIGHTS.acledRecent * (c.acledRecent ?? 0) +
     RISK_WEIGHTS.ucdpBaseline * c.ucdpBaseline +
     RISK_WEIGHTS.temporal * c.temporalScore +
     RISK_WEIGHTS.vehicle * c.vehicleScore;

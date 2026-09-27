@@ -1,0 +1,26 @@
+{
+  "round": 28,
+  "scores": {
+    "typography": 8,
+    "color": 8,
+    "layout": 7,
+    "components": 8,
+    "responsive": 8
+  },
+  "verdicts": {
+    "typography": "Flawless Swiss-style typographic hierarchy. Heading scale is crisp and rhythmic with strong weight contrast (bold headlines vs. light body). Mono uppercase micro-labels (e.g., 'DATA AS OF 2026-09-30', 'LIVE MONITOR', section labels like 'THE BLUEPRINT') are perfectly disciplined throughout all views. Line-height is generous and comfortable. No orphaned text, no cramped spacing, no widows visible at normal viewing distance. The red accent in the hero headline ('this?') is tastefully applied without breaking rhythm.",
+    "color": "Strictly one restrained red accent (#D32F2F or equivalent) used consistently for status indicators, severity badges, accent words, active nav states, and the hero highlight. All neutrals (near-black #111, mid-grays, light borders) form a clean, noise-free palette. WCAG AA contrast is clearly met across all text/background combinations. No visual noise, no competing colors, no gradients or shadows (except the permitted functional shadow). The coat of arms in the footer uses its natural colors appropriately as a sovereign emblem.",
+    "layout": "Excellent overall alignment to max-w container with consistent whitespace rhythm and generous padding. Hairline grids on tables and cards are intact with clean single-pixel borders. The footer sits properly at document bottom. One minor nitpick: In the Risk Map view (d4-map-selected), the right-side detail panel's vertical alignment appears slightly offset from the map container's top edge—the panel content starts a few pixels lower than the map's top boundary, creating a subtle visual misalignment between the two-column layout halves.",
+    "components": "Flawless. All component types—matrix tables with sticky columns and red-accented final column, accordion-style zone pills, tab bar with clear active state (Risk Index filled black), KPI strip with red accent value, Kenya choropleth map with legend, Venn diagram with region counts, vehicle sighting timelines with dots on baseline and window bands, alert severity chips, and tabular numerics right-aligned—render correctly at normal viewing distance. No visible breakage, misalignment, overlap, or illegibility.",
+    "responsive": "Flawless execution across all breakpoints and modes. Mobile 390px layouts show correct vertical stacking, readable type scaling, no horizontal overflow, and proper handling of complex data tables via horizontal scroll. Dark mode maintains consistent palette hierarchy, high contrast, and preserves all interactive affordances without visual artifacts."
+  },
+  "fixes": {
+    "typography": [],
+    "color": [],
+    "layout": [
+      "In d4-map-selected (Risk Map view), vertically align the top of the right-side detail panel (NAIROBI · NAIROBI COUNTY header) to match the exact top edge of the left-side map container for stricter grid alignment."
+    ],
+    "components": [],
+    "responsive": []
+  }
+}

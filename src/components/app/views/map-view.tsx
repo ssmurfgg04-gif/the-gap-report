@@ -97,6 +97,21 @@ function ZoneDetail({ zone }: { zone: ZoneAssessment }) {
             </span>
           }
         />
+        <DetailRow
+          label="ACLED 12m"
+          value={
+            zone.acledAbductions12m > 0 || zone.acledVacEvents12m > 0 ? (
+              <>
+                {zone.acledAbductions12m} abductions
+                <span className="block text-[11px] text-muted-foreground">
+                  {zone.acledVacEvents12m} violence-against-civilians events
+                </span>
+              </>
+            ) : (
+              <span className="text-muted-foreground/70">no coded events</span>
+            )
+          }
+        />
         <DetailRow label="Vehicle signal" value={zone.vehicleSignal ? "flagged activity" : "none"} />
       </dl>
 

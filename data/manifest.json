@@ -1,7 +1,7 @@
 {
   "project": "KAMPS (Kenya Abduction Monitoring & Prediction System) - data ingestion manifest",
   "agent": "A (data-ingestion)",
-  "retrieved_at": "2026-09-27",
+  "retrieved_at": "2026-09-27T11:05:00Z",
   "method": "All downloads via curl (Bash) with polite 1s delays; HTML parsed with python3 (stdlib only); normalized JSON/CSV written under /home/z/my-project/data/. NO fabricated data: every row traces to a fetched source.",
   "files": [
     {
@@ -73,6 +73,16 @@
       "retrieved_at": "2026-09-27T07:56:00Z",
       "quality": "failed",
       "notes": "HTTP 403 AccessDeniedHttpException: 'not using an approved appname' for 10 appnames tried (kamps, reliefweb, apidoc, rwapi, kamps-research, reliefweb-api, rwint, rw-widget, ocha, unocha); HTTP 400 without appname; v1 endpoint HTTP 410 decommissioned; website /search 444; /country/kenya HTML 202 empty (bot protection); country RSS returns unfiltered global feed. ReliefWeb now requires pre-registered appnames (Google form per apidoc.reliefweb.int/parameters). No data fabricated; next action documented in the file."
+    },
+    {
+      "file": "acled-kenya-aggregates.json",
+      "format": "JSON (from xlsx weekly aggregates)",
+      "rows_or_features": 17193,
+      "source": "ACLED Africa aggregated data file, myACLED Open tier (https://acleddata.com/aggregated/aggregated-data-africa), week of 2026-09-12",
+      "license": "ACLED registered access, non-commercial use, attribution required",
+      "retrieved_at": "2026-09-27T11:05:00Z",
+      "quality": "verified",
+      "notes": "Weekly county-level (Admin 1) event, fatality and exposure counts, 1997-01 to 2026-09-12, all 47 counties. Includes 299 Abduction/forced-disappearance county-week rows. Event-level REST access requires Research Partner tier; OAuth credentials are env-gated for when the tier upgrades."
     }
   ],
   "gaps": [
@@ -99,6 +109,7 @@
     {
       "source": "Police OB records, hospital/mortuary registries, IPOA aggregates",
       "reason": "Require Access to Information Act 2016 formal requests; documented as the plan Phase 2 MSE inputs but not yet filed."
-    }
+    },
+    "ACLED event-level REST access: account authenticates (OAuth verified) but sits on the Open myACLED tier, which excludes the read API; the weekly aggregate file (current through 2026-09-12) is ingested instead. Event-level detail unlocks at Research Partner tier."
   ]
 }

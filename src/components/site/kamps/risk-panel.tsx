@@ -39,9 +39,10 @@ export function RiskPanel({ analysis }: { analysis: KampsAnalysis }) {
                 ["EB-smoothed rate", analysis.weights.ebRate],
                 ["MSE-adjusted burden", analysis.weights.mseAdjusted],
                 ["Cluster excess", analysis.weights.cluster],
-                ["UCDP historical baseline", (analysis.weights as Record<string, number>).ucdpBaseline ?? 0.2],
+                ["ACLED trailing 12 months", (analysis.weights as Record<string, number>).acledRecent ?? 0],
                 ["Temporal deviation", analysis.weights.temporal],
                 ["Vehicle signal", analysis.weights.vehicle],
+                ["UCDP historical (zeroed)", (analysis.weights as Record<string, number>).ucdpBaseline ?? 0],
               ].map(([label, w]) => (
                 <li key={String(label)} className="flex justify-between gap-4">
                   <span>{label}</span>
@@ -144,7 +145,9 @@ export function RiskPanel({ analysis }: { analysis: KampsAnalysis }) {
             Doc. = documented incidents in the warehouse (deduplicated). EB = Empirical Bayes
             smoothed rate per 100,000 on census denominators. Adj. = estimate adjusted by the
             capture-recapture factor. Temporal = z-score against the county&apos;s own rolling
-            90-day baseline. UCDP = organized-violence events 2013-2025 in the drivers column.
+            90-day baseline. ACLED = abduction and violence-against-civilians events in the
+            trailing 12 months. UCDP events 2013-2025 stay in the drivers column as historical
+            context; their calibrated weight is zero.
           </p>
         </div>
       </div>

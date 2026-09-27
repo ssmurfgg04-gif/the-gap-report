@@ -1,0 +1,28 @@
+{
+  "round": 27,
+  "scores": {
+    "typography": 8,
+    "color": 8,
+    "layout": 7,
+    "components": 8,
+    "responsive": 7
+  },
+  "verdicts": {
+    "typography": "Flawless Swiss-style typographic hierarchy. The heading scale (from the massive '229' and 'Who else is doing this?' down to micro-labels) shows excellent rhythm and weight contrast. Mono uppercase labels ('DATA AS OF', 'LIVE MONITOR', 'DOCUMENTED INCIDENTS SINCE JUNE 2024') are perfectly disciplined with consistent tracking. Line-height is generous throughout body copy, and no orphans or cramped text are visible at normal viewing distance.",
+    "color": "Strictly one accent red applied with perfect restraint across all views—used for the KAMPS logo mark, live status dot, 'CRITICAL' badges, progress bars, the 'this?' word in the report hero, the left rule on the verdict callout, and the coat of arms shield. All neutrals (near-black headings, medium-grey body, light-grey borders/backgrounds) form a clean, high-contrast palette. No visual noise, no stray colors, no WCAG AA violations.",
+    "layout": "Excellent overall alignment to a consistent max-width container with generous whitespace rhythm and intact hairline grids throughout the dashboard, map, analytics table, and report blueprint cards. One visible alignment defect: in d15-report-footer, the footer content block containing 'THE GAP REPORT' label, description text, and coat of arms is not pinned to the document bottom—it floats with approximately 120px of empty whitespace beneath it, breaking the expected full-bleed footer behavior.",
+    "components": "Flawless. All components—matrix tables with sticky columns and red-accented final column, accordion affordances, tab bar active states, KPI strip, Kenya map choropleth and legend, Venn region labels, sighting timeline dots and window bands, alert severity chips, and right-aligned tabular numerics—are publication-grade with no visible defects at normal viewing distance.",
+    "responsive": "Mobile layout integrity is strong with correct stacking, readable type, and no horizontal overflow. Dark-mode palette is consistent and contrast is sufficient. One concrete defect is visible in the mobile report model view (m8-report-model) where the KPI strip grid is clipped at the bottom, cutting off the labels for the third and fourth KPI cards ('SIGNIFICANT SPATIAL CLUSTERS...' and 'VEHICLES FLAGGED...')."
+  },
+  "fixes": {
+    "typography": [],
+    "color": [],
+    "layout": [
+      "Pin the footer content block (THE GAP REPORT section with coat of arms) to the bottom of the viewport/document so it rests at the baseline with no trailing whitespace, consistent with standard document footer behavior."
+    ],
+    "components": [],
+    "responsive": [
+      "Increase vertical padding or allow the KPI strip container in the report model section (m8-report-model) to expand to fit all four cards on mobile 390px viewports so that card labels are fully visible without clipping."
+    ]
+  }
+}

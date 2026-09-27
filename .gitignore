@@ -66,3 +66,9 @@ screenshots/
 worklog.md
 upload/
 db/
+
+# ACLED auth artifacts (never commit credentials or tokens)
+.acled-tokens.json
+.acled-session.txt
+.acled-csrf.txt
+scripts/acled-token.json

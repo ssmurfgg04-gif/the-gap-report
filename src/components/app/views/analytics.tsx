@@ -217,9 +217,10 @@ function ForecastCard({ forecast, analysis }: { forecast: KampsAnalysis["forecas
       </div>
       <p className="border-t border-border p-5 text-sm leading-[1.6] text-muted-foreground">
         Projections adjust each county&apos;s composite index by its forecasted organized-violence
-        trend from walk-forward backtested UCDP panels, capped at 12 points. Counties without a
-        forecastable trend hold their current index. {analysis.zones.length} counties monitored;
-        the top {rows.length} by current index are listed.
+        trend from walk-forward backtested county-month panels (UCDP 2010-2022 joined to ACLED
+        weekly aggregates 2023-2026), capped at 12 points. Counties without a forecastable trend
+        hold their current index. {analysis.zones.length} counties monitored; the top {rows.length} by
+        current index are listed.
       </p>
     </div>
   );
