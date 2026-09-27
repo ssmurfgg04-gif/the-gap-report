@@ -23,10 +23,11 @@ export function RiskPanel({ analysis }: { analysis: KampsAnalysis }) {
           </p>
           <KenyaRiskMap zones={analysis.zones} clusters={analysis.clusters} />
           <p className="mt-5 text-sm leading-[1.6] text-muted-foreground">
-            Marker position is the sub-county centroid. Dashed halos mark statistically
-            significant scan clusters, population-adjusted. Turkana Central documents
-            only 16 cases, yet carries the strongest excess once population and
-            underreporting are corrected: that correction is the point of the system.
+            Marker position is the county centroid. Dashed halos mark statistically
+            significant scan clusters, population-adjusted with 2019 census denominators.
+            The correction matters most where raw counts mislead: a small county with few
+            cases can still carry a significant per-capita excess, and the scan statistic
+            finds it without the "big county always wins" bias.
           </p>
 
           <div className="mt-6 rounded-lg border border-border p-5">
@@ -34,26 +35,19 @@ export function RiskPanel({ analysis }: { analysis: KampsAnalysis }) {
               Index composition
             </p>
             <ul className="mt-3 space-y-1.5 text-sm text-muted-foreground">
-              <li className="flex justify-between gap-4">
-                <span>EB-smoothed rate</span>
-                <span className="tabular-nums text-foreground/85">{Math.round(analysis.weights.ebRate * 100)}%</span>
-              </li>
-              <li className="flex justify-between gap-4">
-                <span>MSE-adjusted rate</span>
-                <span className="tabular-nums text-foreground/85">{Math.round(analysis.weights.mseAdjusted * 100)}%</span>
-              </li>
-              <li className="flex justify-between gap-4">
-                <span>Cluster excess</span>
-                <span className="tabular-nums text-foreground/85">{Math.round(analysis.weights.cluster * 100)}%</span>
-              </li>
-              <li className="flex justify-between gap-4">
-                <span>Temporal deviation</span>
-                <span className="tabular-nums text-foreground/85">{Math.round(analysis.weights.temporal * 100)}%</span>
-              </li>
-              <li className="flex justify-between gap-4">
-                <span>Vehicle signal</span>
-                <span className="tabular-nums text-foreground/85">{Math.round(analysis.weights.vehicle * 100)}%</span>
-              </li>
+              {[
+                ["EB-smoothed rate", analysis.weights.ebRate],
+                ["MSE-adjusted burden", analysis.weights.mseAdjusted],
+                ["Cluster excess", analysis.weights.cluster],
+                ["UCDP historical baseline", (analysis.weights as Record<string, number>).ucdpBaseline ?? 0.2],
+                ["Temporal deviation", analysis.weights.temporal],
+                ["Vehicle signal", analysis.weights.vehicle],
+              ].map(([label, w]) => (
+                <li key={String(label)} className="flex justify-between gap-4">
+                  <span>{label}</span>
+                  <span className="tabular-nums text-foreground/85">{Math.round((w as number) * 100)}%</span>
+                </li>
+              ))}
             </ul>
           </div>
         </div>
@@ -61,7 +55,7 @@ export function RiskPanel({ analysis }: { analysis: KampsAnalysis }) {
         {/* table column */}
         <div className="min-w-0">
           <p className="mb-4 font-mono text-[11px] uppercase tracking-[0.2em] text-muted-foreground">
-            All twelve zones, ranked by composite index
+            All {analysis.zones.length} zones, ranked by composite index
           </p>
           <div className="matrix-scroll max-h-[520px] overflow-auto rounded-lg border border-border">
             <table className="w-full min-w-[720px] border-collapse text-left text-sm">
@@ -73,7 +67,7 @@ export function RiskPanel({ analysis }: { analysis: KampsAnalysis }) {
                   <th scope="col" className="whitespace-nowrap bg-background px-4 py-3.5 font-mono text-[10px] font-medium uppercase tracking-[0.12em] text-muted-foreground">Band</th>
                   <th scope="col" className="whitespace-nowrap bg-background px-4 py-3.5 text-right font-mono text-[10px] font-medium uppercase tracking-[0.12em] text-muted-foreground">Doc.</th>
                   <th scope="col" className="whitespace-nowrap bg-background px-4 py-3.5 text-right font-mono text-[10px] font-medium uppercase tracking-[0.12em] text-muted-foreground">EB /100k</th>
-                  <th scope="col" className="whitespace-nowrap bg-background px-4 py-3.5 text-right font-mono text-[10px] font-medium uppercase tracking-[0.12em] text-muted-foreground">MSE est.</th>
+                  <th scope="col" className="whitespace-nowrap bg-background px-4 py-3.5 text-right font-mono text-[10px] font-medium uppercase tracking-[0.12em] text-muted-foreground">Adj. est.</th>
                   <th scope="col" className="whitespace-nowrap bg-background px-4 py-3.5 text-right font-mono text-[10px] font-medium uppercase tracking-[0.12em] text-muted-foreground">Cluster</th>
                   <th scope="col" className="whitespace-nowrap bg-background px-4 py-3.5 text-right font-mono text-[10px] font-medium uppercase tracking-[0.12em] text-muted-foreground">Temporal</th>
                   <th scope="col" className="whitespace-nowrap bg-background px-4 py-3.5 text-center font-mono text-[10px] font-medium uppercase tracking-[0.12em] text-muted-foreground">Veh.</th>
@@ -142,9 +136,10 @@ export function RiskPanel({ analysis }: { analysis: KampsAnalysis }) {
             </table>
           </div>
           <p className="mt-4 text-sm leading-[1.6] text-muted-foreground">
-            Doc. = documented incidents in the warehouse. EB = Empirical Bayes smoothed rate.
-            MSE est. = capture-recapture adjusted total (factor relative to documented).
-            Temporal = z-score against the zone&apos;s own rolling 90-day baseline.
+            Doc. = documented incidents in the warehouse (deduplicated). EB = Empirical Bayes
+            smoothed rate per 100,000 on census denominators. Adj. = estimate adjusted by the
+            capture-recapture factor. Temporal = z-score against the county&apos;s own rolling
+            90-day baseline. UCDP = organized-violence events 2013-2022 in the drivers column.
           </p>
         </div>
       </div>

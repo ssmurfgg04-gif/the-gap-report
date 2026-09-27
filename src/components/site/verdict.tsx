@@ -100,10 +100,20 @@ export function Footer() {
             The Gap Report
           </p>
         </div>
+        <div className="flex items-center gap-4 sm:order-3">
+                    <img
+            src="/kenya-coat-of-arms.svg"
+            alt="Coat of arms of Kenya"
+            className="h-14 w-auto opacity-90"
+          />
+          <p className="max-w-[200px] font-mono text-[9px] uppercase leading-[1.7] tracking-[0.12em] text-muted-foreground">
+            State emblem of Kenya, public domain. Displayed unmodified.
+          </p>
+        </div>
         <p className="max-w-md text-sm leading-[1.6] text-muted-foreground">
           A global landscape assessment of predictive early-warning systems for enforced
           disappearances, compiled from comparative analysis of eight organizations, with the
-          KAMPS specification and a live simulated run of its statistical engine.
+          KAMPS specification and a live run of its statistical engine on real ingested datasets.
         </p>
       </div>
     </footer>

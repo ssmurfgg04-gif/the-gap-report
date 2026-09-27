@@ -15,9 +15,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "The Gap Report · Global Landscape: Who Else Is Doing This?",
+  title: "KAMPS · Kenya Abduction Monitoring & Prediction System",
   description:
-    "A comparative assessment of eight global organizations against a proposed predictive early-warning system for state abductions of activists and journalists. The pieces exist; nobody has assembled them.",
+    "A working early-warning system for enforced disappearances in Kenya: real ingested data (Missing Voices, public-record curation, KNBS 2019 census, UCDP GED), a six-stage bias-corrected statistical engine, a walk-forward backtested forecast, and aggregate-only protective alerts. Includes the Gap Report landscape analysis.",
   keywords: [
     "early warning system",
     "enforced disappearances",
@@ -28,9 +28,9 @@ export const metadata: Metadata = {
     "predictive modeling",
   ],
   openGraph: {
-    title: "The Gap Report · Global Landscape",
+    title: "KAMPS · Kenya Abduction Monitoring & Prediction System",
     description:
-      "Who else is building predictive early-warning systems for enforced disappearances? Eight organizations analyzed; the assembly does not exist anywhere.",
+      "Real data, real statistics: a bias-corrected early-warning instrument for enforced disappearances in Kenya, with the full landscape analysis of who else is doing this.",
     type: "website",
   },
 };

@@ -36,7 +36,7 @@ export function KenyaRiskMap({
       <svg
         viewBox={KENYA_VIEWBOX}
         role="img"
-        aria-label="Kenya risk map: twelve sub-county markers colored by composite risk band, with dashed halos marking statistically significant clusters"
+        aria-label={`Kenya risk map: ${zones.length} sub-county markers colored by composite risk band, with dashed halos marking statistically significant clusters`}
         className="mx-auto block h-auto w-full max-w-[400px]"
       >
         <path

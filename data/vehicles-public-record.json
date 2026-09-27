@@ -1,0 +1,190 @@
+[
+  {
+    "vehicleKey": "R1",
+    "platePartial": "KDG 8·3B",
+    "make": "Subaru",
+    "model": "Forester",
+    "color": "Silver",
+    "simulated": false,
+    "summary": "Documented in public reporting as the vehicle used to block MP George Koimburi before his abduction outside a Juja church on 25 May 2025; the MP was found beaten the next morning near Ruiru. The registration was reported by Kenyan media covering the incident.",
+    "sourceUrls": [
+      "https://www.bbc.com/news/articles/clyzlpn84yro"
+    ],
+    "sourceNames": [
+      "BBC News"
+    ],
+    "sightings": [
+      {
+        "id": 1,
+        "date": "2025-05-25",
+        "zoneName": "Kiambu",
+        "source": "public reporting (BBC News)"
+      },
+      {
+        "id": 2,
+        "date": "2025-05-26",
+        "zoneName": "Kiambu",
+        "source": "public reporting (recovery site near Ruiru)"
+      }
+    ]
+  },
+  {
+    "vehicleKey": "R2",
+    "platePartial": "unmarked",
+    "make": "Subaru",
+    "model": "Legacy",
+    "color": "White",
+    "simulated": false,
+    "summary": "The white Subaru linked in public reporting and by Senator Okiya Omtatah to the 24 December 2024 abduction of cartoonist Gideon Kibet (Kibet Bull) in Nairobi; the victim was found alive near Luanda, Vihiga County, on 6 January 2025.",
+    "sourceUrls": [
+      "https://capitalfm.africa/silhouettes-cartoonist-kibet-bull-found-alive-after-nairobi-abduction/"
+    ],
+    "sourceNames": [
+      "Capital FM Kenya",
+      "Senator Okiya Omtatah (public statement)"
+    ],
+    "sightings": [
+      {
+        "id": 1,
+        "date": "2024-12-24",
+        "zoneName": "Nairobi",
+        "source": "public reporting (abduction site, CBD)"
+      },
+      {
+        "id": 2,
+        "date": "2025-01-06",
+        "zoneName": "Vihiga",
+        "source": "public reporting (recovery site, Luanda)"
+      }
+    ]
+  },
+  {
+    "vehicleKey": "D1",
+    "platePartial": "KDG 4·7B",
+    "make": "Subaru",
+    "model": "Forester",
+    "color": "Silver",
+    "simulated": true,
+    "summary": "DEMONSTRATION RECORD, NOT A REAL VEHICLE. Six synthetic sightings inside one 30-day window across the Nairobi metro, co-located with documented incidents: constructed to exercise the four-zone rule end to end before the Tella field feed exists.",
+    "sourceUrls": [],
+    "sourceNames": [
+      "KAMPS demonstration dataset"
+    ],
+    "sightings": [
+      {
+        "id": 1,
+        "date": "2026-07-04",
+        "zoneName": "Nairobi",
+        "source": "simulated traffic camera still"
+      },
+      {
+        "id": 2,
+        "date": "2026-07-09",
+        "zoneName": "Nairobi",
+        "source": "simulated field monitor (Tella)"
+      },
+      {
+        "id": 3,
+        "date": "2026-07-15",
+        "zoneName": "Nairobi",
+        "source": "simulated citizen report"
+      },
+      {
+        "id": 4,
+        "date": "2026-07-21",
+        "zoneName": "Kiambu",
+        "source": "simulated OSINT geolocation"
+      },
+      {
+        "id": 5,
+        "date": "2026-07-27",
+        "zoneName": "Nairobi",
+        "source": "simulated field monitor (Tella)"
+      },
+      {
+        "id": 6,
+        "date": "2026-08-03",
+        "zoneName": "Nairobi",
+        "source": "simulated traffic camera still"
+      }
+    ]
+  },
+  {
+    "vehicleKey": "D2",
+    "platePartial": "KCX 9·1Y",
+    "make": "Subaru",
+    "model": "Legacy",
+    "color": "White",
+    "simulated": true,
+    "summary": "DEMONSTRATION RECORD, NOT A REAL VEHICLE. Five synthetic sightings in a 30-day window in central Nairobi and Dagoretti: exercises the four-zone rule at exactly the threshold.",
+    "sourceUrls": [],
+    "sourceNames": [
+      "KAMPS demonstration dataset"
+    ],
+    "sightings": [
+      {
+        "id": 1,
+        "date": "2026-06-08",
+        "zoneName": "Nairobi",
+        "source": "simulated traffic camera still"
+      },
+      {
+        "id": 2,
+        "date": "2026-06-14",
+        "zoneName": "Nairobi",
+        "source": "simulated citizen report"
+      },
+      {
+        "id": 3,
+        "date": "2026-06-22",
+        "zoneName": "Nairobi",
+        "source": "simulated field monitor (Tella)"
+      },
+      {
+        "id": 4,
+        "date": "2026-06-29",
+        "zoneName": "Nairobi",
+        "source": "simulated OSINT geolocation"
+      },
+      {
+        "id": 5,
+        "date": "2026-07-03",
+        "zoneName": "Nairobi",
+        "source": "simulated traffic camera still"
+      }
+    ]
+  },
+  {
+    "vehicleKey": "D3",
+    "platePartial": "KBY 3·6T",
+    "make": "Toyota",
+    "model": "Axio",
+    "color": "Blue",
+    "simulated": true,
+    "summary": "DEMONSTRATION RECORD, NOT A REAL VEHICLE. Three synthetic sightings spread over 90 days: never reaches the 30-day density threshold, proving the rule does not over-flag ordinary traffic.",
+    "sourceUrls": [],
+    "sourceNames": [
+      "KAMPS demonstration dataset"
+    ],
+    "sightings": [
+      {
+        "id": 1,
+        "date": "2026-05-02",
+        "zoneName": "Nakuru",
+        "source": "simulated citizen report"
+      },
+      {
+        "id": 2,
+        "date": "2026-06-18",
+        "zoneName": "Nakuru",
+        "source": "simulated citizen report"
+      },
+      {
+        "id": 3,
+        "date": "2026-08-01",
+        "zoneName": "Nakuru",
+        "source": "simulated traffic camera still"
+      }
+    ]
+  }
+]

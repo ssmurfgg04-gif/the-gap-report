@@ -1,0 +1,26 @@
+{
+  "round": 20,
+  "scores": {
+    "typography": 8,
+    "color": 8,
+    "layout": 8,
+    "components": 8,
+    "responsive": 7
+  },
+  "verdicts": {
+    "typography": "Flawless typographic hierarchy. The heading scale (H1 'Monitoring dashboard', H2 'Who else is doing this?', H3 'The Kenya Abduction...') establishes clear rhythm. Weight contrast between bold headings and regular body text is precise. Mono uppercase micro-labels ('KAMPS', 'OPERATIONS', 'DATA AS OF...', 'TOP 5 RISK ZONES') are disciplined and consistently tracked. Line-height is generous throughout; no orphans, cramped text, or widows visible in any screenshot. The red accent on 'this?' and the KPI number '227' provides effective emphasis without breaking the Swiss grid.",
+    "color": "Strictly one accent red (#C41E3A or equivalent) applied with surgical precision across all views: live status dot, active nav underline, 'REAL DATA' button border, critical/elevated badges, risk bars, map choropleth fills, pipeline stage numbers, and the hero word 'this?'. Neutrals range from near-black body text through mid-grays for secondary labels to light grays for borders and backgrounds. WCAG AA contrast is clearly met. No visual noise, no competing hues, no gradient exceptions (permitted functional shadow not visible in this batch).",
+    "layout": "Impeccable alignment to a consistent max-width container across Dashboard, Risk Map, Analytics, and Report views. Whitespace rhythm is generous and deliberate—section spacing, card padding, and inter-element gaps follow a strict modular scale. Hairline grids are intact: the KPI strip borders (d1), the risk zone list dividers (d1-d2), the analytics table (d5), and the architecture cards (d12) all show single-pixel borders with no double-border artifacts or misaligned cell joints. The footer (d15) sits properly at the document bottom with correct left-alignment of the report credit block and right-alignment of the coat of arms. The side detail panel in d4 maintains proper grid relationship with the map.",
+    "components": "All component systems—matrix tables with sticky columns and red-accented final column, tab bars with clear active states, KPI strips, the Kenya choropleth map with legend, Venn diagrams with region labels, vehicle sighting timelines with dots and window bands, alert cards with severity chips, and data tables with sticky headers and right-aligned numerals—are rendered correctly at normal viewing distance. No visible breakage, misalignment, overlap, or illegibility is present in any of the provided screenshots.",
+    "responsive": "Mobile layout integrity is strong with correct stacking, readable type, and no horizontal overflow. Dark mode palette is consistent. However, a specific visual defect is present in the dark mode Risk Map view (k2-dark-map) where the county selection panel (right side) contains county chip buttons that use a dark background with light borders, but the text color inside these chips is too low-contrast (dark grey on dark grey), making the labels nearly illegible compared to the high-contrast white body text in the same panel."
+  },
+  "fixes": {
+    "typography": [],
+    "color": [],
+    "layout": [],
+    "components": [],
+    "responsive": [
+      "Increase the text contrast (color) of the county chip buttons in the 'ZONE ASSESSMENT' sidebar of the dark mode Risk Map view to meet WCAG AA standards for readability against the dark background."
+    ]
+  }
+}

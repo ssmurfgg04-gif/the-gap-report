@@ -60,7 +60,7 @@ export function SystemLive() {
       >
         <span className="inline-flex items-center gap-2 rounded-full border border-dashed border-[var(--accent-ink)] px-3 py-1 font-mono text-[10px] uppercase tracking-[0.14em] text-[var(--accent-ink)]">
           <span className="h-1.5 w-1.5 rounded-full bg-[var(--accent-ink)]" aria-hidden="true" />
-          Simulated dataset
+          Real ingested data
         </span>
         {analysis && (
           <span className="font-mono text-[10px] uppercase tracking-[0.14em] text-muted-foreground">

@@ -1,0 +1,456 @@
+{
+  "dataset": "KAMPS public-record abduction / enforced-disappearance / related police-killing incidents, Kenya 2024-2026",
+  "count": 29,
+  "compiled_at": "2026-09-27T07:55:26Z",
+  "methodology": "Curated from sources fetched directly with curl (HTTP 200 verified at retrieval time) or from references extracted from Wikipedia wikitext fetched via the MediaWiki API. No fabricated entries; every entry has at least one real sourceUrl. datePrecision 'month' used when only the month is documented.",
+  "sources": [
+    {
+      "name": "Al Jazeera",
+      "url": "https://www.aljazeera.com/features/2025/3/4/very-worrying-fear-stalks-kenya-as-dozens-of-government-critics-abducted"
+    },
+    {
+      "name": "Al Jazeera",
+      "url": "https://www.aljazeera.com/news/2026/6/25/two-years-on-kenyan-families-still-seek-justice-after-gen-z-protests"
+    },
+    {
+      "name": "Al Jazeera",
+      "url": "https://www.aljazeera.com/news/2026/6/27/kenya-rights-groups-say-protesters-found-dumped-tortured-after-arrests"
+    },
+    {
+      "name": "BBC News",
+      "url": "https://www.bbc.com/news/articles/clyzlpn84yro"
+    },
+    {
+      "name": "BBC News",
+      "url": "https://www.bbc.com/news/articles/cz7jxn38lvyo"
+    },
+    {
+      "name": "BBC News",
+      "url": "https://www.bbc.com/news/articles/cvgwg5n0y0lo"
+    },
+    {
+      "name": "BBC News",
+      "url": "https://www.bbc.com/news/articles/cn9jw20nr5ro"
+    },
+    {
+      "name": "Capital FM Kenya",
+      "url": "https://capitalfm.africa/silhouettes-cartoonist-kibet-bull-found-alive-after-nairobi-abduction/"
+    },
+    {
+      "name": "Capital FM Kenya",
+      "url": "https://capitalfm.africa/one-of-the-mlolongo-3-abductees-found-dead-in-ruai/"
+    },
+    {
+      "name": "Capital FM Kenya",
+      "url": "https://capitalfm.africa/martin-mwau-second-man-who-went-missing-from-mlolongo-found-at-city-mortuary/"
+    },
+    {
+      "name": "Capital FM Kenya",
+      "url": "https://capitalfm.africa/wajirs-dela-mca-yussuf-reunites-with-family-after-missing-for-six-months/"
+    },
+    {
+      "name": "Capital FM Kenya",
+      "url": "https://capitalfm.africa/freed-abductee-bob-njagi-claims-his-captors-detained-missing-wajir-mca/"
+    },
+    {
+      "name": "Capital FM Kenya",
+      "url": "https://capitalfm.africa/kenyan-activists-abducted-in-kampala-after-attending-bobi-wines-presidential-rally/"
+    },
+    {
+      "name": "Citizen Digital",
+      "url": "https://citizen.digital/article/six-missing-june-25-protesters-found-tortured-dumped-in-different-parts-of-nairobi-n385346"
+    },
+    {
+      "name": "Citizen Digital",
+      "url": "https://citizen.digital/article/four-activists-missing-in-mathare-as-families-rights-groups-issue-tuesday-protest-warning-n385396"
+    },
+    {
+      "name": "The Star (Kenya)",
+      "url": "https://www.the-star.co.ke/news/2026-06-29-missing-activist-lichuma-found-alive-in-hospital"
+    },
+    {
+      "name": "The Star (Kenya)",
+      "url": "https://www.the-star.co.ke/news/2024-07-18-macharia-gaitho-to-kenyans-thank-you-for-your-solidarity/"
+    },
+    {
+      "name": "The Star (Kenya)",
+      "url": "https://www.the-star.co.ke/news/2024-06-21-finance-bill-protests-one-killed-along-moi-avenue/"
+    },
+    {
+      "name": "The Standard (Kenya)",
+      "url": "https://www.standardmedia.co.ke/national/article/2001551677/one-killed-in-fresh-nairobi-protests-after-alleged-abductions"
+    },
+    {
+      "name": "KNCHR",
+      "url": "https://www.knchr.org/Articles/ArtMID/2432/ArticleID/1200/Update-on-the-Status-of-Human-Rights-in-Kenya-during-the-Anti-Finance-Bill-Protests-Monday-1st-July-2024"
+    },
+    {
+      "name": "Wikipedia (wikitext fetched via API)",
+      "url": "https://en.wikipedia.org/wiki/Kenya_Finance_Bill_protests"
+    },
+    {
+      "name": "Wikipedia (wikitext fetched via API)",
+      "url": "https://en.wikipedia.org/wiki/2025_Kenyan_protests"
+    },
+    {
+      "name": "Wikipedia (wikitext fetched via API)",
+      "url": "https://en.wikipedia.org/wiki/2024_in_Kenya"
+    },
+    {
+      "name": "Wikipedia (wikitext fetched via API)",
+      "url": "https://en.wikipedia.org/wiki/2025_in_Kenya"
+    },
+    {
+      "name": "Wikipedia (wikitext fetched via API)",
+      "url": "https://en.wikipedia.org/wiki/Death_of_Albert_Ojwang"
+    },
+    {
+      "name": "AP News (ref via Wikipedia; blocks bots)",
+      "url": "https://apnews.com/article/kenya-protests-finance-bill-william-ruto-65965d6b7f9b4a713be6ee6a47d382aa"
+    }
+  ],
+  "context_statistics": [
+    {
+      "statistic": "KNCHR: 32 enforced/involuntary disappearances and 627 arrests during Finance Bill protests (18 Jun - 1 Jul 2024); 39 killed, 361 injured",
+      "sourceUrl": "https://www.knchr.org/Articles/ArtMID/2432/ArticleID/1200/Update-on-the-Status-of-Human-Rights-in-Kenya-during-the-Anti-Finance-Bill-Protests-Monday-1st-July-2024"
+    },
+    {
+      "statistic": "KNCHR: 82 cases of abductions and enforced disappearances since June 2024, 29 unaccounted for (as of Jan 2025)",
+      "sourceUrl": "https://www.aljazeera.com/features/2025/3/4/very-worrying-fear-stalks-kenya-as-dozens-of-government-critics-abducted"
+    },
+    {
+      "statistic": "HRW: 44% increase in abductions Sep 2023-Aug 2024 (52 vs 36 cases)",
+      "sourceUrl": "https://www.aljazeera.com/features/2025/3/4/very-worrying-fear-stalks-kenya-as-dozens-of-government-critics-abducted"
+    },
+    {
+      "statistic": "HRW World Report 2026 (via Al Jazeera): 26 people linked to 2024 protests and 15 linked to 2025 demonstrations remain missing",
+      "sourceUrl": "https://www.aljazeera.com/news/2026/6/25/two-years-on-kenyan-families-still-seek-justice-after-gen-z-protests"
+    },
+    {
+      "statistic": "IPOA: of 62 killed in 2024 anti-finance-bill protests, only 3 cases have reached court (June 2026 statement)",
+      "sourceUrl": "https://www.aljazeera.com/news/2026/6/25/two-years-on-kenyan-families-still-seek-justice-after-gen-z-protests"
+    }
+  ],
+  "incidents": [
+    {
+      "date": "2024-06-20",
+      "datePrecision": "day",
+      "person": "Rex Kanyike Masai",
+      "location": "Nairobi (Moi Avenue)",
+      "status": "found_deceased",
+      "category": "police_killing",
+      "sourceName": "The Star (Kenya)",
+      "sourceUrl": "https://www.the-star.co.ke/news/2024-06-21-finance-bill-protests-one-killed-along-moi-avenue/",
+      "notes": "29-year-old shot ~7pm during anti-Finance Bill protest; pronounced dead at Bliss Hospital. One of the first protest fatalities."
+    },
+    {
+      "date": "2024-06-25",
+      "datePrecision": "day",
+      "person": "Emmanuel Kamau Mukuria",
+      "location": "Nairobi (Imenti House, CBD)",
+      "status": "missing",
+      "category": "enforced_disappearance",
+      "sourceName": "Al Jazeera",
+      "sourceUrl": "https://www.aljazeera.com/news/2026/6/25/two-years-on-kenyan-families-still-seek-justice-after-gen-z-protests",
+      "notes": "24-year-old arrested by police at Imenti House on 25 June 2024 during OccupyParliament protests; still missing two years on per family."
+    },
+    {
+      "date": "2024-06-30",
+      "datePrecision": "month",
+      "person": "Denzel Omondi",
+      "location": "Nairobi",
+      "status": "found_deceased",
+      "category": "enforced_disappearance",
+      "sourceName": "Al Jazeera",
+      "sourceUrl": "https://www.aljazeera.com/news/2026/6/25/two-years-on-kenyan-families-still-seek-justice-after-gen-z-protests",
+      "notes": "23-year-old taken by police from a house shared with cousins days after posting video of protesters inside Parliament; later found dead."
+    },
+    {
+      "date": "2024-07-01",
+      "datePrecision": "month",
+      "person": "Osama Otero",
+      "location": "Nairobi",
+      "status": "returned",
+      "category": "abduction",
+      "sourceName": "AP News (reference verified via Wikipedia: Kenya Finance Bill protests)",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Kenya_Finance_Bill_protests",
+      "notes": "Influencer who hosted Ruto's X forum; Ruto apologized for Otero's abduction by police during the protests (AP, 7 July 2024). AP article URL in Wikipedia ref: https://apnews.com/article/kenya-protests-finance-bill-william-ruto-65965d6b7f9b4a713be6ee6a47d382aa (AP blocks automated fetch: HTTP 403)."
+    },
+    {
+      "date": "2024-07-15",
+      "datePrecision": "month",
+      "person": "Leslie Muturi",
+      "location": "Nairobi",
+      "status": "returned",
+      "category": "abduction",
+      "sourceName": "Al Jazeera",
+      "sourceUrl": "https://www.aljazeera.com/features/2025/3/4/very-worrying-fear-stalks-kenya-as-dozens-of-government-critics-abducted",
+      "notes": "Son of then-Public Service CS Justin Muturi; abducted during 2024 antigovernment protests; CS said President Ruto called NIS after which he was released. Exact date not stated in source (mid-2024)."
+    },
+    {
+      "date": "2024-07-17",
+      "datePrecision": "day",
+      "person": "Macharia Gaitho",
+      "location": "Nairobi (Karen Police Station)",
+      "status": "returned",
+      "category": "abduction",
+      "sourceName": "The Star (Kenya)",
+      "sourceUrl": "https://www.the-star.co.ke/news/2024-07-18-macharia-gaitho-to-kenyans-thank-you-for-your-solidarity/",
+      "notes": "Veteran journalist bundled into a car at Karen Police Station by unidentified men; released same day; DCI called it mistaken identity."
+    },
+    {
+      "date": "2024-08-19",
+      "datePrecision": "day",
+      "person": "Jamil Longton",
+      "location": "Kitengela, Kajiado County",
+      "status": "returned",
+      "category": "abduction",
+      "sourceName": "Al Jazeera",
+      "sourceUrl": "https://www.aljazeera.com/features/2025/3/4/very-worrying-fear-stalks-kenya-as-dozens-of-government-critics-abducted",
+      "notes": "Abducted with brother Aslam by armed plainclothes group; held ~5 days, blindfolded, tortured; abandoned at Gachie, Kiambu."
+    },
+    {
+      "date": "2024-08-19",
+      "datePrecision": "day",
+      "person": "Aslam Longton",
+      "location": "Kitengela, Kajiado County",
+      "status": "returned",
+      "category": "abduction",
+      "sourceName": "Al Jazeera",
+      "sourceUrl": "https://www.aljazeera.com/features/2025/3/4/very-worrying-fear-stalks-kenya-as-dozens-of-government-critics-abducted",
+      "notes": "36-year-old cybercafe operator, antigovernment protester; abducted with brother Jamil; released at Gachie."
+    },
+    {
+      "date": "2024-08-19",
+      "datePrecision": "day",
+      "person": "Bob Njagi",
+      "location": "Kitengela, Kajiado County",
+      "status": "returned",
+      "category": "abduction",
+      "sourceName": "Capital FM Kenya",
+      "sourceUrl": "https://capitalfm.africa/freed-abductee-bob-njagi-claims-his-captors-detained-missing-wajir-mca/",
+      "notes": "Activist, 'one of three individuals abducted in Kitengela in August' (with the Longton brothers); later freed; abducted again in Uganda in Oct 2025 (see 2025-10-01 entry)."
+    },
+    {
+      "date": "2024-09-13",
+      "datePrecision": "day",
+      "person": "Yussuf Hussein Ahmed",
+      "location": "Nairobi (Enterprise Road, Industrial Area); Wajir County",
+      "status": "resurfaced",
+      "category": "abduction",
+      "sourceName": "Capital FM Kenya",
+      "sourceUrl": "https://capitalfm.africa/wajirs-dela-mca-yussuf-reunites-with-family-after-missing-for-six-months/",
+      "notes": "Wajir Dela/Della Anole MCA abducted 13 Sep 2024; body found in Lake Yahud in Oct initially feared to be his but DNA ruled it out; reunited with family ~8 Mar 2025. Also: https://capitalfm.africa/tension-in-wajir-as-body-of-missing-mca-identified/"
+    },
+    {
+      "date": "2024-10-18",
+      "datePrecision": "day",
+      "person": "Necdet Seyitoglu",
+      "location": "Nairobi",
+      "status": "returned",
+      "category": "abduction",
+      "sourceName": "BBC News",
+      "sourceUrl": "https://www.bbc.com/news/articles/cz7jxn38lvyo",
+      "notes": "British national of Turkish origin abducted by ~8 masked men; released after 8 hours when he showed his British passport."
+    },
+    {
+      "date": "2024-10-18",
+      "datePrecision": "day",
+      "person": "Huseyin Yesilsu and three Turkish refugees",
+      "location": "Nairobi",
+      "status": "resurfaced",
+      "category": "enforced_disappearance",
+      "sourceName": "BBC News",
+      "sourceUrl": "https://www.bbc.com/news/articles/cvgwg5n0y0lo",
+      "notes": "Turkish citizens abducted in Nairobi 18 Oct 2024; Kenyan foreign ministry later said four missing Turkish refugees (Gulen movement) were repatriated at Ankara's request; UN 'deeply concerned' (23 Oct 2024)."
+    },
+    {
+      "date": "2024-12-16",
+      "datePrecision": "day",
+      "person": "Justus Mutumwa",
+      "location": "Mlolongo, Machakos County",
+      "status": "found_deceased",
+      "category": "abduction",
+      "sourceName": "Capital FM Kenya",
+      "sourceUrl": "https://capitalfm.africa/one-of-the-mlolongo-3-abductees-found-dead-in-ruai/",
+      "notes": "'Mlolongo 3': arrested by men believed to be police 16 Dec 2024; body found in Ruai river, identified at City Mortuary 30 Jan 2025 after IG Kanja & DCI Amin told court he was not in police custody."
+    },
+    {
+      "date": "2024-12-16",
+      "datePrecision": "day",
+      "person": "Martin Mwau",
+      "location": "Mlolongo, Machakos County",
+      "status": "found_deceased",
+      "category": "abduction",
+      "sourceName": "Capital FM Kenya",
+      "sourceUrl": "https://capitalfm.africa/martin-mwau-second-man-who-went-missing-from-mlolongo-found-at-city-mortuary/",
+      "notes": "'Mlolongo 3': body positively identified by family at City Mortuary 30 Jan 2025."
+    },
+    {
+      "date": "2024-12-16",
+      "datePrecision": "day",
+      "person": "Kalani Muema",
+      "location": "Mlolongo, Machakos County",
+      "status": "missing",
+      "category": "enforced_disappearance",
+      "sourceName": "Al Jazeera",
+      "sourceUrl": "https://www.aljazeera.com/features/2025/3/4/very-worrying-fear-stalks-kenya-as-dozens-of-government-critics-abducted",
+      "notes": "Third of the 'Mlolongo 3'; still missing as of March 2025 report. Also Capital FM: https://capitalfm.africa/one-of-the-mlolongo-3-abductees-found-dead-in-ruai/"
+    },
+    {
+      "date": "2024-12-20",
+      "datePrecision": "month",
+      "person": "Billy Mwangi",
+      "location": "Embu town, Embu County",
+      "status": "returned",
+      "category": "abduction",
+      "sourceName": "Capital FM Kenya",
+      "sourceUrl": "https://capitalfm.africa/silhouettes-cartoonist-kibet-bull-found-alive-after-nairobi-abduction/",
+      "notes": "College student abducted in Embu in December 2024 among six youths critical of the president; freed 6 Jan 2025, returned frail. Exact abduction day not stated; freed day verified."
+    },
+    {
+      "date": "2024-12-20",
+      "datePrecision": "month",
+      "person": "Bernard Kavuli",
+      "location": "Ngong, Kajiado County",
+      "status": "returned",
+      "category": "abduction",
+      "sourceName": "Capital FM Kenya",
+      "sourceUrl": "https://capitalfm.africa/silhouettes-cartoonist-kibet-bull-found-alive-after-nairobi-abduction/",
+      "notes": "Content creator picked up in Ngong; freed 6 Jan 2025, found over 400km away in Kitale. Exact abduction day not stated."
+    },
+    {
+      "date": "2024-12-20",
+      "datePrecision": "month",
+      "person": "Peter Muteti",
+      "location": "Uthiru, Nairobi County",
+      "status": "returned",
+      "category": "abduction",
+      "sourceName": "Capital FM Kenya",
+      "sourceUrl": "https://capitalfm.africa/silhouettes-cartoonist-kibet-bull-found-alive-after-nairobi-abduction/",
+      "notes": "Taken from Uthiru; freed 6 Jan 2025, abandoned in Nairobi CBD. Exact abduction day not stated."
+    },
+    {
+      "date": "2024-12-24",
+      "datePrecision": "day",
+      "person": "Gideon Kibet (Kibet Bull)",
+      "location": "Nairobi",
+      "status": "returned",
+      "category": "abduction",
+      "sourceName": "Capital FM Kenya",
+      "sourceUrl": "https://capitalfm.africa/silhouettes-cartoonist-kibet-bull-found-alive-after-nairobi-abduction/",
+      "notes": "Silhouettes cartoonist (Ruto caricatures) abducted 24 Dec 2024 after meeting Senator Okiya Omtatah; found alive 6 Jan 2025, abandoned at Luanda, Vihiga County ~3am."
+    },
+    {
+      "date": "2024-12-25",
+      "datePrecision": "day",
+      "person": "Rony Kiplagat",
+      "location": "Kikuyu, Kiambu County",
+      "status": "returned",
+      "category": "abduction",
+      "sourceName": "Capital FM Kenya",
+      "sourceUrl": "https://capitalfm.africa/silhouettes-cartoonist-kibet-bull-found-alive-after-nairobi-abduction/",
+      "notes": "Kibet Bull's brother; taken from Kikuyu on Christmas Day; freed 6 Jan 2025, dropped in Machakos."
+    },
+    {
+      "date": "2025-01-15",
+      "datePrecision": "month",
+      "person": "Maria Sarungi Tsehai",
+      "location": "Nairobi",
+      "status": "returned",
+      "category": "abduction",
+      "sourceName": "Al Jazeera",
+      "sourceUrl": "https://www.aljazeera.com/features/2025/3/4/very-worrying-fear-stalks-kenya-as-dozens-of-government-critics-abducted",
+      "notes": "Tanzanian journalist/activist abducted in Nairobi in January 2025 after leaving a salon; later released. Exact day not stated in source."
+    },
+    {
+      "date": "2025-05-25",
+      "datePrecision": "day",
+      "person": "George Koimburi",
+      "location": "Juja, Kiambu County",
+      "status": "returned",
+      "category": "abduction",
+      "sourceName": "BBC News",
+      "sourceUrl": "https://www.bbc.com/news/articles/clyzlpn84yro",
+      "notes": "MP abducted by unknown men after church service Sunday 25 May 2025; found badly beaten on a Ruiru coffee farm Monday morning, hospitalized at Karen Hospital."
+    },
+    {
+      "date": "2025-06-08",
+      "datePrecision": "day",
+      "person": "Albert Omondi Ojwang",
+      "location": "Nairobi (Central Police Station)",
+      "status": "found_deceased",
+      "category": "police_killing",
+      "sourceName": "BBC News / Wikipedia",
+      "sourceUrl": "https://www.bbc.com/news/articles/cn9jw20nr5ro",
+      "notes": "Teacher/blogger arrested 6-7 June 2025 for alleged defamation of Deputy IG of Police; died in custody night of 7-8 June; autopsy (10 June) found death from physical assault. His death sparked June 2025 protests. Wikipedia: https://en.wikipedia.org/wiki/Death_of_Albert_Ojwang"
+    },
+    {
+      "date": "2025-10-01",
+      "datePrecision": "day",
+      "person": "Bob Njagi (Uganda abduction)",
+      "location": "Kireka, Uganda (outside Kampala)",
+      "status": "returned",
+      "category": "abduction",
+      "sourceName": "Capital FM Kenya",
+      "sourceUrl": "https://capitalfm.africa/kenyan-activists-abducted-in-kampala-after-attending-bobi-wines-presidential-rally/",
+      "notes": "Abducted with Nicholas Oyoo by 'armed operatives' at a Kireka petrol station after attending Bobi Wine's rally; freed and repatriated ~8 Nov 2025 after Museveni announced their detention (Wikipedia: 2025 in Kenya, AP ref)."
+    },
+    {
+      "date": "2025-10-01",
+      "datePrecision": "day",
+      "person": "Nicholas Oyoo",
+      "location": "Kireka, Uganda (outside Kampala)",
+      "status": "returned",
+      "category": "abduction",
+      "sourceName": "Capital FM Kenya",
+      "sourceUrl": "https://capitalfm.africa/kenyan-activists-abducted-in-kampala-after-attending-bobi-wines-presidential-rally/",
+      "notes": "Free Kenya Movement activist abducted with Bob Njagi; released ~8 Nov 2025."
+    },
+    {
+      "date": "2026-06-25",
+      "datePrecision": "day",
+      "person": "Six unnamed June 25 anniversary protesters",
+      "location": "Nairobi (outside Parliament)",
+      "status": "returned",
+      "category": "abduction",
+      "sourceName": "Citizen Digital",
+      "sourceUrl": "https://citizen.digital/article/six-missing-june-25-protesters-found-tortured-dumped-in-different-parts-of-nairobi-n385346",
+      "notes": "Six people who went missing during 25 June 2026 anniversary protests (of 7 reported missing) found 27 June, allegedly tortured, dumped on Lang'ata Road and near Talanta Stadium; confirmed by KHRC and Haki Africa. Also: https://www.aljazeera.com/news/2026/6/27/kenya-rights-groups-say-protesters-found-dumped-tortured-after-arrests"
+    },
+    {
+      "date": "2026-06-25",
+      "datePrecision": "day",
+      "person": "Davis Lichuma",
+      "location": "Mathare, Nairobi County",
+      "status": "returned",
+      "category": "abduction",
+      "sourceName": "The Star (Kenya)",
+      "sourceUrl": "https://www.the-star.co.ke/news/2026-06-29-missing-activist-lichuma-found-alive-in-hospital",
+      "notes": "Mathare social justice activist went missing 25 June 2026 during Gen Z anniversary commemorations; found 29 June in critical condition, dumped at Kenyatta National Hospital (Social Justice Centres Working Group). Also: https://citizen.digital/article/four-activists-missing-in-mathare-as-families-rights-groups-issue-tuesday-protest-warning-n385396"
+    },
+    {
+      "date": "2026-06-28",
+      "datePrecision": "day",
+      "person": "Three other Mathare activists (unnamed)",
+      "location": "Mathare, Nairobi County",
+      "status": "missing",
+      "category": "enforced_disappearance",
+      "sourceName": "Citizen Digital",
+      "sourceUrl": "https://citizen.digital/article/four-activists-missing-in-mathare-as-families-rights-groups-issue-tuesday-protest-warning-n385396",
+      "notes": "Families and rights groups reported four activists missing in Mathare (Lichuma + three others) amid a 'surge of enforced disappearances' targeting Mathare activists; 24-hour ultimatum issued 28 June 2026."
+    },
+    {
+      "date": "2026-06-30",
+      "datePrecision": "day",
+      "person": "Unnamed protester killed during anti-abduction protest",
+      "location": "Mathare, Nairobi County",
+      "status": "found_deceased",
+      "category": "police_killing",
+      "sourceName": "The Standard (AFP)",
+      "sourceUrl": "https://www.standardmedia.co.ke/national/article/2001551677/one-killed-in-fresh-nairobi-protests-after-alleged-abductions",
+      "notes": "One person killed (three shot) as police opened fire at protests demanding release of abducted protesters; Reuters also reported (via Wikipedia: Kenya Finance Bill protests)."
+    }
+  ],
+  "coverage_notes": "Entries limited to publicly reported, individually identifiable incidents with at least one verifiable source (fetched or Wikipedia-reference-verified). Aggregate statistics (e.g., HRW/KNCHR totals) are stored separately in context_statistics. AP News returns 403 to automated fetches; the one AP-sourced entry (Osama Otero) is kept because its reference was extracted from the fetched Wikipedia wikitext. Paywalled Nation Africa articles were not used as primary sourceUrls. Two incidents (Turkish citizens; Ugandan activists) occurred partly outside Kenya but are directly part of Kenya's abduction pattern."
+}

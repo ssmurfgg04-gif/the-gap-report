@@ -13,47 +13,41 @@ const ROUND = process.argv[2] ?? "0";
 const DIR = "/home/z/my-project/screenshots";
 
 const sectionShots = [
-  ["d1-hero", "Hero section (desktop, light)"],
-  ["d2-field", "The Field — 8 organizations list (desktop, light)"],
-  ["d3-matrix", "The Matrix — capability table (desktop, light)"],
-  ["d4-analysis", "Analysis grid (desktop, light)"],
-  ["d10-system", "The System — KAMPS blueprint: intro, four architecture layer cards, data tier cards (desktop, light)"],
-  ["d11-system2", "The System — six-stage pipeline table and safeguards grid (desktop, light)"],
-  ["d16-roadmap", "The System — ethics statement callout and four-phase roadmap cards (desktop, light)"],
-  ["d5-outlook", "Outlook — why now / partnerships (desktop, light)"],
-  ["d6-verdict", "Verdict section (desktop, light)"],
-  ["d8-footer", "Footer pinned at the document bottom (desktop, light)"],
+  ["d1-dashboard", "Dashboard view (desktop, light): KPI strip with count-up numbers, live clock, pipeline stage chips, top-risk zones, recent alerts"],
+  ["d2-dashboard2", "Dashboard view scrolled (desktop, light): system status, data provenance, mini map preview"],
+  ["d4-map-selected", "Risk Map view with Nairobi county selected: 47-county choropleth map, side detail panel with full zone assessment, legend, zoom controls"],
+  ["d5-analytics-forecast", "Analytics view top (desktop, light): forecast card with national monthly series SVG chart, dashed forecast line, 95% prediction band, backtest metrics (AUC, Brier, PI coverage), county projections table"],
+  ["d11-report-hero", "Report view: hero section (desktop, light)"],
+  ["d12-report-system", "Report view: KAMPS blueprint with architecture layer cards, data tier cards (desktop, light)"],
+  ["d15-report-footer", "Report view: footer with the Kenya coat of arms and credit line (desktop, light)"],
 ];
 
 const componentShots = [
-  ["d9-matrix-scrolled", "The Matrix horizontally scrolled at tablet width — the sticky first column (CAPABILITY) is engaged and pinned, proving position:sticky works"],
-  ["d7-accordion", "The Field with an accordion row expanded (desktop, light)"],
-  ["d12-model", "The Instrument, Running — live KAMPS dashboard: simulated-data chip, KPI strip, tab bar, risk panel with Kenya SVG map (dots = sub-counties, dashed halo = significant cluster), index composition card, 10-column zone table (desktop, light)"],
-  ["d13-model-bias", "Bias correction tab — MSE Venn diagram (three overlapping circles with region counts), capture-rate bars, pairwise cross-check card, ground-truth callout with three big numbers, zone underreporting table (desktop, light)"],
-  ["d14-model-vehicles", "Vehicles tab — four-zone rule spec strip, flagged vehicle cards with stats grids and SVG sighting timelines (dots on a line, shaded 30-day window band, month labels), cleared vehicles row (desktop, light)"],
-  ["d15-model-alerts", "Alerts tab — alert feed cards with severity chips, mono titles, message text, two-column Drivers / Recommended actions lists, output contract callout (desktop, light)"],
+  ["d3-map", "Risk Map view initial state (desktop, light): 47-county choropleth, legend, status bar"],
+  ["d6-analytics-bias", "Analytics view scrolled (desktop, light): two-circle MSE Venn with real counts, capture-rate bars, estimator status card, model-validation callout, county burden table"],
+  ["d7-vehicles", "Vehicles view (desktop, light): four-zone rule spec chips, real documented vehicle cards with source links first, DEMO-labeled cards, SVG sighting timelines"],
+  ["d8-alerts", "Alerts view (desktop, light): severity-ordered feed cards with chips, drivers, recommended protective actions, output-contract callout"],
+  ["d9-sources", "Sources view (desktop, light): provenance register with tier badges, connection statuses, real row counts, honesty note"],
+  ["d10-analyst", "Analyst view (desktop, light): AI Q&A panel with suggested question chips, textarea, conversation area"],
+  ["d13-report-model", "Report view: live model section with KPI strip, tabs, county risk table (desktop, light)"],
+  ["d14-report-model-bias", "Report view: bias correction tab with Venn and tables (desktop, light)"],
 ];
 
 const mobileShots = [
-  ["m1-hero", "Hero (mobile 390px)"],
-  ["m2-field", "The Field (mobile 390px)"],
-  ["m3-matrix", "The Matrix table initial scroll position (mobile 390px)"],
-  ["m3b-matrix-scrolled", "The Matrix table scrolled horizontally with sticky first column engaged (mobile 390px)"],
-  ["m4-analysis", "Analysis (mobile 390px)"],
-  ["m8-system", "The System blueprint: architecture cards stacked (mobile 390px)"],
-  ["m9-system2", "The System: pipeline table horizontally scrollable with sticky header (mobile 390px)"],
-  ["m10-model", "The Instrument, Running: KPI strip 2-col, tab bar, Kenya map, zone table (mobile 390px)"],
-  ["m11-model-vehicles", "Vehicles tab on mobile: spec strip 2-col, vehicle cards with timelines (mobile 390px)"],
-  ["m5-outlook", "Outlook (mobile 390px)"],
-  ["m6-verdict", "Verdict (mobile 390px)"],
-  ["m7-footer", "Footer at bottom (mobile 390px)"],
+  ["m1-dashboard", "Dashboard (mobile 390px): KPI stack, top zones, recent alerts"],
+  ["m2-map", "Risk Map (mobile 390px): county choropleth, legend, county chip buttons"],
+  ["m3-analytics", "Analytics (mobile 390px): forecast chart, metrics, tables scroll horizontally"],
+  ["m4-vehicles", "Vehicles (mobile 390px): vehicle cards with timelines"],
+  ["m5-alerts", "Alerts (mobile 390px): feed cards stacked"],
+  ["m6-analyst", "Analyst (mobile 390px): question panel"],
+  ["m7-report-hero", "Report view hero (mobile 390px)"],
+  ["m8-report-model", "Report view live model section (mobile 390px)"],
 ];
 
 const darkShots = [
-  ["k1-dark-hero", "Hero (desktop, dark mode)"],
-  ["k2-dark-matrix", "The Matrix (desktop, dark mode)"],
-  ["k3-dark-field", "The Field (desktop, dark mode)"],
-  ["k4-dark-model", "The Instrument, Running: KPI strip, tabs, map and table (desktop, dark mode)"],
+  ["k1-dark-dashboard", "Dashboard (desktop, dark mode)"],
+  ["k2-dark-map", "Risk Map with selection panel (desktop, dark mode)"],
+  ["k3-dark-model", "Report view live model: KPI strip, tabs, map and table (desktop, dark mode)"],
 ];
 
 function img(name) {
@@ -64,7 +58,7 @@ function img(name) {
 
 const EVIDENCE_RULE = `Score these FIVE features from 1 to 8 (integers only). 8 = flawless, publication-grade, nothing to fix. 7 = excellent with one nitpick. Score honestly: if a genuine defect is visible, it cannot be an 8; if no defect is visible, it MUST be an 8. EVIDENCE RULE: any score below 8 must cite a defect that is concretely visible in the provided screenshots — name the exact element and the exact visual anomaly you can see. Evaluate ONLY at a normal viewing distance: if you would need to zoom in, pixel-peep, or inspect "under close inspection" to notice an issue, it is NOT a defect and must not affect the score. Do NOT deduct for speculative, hypothetical, or unverifiable issues (e.g. "might not be pinned", "could be tighter", "appears 1-2px off"). Sub-pixel rendering nuances (hairline joints, 1px anti-aliasing seams, T-junctions where borders meet, slightly varying border thickness at corners, font rasterization) are normal browser rendering, NOT defects. Data-density is intentional in the KAMPS dashboard sections (tables, timelines, Venn) — density alone is not a defect; only visible breakage, misalignment, overlap, or illegibility is. If you cannot point to a specific, clearly visible defect in a specific screenshot, that feature scores 8.`;
 
-const CONTEXT = `You are a strict senior UI design reviewer auditing a minimalist Swiss-style report website ("The Gap Report") built with Next.js + Tailwind. It presents a competitive landscape analysis (hero, expandable 8-item organization list, 9-column capability matrix, analysis grids, outlook, verdict) PLUS two new sections: "The System" (KAMPS blueprint: four architecture layer cards, three data-tier cards, a six-stage pipeline table, safeguards grid, ethics callout, four-phase roadmap cards) and "The Instrument, Running" (a live analytics dashboard: KPI strip, four tabs — Risk index with Kenya SVG map + 10-column zone table, Bias correction with a three-circle Venn diagram + capture bars + estimator callout + underreporting table, Vehicles with rule spec chips + vehicle cards + SVG sighting timelines, Alerts with a severity-ordered feed). The intended aesthetic throughout: generous whitespace, near-black on white, a single restrained red accent, mono uppercase micro-labels, hairline borders, no shadows or gradients (the only exceptions: a subtle functional shadow under the matrix's pinned first column while horizontally scrolled, and standard focus rings).
+const CONTEXT = `You are a strict senior UI design reviewer auditing a minimalist Swiss-style working application ("KAMPS: Kenya Abduction Monitoring & Prediction System") built with Next.js + Tailwind. It is a data-monitoring application with a top app bar (logo, live status, view nav), hash-routed views (Dashboard, Risk Map, Analytics, Vehicles, Alerts, Sources, Analyst, Report). The Report view embeds the original long-form landscape analysis (hero, organization list, capability matrix, KAMPS blueprint, live model section, verdict, footer with the Kenya coat of arms). It presents a competitive landscape analysis (hero, expandable 8-item organization list, 9-column capability matrix, analysis grids, outlook, verdict) PLUS two new sections: "The System" (KAMPS blueprint: four architecture layer cards, three data-tier cards, a six-stage pipeline table, safeguards grid, ethics callout, four-phase roadmap cards) and "The Instrument, Running" (a live analytics dashboard: KPI strip, four tabs — Risk index with Kenya SVG map + 10-column zone table, Bias correction with a three-circle Venn diagram + capture bars + estimator callout + underreporting table, Vehicles with rule spec chips + vehicle cards + SVG sighting timelines, Alerts with a severity-ordered feed). The intended aesthetic throughout: generous whitespace, near-black on white, a single restrained red accent, mono uppercase micro-labels, hairline borders, no shadows or gradients (the only exceptions: a subtle functional shadow under the matrix's pinned first column while horizontally scrolled, and standard focus rings).
 
 IMPORTANT context: screenshots labeled "scrolled" intentionally capture tables MID-HORIZONTAL-SCROLL; content sliding beneath the pinned sticky first column — which casts a soft shadow — is expected, correct sticky-table behavior, NOT truncation or clipping. The final "THIS SYSTEM" matrix column is intentionally distinguished by a 2px red left rule and red header text. All red accents use the same single CSS color variable; tiny apparent tonal differences are font anti-aliasing artifacts. The Kenya map is an intentionally simplified vector outline with centroid dots; its geometric simplification is by design, not an inaccuracy. The Venn diagram circles overlap; region count labels sit inside their regions by design. Vehicle timeline dots sit ON the baseline line by design.`;
 

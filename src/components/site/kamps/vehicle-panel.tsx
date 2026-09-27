@@ -14,7 +14,7 @@ const STATUS_STYLES = {
 
 const STATUS_LABEL = {
   flagged: "Flagged",
-  monitoring: "Monitoring",
+  monitoring: "Documented",
   cleared: "Cleared",
 } as const;
 
@@ -107,14 +107,21 @@ function VehicleCard({ vehicle, rangeStart, rangeEnd }: { vehicle: VehicleAssess
             Plate partial {vehicle.platePartial} · last seen {fmtDate(vehicle.lastSeen)}
           </p>
         </div>
-        <span
-          className={cn(
-            "inline-flex items-center rounded-full px-2.5 py-0.5 font-mono text-[10px] font-medium uppercase tracking-[0.14em]",
-            STATUS_STYLES[vehicle.status]
+        <div className="flex items-center gap-2">
+          {vehicle.simulated && (
+            <span className="inline-flex items-center rounded-full border border-dashed border-muted-foreground/70 px-2.5 py-0.5 font-mono text-[10px] uppercase tracking-[0.14em] text-muted-foreground">
+              Demo
+            </span>
           )}
-        >
-          {STATUS_LABEL[vehicle.status]}
-        </span>
+          <span
+            className={cn(
+              "inline-flex items-center rounded-full px-2.5 py-0.5 font-mono text-[10px] font-medium uppercase tracking-[0.14em]",
+              STATUS_STYLES[vehicle.status]
+            )}
+          >
+            {STATUS_LABEL[vehicle.status]}
+          </span>
+        </div>
       </div>
 
       <div className="mt-5 grid grid-cols-2 gap-x-8 gap-y-4 sm:grid-cols-4">
@@ -144,25 +151,30 @@ function VehicleCard({ vehicle, rangeStart, rangeEnd }: { vehicle: VehicleAssess
       <Timeline vehicle={vehicle} rangeStart={rangeStart} rangeEnd={rangeEnd} />
 
       <p className="mt-3 text-sm leading-[1.6] text-muted-foreground">
-        {flagged ? (
-          <>
-            Meets the four-zone rule: {vehicle.clusterSightings} sightings inside one 30-day window within a
-            25 km radius across {vehicle.zones.join(", ")}, overlapping {vehicle.incidentOverlap} verified
-            incidents in time and space. Descriptor-level tracking only: no plate matching, no owner
-            identification, no individuals.
-          </>
-        ) : vehicle.status === "monitoring" ? (
-          <>
-            Density threshold met without incident overlap: monitored, not flagged. The rule deliberately
-            requires both signals before escalation.
-          </>
-        ) : (
-          <>
-            {vehicle.totalSightings} total sightings spread over months: never {vehicle.clusterSightings === 1 ? "reaches" : "reach"} the
-            30-day density threshold. Cleared.
-          </>
-        )}
+        {vehicle.summary
+          ? vehicle.summary
+          : flagged
+          ? `Meets the four-zone rule: ${vehicle.clusterSightings} sightings inside one 30-day window across ${vehicle.zones.join(", ")}, overlapping ${vehicle.incidentOverlap} documented incidents in time and space. Descriptor-level tracking only: no plate matching, no owner identification, no individuals.`
+          : vehicle.status === "monitoring"
+          ? "Density threshold met without incident overlap: monitored, not flagged. The rule deliberately requires both signals before escalation."
+          : `${vehicle.totalSightings} total sightings spread over months: never ${vehicle.clusterSightings === 1 ? "reaches" : "reach"} the 30-day density threshold. Cleared.`}
       </p>
+      {vehicle.sourceUrls && vehicle.sourceUrls.length > 0 && (
+        <p className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-1">
+          <span className="font-mono text-[10px] uppercase tracking-[0.14em] text-[var(--accent-ink)]">Sources</span>
+          {vehicle.sourceUrls.slice(0, 3).map((u, i) => (
+            <a
+              key={u}
+              href={u}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-xs underline decoration-border underline-offset-2 transition-colors hover:decoration-[var(--accent-ink)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent-ink)]"
+            >
+              {vehicle.sourceNames?.[i] ?? new URL(u).hostname}
+            </a>
+          ))}
+        </p>
+      )}
     </article>
   );
 }
@@ -195,9 +207,9 @@ export function VehiclePanel({ analysis }: { analysis: KampsAnalysis }) {
       <p className="mt-5 max-w-3xl text-sm leading-[1.6] text-muted-foreground">
         The four-zone rule is the civil-society analog of law-enforcement ANPR pattern analysis, turned
         toward state actors instead of citizens. A vehicle is flagged only when sighting density and
-        incident overlap coincide. The descriptors below echo publicly reported patterns (unmarked
-        Subarus documented near abduction sites, government-prefix fleets) but every plate partial in
-        this simulation is fictional.
+        incident overlap coincide. The first cards below are real, publicly documented pattern vehicles
+        with their sources. Cards marked Demo carry a synthetic sighting log, clearly labeled, that
+        exercises the rule end to end until the encrypted Tella field feed deploys in Phase 3.
       </p>
 
       {/* flagged + monitoring */}

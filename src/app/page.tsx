@@ -1,28 +1,11 @@
-import { Header } from "@/components/site/header";
-import { Hero } from "@/components/site/hero";
-import { Players } from "@/components/site/players";
-import { Matrix } from "@/components/site/matrix";
-import { Analysis } from "@/components/site/analysis";
-import { SystemBlueprint } from "@/components/site/system-blueprint";
-import { SystemLive } from "@/components/site/system-live";
-import { Outlook } from "@/components/site/outlook";
-import { Verdict, Footer } from "@/components/site/verdict";
+import { AppShell } from "@/components/app/app-shell";
 
+/**
+ * The site is a single-route application: the server component mounts the
+ * client app shell, which owns view state (dashboard, map, analytics,
+ * vehicles, alerts, sources, analyst, report) behind URL hashes. The original
+ * long-form report lives inside the shell's Report view.
+ */
 export default function Home() {
-  return (
-    <div className="flex min-h-screen flex-col bg-background">
-      <Header />
-      <main className="flex-1">
-        <Hero />
-        <Players />
-        <Matrix />
-        <Analysis />
-        <SystemBlueprint />
-        <SystemLive />
-        <Outlook />
-        <Verdict />
-      </main>
-      <Footer />
-    </div>
-  );
+  return <AppShell />;
 }

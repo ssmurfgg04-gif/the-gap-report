@@ -403,14 +403,16 @@ export type RiskComponents = {
   clusterScore: number;      // 0-1
   temporalScore: number;     // 0-1
   vehicleScore: number;      // 0-1
+  ucdpBaseline: number;      // 0-1 (historical organized-violence burden, UCDP)
 };
 
 export const RISK_WEIGHTS = {
-  ebRate: 0.35,
-  mseAdjusted: 0.2,
-  cluster: 0.2,
-  temporal: 0.15,
-  vehicle: 0.1,
+  ebRate: 0.28,
+  mseAdjusted: 0.12,
+  cluster: 0.22,
+  ucdpBaseline: 0.2,
+  temporal: 0.1,
+  vehicle: 0.08,
 } as const;
 
 export function compositeRisk(c: RiskComponents): number {
@@ -418,6 +420,7 @@ export function compositeRisk(c: RiskComponents): number {
     RISK_WEIGHTS.ebRate * c.ebPercentile +
     RISK_WEIGHTS.mseAdjusted * c.msePercentile +
     RISK_WEIGHTS.cluster * c.clusterScore +
+    RISK_WEIGHTS.ucdpBaseline * c.ucdpBaseline +
     RISK_WEIGHTS.temporal * c.temporalScore +
     RISK_WEIGHTS.vehicle * c.vehicleScore;
   return Math.round(score * 1000) / 10; // 0-100

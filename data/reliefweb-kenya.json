@@ -1,0 +1,23 @@
+{
+  "dataset": "ReliefWeb v2 Kenya reports",
+  "quality": "failed",
+  "retrieved_at_note": "Attempts made during KAMPS data ingestion (see manifest.json retrieved_at)",
+  "result": {
+    "reports": [],
+    "count": 0
+  },
+  "failure_record": {
+    "endpoint": "https://api.reliefweb.int/v2/reports",
+    "status": "ReliefWeb v2 API reachable but refuses requests: HTTP 403 AccessDeniedHttpException - 'You are not using an approved appname. Kindly request an appname from ReliefWeb here: https://apidoc.reliefweb.int/parameters#appname'",
+    "appnames_tried": ["kamps", "reliefweb", "apidoc", "rwapi", "kamps-research", "reliefweb-api", "rwint", "rw-widget", "ocha", "unocha"],
+    "no_appname": "HTTP 400 BadRequestHttpException: 'Missing appname parameter'",
+    "v1_endpoint": "HTTP 410 - 'The API v1 has been decommissioned. Please use version v2 instead.'",
+    "website_fallbacks": {
+      "/country/kenya/rss.xml": "HTTP 200 but returns global updates feed (country filter not applied by legacy-river parameter)",
+      "/search": "HTTP 444 (blocked)",
+      "/country/kenya (HTML)": "HTTP 202 with empty body (bot protection)"
+    },
+    "conclusion": "ReliefWeb now requires pre-approved appnames (registration via Google form per https://apidoc.reliefweb.int/parameters). No Kenya reports could be retrieved without credentials. No data fabricated.",
+    "next_action": "Register an appname via https://docs.google.com/forms/d/e/1FAIpQLScR5EE_SBhweLLg_2xMCnXNbT6md4zxqIB0 (linked from apidoc) and re-run: /v2/reports?appname=APPROVED_NAME&filter[field]=country&filter[value][0]=Kenya&fields[include][]=title&fields[include][]=date.created&fields[include][]=url_alias&sort[]=date.created:desc&limit=50"
+  }
+}

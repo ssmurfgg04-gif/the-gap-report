@@ -1,0 +1,122 @@
+{
+  "project": "KAMPS (Kenya Abduction Monitoring & Prediction System) - data ingestion manifest",
+  "agent": "A (data-ingestion)",
+  "retrieved_at": "2026-09-27T07:58:30Z",
+  "method": "All downloads via curl (Bash) with polite 1s delays; HTML parsed with python3 (stdlib only); normalized JSON/CSV written under /home/z/my-project/data/. NO fabricated data: every row traces to a fetched source.",
+  "files": [
+    {
+      "file": "ucdp-kenya.csv",
+      "format": "CSV (all 52 original UCDP GED columns retained)",
+      "rows_or_features": 1126,
+      "source": "UCDP GED v23.1 (Uppsala Conflict Data Program, Georeferenced Event Dataset) - https://ucdp.uu.se/downloads/ged/ged231-csv.zip (downloaded 26.6MB zip, HTTP 200)",
+      "license": "Free for scholarly/reference use; cite Sundberg & Melander (2013) JPR 50(1); HEG by Pettersson, Högbladh & Öberg",
+      "retrieved_at": "2026-09-27T07:36:00Z",
+      "quality": "verified",
+      "notes": "Filtered country_id=501 AND country='Kenya' (NOTE: task brief said 470, but in UCDP GED Kenya is Gleditsch-Ward code 501; 470 does not exist in the dataset; 0 mismatches between country name and id). 1126 events 1989-01-01..2022-12-30. deaths(best)=6302, civilian deaths=1327."
+    },
+    {
+      "file": "ucdp-kenya-summary.json",
+      "format": "JSON",
+      "rows_or_features": "1 summary object (events_total, by_type, by_year, deaths totals)",
+      "source": "Derived from ucdp-kenya.csv (UCDP GED v23.1)",
+      "license": "same as ucdp-kenya.csv",
+      "retrieved_at": "2026-09-27T07:37:00Z",
+      "quality": "verified",
+      "notes": "by_type: statebased 261, nonstate 561, onesided 304. Peak years: 2008 (117), 2017 (107), 2014 (85)."
+    },
+    {
+      "file": "county-populations.json",
+      "format": "JSON array",
+      "rows_or_features": 47,
+      "source": "Wikipedia 'List of counties of Kenya by population' (https://en.wikipedia.org/wiki/List_of_counties_of_Kenya_by_population; wikitext fetched via MediaWiki API, cites KNBS 2019 census Vol I + citypopulation.de) merged with Wikipedia 'Counties of Kenya' (https://en.wikipedia.org/wiki/Counties_of_Kenya) for code, capital, area, former province, 2022 registered voters",
+      "license": "CC BY-SA 4.0 (Wikipedia); underlying data KNBS 2019 Kenya Population and Housing Census (public)",
+      "retrieved_at": "2026-09-27T07:40:00Z",
+      "quality": "verified",
+      "notes": "CROSS-CHECK PASSED: sum of 47 county population2019 = 47,564,296, exactly the official 2019 census total (0.000% difference); sum population2009 = 38,610,097 also exact. population2023 (citypopulation.de estimates via same table) sums to 51,210,285 vs 51,525,702 shown in the table's total row (total row uses a different source) - use 2019 as canonical denominators. Discrepancy noted: Wikipedia 'Counties of Kenya' table shows Turkana 2019=1,504,976, inconsistent with KNBS census 926,976 used here (KNBS value used because the ranking table passes the official-total cross-check)."
+    },
+    {
+      "file": "kenya-counties.geojson",
+      "format": "GeoJSON FeatureCollection",
+      "rows_or_features": 47,
+      "source": "mikelmaron/kenya-election-data counties.geojson - https://raw.githubusercontent.com/mikelmaron/kenya-election-data/master/data/counties.geojson (HTTP 200, 1.32MB); provenance per repo README: IEBC (vote.iebc.or.ke) boundaries",
+      "license": "No LICENSE file in repo; data derived from Kenya IEBC electoral boundaries (public-sector data). Treated as public reference use with attribution.",
+      "retrieved_at": "2026-09-27T07:41:00Z",
+      "quality": "verified",
+      "notes": "1.25MB (<2MB, no simplification needed). Source file had 48 features: 47 named counties + 1 null-property sliver (Shape_Area ~1e-5) which was dropped. Properties normalized to {name, countyName, countyCode} matching county-populations.json names exactly (47/47 match); original attributes preserved as orig_* fields. Alternate sources tested: Ohuru-Tech 404, mandla-sm 404, HDX 404; deldersveld topojson not needed."
+    },
+    {
+      "file": "missing-voices.json",
+      "format": "JSON {statistics[], victims[], coverage_notes[]}",
+      "rows_or_features": "12 statistics entries; 200 victim records",
+      "source": "Missing Voices (Police Reforms Working Group - Kenya) - https://missingvoices.or.ke (pages fetched: /, /statistics, /voices?page=0..6, /statistics/2020, /statistics/2021, /statistics/2022, /trial-tracker, /about, /jsonapi [404])",
+      "license": "Site content copyright Missing Voices Coalition / PRWG-K (site footer 'Missing Voices © 2026'); data compiled for research/attribution use",
+      "retrieved_at": "2026-09-27T07:45:00Z",
+      "quality": "partial",
+      "notes": "Real data collected: yearly case totals 2019-2025 (145..125 cases), monthly series (Enforced Disappearances / Killings / Incidents) for 2020-2026 parsed from embedded Drupal/Highcharts configs, prosecution statements (28 court prosecutions all-time; 6/5/4 arrests for 2020/2021/2022), and 200 most recent victim records (2025-06-25..2026-08-15) with name/age/sex/location/mannerOfDeath/date. PARTIAL because: 200-entry cap applied (deeper history exists), 2019 monthly series unavailable (/statistics/2019 404), victim rows lack per-case county/category columns (only aggregate chart series distinguish ED vs killings), and year pages' victim tables are not year-filtered (site bug)."
+    },
+    {
+      "file": "incidents-public-record.json",
+      "format": "JSON {count, sources[], context_statistics[], incidents[]}",
+      "rows_or_features": "29 incidents (2024: 20, 2025: 5, 2026: 4); 26 sources; 5 context statistics",
+      "source": "Primary news articles fetched and verified with curl (HTTP 200): Al Jazeera (3), BBC News (4), Capital FM Kenya (6), Citizen Digital (2), The Star (3), The Standard (1), KNCHR (1); plus Wikipedia wikitext fetched via API (Kenya Finance Bill protests, 2025 Kenyan protests, 2024/2025 in Kenya, Death of Albert Ojwang, Maverick Aoko) with reference URLs extracted; one AP News reference kept via Wikipedia-verification (AP blocks automated fetch, HTTP 403)",
+      "license": "Facts compiled with source attribution; underlying articles copyrighted by respective publishers (fair-use citation for research)",
+      "retrieved_at": "2026-09-27T07:55:00Z",
+      "quality": "verified",
+      "notes": "Every entry has a real sourceUrl that was fetched (HTTP 200) or extracted from fetched Wikipedia wikitext. Statuses: returned 18, found_deceased 6, missing 3, resurfaced 2. Categories: abduction 21, enforced_disappearance 5, police_killing 3. 22 day-precision, 7 month-precision dates. Includes: Mlolongo 3, Kibet Bull and four co-abductees, Longton brothers, Bob Njagi, Wajir MCA Yussuf Ahmed, MP Koimburi, Albert Ojwang, Turkish citizens, Uganda (Bobi Wine rally) abductions, 2026 June 25 anniversary abduction cases."
+    },
+    {
+      "file": "reliefweb-kenya.json",
+      "format": "JSON (failure record)",
+      "rows_or_features": "0 reports (documented failure)",
+      "source": "ReliefWeb v2 API - https://api.reliefweb.int/v2/reports (endpoint reachable; refuses requests)",
+      "license": "n/a",
+      "retrieved_at": "2026-09-27T07:56:00Z",
+      "quality": "failed",
+      "notes": "HTTP 403 AccessDeniedHttpException: 'not using an approved appname' for 10 appnames tried (kamps, reliefweb, apidoc, rwapi, kamps-research, reliefweb-api, rwint, rw-widget, ocha, unocha); HTTP 400 without appname; v1 endpoint HTTP 410 decommissioned; website /search 444; /country/kenya HTML 202 empty (bot protection); country RSS returns unfiltered global feed. ReliefWeb now requires pre-registered appnames (Google form per apidoc.reliefweb.int/parameters). No data fabricated; next action documented in the file."
+    }
+  ],
+  "gaps": [
+    {
+      "source": "ACLED (Armed Conflict Location & Event Data)",
+      "reason": "Requires an approved API key (registration). Additionally api.acleddata.com does not resolve from this sandbox (DNS failure) and acleddata.com is behind Cloudflare (HTTP 403 'Just a moment...').",
+      "impact": "No 2023-2026 georeferenced security events from ACLED; UCDP GED v23.1 covers only through 2022.",
+      "mitigation": "Missing Voices (2025-2026) and curated incidents file partially cover the recent period."
+    },
+    {
+      "source": "ReliefWeb v2 API",
+      "reason": "HTTP 403 - requires pre-approved appname (registration via Google form); v1 decommissioned (410); website search blocked (444/202).",
+      "impact": "No humanitarian/security situation reports ingested.",
+      "mitigation": "Failure documented in data/reliefweb-kenya.json with retry instructions."
+    },
+    {
+      "source": "GDELT 2.0 event stream",
+      "reason": "Reachable (lastupdate.txt HTTP 200) but consists of global 15-minute dumps (2-3MB+ zips per file) that would require downloading dozens of files and heavy filtering; out of scope for this ingestion round.",
+      "impact": "No global-news event stream for trend features.",
+      "mitigation": "None yet; candidate for future ingestion with a streaming filter on Kenya-related GLOWS/ACTOR codes."
+    },
+    {
+      "source": "UCDP GED newer version (v24.1+)",
+      "reason": "ged241-csv.zip verified reachable (HTTP 200) and would extend conflict events into 2023, but task specified ged231; not ingested.",
+      "impact": "UCDP Kenya series stops at 2022-12-30.",
+      "mitigation": "Easy upgrade: re-run filter script against ged241-csv.zip."
+    },
+    {
+      "source": "Missing Voices full victim database + 2019 monthly statistics",
+      "reason": "200-entry cap per project policy; /statistics/2019 link returns 404; per-victim rows lack county/category fields; Drupal JSON:API disabled (404).",
+      "impact": "Victim-level data limited to 200 most recent records (Jun 2025 - Aug 2026).",
+      "mitigation": "Aggregate monthly/yearly series 2020-2026 collected; pagination loop documented for future expansion."
+    },
+    {
+      "source": "Nation Africa (Daily Nation) articles; AP News articles",
+      "reason": "Nation Africa is paywalled; AP News returns 403 to automated clients.",
+      "impact": "Some corroborating articles not usable as primary sourceUrls (AP content used only via Wikipedia reference extraction, clearly labeled).",
+      "mitigation": "BBC, Al Jazeera, Capital FM, Citizen Digital, The Star, The Standard, KNCHR used instead."
+    },
+    {
+      "source": "KNCHR full statements database",
+      "reason": "Only the 1 July 2024 protest status statement was ingested (verified HTTP 200); KNCHR publishes many more press statements not enumerated without site search.",
+      "impact": "KNCHR aggregate figures (32 EDs during Jun-Jul 2024; 82 cases to Jan 2025) captured via their statement and Al Jazeera, but not their full case list.",
+      "mitigation": "Included in incidents-public-record.json context_statistics."
+    }
+  ]
+}

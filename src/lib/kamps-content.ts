@@ -223,8 +223,8 @@ export const vehicleRuleSpec = [
 
 export const livePanel = {
   kicker: "The Instrument, Running",
-  title: "Simulated data. Real statistics.",
-  lede: "This panel runs the full six-stage pipeline against a seeded demonstration dataset: 12 sub-counties, seven years of synthetic incidents modeled on the scale of published aggregates, and a simulated field-monitor sighting log. Every number below is computed live by the engine. No real individuals, plates, or cases appear anywhere in it.",
+  title: "Real data. Real statistics.",
+  lede: "This panel runs the six-stage pipeline against the ingested real datasets: the Missing Voices victim database and monthly statistics, a curated public-record incident file with source URLs, KNBS 2019 census denominators for all 47 counties, and UCDP GED organized-violence events from 1989 to 2022. Every number is computed live by the engine and traced to its source.",
   dataNote:
-    "Simulation ground truth: 425 incidents were generated; the lists captured 356. The engine never sees the truth value. How close the estimators land is the demo.",
+    "Entity resolution deduplicates the lists before counting. Where the data cannot support a statistic, the engine says so instead of inventing one: that is the system working as designed.",
 };

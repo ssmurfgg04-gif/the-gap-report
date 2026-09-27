@@ -8,7 +8,6 @@
  * is at risk.
  */
 import type { RiskBand } from "./stats";
-import type { VehicleAssessment } from "./vehicle";
 
 export type Severity = "critical" | "elevated" | "watch" | "info";
 
@@ -25,7 +24,7 @@ export type KampsAlert = {
   confidence: "high" | "medium" | "low";
 };
 
-const fmtDate = (d: Date) => d.toISOString().slice(0, 10);
+const fmtDate = (d: Date | string) => new Date(d).toISOString().slice(0, 10);
 
 export function zoneRiskAlerts(
   zones: Array<{
@@ -107,18 +106,30 @@ export function clusterAlert(
   };
 }
 
-export function vehicleAlert(v: VehicleAssessment, asOf: Date): KampsAlert {
+export function vehicleAlert(
+  v: {
+    color: string; make: string; model: string; platePartial: string;
+    clusterSightings: number; zones: string[]; incidentOverlap: number;
+    vehicleKey: string;
+    confidence: number; lastSeen: Date | string; simulated?: boolean;
+    status: string;
+  },
+  asOf: Date
+): KampsAlert {
   return {
     id: `vehicle-${v.vehicleKey.toLowerCase()}`,
     severity: "info",
     kind: "vehicle",
     asOf: fmtDate(asOf),
-    title: `VEHICLE PATTERN · ${v.color} ${v.make} ${v.model} (${v.platePartial})`,
+    title: `VEHICLE PATTERN · ${v.color} ${v.make} ${v.model} (${v.platePartial})${v.simulated ? " [DEMO]" : ""}`,
     message:
-      `${v.clusterSightings} sightings in a 30-day window within a 25 km radius across ` +
-      `${v.zones.join(", ")}, with ${v.incidentOverlap} verified incidents co-located in time and space. ` +
-      `Meets the four-zone rule threshold. Confidence ${v.confidence.toFixed(2)}. ` +
-      `Descriptor-level tracking only: no plate matches, no owner identification, no individuals.`,
+      (v.simulated
+        ? `DEMONSTRATION RECORD (synthetic sighting log, not a real vehicle). `
+        : `Publicly documented pattern vehicle. `) +
+      `${v.clusterSightings} sightings in a 30-day window across ${v.zones.join(", ")}, ` +
+      `with ${v.incidentOverlap} documented incidents co-located in time and space. ` +
+      `${v.status === "flagged" ? "Meets the four-zone rule threshold." : "Below the live-feed threshold: held as a documented reference pattern."} ` +
+      `Confidence ${v.confidence.toFixed(2)}. Descriptor-level tracking only: no plate matching, no owner identification, no individuals.`,
     drivers: [
       `${v.clusterSightings} sightings / 30 days (threshold 4)`,
       `${v.incidentOverlap} co-located verified incidents`,
@@ -133,24 +144,46 @@ export function vehicleAlert(v: VehicleAssessment, asOf: Date): KampsAlert {
   };
 }
 
-export function dataAlert(documented: number, estimated: number, asOf: Date): KampsAlert {
+export function dataAlert(
+  documented: number,
+  estimated: number,
+  asOf: Date,
+  mse?: {
+    method: string; listA: string; listB: string; nA: number; nB: number;
+    overlap: number; note: string; confidence: string;
+    ciLow: number; ciHigh: number; factor: number;
+  }
+): KampsAlert {
+  const estimable = mse && mse.method === "chapman-2list";
   return {
     id: "data-mse",
     severity: "info",
     kind: "data",
     asOf: fmtDate(asOf),
     title: "DATA LAYER · underreporting estimate updated",
-    message:
-      `Multiple Systems Estimation across three capture lists estimates ${estimated} total incidents ` +
-      `against ${documented} documented, an underreporting factor of ` +
-      `${(estimated / Math.max(documented, 1)).toFixed(2)}x. Rural zones show the widest intervals. ` +
-      `All figures are aggregate; the estimation method is the same one HRDAG applied to conflict mortality records.`,
-    drivers: [
-      `Documented ${documented}, estimated ${estimated}`,
-      "3-list capture-recapture, log-linear estimator, 400 bootstrap replications",
-    ],
+    message: estimable
+      ? `Two-list capture-recapture (${mse!.listA}, ${mse!.listB}) estimates ${estimated} total incidents ` +
+        `against ${documented} documented, an underreporting factor of ${(estimated / Math.max(documented, 1)).toFixed(2)}x ` +
+        `(95% interval ${mse!.ciLow} to ${mse!.ciHigh}). All figures are aggregate; the method is the same ` +
+        `family HRDAG applied to conflict mortality records.`
+      : `Capture-recapture is not estimable yet: the two live lists (${mse?.listA ?? "list A"}: ${mse?.nA ?? 0} records; ` +
+        `${mse?.listB ?? "list B"}: ${mse?.nB ?? 0} records) have ${mse?.overlap ?? 0} matched entities, and the method ` +
+        `needs overlap to see the unseen. The documented count stands unadjusted at ${documented} ` +
+        `(transparency interval ${mse?.ciLow ?? documented} to ${mse?.ciHigh ?? documented}). Police occurrence-book and ` +
+        `mortuary lists are pending Access to Information requests.`,
+    drivers: estimable
+      ? [
+          `Documented ${documented}, estimated ${estimated}`,
+          `Two-list capture-recapture: ${mse!.nA} x ${mse!.nB} records, ${mse!.overlap} matched`,
+          `Confidence ${mse!.confidence}`,
+        ]
+      : [
+          `List overlap ${mse?.overlap ?? 0}: estimator not identifiable`,
+          `Documented ${documented}, unadjusted`,
+          "Third and fourth lists pending Access to Information requests",
+        ],
     actions: [
-      "File or renew Access to Information requests for police and mortuary registries",
+      "File or renew Access to Information requests for police occurrence-book and mortuary registries",
       "Prioritize field collection in zones with wide confidence intervals",
     ],
     confidence: "high",
