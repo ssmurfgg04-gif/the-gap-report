@@ -1,11 +1,11 @@
 {
-  "generatedAt": "2026-09-27T16:29:19.818Z",
+  "generatedAt": "2026-09-27T16:42:25.846Z",
   "documentedTotal": 239,
   "estimatedTotal": 239,
   "abd12": 45,
   "vac12": 271,
   "critical": 5,
-  "elevated": 11,
-  "knchrLatestId": 1265,
+  "elevated": 10,
+  "knchrLatestId": null,
   "newsLast7d": 10
 }

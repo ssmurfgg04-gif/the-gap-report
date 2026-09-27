@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-27T16:26:47.291Z",
+  "generatedAt": "2026-09-27T16:41:54.178Z",
   "status": "ok",
   "query": "kenya (abduction OR abducted OR kidnapped OR \"enforced disappearance\") sourcelang:eng",
   "endpoint": "https://api.gdeltproject.org/api/v2/doc/doc (mode=TimelineVolRaw)",
