@@ -1,0 +1,30 @@
+{
+  "round": 8,
+  "scores": {
+    "typography": 7,
+    "color": 8,
+    "layout": 7,
+    "components": 7,
+    "responsive": 8
+  },
+  "verdicts": {
+    "typography": "Excellent Swiss-style hierarchy and mono-label discipline. One minor rhythm nitpick in the stat strip prevents a perfect score.",
+    "color": "Flawless execution of the single-accent red constraint. Near-black on white with perfect WCAG contrast and zero visual noise.",
+    "layout": "Strong grid alignment and whitespace rhythm throughout. A single double-border artifact in the footer separation keeps this from an 8.",
+    "components": "High-quality matrix table with working sticky columns and clear legend. The accordion lacks an explicit active-state indicator (color/weight change) for the expanded row.",
+    "responsive": "Flawless execution across all breakpoints and modes. Mobile layout maintains perfect integrity at 390px with no overflow or text clipping. The wide matrix table handles horizontal scrolling elegantly, featuring a sticky 'Capability' column that remains visible during navigation (m3b). Dark mode palette is consistent with high-contrast white text on deep black backgrounds, and all UI elements (icons, borders, checkboxes) are properly inverted for visibility."
+  },
+  "fixes": {
+    "typography": [
+      "Increase vertical padding inside the four stat boxes (8 / 8 / 3 / 6) so the large numerals have more breathing room relative to their uppercase labels, matching the generous rhythm used in the hero section."
+    ],
+    "color": [],
+    "layout": [
+      "Remove the redundant top border from the footer container (d8-footer shows both a section separator line AND the footer's own top border, creating a visible double-line)."
+    ],
+    "components": [
+      "Add a font-weight or color change to the expanded accordion row title (d7-accordion) so users can visually distinguish the active/open state from collapsed rows at a glance."
+    ],
+    "responsive": []
+  }
+}

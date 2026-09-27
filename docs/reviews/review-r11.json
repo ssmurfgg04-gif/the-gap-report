@@ -1,0 +1,28 @@
+{
+  "round": 11,
+  "scores": {
+    "typography": 8,
+    "color": 8,
+    "layout": 8,
+    "components": 7,
+    "responsive": 7
+  },
+  "verdicts": {
+    "typography": "Flawless Swiss-style hierarchy. Mono uppercase micro-labels (e.g., 'GLOBAL LANDSCAPE', 'THE FIELD') are disciplined and consistently tracked. Heading scale is bold and rhythmic. Body text has generous leading. No orphans, no cramped lines, and the red accent on 'this?' in the hero provides perfect weight contrast.",
+    "color": "Strictly minimalist near-black (#111) on white with a single restrained red accent (#D00). The red is used precisely for: the logo mark, hero emphasis, section numerators (01–05), matrix 'CORE CAPABILITY' marks, the final 'THIS SYSTEM' column header/text/rule, and the verdict highlight. No off-brand colors, no gradients, and contrast meets WCAG AA throughout.",
+    "layout": "Publication-grade alignment to a consistent max-width container. Whitespace rhythm is generous and deliberate. Hairline borders (1px) are crisp with zero double-border artifacts in the matrix or analysis grid. The footer sits correctly at the document bottom (d8). The 4-column stat strip and 3-column analysis grid are perfectly proportioned.",
+    "components": "Excellent component architecture with one minor visible nitpick in the scrolled matrix state. The sticky first column ('CAPABILITY') correctly pins and casts the specified functional shadow (d9). The final column ('THIS SYSTEM') is perfectly distinguished by its 2px red left rule and red header. The accordion affordances (chevrons), stat strip, and sticky nav are all polished. Score reduced to 7 due to a specific visible text-clipping artifact in the horizontally-scrolled matrix header (see fix).",
+    "responsive": "Strong mobile and dark-mode execution with a specific, minor visual defect in the dark-mode matrix table."
+  },
+  "fixes": {
+    "typography": [],
+    "color": [],
+    "layout": [],
+    "components": [
+      "In screenshot d9-matrix-scrolled, the second column header 'EARLY WARNING PROJECT' is aggressively truncated to 'ED T' (and 'AMNESTY CRISIS EVIDENCE LAB' to 'AMNESTY CRISIS EVIDENCE LAB'). While functional, the single-character fragments 'D' and 'T' look like a rendering glitch rather than intentional abbreviation. Fix by setting a min-width on matrix headers (e.g., min-w-[100px]) or using a more graceful ellipsis truncation strategy that preserves at least the full first word."
+    ],
+    "responsive": [
+      "In the dark-mode Matrix table (k2-dark-matrix), the 'THIS SYSTEM' sticky column header has a visible background color (dark grey) that creates a hard edge against the table body, whereas the standard row headers in the same column are transparent. Apply 'background-color: transparent' to the sticky header cell to match the seamless aesthetic of the rest of the table."
+    ]
+  }
+}
