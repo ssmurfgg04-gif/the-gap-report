@@ -47,7 +47,7 @@ function renderDigest(a: KampsAnalysis): string {
   const o = a.overview;
   lines.push(
     `KAMPS (Kenya Abduction Monitoring & Prediction System) analysis digest, as of ${a.asOf.slice(0, 10)}.`,
-    `Data: REAL ingested datasets (Missing Voices victims and monthly statistics, curated public-record incidents with source URLs, KNBS 2019 census county populations, UCDP GED organized-violence events 1989-2025, ACLED Kenya weekly county aggregates 1997 through the week of 2026-09-12). Monitoring window ${a.dataWindow.start} to ${a.dataWindow.end}. ${a.zones} counties monitored.`,
+    `Data: REAL ingested datasets (Missing Voices victims and monthly statistics, curated public-record incidents with source URLs, KNBS 2019 census county populations, UCDP GED organized-violence events 1989-2025, ACLED Kenya weekly county aggregates 1997 through the latest Monday file). Monitoring window ${a.dataWindow.start} to ${a.dataWindow.end}. ${a.zones} counties monitored.`,
     `Overview: ${o.documentedTotal} documented incidents in the window (${o.documentedLocated} county-located, ${o.unlocatedIncidents} without a resolvable county); adjusted estimate of the true total is ${o.estimatedTotal} (95% CI ${o.estimateCI[0]} to ${o.estimateCI[1]}), underreporting factor ${o.underreportingFactor}x.`
   );
 
@@ -116,6 +116,27 @@ function renderDigest(a: KampsAnalysis): string {
   if (a.temporal.acledMonthly?.length) {
     lines.push(
       `ACLED national monthly corroborating series (abductions / VAC events, June 2024 onward): ${a.temporal.acledMonthly.map(p => `${p.month}: ${p.abductions}/${p.vacEvents}`).join(", ")}.`
+    );
+  }
+  if (a.newsWatch) {
+    const nw = a.newsWatch;
+    lines.push(
+      `News watch (discovery layer, NOT verified incidents): ${nw.total} keyword-matched articles in the trailing 60 days, ${nw.last7d} in the last 7 days against a baseline of ${nw.weeklyBaseline} per week; feeds ${nw.feeds.join("; ")}. Most-mentioned counties: ${nw.counties.slice(0, 6).map(c => `${c.county} (${c.count})`).join(", ") || "none matched"}. KNCHR statement index is through id ${nw.knchr.latestId}${nw.knchr.newSinceLastRun ? ` (${nw.knchr.newSinceLastRun} new since last sweep)` : ""}. Every article needs human verification before it can count as a documented incident.`
+    );
+  }
+  if (a.media?.gdelt) {
+    const g = a.media.gdelt;
+    if (g.status === "ok" && g.monthly.length > 0) {
+      lines.push(
+        `GDELT media-attention volume (article counts, measures coverage not incidence, deliberately excluded from the risk index): ${g.monthly.slice(-6).map(p => `${p.month}: ${p.volume}`).join(", ")}.`
+      );
+    } else {
+      lines.push(`GDELT media volume: unavailable this run (${g.reason ?? "rate limited"}).`);
+    }
+  }
+  if (a.context) {
+    lines.push(
+      `Calendar context: Kenya's next general election is scheduled for ${a.context.nextElection}, ${a.context.monthsToElection} months out. ${a.context.note}`
     );
   }
   lines.push(

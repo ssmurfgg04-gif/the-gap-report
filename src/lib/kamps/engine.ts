@@ -21,6 +21,7 @@
 import {
   loadCounties, loadMissingVoices, loadPublicRecordIncidents,
   loadUcdp, loadVehicleCases, loadManifest, loadAcledAggregates,
+  loadNewsWatch, loadGdelt, loadMvYearlyTotals,
   type County, type MonthlyPoint, type PublicIncident, type MvVictim,
 } from "./real-data";
 import {
@@ -203,6 +204,30 @@ export type KampsAnalysis = {
     status: string; category: string; sourceName: string; sourceUrl: string;
     lists: string[];
   }>;
+  /** discovery layer: keyword-matched news coverage + KNCHR statement index */
+  newsWatch: {
+    generatedAt: string;
+    feeds: string[];
+    note: string;
+    total: number;
+    last7d: number;
+    last30d: number;
+    weeklyBaseline: number;
+    articles: Array<{ title: string; url: string; source: string; pubDate: string; county: string | null }>;
+    counties: Array<{ county: string; count: number }>;
+    knchr: { latestId: number | null; newSinceLastRun: number | null; statements: Array<{ id: number; title: string }> };
+  } | null;
+  /** GDELT media-attention volume: corroboration context, never a risk input */
+  media: {
+    gdelt: { generatedAt: string; status: string; reason: string | null; monthly: Array<{ month: string; volume: number }> };
+    note: string;
+  };
+  /** calendar context: election-cycle pressure, from the documented record */
+  context: {
+    nextElection: string;
+    monthsToElection: number;
+    note: string;
+  };
 };
 
 let cache: Promise<KampsAnalysis> | null = null;
@@ -681,6 +706,77 @@ async function compute(): Promise<KampsAnalysis> {
     projections,
   };
 
+  // ————— news watch (discovery layer) + media volume + calendar context —————
+  const newsRaw = loadNewsWatch();
+  let newsWatch: KampsAnalysis["newsWatch"] = null;
+  if (newsRaw) {
+    const daily = newsRaw.daily ?? [];
+    const dayKey = (offset: number) => new Date(Date.now() - offset * DAY).toISOString().slice(0, 10);
+    const last7d = daily.filter(d => d.date > dayKey(7)).reduce((s, d) => s + d.count, 0);
+    const last30d = daily.filter(d => d.date > dayKey(30)).reduce((s, d) => s + d.count, 0);
+    const prev4w = daily.filter(d => d.date <= dayKey(7) && d.date > dayKey(35)).reduce((s, d) => s + d.count, 0);
+    const weeklyBaseline = Math.round((prev4w / 4) * 10) / 10;
+    const countyCounts = new Map<string, number>();
+    for (const a of newsRaw.articles) {
+      if (a.county) countyCounts.set(a.county, (countyCounts.get(a.county) ?? 0) + 1);
+    }
+    newsWatch = {
+      generatedAt: newsRaw.generatedAt,
+      feeds: newsRaw.feeds,
+      note: newsRaw.note,
+      total: newsRaw.articles.length,
+      last7d,
+      last30d,
+      weeklyBaseline,
+      articles: newsRaw.articles.slice(0, 40),
+      counties: [...countyCounts.entries()]
+        .map(([county, count]) => ({ county, count }))
+        .sort((a, b) => b.count - a.count)
+        .slice(0, 10),
+      knchr: {
+        latestId: newsRaw.knchr.latestId,
+        newSinceLastRun: newsRaw.knchr.newSinceLastRun ?? null,
+        statements: newsRaw.knchr.statements.slice(0, 10).map(s => ({ id: s.id, title: s.title })),
+      },
+    };
+  }
+
+  const gdelt = loadGdelt();
+  const media: KampsAnalysis["media"] = {
+    gdelt: {
+      generatedAt: gdelt?.generatedAt ?? "",
+      status: gdelt?.status ?? "unavailable",
+      reason: gdelt?.reason ?? "GDELT DOC API not yet ingested in this deployment",
+      monthly: gdelt?.monthly ?? [],
+    },
+    note:
+      "GDELT article volume measures media attention, not incidence. Language bias, " +
+      "press freedom and news cycles all move it. That is exactly why it sits next to " +
+      "the civil-society and conflict-coded counts as context, and never inside the risk index.",
+  };
+
+  // Kenya general elections fall on the second Tuesday of August every five
+  // years: 2022-08-09, next 2027-08-10 (constitutional schedule).
+  const nextElection = "2027-08-10";
+  const monthsToElection = Math.max(0,
+    (new Date(nextElection).getUTCFullYear() - asOfEffective.getUTCFullYear()) * 12 +
+    (new Date(nextElection).getUTCMonth() - asOfEffective.getUTCMonth())
+  );
+  const mvYearly = loadMvYearlyTotals();
+  const peakYear = mvYearly.reduce(
+    (best, y) => (y.cases > (best?.cases ?? 0) ? y : best),
+    { year: "2021", cases: 0 } as { year: string; cases: number }
+  );
+  const context: KampsAnalysis["context"] = {
+    nextElection,
+    monthsToElection,
+    note:
+      `Kenya's next general election is scheduled for 10 August 2027, ${monthsToElection} months out. ` +
+      `The documented record says to watch this runway: the year before the last general election ` +
+      `(${peakYear.year}) was Missing Voices' highest yearly total on record (${peakYear.cases} cases). ` +
+      `Treat the election calendar as a planning input, not a prediction.`,
+  };
+
   // ————— alerts —————
   const alerts: KampsAlert[] = [];
   alerts.push(...zoneRiskAlerts(
@@ -760,6 +856,34 @@ async function compute(): Promise<KampsAnalysis> {
     }
   }
   alerts.push(dataAlert(documentedTotal, mse.estimated, asOf, mse));
+
+  // news watch alert: keyword-matched coverage volume in the trailing week
+  if (newsWatch && newsWatch.last7d >= 10 && newsWatch.last7d >= 1.5 * Math.max(newsWatch.weeklyBaseline, 1)) {
+    const topCounties = newsWatch.counties.slice(0, 4).map(c => `${c.county} (${c.count})`).join(", ");
+    alerts.push({
+      id: "news-watch",
+      severity: "watch",
+      kind: "data",
+      asOf: newsWatch.generatedAt.slice(0, 10),
+      title: `WATCH · news coverage surge: ${newsWatch.last7d} matching articles in 7 days`,
+      message:
+        `The discovery feeds matched ${newsWatch.last7d} articles in the trailing 7 days against a ${newsWatch.weeklyBaseline}-per-week ` +
+        `baseline for the previous four weeks. Coverage volume measures media attention, not incidence, ` +
+        `but a surge like this is how new documented cases surface first${topCounties ? `; most-mentioned counties in the coverage: ${topCounties}` : ""}. ` +
+        `Every matched article still needs human verification before it can enter the documented incident count.`,
+      drivers: [
+        `${newsWatch.last7d} matching articles, trailing 7 days`,
+        `${newsWatch.weeklyBaseline} per week over the prior four weeks`,
+        `Feeds: ${newsWatch.feeds.join("; ")}`,
+      ],
+      actions: [
+        "Review the matched articles in the news watch panel and verify each new case against a second source",
+        "Promote verified cases into the documented public-record file with their source URLs",
+        `Cross-check KNCHR statement ${newsWatch.knchr.latestId ?? "latest"} for official corroboration`,
+      ],
+      confidence: "medium",
+    });
+  }
   const sevOrder = { critical: 0, elevated: 1, watch: 2, info: 3 } as const;
   alerts.sort((a, b) => sevOrder[a.severity] - sevOrder[b.severity]);
 
@@ -820,5 +944,8 @@ async function compute(): Promise<KampsAnalysis> {
         category: u.category, sourceName: u.sourceName, sourceUrl: u.sourceUrl,
         lists: [u.lists.mv ? "Missing Voices" : null, u.lists.news ? "public record" : null].filter(Boolean) as string[],
       })),
+    newsWatch,
+    media,
+    context,
   };
 }

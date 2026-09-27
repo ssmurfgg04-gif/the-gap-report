@@ -60,6 +60,7 @@ const TOWN_TO_COUNTY: Record<string, string> = {
   ngong: "Kajiado", kikuyu: "Kiambu", matuu: "Machakos", kitengela: "Kajiado",
   mlolongo: "Machakos", uthiru: "Nairobi", juja: "Kiambu", mathare: "Nairobi",
   karen: "Nairobi", ruiru: "Kiambu", eldoret: "Uasin Gishu", lodwar: "Turkana",
+  lukenya: "Machakos", mavoko: "Machakos", syokimau: "Machakos", athi: "Machakos",
   "moi avenue": "Nairobi", "imenti house": "Nairobi", cbd: "Nairobi", nrb: "Nairobi",
   "industrial area": "Nairobi", "enterprise road": "Nairobi",
   "central police station": "Nairobi", dagoretti: "Nairobi",
@@ -119,6 +120,31 @@ export function isOutsideKenya(location: string | null | undefined): boolean {
     l.includes("outside kenya") ||
     l.includes("outside the country")
   );
+}
+
+const escapeRe = (s: string) => s.replace(/[.*+?^${}()|[\]\\']/g, "\\$&");
+
+/**
+ * Strict county matcher for free TEXT (headlines), as opposed to the lenient
+ * mapToCounty for incident location strings. Headlines contain ordinary
+ * English, so plain substring matching bites: the gazetteer town "voi"
+ * matches "Eastleigh Voice". Word-boundary regexes kill that class of false
+ * positive while still catching "Nairobi", "in Kiambu" or "Murang'a".
+ */
+export function matchCountyFromText(text: string | null | undefined, countyNames: Set<string>): string | null {
+  if (!text) return null;
+  // county names first (a title naming both a county and a town maps to the county)
+  for (const name of countyNames) {
+    const re = new RegExp(`\\b${escapeRe(name.toLowerCase())}\\b`, "i");
+    if (re.test(text)) return name;
+  }
+  // then the town gazetteer, word-boundary matched
+  for (const [key, county] of Object.entries(TOWN_TO_COUNTY)) {
+    if (key.length < 3) continue;
+    const re = new RegExp(`\\b${escapeRe(key)}\\b`, "i");
+    if (re.test(text)) return county;
+  }
+  return null;
 }
 
 // ————— UCDP GED events —————
@@ -301,6 +327,19 @@ export function loadMissingVoices(): { victims: MvVictim[]; monthly: MonthlyPoin
   monthly.sort((a, b) => a.month.localeCompare(b.month));
   mvCache = { victims, monthly };
   return mvCache;
+}
+
+/** Yearly case totals as displayed by Missing Voices (calendar years). */
+export function loadMvYearlyTotals(): Array<{ year: string; cases: number }> {
+  const raw = readJson<RawMv>("missing-voices.json");
+  for (const s of raw.statistics) {
+    if (s.type !== "yearly_case_totals") continue;
+    const values = (s as unknown as { values?: Record<string, number> }).values ?? {};
+    return Object.entries(values)
+      .map(([year, cases]) => ({ year, cases: Number(cases) || 0 }))
+      .sort((a, b) => a.year.localeCompare(b.year));
+  }
+  return [];
 }
 
 // ————— ACLED weekly aggregates (Open tier download file) —————
@@ -488,4 +527,71 @@ export type Manifest = {
 export function loadManifest(): Manifest {
   const m = readJson<Manifest>("manifest.json");
   return { files: m.files ?? [], gaps: m.gaps ?? [], retrieved_at: m.retrieved_at ?? "" };
+}
+
+// ————— news watch (discovery layer: Google News RSS, Bing News, KNCHR index) —————
+export type NewsArticle = {
+  title: string;
+  url: string;
+  source: string;
+  pubDate: string; // YYYY-MM-DD
+  matchedTerms: string[];
+  feed: string;
+  county: string | null;
+};
+
+export type NewsWatchData = {
+  generatedAt: string;
+  feeds: string[];
+  note: string;
+  articles: NewsArticle[];
+  daily: Array<{ date: string; count: number }>;
+  knchr: { latestId: number | null; newSinceLastRun?: number | null; statements: Array<{ id: number; title: string; url: string }> };
+};
+
+let newsCache: NewsWatchData | null = null;
+export function loadNewsWatch(): NewsWatchData | null {
+  if (newsCache !== null) return newsCache;
+  const file = path.join(DATA, "news-watch.json");
+  if (!fs.existsSync(file)) return null;
+  const raw = readJson<Omit<NewsWatchData, "articles"> & { articles: Array<Omit<NewsArticle, "county">> }>("news-watch.json");
+  const countyNames = new Set(loadCounties().map(c => c.name));
+  // strict word-boundary matching: headlines are prose, not location strings
+  const articles = (raw.articles ?? [])
+    .filter(a => a.title && a.url)
+    .map(a => ({ ...a, county: matchCountyFromText(a.title, countyNames) }));
+  newsCache = {
+    generatedAt: raw.generatedAt,
+    feeds: raw.feeds ?? [],
+    note: raw.note ?? "",
+    articles,
+    daily: raw.daily ?? [],
+    knchr: raw.knchr ?? { latestId: null, statements: [] },
+  };
+  return newsCache;
+}
+
+// ————— GDELT media-attention volume (corroboration only, never in the index) —————
+export type GdeltData = {
+  generatedAt: string;
+  status: "ok" | "failed";
+  reason?: string;
+  query: string;
+  monthly: Array<{ month: string; volume: number }>;
+};
+
+let gdeltCache: GdeltData | null = null;
+export function loadGdelt(): GdeltData | null {
+  if (gdeltCache !== null) return gdeltCache;
+  const file = path.join(DATA, "gdelt-kenya.json");
+  if (!fs.existsSync(file)) return null;
+  const raw = readJson<GdeltData>("gdelt-kenya.json");
+  gdeltCache = {
+    generatedAt: raw.generatedAt,
+    status: raw.status === "ok" ? "ok" : "failed",
+    reason: raw.reason,
+    query: raw.query ?? "",
+    monthly: raw.monthly ?? [],
+  };
+  return gdeltCache;
 }

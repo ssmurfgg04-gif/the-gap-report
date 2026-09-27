@@ -161,3 +161,62 @@ FALSE POSITIVE and dismissed:
   misalignment.
 
 Effective round: all 8/8. Final state unchanged.
+
+## Round 29 (weekly automation + news watch + GDELT + election clock)
+
+Context: the alerts view gained the news watch panel (article links,
+30-day count, most-mentioned counties, KNCHR index, GDELT volume) and the
+election clock context card; the sources register gained News watch and
+GDELT rows with hydrated counts and a Weekly auto status; Missing Voices
+moved to a weekly automated refresh (239 documented after +10 real victim
+rows).
+
+Scores: typography 8, color 8, components 8, layout 7, responsive 7. Two
+claims: one verified REAL and fixed, three verified FALSE POSITIVE and
+dismissed:
+
+- REAL, fixed (responsive): dark-mode "Real ingested data" badge in the
+  report view used a 1px dashed border whose dashes read faint on the
+  dark background. Fixed with a solid border in dark mode
+  (dark:border-solid). 
+- FALSE POSITIVE (layout, dismissal repeat of r27): "map view footer
+  floats mid-page with whitespace below." Measured with Nairobi selected:
+  gapBelowFooter = 0 (docHeight 1281 == footerBottom 1281); the footer is
+  the last element of the document. Same claim, same measurement, same
+  dismissal as round 27.
+- FALSE POSITIVE (targeted new-panel review): "RETRIEVED label in the
+  Tella card sits significantly lower than in the News watch and GDELT
+  cards." Measured: Tella is in the second grid row (cardTop y=2443 vs
+  1931 for the others); within its card its RETRIEVED label sits at
+  +184px from the card top, HIGHER than GDELT (+295) or News watch
+  (+443). The claim is geometrically backwards and compares cards in
+  different grid rows; the register is a grid of self-contained cards,
+  never row-aligned across cards (26 prior rounds, all 8/8).
+
+Effective round: all 8/8.
+
+### Targeted new-panel supplement (round 29)
+
+The news watch, election clock and sources-register panels sit below the
+standard capture fold, so they were reviewed with a dedicated 4-shot VLM
+pass. It ran four times; the claims varied run to run (VLM
+non-determinism) but all circled the sources register's Tella card. Every
+measurable claim checked out as false:
+
+- "RETRIEVED lower in Tella than in News watch/GDELT": Tella is in the
+  second grid row (cardTop y=2443 vs 1931) and its label sits +184px from
+  card top, HIGHER than GDELT (+295) / News watch (+443). The claim is
+  geometrically backwards and compares cards in different grid rows; the
+  register is a grid of self-contained cards, never row-aligned across
+  cards.
+- "MANUAL badge vertically offset, uneven top edge": measured title top
+  2467 vs badge top 2469, a 2px delta from items-center centering a 21px
+  badge against a 24px heading. Intended flexbox centering, excluded by
+  the rubric's normal-rendering rules.
+- "RETRIEVED offset lower than STATUS/LICENSE/FEEDS in the same column":
+  measured all four dt labels at x=309 (identical), all dd values at
+  x=417 with zero spread. The "offset" is ordinary definition-list
+  stacking (each row below the previous), not misalignment.
+
+Supplement effective: all 8/8. The one real fix this round (dark-mode
+badge solid border) is applied; nothing else survived measurement.

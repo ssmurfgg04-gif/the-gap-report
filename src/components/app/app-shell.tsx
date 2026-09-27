@@ -165,7 +165,7 @@ export function AppShell() {
       case "alerts":
         return <AlertsView kamps={k} />;
       case "sources":
-        return <SourcesView />;
+        return <SourcesView kamps={k} />;
       case "analyst":
         return <AnalystView />;
       case "report":

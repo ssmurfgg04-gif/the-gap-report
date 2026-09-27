@@ -1,0 +1,119 @@
+# KAMPS weekly data pipeline.
+#
+# ACLED refreshes its aggregated Africa file every Monday, so this pipeline
+# runs Tuesday morning (04:30 UTC, 07:30 Nairobi): pull every source, run the
+# engine regression guard, commit whatever changed, and file the weekly
+# digest as an issue so each week leaves a permanent human-readable record.
+#
+# Sources pulled (each degrades gracefully on failure; the guard step is the
+# only hard gate):
+#   1. ACLED weekly aggregates  (needs ACLED_EMAIL + ACLED_PASSWORD secrets)
+#   2. GDELT media volume       (keyless)
+#   3. News watch               (Google News RSS, Bing News RSS, KNCHR index; keyless)
+#   4. Missing Voices refresh   (keyless, polite 1.5s delays)
+#   5. ReliefWeb v2             (needs RELIEFWEB_APPNAME secret; skipped while pending)
+#
+# Manual runs: workflow_dispatch from the Actions tab.
+
+name: Weekly data pipeline
+
+on:
+  schedule:
+    - cron: "30 4 * * 2" # Tuesdays 04:30 UTC, after Monday's ACLED file
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  issues: write
+
+concurrency:
+  group: weekly-ingest
+  cancel-in-progress: false
+
+jobs:
+  ingest:
+    runs-on: ubuntu-latest
+    env:
+      ACLED_EMAIL: ${{ secrets.ACLED_EMAIL }}
+      ACLED_PASSWORD: ${{ secrets.ACLED_PASSWORD }}
+      RELIEFWEB_APPNAME: ${{ secrets.RELIEWEB_APPNAME }}
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - uses: oven-sh/setup-bun@v2
+
+      - name: ACLED weekly aggregates (OAuth + Monday xlsx)
+        if: env.ACLED_EMAIL != ''
+        continue-on-error: true
+        run: node scripts/ingest-acled.mjs
+
+      - name: GDELT media volume (keyless)
+        continue-on-error: true
+        run: node scripts/ingest-gdelt.mjs
+
+      - name: News watch sweep (Google News, Bing News, KNCHR)
+        continue-on-error: true
+        run: node scripts/news-watch.mjs
+
+      - name: Missing Voices refresh
+        continue-on-error: true
+        run: node scripts/ingest-missingvoices.mjs
+
+      - name: ReliefWeb v2 (runs once the appname clears)
+        if: env.RELIEFWEB_APPNAME != ''
+        continue-on-error: true
+        run: node scripts/ingest-reliefweb.mjs
+
+      # Hard gate: the engine must run clean over the new data before any of
+      # it is committed. Structural checks in CI mode (counts shift weekly).
+      - name: Engine regression guard
+        run: KAMPS_CI=1 bun scripts/test-engine.ts
+
+      - name: Weekly digest
+        run: bun scripts/weekly-digest.mjs > digest.md
+
+      - name: Update README data-freshness marker
+        run: |
+          python3 - <<'PY'
+          import json, re, pathlib
+          try:
+              acled = json.load(open("data/acled-kenya-aggregates.json"))
+              last = acled["coverage"]["lastWeek"]
+          except Exception:
+              last = "unknown"
+          readme = pathlib.Path("README.md")
+          text = readme.read_text()
+          text = re.sub(
+              r"(<!-- data-freshness -->)(.*?)(<!-- /data-freshness -->)",
+              lambda m: m.group(1) + f" ACLED weekly file through {last}; Missing Voices and the news watch auto-refresh every Tuesday " + m.group(3),
+              text,
+              flags=re.S,
+          )
+          readme.write_text(text)
+          print(f"README freshness marker -> {last}")
+          PY
+
+      - name: Commit refreshed data (if anything changed)
+        run: |
+          git config user.name "kamps-bot"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/ README.md 2>/dev/null || true
+          if git diff --cached --quiet; then
+            echo "No data changes this run."
+          else
+            git commit -m "data: weekly refresh $(date -u +%F)"
+            git push
+          fi
+
+      - name: File weekly digest issue
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          TITLE="KAMPS weekly digest, $(date -u +%F)"
+          gh label create "weekly-digest" --color b60200 --description "Automated weekly data digest" 2>/dev/null || true
+          gh issue create --title "$TITLE" --body-file digest.md --label weekly-digest

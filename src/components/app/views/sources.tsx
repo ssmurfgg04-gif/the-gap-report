@@ -2,8 +2,9 @@
 
 import { motion } from "framer-motion";
 import { ViewHeader } from "../view-header";
+import type { KampsState } from "../use-kamps";
 
-type SourceStatus = "connected" | "sandbox-blocked" | "manual";
+type SourceStatus = "connected" | "sandbox-blocked" | "manual" | "automated";
 
 type SourceSpec = {
   id: string;
@@ -17,19 +18,20 @@ type SourceSpec = {
 };
 
 /**
- * Static provenance register. Honest by construction: no row counts, no fake
- * timestamps. When a live /api/kamps/sources endpoint ships, this list is the
- * shape it should hydrate.
+ * Provenance register. Hybrid by design: the register documents each source
+ * and its access state; live counts for the automated feeds hydrate from the
+ * engine when the analysis is already loaded, so the row never shows a stale
+ * number while the data underneath is fresh.
  */
 const SOURCES: SourceSpec[] = [
   {
     id: "missing-voices",
     name: "Missing Voices Coalition",
     tier: 1,
-    status: "connected",
-    statusNote: "missingvoices.or.ke, scraped with rate limiting: 200 victim records and 7 years of monthly statistics",
+    status: "automated",
+    statusNote: "missingvoices.or.ke: 210 victim records and 7 years of monthly statistics, re-pulled every week by scripts/ingest-missingvoices.mjs (rolling monthly series overlaid, newest ~210 victims kept)",
     license: "civil society documentation (Police Reforms Working Group Kenya); cited back to the site",
-    retrieved: "retrieved 2026-09-27, verified pages only",
+    retrieved: "first retrieved 2026-09-27; weekly refresh live since 2026-09-28",
     feeds: "the victim list and the monthly enforced-disappearance series powering temporal analysis and forecast",
   },
   {
@@ -96,11 +98,31 @@ const SOURCES: SourceSpec[] = [
     id: "acled",
     name: "ACLED",
     tier: 2,
-    status: "connected",
-    statusNote: "17,193 Kenya county-week rows 1997 to the week of 2026-09-12, from the official Africa aggregated file (myACLED account, OAuth login verified). Includes 299 abduction/forced-disappearance county-weeks; 45 abduction events in the trailing 12 months. Event-level REST access needs Research Partner tier, so the weekly aggregate file is the feed, refreshed Mondays",
+    status: "automated",
+    statusNote: "17,193 Kenya county-week rows 1997 to the week of 2026-09-12, from the official Africa aggregated file (myACLED account, OAuth login verified). Includes 299 abduction/forced-disappearance county-weeks; 45 abduction events in the trailing 12 months. Event-level REST access needs Research Partner tier, so the weekly aggregate file is the feed, refreshed Mondays and pulled every Tuesday by the weekly GitHub Action",
     license: "ACLED registered access, non-commercial use, attribution required",
-    retrieved: "retrieved 2026-09-27 from acleddata.com/aggregated/aggregated-data-africa (xlsx parsed to JSON)",
+    retrieved: "retrieved 2026-09-27 from acleddata.com/aggregated/aggregated-data-africa (xlsx parsed to JSON); next automated pull Tuesday",
     feeds: "the trailing-12-month corroboration covariate (weight 0.10), county-month forecast panels 2023-2026 joined to UCDP, the national abduction corroboration alert",
+  },
+  {
+    id: "news-watch",
+    name: "News watch (Google News, Bing News, KNCHR index)",
+    tier: 2,
+    status: "automated",
+    statusNote: "Weekly keyword sweep of two independent news search feeds plus the KNCHR press-statement index: abduction, disappearance, missing and dumped coverage, deduplicated by title, counties matched from headlines. Discovery only: a human verifies and promotes real cases into the documented incident file with source URLs",
+    license: "per-item publishers of record; headlines and links only, no article bodies stored",
+    retrieved: "automated weekly since 2026-09-28, scripts/news-watch.mjs",
+    feeds: "the discovery layer behind the news watch panel on the alerts view, the coverage-surge alert, and the KNCHR new-statement flag for curators",
+  },
+  {
+    id: "gdelt",
+    name: "GDELT media volume",
+    tier: 2,
+    status: "automated",
+    statusNote: "GDELT DOC 2.0 API (keyless): 12 months of daily article counts for Kenya abduction coverage, aggregated monthly. On rate-limited weeks the last successful timeline is kept. Measures media attention, not incidence, and is deliberately kept out of the risk index",
+    license: "GDELT Project open API, attribution requested",
+    retrieved: "automated weekly since 2026-09-28, scripts/ingest-gdelt.mjs",
+    feeds: "the GDELT volume readout on the alerts view news watch panel and the analyst digest",
   },
   {
     id: "tella",
@@ -122,17 +144,23 @@ const TIER_STYLES: Record<1 | 2 | 3, string> = {
 
 const STATUS_STYLES: Record<SourceStatus, string> = {
   connected: "border border-[var(--accent-ink)] text-[var(--accent-ink)]",
+  automated: "border border-[var(--accent-ink)] text-[var(--accent-ink)]",
   "sandbox-blocked": "border border-dashed border-muted-foreground/60 text-muted-foreground",
   manual: "border border-border text-muted-foreground",
 };
 
 const STATUS_LABEL: Record<SourceStatus, string> = {
   connected: "Connected",
+  automated: "Weekly auto",
   "sandbox-blocked": "Waiting",
   manual: "Manual",
 };
 
-export function SourcesView() {
+export function SourcesView({ kamps }: { kamps?: KampsState }) {
+  const analysis = kamps?.analysis ?? null;
+  const nw = analysis?.newsWatch ?? null;
+  const gdelt = analysis?.media?.gdelt ?? null;
+
   return (
     <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6 md:py-14">
       <ViewHeader
@@ -151,10 +179,12 @@ export function SourcesView() {
             Honesty note
           </p>
           <p className="mt-3 max-w-3xl text-sm leading-[1.6] text-muted-foreground">
-            Everything the engine consumes sits in this register with its access state. Where a
-            source is blocked, the blocker is named: ReliefWeb is reviewing our appname request,
-            ACLED event-level REST needs a tier upgrade, police and mortuary records need Access
-            to Information filings. Nothing is padded to look busier than it is.
+            Everything the engine consumes sits in this register with its access state. Three feeds
+            now refresh themselves every week (Missing Voices, ACLED, the news watch) and a
+            fourth joins when ReliefWeb clears our appname request. Where a source is blocked, the
+            blocker is named: ACLED event-level REST needs a tier upgrade, police and mortuary
+            records need Access to Information filings. Nothing is padded to look busier than it
+            is.{nw ? ` News watch is holding ${nw.total} matched articles right now.` : ""}
           </p>
         </div>
 
@@ -180,7 +210,7 @@ export function SourcesView() {
                   <span
                     aria-hidden="true"
                     className={`h-1.5 w-1.5 rounded-full ${
-                      s.status === "connected" ? "bg-[var(--accent-ink)]" : "bg-border"
+                      s.status === "connected" || s.status === "automated" ? "bg-[var(--accent-ink)]" : "bg-border"
                     }`}
                   />
                   {STATUS_LABEL[s.status]}
@@ -192,7 +222,15 @@ export function SourcesView() {
                   <dt className="w-24 shrink-0 font-mono text-[10px] uppercase tracking-[0.12em] text-muted-foreground">
                     Status
                   </dt>
-                  <dd className="text-muted-foreground">{s.statusNote}</dd>
+                  <dd className="text-muted-foreground">
+                    {s.statusNote}
+                    {s.id === "news-watch" && nw &&
+                      ` Current pull: ${nw.total} articles, ${nw.last7d} in the last 7 days, KNCHR index through statement ${nw.knchr.latestId}.`}
+                    {s.id === "gdelt" && gdelt && gdelt.status === "ok" && gdelt.monthly.length > 0 &&
+                      ` Latest month: ${gdelt.monthly.at(-1)?.month}, ${gdelt.monthly.at(-1)?.volume} articles.`}
+                    {s.id === "gdelt" && gdelt && gdelt.status !== "ok" &&
+                      ` Last pull was rate limited; showing the previous successful timeline.`}
+                  </dd>
                 </div>
                 <div className="flex gap-3">
                   <dt className="w-24 shrink-0 font-mono text-[10px] uppercase tracking-[0.12em] text-muted-foreground">

@@ -1,7 +1,7 @@
 {
   "project": "KAMPS (Kenya Abduction Monitoring & Prediction System) - data ingestion manifest",
   "agent": "A (data-ingestion)",
-  "retrieved_at": "2026-09-27T11:05:00Z",
+  "retrieved_at": "2026-09-28T16:45:00Z",
   "method": "All downloads via curl (Bash) with polite 1s delays; HTML parsed with python3 (stdlib only); normalized JSON/CSV written under /home/z/my-project/data/. NO fabricated data: every row traces to a fetched source.",
   "files": [
     {
@@ -9,7 +9,7 @@
       "format": "CSV (all 52 original UCDP GED columns retained)",
       "rows_or_features": "1,246 Kenya events",
       "source": "UCDP GED v26.1 (https://ucdp.uu.se/downloads/)",
-      "license": "Free for scholarly/reference use; cite Sundberg & Melander (2013) JPR 50(1); HEG by Pettersson, H\u00f6gbladh & \u00d6berg",
+      "license": "Free for scholarly/reference use; cite Sundberg & Melander (2013) JPR 50(1); HEG by Pettersson, Högbladh & Öberg",
       "retrieved_at": "2026-09-27",
       "quality": "verified",
       "notes": "Upgraded from v23.1: coverage 1989-2025, 118 events added for 2023-2025. Country_id 501 (Gleditsch-Ward)."
@@ -49,10 +49,10 @@
       "format": "JSON {statistics[], victims[], coverage_notes[]}",
       "rows_or_features": "12 statistics entries; 200 victim records",
       "source": "Missing Voices (Police Reforms Working Group - Kenya) - https://missingvoices.or.ke (pages fetched: /, /statistics, /voices?page=0..6, /statistics/2020, /statistics/2021, /statistics/2022, /trial-tracker, /about, /jsonapi [404])",
-      "license": "Site content copyright Missing Voices Coalition / PRWG-K (site footer 'Missing Voices \u00a9 2026'); data compiled for research/attribution use",
-      "retrieved_at": "2026-09-27T07:45:00Z",
+      "license": "Site content copyright Missing Voices Coalition / PRWG-K (site footer 'Missing Voices © 2026'); data compiled for research/attribution use",
+      "retrieved_at": "2026-09-28T16:30:00Z",
       "quality": "partial",
-      "notes": "Real data collected: yearly case totals 2019-2025 (145..125 cases), monthly series (Enforced Disappearances / Killings / Incidents) for 2020-2026 parsed from embedded Drupal/Highcharts configs, prosecution statements (28 court prosecutions all-time; 6/5/4 arrests for 2020/2021/2022), and 200 most recent victim records (2025-06-25..2026-08-15) with name/age/sex/location/mannerOfDeath/date. PARTIAL because: 200-entry cap applied (deeper history exists), 2019 monthly series unavailable (/statistics/2019 404), victim rows lack per-case county/category columns (only aggregate chart series distinguish ED vs killings), and year pages' victim tables are not year-filtered (site bug)."
+      "notes": "Real data collected: yearly case totals 2019-2025 (145..125 cases), monthly series (Enforced Disappearances / Killings / Incidents) for 2020-2026 parsed from embedded Drupal/Highcharts configs, prosecution statements (28 court prosecutions all-time; 6/5/4 arrests for 2020/2021/2022), and 200 most recent victim records (2025-06-25..2026-08-15) with name/age/sex/location/mannerOfDeath/date. PARTIAL because: 200-entry cap applied (deeper history exists), 2019 monthly series unavailable (/statistics/2019 404), victim rows lack per-case county/category columns (only aggregate chart series distinguish ED vs killings), and year pages' victim tables are not year-filtered (site bug). Automated weekly refresh since 2026-09-28 (scripts/ingest-missingvoices.mjs): rolling monthly series overlaid from the live charts, victims list re-pulled (210 records as of this refresh)."
     },
     {
       "file": "incidents-public-record.json",
@@ -83,33 +83,48 @@
       "retrieved_at": "2026-09-27T11:05:00Z",
       "quality": "verified",
       "notes": "Weekly county-level (Admin 1) event, fatality and exposure counts, 1997-01 to 2026-09-12, all 47 counties. Includes 299 Abduction/forced-disappearance county-week rows. Event-level REST access requires Research Partner tier; OAuth credentials are env-gated for when the tier upgrades."
+    },
+    {
+      "file": "news-watch.json",
+      "format": "JSON {articles[], daily[], knchr}",
+      "rows_or_features": "54 keyword-matched articles (trailing 60 days); 10 in the last 7 days; KNCHR statement index (latest id 1265)",
+      "source": "Google News RSS (3 queries), Bing News RSS, KNCHR /articles index - all keyless",
+      "license": "per-item publishers of record; headlines and links only, no article bodies",
+      "retrieved_at": "2026-09-28T16:10:00Z",
+      "quality": "verified",
+      "notes": "Discovery layer, not an incident list: keyword-matched coverage ('abduct', 'kidnap', 'enforced disappearance', 'missing', 'dumped') from two independent search feeds plus the KNCHR press-statement index. Articles are deduplicated by normalized title; counties are matched from headline text. Nothing here counts as an incident until a human verifies and promotes it into incidents-public-record.json. KNCHR ids enable new-statement detection between weekly runs."
+    },
+    {
+      "file": "gdelt-kenya.json",
+      "format": "JSON {timeline[], monthly[]}",
+      "rows_or_features": "349 daily points / 12 months of article counts; latest month 2026-09: 43 articles",
+      "source": "GDELT DOC 2.0 API, mode=TimelineVolRaw, query 'kenya (abduction OR abducted OR kidnapped OR \"enforced disappearance\") sourcelang:eng'",
+      "license": "GDELT Project, free API, attribution requested",
+      "retrieved_at": "2026-09-28T16:45:00Z",
+      "quality": "verified",
+      "notes": "Media-ATTENTION volume, not incidence: language bias, press freedom and news cycles move it. Corroboration context only; deliberately excluded from the risk index. On rate-limited runs the last successful timeline is preserved with an attempt note."
     }
   ],
   "gaps": [
     {
-      "source": "ACLED (Armed Conflict Location & Event Data)",
-      "reason": "API host api.acleddata.com does not resolve publicly and acleddata.com blocks datacenter IPs at Cloudflare; registration requires a browser from a normal IP. Ingestion script scripts/ingest-acled.mjs is wired and runs when ACLED_EMAIL and ACLED_KEY are set."
+      "source": "ACLED event-level REST (/api/acled/read)",
+      "reason": "The myACLED account authenticates (OAuth verified) but sits on the Open tier; event-level REST needs Research Partner tier. The weekly Africa aggregate file (all 47 counties, week x Admin 1 x event type, refreshed Mondays) is the production feed; scripts/ingest-acled.mjs probes the REST path first and auto-upgrades when the tier clears."
     },
     {
       "source": "ReliefWeb v2 API",
-      "reason": "403 without a pre-approved appname. Appname requested 2026-09-27 via the official form (kamps-earlywarning-7f3a, review up to 2 business days). scripts/ingest-reliefweb.mjs runs when RELIEFWEB_APPNAME is set."
-    },
-    {
-      "source": "GDELT 2.0 DOC API",
-      "reason": "Keyless and reachable, but heavy rate limiting from this host and global coverage out of scope for the incident register; kept as an optional cross-check only."
-    },
-    {
-      "source": "Missing Voices full victim database + 2019 monthly statistics",
-      "reason": "200-entry cap per project scope (most recent victims; 2026 and 2025 well covered). 2019 monthly series not published on the site."
-    },
-    {
-      "source": "Nation Africa (Daily Nation) articles; AP News articles",
-      "reason": "Nation Africa is paywalled; AP returns 403 to non-browser clients."
+      "reason": "403 without a pre-approved appname. Appname requested 2026-09-27 via the official form (kamps-earlywarning-7f3a, review up to 2 business days). scripts/ingest-reliefweb.mjs runs weekly once RELIEFWEB_APPNAME is approved."
     },
     {
       "source": "Police OB records, hospital/mortuary registries, IPOA aggregates",
-      "reason": "Require Access to Information Act 2016 formal requests; documented as the plan Phase 2 MSE inputs but not yet filed."
+      "reason": "Require Access to Information Act 2016 formal requests; documented as the plan Phase 2 MSE inputs but not yet filed. Until they arrive, capture-recapture stays not-estimable and the documented count stands unadjusted."
     },
-    "ACLED event-level REST access: account authenticates (OAuth verified) but sits on the Open myACLED tier, which excludes the read API; the weekly aggregate file (current through 2026-09-12) is ingested instead. Event-level detail unlocks at Research Partner tier."
+    {
+      "source": "Nation Africa (Daily Nation) articles; AP News articles",
+      "reason": "Nation Africa is paywalled; AP returns 403 to non-browser clients. Their reporting still enters via secondary coverage and Wikipedia reference extraction."
+    },
+    {
+      "source": "Missing Voices full victim database + 2019 monthly statistics",
+      "reason": "Weekly scrape keeps the newest ~210 victim rows (2025-2026 well covered). 2019 monthly series not published on the site; deeper history exists behind manual export."
+    }
   ]
 }

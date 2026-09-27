@@ -1,6 +1,8 @@
 /** Real-data engine test: run the pipeline and print a summary. */
 import { getKampsAnalysis } from "../src/lib/kamps/engine";
 
+const CI = process.env.KAMPS_CI === "1";
+
 async function main() {
   const a = await getKampsAnalysis();
   const o = a.overview;
@@ -12,10 +14,32 @@ async function main() {
   if (!parliament || parliament.county !== "Nairobi") {
     throw new Error("REGRESSION: 'Nairobi (outside Parliament)' incident lost");
   }
-  // 227 through the 2026-09-26 data refresh; +2: Githurai (June 2026) and
-  // Kiprotich (Sept 2026). If this regresses, an ER pair or the window broke.
-  if (o.documentedTotal !== 229) {
-    throw new Error(`REGRESSION: documentedTotal expected 229, got ${o.documentedTotal}`);
+  if (CI) {
+    // weekly pipeline mode: data changes every week, so assert structure, not counts
+    if (o.zones !== 47) throw new Error(`CI GUARD: expected 47 zones, got ${o.zones}`);
+    if (o.documentedTotal < 180 || o.documentedTotal > 500) {
+      throw new Error(`CI GUARD: documentedTotal ${o.documentedTotal} outside the sanity band [180, 500]`);
+    }
+    for (const z of a.zones) {
+      if (!Number.isFinite(z.index) || Number.isNaN(z.index)) {
+        throw new Error(`CI GUARD: non-finite index for ${z.name}`);
+      }
+    }
+    const nairobi = a.zones.find(z => z.name === "Nairobi");
+    if (!nairobi || a.zones.filter(z => z.index > (nairobi?.index ?? 0)).length > 2) {
+      throw new Error("CI GUARD: Nairobi no longer in the top 3 zones (engine misorder?)");
+    }
+    if (a.forecast.projections.length < 5) throw new Error("CI GUARD: forecast projections missing");
+    if (a.alerts.length === 0) throw new Error("CI GUARD: alert feed empty");
+    console.log(`CI GUARD PASSED: ${o.documentedTotal} documented, ${o.zones} zones, ${a.alerts.length} alerts (structure checks only; weekly data may shift counts).`);
+  } else {
+    // 227 through the 2026-09-26 data refresh; +2 (Githurai, Kiprotich) through
+    // 2026-09-27 = 229; +10 through the 2026-09-28 weekly Missing Voices
+    // refresh (new Jul-Aug 2026 victim rows). If this regresses, an ER pair
+    // or the window broke, or the weekly MV refresh added rows (check data/).
+    if (o.documentedTotal !== 239) {
+      throw new Error(`REGRESSION: documentedTotal expected 239, got ${o.documentedTotal}`);
+    }
   }
   console.log(`asOf ${a.asOf.slice(0, 10)} | window ${a.dataWindow.start} to ${a.dataWindow.end} | ${o.zones} counties`);
   console.log(`documented ${o.documentedTotal} (located ${o.documentedLocated}, unlocated ${o.unlocatedIncidents})`);
@@ -58,6 +82,15 @@ async function main() {
   for (const al of a.alerts) {
     console.log(`  [${al.severity}] ${al.title}`);
   }
+
+  console.log(`\nNews watch:`);
+  if (a.newsWatch) {
+    console.log(`  articles ${a.newsWatch.total} | last7d ${a.newsWatch.last7d} | baseline ${a.newsWatch.weeklyBaseline}/wk | KNCHR latest ${a.newsWatch.knchr.latestId}`);
+    console.log(`  top counties: ${a.newsWatch.counties.slice(0, 5).map(c => `${c.county} (${c.count})`).join(", ")}`);
+  } else {
+    console.log("  (data/news-watch.json not present)");
+  }
+  console.log(`\nContext: next election ${a.context.nextElection}, ${a.context.monthsToElection} months out; GDELT ${a.media.gdelt.status}`);
 
   console.log("\nProvenance:");
   for (const pf of a.provenance.files) {

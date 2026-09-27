@@ -58,7 +58,7 @@ export function SystemLive() {
         transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
         className="mb-8 flex flex-wrap items-center gap-3"
       >
-        <span className="inline-flex items-center gap-2 rounded-full border border-dashed border-[var(--accent-ink)] px-3 py-1 font-mono text-[10px] uppercase tracking-[0.14em] text-[var(--accent-ink)]">
+        <span className="inline-flex items-center gap-2 rounded-full border border-dashed border-[var(--accent-ink)] px-3 py-1 font-mono text-[10px] uppercase tracking-[0.14em] text-[var(--accent-ink)] dark:border-solid">
           <span className="h-1.5 w-1.5 rounded-full bg-[var(--accent-ink)]" aria-hidden="true" />
           Real ingested data
         </span>
