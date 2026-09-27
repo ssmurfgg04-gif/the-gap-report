@@ -129,7 +129,7 @@ async function fetchBingNews() {
 async function fetchKnchr() {
   try {
     const { status, text } = await fetchText("https://www.knchr.org/articles", { timeout: 40000 });
-    if (status !== 200) { console.log(`knchr: HTTP ${status}, skipped`); return { latestId: null, statements: [] }; }
+    if (status !== 200) { console.log(`knchr: HTTP ${status}, keeping previous index`); return { failed: true }; }
     const re = /<a[^>]+href="[^"]*articleid=(\d+)[^"]*"[^>]*>([\s\S]*?)<\/a>/g;
     const seen = new Map();
     let m;
@@ -144,8 +144,8 @@ async function fetchKnchr() {
     console.log(`knchr: ${statements.length} statements, latest id ${statements[0]?.id ?? "?"}`);
     return { latestId: statements[0]?.id ?? null, statements };
   } catch (e) {
-    console.log(`knchr: failed (${e.message}), skipped`);
-    return { latestId: null, statements: [] };
+    console.log(`knchr: failed (${e.message}), keeping previous index`);
+    return { failed: true };
   }
 }
 
@@ -175,10 +175,25 @@ for (let i = 44; i >= 0; i--) {
   daily.push({ date: d, count: articles.filter((a) => a.pubDate === d).length });
 }
 
-// previous run: flag KNCHR statements that are new since last ingest
+// previous run: flag KNCHR statements that are new since last ingest; a
+// failed KNCHR fetch keeps the previous index instead of nulling it
 let prevKnchrId = null;
+let prevKnchr = null;
 if (existsSync(OUT)) {
-  try { prevKnchrId = JSON.parse(readFileSync(OUT, "utf8")).knchr?.latestId ?? null; } catch { /* fresh */ }
+  try {
+    const prev = JSON.parse(readFileSync(OUT, "utf8"));
+    prevKnchrId = prev.knchr?.latestId ?? null;
+    prevKnchr = prev.knchr ?? null;
+  } catch { /* fresh */ }
+}
+if (knchr.failed) {
+  if (prevKnchr) {
+    Object.assign(knchr, prevKnchr, { note: "KNCHR fetch failed this run; the previous index is preserved." });
+    console.log("knchr: previous index preserved.");
+  } else {
+    knchr.latestId = null;
+    knchr.statements = [];
+  }
 }
 if (knchr.latestId && prevKnchrId && knchr.latestId > prevKnchrId) {
   console.log(`KNCHR: ${knchr.latestId - prevKnchrId} new statement(s) since last run (ids ${prevKnchrId + 1}..${knchr.latestId}) - flagged for curation`);

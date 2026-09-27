@@ -60,7 +60,12 @@ async function smartFetch(url, init = {}, { retries = 2 } = {}) {
       const r = await fetch(url, { ...init, headers, signal: AbortSignal.timeout(20000) });
       const text = await r.text();
       const blocked = text.includes("Just a moment") || (r.status === 403 && text.length < 3000 && text.includes("<!DOCTYPE"));
-      if (!blocked) return { status: r.status, text, via: "direct" };
+      if (!blocked) {
+        // capture Set-Cookie: smartFetch normally returns text only, but the
+        // login step needs the session cookie from a DIRECT response
+        const setCookie = (r.headers?.getSetCookie?.() ?? [])[0] ?? null;
+        return { status: r.status, text, via: "direct", setCookie };
+      }
       console.log(`direct ${r.status} (Cloudflare), trying relay...`);
     } catch (e) {
       console.log(`direct failed (${e.message}), trying relay...`);
@@ -73,12 +78,12 @@ async function smartFetch(url, init = {}, { retries = 2 } = {}) {
         signal: AbortSignal.timeout(30000),
       });
       const text = await r.text();
-      if (!text.includes("Just a moment")) return { status: r.status, text, via: "relay" };
+      if (!text.includes("Just a moment")) return { status: r.status, text, via: "relay", setCookie: null };
     } catch (e) {
       console.log(`relay failed (${e.message})`);
     }
   }
-  return { status: 0, text: "", via: "none" };
+  return { status: 0, text: "", via: "none", setCookie: null };
 }
 
 // ————— 1. OAuth token —————
@@ -141,6 +146,22 @@ const token = await getToken();
 // ————— 3. session cookie for the download area —————
 const SESSION_FILE = path.join(ROOT, ".acled-session.txt");
 async function loginSession() {
+  // try a cached session first (sessions live for weeks): one GET with the
+  // old cookie avoids a login POST entirely
+  if (existsSync(SESSION_FILE)) {
+    const cached = readFileSync(SESSION_FILE, "utf8").trim();
+    if (cached) {
+      const probe = await smartFetch("https://acleddata.com/aggregated/aggregated-data-africa", {
+        headers: { Cookie: cached, Accept: "text/html", "User-Agent": UA },
+      });
+      if (probe.status === 200 && /system\/files\/[^"']+\.xlsx/.test(probe.text)) {
+        console.log("cached session cookie still valid.");
+        return cached;
+      }
+      console.log("cached session rejected, logging in fresh...");
+    }
+  }
+
   const r = await smartFetch("https://acleddata.com/user/login?_format=json", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -150,25 +171,26 @@ async function loginSession() {
     console.error(`login failed (${r.status}): ${r.text.slice(0, 200)}`);
     process.exit(1);
   }
-  const cookie = (r.headers?.getSetCookie?.() ?? []) [0] ?? null;
-  // smartFetch loses response headers on relay; re-do a raw relay login to grab Set-Cookie
-  if (!cookie) {
-    const rr = await fetch(RELAY + encodeURIComponent("https://acleddata.com/user/login?_format=json"), {
-      method: "POST",
-      headers: { "Content-Type": "application/json", Origin: "https://acleddata.com", "User-Agent": UA },
-      body: JSON.stringify({ name: EMAIL, pass: PASSWORD }),
-    });
-    const sc = rr.headers.get("set-cookie") ?? "";
-    const full = sc.split(";")[0];
-    if (!full) {
-      console.error("no session cookie returned");
-      process.exit(1);
-    }
-    writeFileSync(SESSION_FILE, full);
-    return full;
+  // direct responses now carry the Set-Cookie header through smartFetch
+  if (r.setCookie) {
+    writeFileSync(SESSION_FILE, r.setCookie.split(";")[0]);
+    return r.setCookie.split(";")[0];
   }
-  writeFileSync(SESSION_FILE, cookie.split(";")[0]);
-  return cookie.split(";")[0];
+  // relay fallback: redo a raw relay login to grab Set-Cookie
+  const rr = await fetch(RELAY + encodeURIComponent("https://acleddata.com/user/login?_format=json"), {
+    method: "POST",
+    headers: { "Content-Type": "application/json", Origin: "https://acleddata.com", "User-Agent": UA },
+    body: JSON.stringify({ name: EMAIL, pass: PASSWORD }),
+    signal: AbortSignal.timeout(30000),
+  });
+  const sc = rr.headers.get("set-cookie") ?? "";
+  const full = sc.split(";")[0];
+  if (!full) {
+    console.error("no session cookie returned");
+    process.exit(1);
+  }
+  writeFileSync(SESSION_FILE, full);
+  return full;
 }
 
 const cookie = await loginSession();
