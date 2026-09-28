@@ -26,6 +26,12 @@ WANT = {
     "ACLED_EMAIL": ENV.get("ACLED_EMAIL", ""),
     "ACLED_PASSWORD": ENV.get("ACLED_PASSWORD", ""),
     "RELIEFWEB_APPNAME": ENV.get("RELIEFWEB_APPNAME", ""),
+    # Partner webhook for the weekly digest ping: one URL or several,
+    # comma-separated. Slack (hooks.slack.com/...), Discord
+    # (discord.com/api/webhooks/...) and generic JSON receivers are
+    # auto-detected. Force a format on an unusual URL by appending
+    # #slack / #discord / #json to it.
+    "DIGEST_WEBHOOK_URL": ENV.get("DIGEST_WEBHOOK_URL", ""),
 }
 
 def api(method, url, body=None):

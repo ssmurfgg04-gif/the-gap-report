@@ -35,10 +35,13 @@ async function main() {
   } else {
     // 227 through the 2026-09-26 data refresh; +2 (Githurai, Kiprotich) through
     // 2026-09-27 = 229; +10 through the 2026-09-28 weekly Missing Voices
-    // refresh (new Jul-Aug 2026 victim rows). If this regresses, an ER pair
-    // or the window broke, or the weekly MV refresh added rows (check data/).
-    if (o.documentedTotal !== 239) {
-      throw new Error(`REGRESSION: documentedTotal expected 239, got ${o.documentedTotal}`);
+    // refresh (new Jul-Aug 2026 victim rows) = 239; +2 more on 2026-09-28 via
+    // curation-queue promotions (Mulinge, Otieno — the September cases from
+    // digest issue #2, verified across 3+ independent outlets each). If this
+    // regresses, an ER pair or the window broke, or the weekly MV refresh
+    // added rows (check data/).
+    if (o.documentedTotal !== 241) {
+      throw new Error(`REGRESSION: documentedTotal expected 241, got ${o.documentedTotal}`);
     }
   }
   console.log(`asOf ${a.asOf.slice(0, 10)} | window ${a.dataWindow.start} to ${a.dataWindow.end} | ${o.zones} counties`);

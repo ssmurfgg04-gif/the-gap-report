@@ -109,7 +109,7 @@ domain, displayed unmodified with credit). Dark mode via next-themes.
   `docs/reviews/SCORES.md`
 - **Hostile-user functional audit** (Agent E): all 17 findings fixed and
   re-verified, including a regression test that guards the documented count
-  (239 after the 2026-09-28 weekly refresh; structural checks in CI mode) —
+  (241 after the 2026-09-28 curation promotions; structural checks in CI mode) —
   `docs/critique-e.md`
 - Data accuracy cross-checked against raw files (population sum, county
   counts, monthly series, incident window)
@@ -135,6 +135,13 @@ manually from the Actions tab:
    index), the Missing Voices refresh, and ReliefWeb once its appname
    clears. Each feed degrades gracefully; a blocked feed never blocks the
    run.
+1.5. **Watch the queue** — the curation queue watcher
+   (`scripts/curation-queue.mjs`) clusters the week's fresh leads, counts
+   the independent outlets covering each case, and holds out anything that
+   already matches the documented record. A case with 2+ corroborating
+   outlets is flagged **ready: one verification away from entering the
+   documented count**. Its persistent state (`data/curation-queue.json`)
+   survives between weeks, so no lead is silently forgotten.
 2. **Guard** — the engine must run clean over the fresh data
    (`KAMPS_CI=1 bun scripts/test-engine.ts`: structural checks, because
    documented counts legitimately move every week). Bad data never lands.
@@ -143,13 +150,37 @@ manually from the Actions tab:
    the data archive.
 4. **File the digest** — a weekly digest issue (label `weekly-digest`)
    with the numbers, the week-over-week deltas, action-level alerts, and
-   the curator queue: fresh discovery candidates that a human verifies
-   against a second source before promotion into the documented incident
-   file. Automation surfaces, humans verify. That boundary is the design.
+   the curator queue state. Automation surfaces, humans verify. That
+   boundary is the design. Promoting a verified case is one command:
+   `node scripts/curation-queue.mjs --promote <caseId> --person "..." \
+   --date ... --location ... --source-url ...` — it writes the sourced
+   row into `data/incidents-public-record.json` and keeps the full
+   corroboration trail in the notes.
+5. **Ping the partners** — right after the issue is filed, every webhook
+   in the `DIGEST_WEBHOOK_URL` repo secret receives the headline numbers
+   and the digest link, so partners do not need to open GitHub. See
+   **Partner webhooks** below.
 
 The repository secrets (`ACLED_EMAIL`, `ACLED_PASSWORD`) are set; the
 workflow authenticates with the built-in `GITHUB_TOKEN`, so no credentials
 live in code or logs.
+
+### Partner webhooks (opt-in)
+
+Partners receive the weekly digest headline (documented incidents and
+delta, zone summary, curator queue status, alert counts, issue link)
+without opening GitHub:
+
+- Add a **`DIGEST_WEBHOOK_URL`** secret to the repo (Settings → Secrets and
+  variables → Actions). One endpoint or several, comma-separated.
+- Slack incoming-webhook URLs (`hooks.slack.com/...`) and Discord webhook
+  URLs (`discord.com/api/webhooks/...`) are detected and formatted
+  automatically; any other URL receives generic JSON
+  (`{source, event, title, text, url, numbers}`).
+- Running an unusual receiver? Force a format by appending a fragment to
+  the URL: `...#slack`, `...#discord` or `...#json`.
+- No secret set: the step logs one line and moves on. Deliveries never
+  break the pipeline; the digest issue remains the durable record.
 
 ## Wiring the remaining data feeds
 

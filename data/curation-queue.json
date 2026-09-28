@@ -1,0 +1,379 @@
+{
+  "generatedAt": "2026-09-28T07:56:52.165Z",
+  "queue": {
+    "collins-otieno-2026-09-26": {
+      "caseId": "collins-otieno-2026-09-26",
+      "person": "Collins Otieno",
+      "incidentHint": "\"Can't speak\": Missing activist Collins Otieno found dumped along Thika Road",
+      "firstSeen": "2026-09-28",
+      "lastSeen": "2026-09-28",
+      "pubDate": "2026-09-26",
+      "latestPubDate": "2026-09-26",
+      "outlets": [
+        "kenyans.co.ke",
+        "Pulse Kenya",
+        "Tuko News"
+      ],
+      "corroboration": 3,
+      "urls": [
+        "https://news.google.com/rss/articles/CBMitgFBVV95cUxOeFgydlNPa19va25qUFY0ZUpOLXI2dHhJSVR0d3NqWHRlQjlTTFVXZ3JENnhoMVFnSXphMFdqVF92UVdXSnJrVTJ2UVJXVDkwbUdLUGRtaThCbllrbkRUNWUwbldTUVpQTEtlTE5oMW0wcEFoaXlHTW1xbjB6b0k0WUx3SmxySmhLZTlJX1NLa0c1ZEREbHZaMkhoRWRncDVRb0paQ01yZVJPOFBDU3E2ME5IcFYwUQ?oc=5",
+        "https://news.google.com/rss/articles/CBMiwAFBVV95cUxPYV9XZ2Q2RWdzXzlhbVFnUDZRV0UxT1RPX3dXdTFGUHFUTFllZ1ZDa0hoMjZWbTNya0tYcjFQM3l1MkcxaWhtMS1rbHFDQ0E0SXdSYnI1N09YR2ktRFdfMXlaQzRDbUM3QmJRLTZtRGtKZjhudV9vcHhabVpIM3lkcHNSc1ZCWHBfN3hKaVg4V2ZsVkx1SzIxcUtDR2hpWTRnYWgwWUxsbWV5U0ZRMDRSZk54d19pM2tyTHlDdTMxUU8?oc=5",
+        "https://news.google.com/rss/articles/CBMipAFBVV95cUxPaG15bURkYzVjd2xQZUR4TVVOQUFvSF9hT051dm9WcmdfTDdaemNNVDM0eXlCMTRja1NUMWVMdE9vanlyX1ZiYmF4UTlUUklRak1tTWpxcktXQXVwYlZkdWhrZkxvYmstTGNIc0ZtOF9EZDBlUU42OVBLZXJpVV9yT3QybzhybFRNdV91c0ZyOExwYmtQV0tvYUZ6QXV6QlZjNjBnbw?oc=5"
+      ],
+      "articles": [
+        {
+          "title": "Missing Activist Found Dumped Along Thika Road, Rushed to Hospital - kenyans.co.ke",
+          "source": "kenyans.co.ke",
+          "pubDate": "2026-09-26",
+          "url": "https://news.google.com/rss/articles/CBMitgFBVV95cUxOeFgydlNPa19va25qUFY0ZUpOLXI2dHhJSVR0d3NqWHRlQjlTTFVXZ3JENnhoMVFnSXphMFdqVF92UVdXSnJrVTJ2UVJXVDkwbUdLUGRtaThCbllrbkRUNWUwbldTUVpQTEtlTE5oMW0wcEFoaXlHTW1xbjB6b0k0WUx3SmxySmhLZTlJX1NLa0c1ZEREbHZaMkhoRWRncDVRb0paQ01yZVJPOFBDU3E2ME5IcFYwUQ?oc=5"
+        },
+        {
+          "title": "Another missing activist found dumped along Thika Road, rushed to hospital - Pulse Kenya",
+          "source": "Pulse Kenya",
+          "pubDate": "2026-09-26",
+          "url": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxPYV9XZ2Q2RWdzXzlhbVFnUDZRV0UxT1RPX3dXdTFGUHFUTFllZ1ZDa0hoMjZWbTNya0tYcjFQM3l1MkcxaWhtMS1rbHFDQ0E0SXdSYnI1N09YR2ktRFdfMXlaQzRDbUM3QmJRLTZtRGtKZjhudV9vcHhabVpIM3lkcHNSc1ZCWHBfN3hKaVg4V2ZsVkx1SzIxcUtDR2hpWTRnYWgwWUxsbWV5U0ZRMDRSZk54d19pM2tyTHlDdTMxUU8?oc=5"
+        },
+        {
+          "title": "\"Can't speak\": Missing activist Collins Otieno found dumped along Thika Road - Tuko News",
+          "source": "Tuko News",
+          "pubDate": "2026-09-26",
+          "url": "https://news.google.com/rss/articles/CBMipAFBVV95cUxPaG15bURkYzVjd2xQZUR4TVVOQUFvSF9hT051dm9WcmdfTDdaemNNVDM0eXlCMTRja1NUMWVMdE9vanlyX1ZiYmF4UTlUUklRak1tTWpxcktXQXVwYlZkdWhrZkxvYmstTGNIc0ZtOF9EZDBlUU42OVBLZXJpVV9yT3QybzhybFRNdV91c0ZyOExwYmtQV0tvYUZ6QXV6QlZjNjBnbw?oc=5"
+        }
+      ],
+      "status": "promoted",
+      "duplicateOf": "Boniface Mulinge Muteti (mulinge-2026-09-25)",
+      "promotedAt": "2026-09-28T07:56:52.165Z",
+      "promotedRecordId": "otieno-2026-09-26",
+      "rejectedReason": null
+    },
+    "muteti-mulinge-2026-09-25": {
+      "caseId": "muteti-mulinge-2026-09-25",
+      "person": "Muteti Mulinge",
+      "incidentHint": "Missing protester Muteti Mulinge found alive and injured in Lukenya",
+      "firstSeen": "2026-09-28",
+      "lastSeen": "2026-09-28",
+      "pubDate": "2026-09-25",
+      "latestPubDate": "2026-09-25",
+      "outlets": [
+        "Capital FM Africa",
+        "standardmedia.co.ke",
+        "Tuko News"
+      ],
+      "corroboration": 3,
+      "urls": [
+        "https://news.google.com/rss/articles/CBMimAFBVV95cUxPTWJmZTJJQmJHLThlQnIxNy1QR3hSaEUtQ0Fvb2NyNGN1MGtsSS12QUFuVWdETVNoSk9ZYk93QkVrbU1TM1BPTlNzLUVZS0tfN0o4QXM2bmVXZ3IzTjQ1VklmN294YUFKSU1SaFNYUTdRdVBLVl82RTVPQkd6bFFkcmFIck1CN21fRGRLYkNaSjMxTC14aGowWA?oc=5",
+        "https://news.google.com/rss/articles/CBMizgFBVV95cUxOdS15RTJoVmkzdWloWFdTbWhPY19haVRVQzAtZ1htemdpODcwQkRUeGxLRFcydHVFb2VqMWRtUjRLNjRCZGNCbUl0MDQ0Uklma1U5M1VlWksxTUNCQUJicFVFZmhMME9iRTQ4NWp6MDVoaTlQSEdRYkdpVm9oNWlRbU1SZm5Zd20yV3F3V3RLU2RjTmgzbTNVeHQ4QjgxalYxajJkMFRZWXplbDllSXhxc09uUVhlU2U0Mjd4QUJsdnRVS19ncE5NUk5iZnM3Z9IBzgFBVV95cUxOdS15RTJoVmkzdWloWFdTbWhPY19haVRVQzAtZ1htemdpODcwQkRUeGxLRFcydHVFb2VqMWRtUjRLNjRCZGNCbUl0MDQ0Uklma1U5M1VlWksxTUNCQUJicFVFZmhMME9iRTQ4NWp6MDVoaTlQSEdRYkdpVm9oNWlRbU1SZm5Zd20yV3F3V3RLU2RjTmgzbTNVeHQ4QjgxalYxajJkMFRZWXplbDllSXhxc09uUVhlU2U0Mjd4QUJsdnRVS19ncE5NUk5iZnM3Zw?oc=5",
+        "https://news.google.com/rss/articles/CBMinwFBVV95cUxNNUNmTzVpRE5MRWtOLVhaRHJUNTEyM05XTXVpUHF2TlNwUkZZQ21Odm1uejF6NzVHQ3A3SFhHQlFidDE0WWJobEN6ZjhWZU5qOUFtMWVzSkxqRG9BZ1pyYmJkZ0h4RWRIUl9jX01wbG8xOU5sR3cwTEI1R2t2ZkRoOVlmNU91c1E0UzMzNkczU2d3blczNkMwcERXM2NSbU0?oc=5"
+      ],
+      "articles": [
+        {
+          "title": "Missing protester Muteti Mulinge found alive and injured in Lukenya - Capital FM Africa",
+          "source": "Capital FM Africa",
+          "pubDate": "2026-09-25",
+          "url": "https://news.google.com/rss/articles/CBMimAFBVV95cUxPTWJmZTJJQmJHLThlQnIxNy1QR3hSaEUtQ0Fvb2NyNGN1MGtsSS12QUFuVWdETVNoSk9ZYk93QkVrbU1TM1BPTlNzLUVZS0tfN0o4QXM2bmVXZ3IzTjQ1VklmN294YUFKSU1SaFNYUTdRdVBLVl82RTVPQkd6bFFkcmFIck1CN21fRGRLYkNaSjMxTC14aGowWA?oc=5"
+        },
+        {
+          "title": "Missing activist, Muteti Mulinge, found dumped alive in Machakos - standardmedia.co.ke",
+          "source": "standardmedia.co.ke",
+          "pubDate": "2026-09-25",
+          "url": "https://news.google.com/rss/articles/CBMizgFBVV95cUxOdS15RTJoVmkzdWloWFdTbWhPY19haVRVQzAtZ1htemdpODcwQkRUeGxLRFcydHVFb2VqMWRtUjRLNjRCZGNCbUl0MDQ0Uklma1U5M1VlWksxTUNCQUJicFVFZmhMME9iRTQ4NWp6MDVoaTlQSEdRYkdpVm9oNWlRbU1SZm5Zd20yV3F3V3RLU2RjTmgzbTNVeHQ4QjgxalYxajJkMFRZWXplbDllSXhxc09uUVhlU2U0Mjd4QUJsdnRVS19ncE5NUk5iZnM3Z9IBzgFBVV95cUxOdS15RTJoVmkzdWloWFdTbWhPY19haVRVQzAtZ1htemdpODcwQkRUeGxLRFcydHVFb2VqMWRtUjRLNjRCZGNCbUl0MDQ0Uklma1U5M1VlWksxTUNCQUJicFVFZmhMME9iRTQ4NWp6MDVoaTlQSEdRYkdpVm9oNWlRbU1SZm5Zd20yV3F3V3RLU2RjTmgzbTNVeHQ4QjgxalYxajJkMFRZWXplbDllSXhxc09uUVhlU2U0Mjd4QUJsdnRVS19ncE5NUk5iZnM3Zw?oc=5"
+        },
+        {
+          "title": "\"He's weak and injured\": Missing activist Muteti Mulinge found dumped in Lukenya - Tuko News",
+          "source": "Tuko News",
+          "pubDate": "2026-09-25",
+          "url": "https://news.google.com/rss/articles/CBMinwFBVV95cUxNNUNmTzVpRE5MRWtOLVhaRHJUNTEyM05XTXVpUHF2TlNwUkZZQ21Odm1uejF6NzVHQ3A3SFhHQlFidDE0WWJobEN6ZjhWZU5qOUFtMWVzSkxqRG9BZ1pyYmJkZ0h4RWRIUl9jX01wbG8xOU5sR3cwTEI1R2t2ZkRoOVlmNU91c1E0UzMzNkczU2d3blczNkMwcERXM2NSbU0?oc=5"
+        }
+      ],
+      "status": "promoted",
+      "duplicateOf": "Boniface Mulinge Muteti (mulinge-2026-09-25)",
+      "promotedAt": "2026-09-28T07:56:32.680Z",
+      "promotedRecordId": "mulinge-2026-09-25",
+      "rejectedReason": null
+    },
+    "case-missing-human-rights-activist-found-afte-2026-09-25": {
+      "caseId": "case-missing-human-rights-activist-found-afte-2026-09-25",
+      "person": null,
+      "incidentHint": "Missing human rights activist found after 3 days, photos emerge",
+      "firstSeen": "2026-09-28",
+      "lastSeen": "2026-09-28",
+      "pubDate": "2026-09-25",
+      "latestPubDate": "2026-09-25",
+      "outlets": [
+        "Yen.com.gh"
+      ],
+      "corroboration": 1,
+      "urls": [
+        "https://news.google.com/rss/articles/CBMilwFBVV95cUxOQ09tRHpNby15c0l2aDhNU29YMEpIX3FrZVdfN2V0WmxUNFU5RENwemxzV2ExdUZuZXJKZm84WG1ONTNjVDVfelBScjBvSHMwc0F3R0VzTXRmQ3lxZ0JRVkNqQTYxWC1iZHZhcno2TVN5eFZJcGNBT2t1T0ZtVUlScHl1VjNLVW14cXhrdWZSQUFZbTN4b3M4?oc=5"
+      ],
+      "articles": [
+        {
+          "title": "Missing human rights activist found after 3 days, photos emerge - Yen.com.gh",
+          "source": "Yen.com.gh",
+          "pubDate": "2026-09-25",
+          "url": "https://news.google.com/rss/articles/CBMilwFBVV95cUxOQ09tRHpNby15c0l2aDhNU29YMEpIX3FrZVdfN2V0WmxUNFU5RENwemxzV2ExdUZuZXJKZm84WG1ONTNjVDVfelBScjBvSHMwc0F3R0VzTXRmQ3lxZ0JRVkNqQTYxWC1iZHZhcno2TVN5eFZJcGNBT2t1T0ZtVUlScHl1VjNLVW14cXhrdWZSQUFZbTN4b3M4?oc=5"
+        }
+      ],
+      "status": "duplicate",
+      "duplicateOf": "Boniface Mulinge Muteti (mulinge-2026-09-25)",
+      "promotedAt": null,
+      "promotedRecordId": null,
+      "rejectedReason": null
+    },
+    "case-kenya-standard-group-editor-found-safe-f-2026-09-10": {
+      "caseId": "case-kenya-standard-group-editor-found-safe-f-2026-09-10",
+      "person": null,
+      "incidentHint": "Kenya: Standard Group editor found safe following abduction / FIP - International Federation of Journalists",
+      "firstSeen": "2026-09-28",
+      "lastSeen": "2026-09-28",
+      "pubDate": "2026-09-10",
+      "latestPubDate": "2026-09-10",
+      "outlets": [
+        "International Federation of Journalists - IFJ"
+      ],
+      "corroboration": 1,
+      "urls": [
+        "https://news.google.com/rss/articles/CBMi5wFBVV95cUxNQnRBMnFMaDhodWVIeXZKREZGS1k4czRlRHNUT3dvVjk0NFJCZGoyWFJsUk01N1RLX0F0UjlKVUtrRGV2ejVMcUZ0Tzlic0FUUXRhajlTQy1TNEVIUWx6ZGNoTGRRZE9Qc3pRUDFLdlB2eHFVcXItOGdqaENkZlVrb0RSOHd6N3NzWXBya3B2NjFLcDFfbm9DVm1tU01Nc0d6YUJIczRlbUEyclVPMkNmX1ZzWXlqMEwxYXAzbVY1U25PWXk2OGo3MHdtV1VUbDJMWG5VRmpUOElFWW13VGFsV0VDZkZieFk?oc=5",
+        "https://news.google.com/rss/articles/CBMi1gJBVV95cUxOcm9IemstR0F3TXYyX3RQZ3hLNi03dGZ4OWJfM1YyckRtMHk3ellXZTBHQXlyWDNoTE11amZ6TG1LYkZRNHY5NktZUXBQZmpTYllILVpoQ21uUHVLSTgtNGJMNXZfR1ByZThybi1qNFVlcGYxSDZMeTROTE5WV2pEUE1BZTd5RlExVHpqb1RGakdZVkxyTzNqdDAzUk5UV2dKOUUyNld3WmE5TldlSkI5cFAxQ2puSktoSFd2U2ZqMURxZFZEdmdibVlhWm96ZmxIR1pjWGkwUDlsejg0Rl9RSFFyYlJLcUVPSXIxajRaNktUYzVDT3h5NXVJSTZjbHdzR0haSjlfRnBSRl9SUm1LWmZSX1QyazVuaTFrUWdjOHFLVXVkMFp3Qk1LTDhHcXFCbVdSX1dmVWk0TmlaYldIYURNRE5UX1dHdVE1UWowSll4bUZ6WFE?oc=5"
+      ],
+      "articles": [
+        {
+          "title": "Kenya: Standard Group editor found safe following abduction / FIP - International Federation of Journalists - IFJ",
+          "source": "International Federation of Journalists - IFJ",
+          "pubDate": "2026-09-10",
+          "url": "https://news.google.com/rss/articles/CBMi5wFBVV95cUxNQnRBMnFMaDhodWVIeXZKREZGS1k4czRlRHNUT3dvVjk0NFJCZGoyWFJsUk01N1RLX0F0UjlKVUtrRGV2ejVMcUZ0Tzlic0FUUXRhajlTQy1TNEVIUWx6ZGNoTGRRZE9Qc3pRUDFLdlB2eHFVcXItOGdqaENkZlVrb0RSOHd6N3NzWXBya3B2NjFLcDFfbm9DVm1tU01Nc0d6YUJIczRlbUEyclVPMkNmX1ZzWXlqMEwxYXAzbVY1U25PWXk2OGo3MHdtV1VUbDJMWG5VRmpUOElFWW13VGFsV0VDZkZieFk?oc=5"
+        },
+        {
+          "title": "Kenya: Standard Group editor found safe following abduction / IFJ - International Federation of Journalists - IFJ",
+          "source": "International Federation of Journalists - IFJ",
+          "pubDate": "2026-09-10",
+          "url": "https://news.google.com/rss/articles/CBMi1gJBVV95cUxOcm9IemstR0F3TXYyX3RQZ3hLNi03dGZ4OWJfM1YyckRtMHk3ellXZTBHQXlyWDNoTE11amZ6TG1LYkZRNHY5NktZUXBQZmpTYllILVpoQ21uUHVLSTgtNGJMNXZfR1ByZThybi1qNFVlcGYxSDZMeTROTE5WV2pEUE1BZTd5RlExVHpqb1RGakdZVkxyTzNqdDAzUk5UV2dKOUUyNld3WmE5TldlSkI5cFAxQ2puSktoSFd2U2ZqMURxZFZEdmdibVlhWm96ZmxIR1pjWGkwUDlsejg0Rl9RSFFyYlJLcUVPSXIxajRaNktUYzVDT3h5NXVJSTZjbHdzR0haSjlfRnBSRl9SUm1LWmZSX1QyazVuaTFrUWdjOHFLVXVkMFp3Qk1LTDhHcXFCbVdSX1dmVWk0TmlaYldIYURNRE5UX1dHdVE1UWowSll4bUZ6WFE?oc=5"
+        }
+      ],
+      "status": "duplicate",
+      "duplicateOf": "Alex Kiprotich (kiprotich-2026-09-01)",
+      "promotedAt": null,
+      "promotedRecordId": null,
+      "rejectedReason": null
+    },
+    "case-kenyan-editor-found-safe-after-abduction-2026-09-08": {
+      "caseId": "case-kenyan-editor-found-safe-after-abduction-2026-09-08",
+      "person": null,
+      "incidentHint": "Kenyan editor found safe after abduction by armed men",
+      "firstSeen": "2026-09-28",
+      "lastSeen": "2026-09-28",
+      "pubDate": "2026-09-08",
+      "latestPubDate": "2026-09-08",
+      "outlets": [
+        "Modern Ghana"
+      ],
+      "corroboration": 1,
+      "urls": [
+        "https://news.google.com/rss/articles/CBMiZkFVX3lxTE5CY0JGZUx5LW5yWFYybWtjNVlzWDc2VWFaNTRab0tJWFo3YzkxTWZpeDF0UV8tZUM2TTk0YjNPd1VSMUtwd1pCVmQyY1JQUDBoUkpjeTFMSjdIVzlRMTdwUm1MZm9NZ9IBXEFVX3lxTE1GRjY3ZzdvcmFVOWdNUHpybGppTkRXTmZmdzY4TkhjQVJOd053VDNZQnlWaGRKTjVqajdqZ19KTl9mVHZVM1pCclJ6MzFOR1k2cVdvcktWSTh4dFA0?oc=5"
+      ],
+      "articles": [
+        {
+          "title": "Kenyan editor found safe after abduction by armed men - Modern Ghana",
+          "source": "Modern Ghana",
+          "pubDate": "2026-09-08",
+          "url": "https://news.google.com/rss/articles/CBMiZkFVX3lxTE5CY0JGZUx5LW5yWFYybWtjNVlzWDc2VWFaNTRab0tJWFo3YzkxTWZpeDF0UV8tZUM2TTk0YjNPd1VSMUtwd1pCVmQyY1JQUDBoUkpjeTFMSjdIVzlRMTdwUm1MZm9NZ9IBXEFVX3lxTE1GRjY3ZzdvcmFVOWdNUHpybGppTkRXTmZmdzY4TkhjQVJOd053VDNZQnlWaGRKTjVqajdqZ19KTl9mVHZVM1pCclJ6MzFOR1k2cVdvcktWSTh4dFA0?oc=5"
+        }
+      ],
+      "status": "duplicate",
+      "duplicateOf": "Alex Kiprotich (kiprotich-2026-09-01)",
+      "promotedAt": null,
+      "promotedRecordId": null,
+      "rejectedReason": null
+    },
+    "case-kenyan-editor-found-safe-after-abduction-2026-09-02": {
+      "caseId": "case-kenyan-editor-found-safe-after-abduction-2026-09-02",
+      "person": null,
+      "incidentHint": "Kenyan editor found safe after abduction, employer says",
+      "firstSeen": "2026-09-28",
+      "lastSeen": "2026-09-28",
+      "pubDate": "2026-09-02",
+      "latestPubDate": "2026-09-02",
+      "outlets": [
+        "Reuters",
+        "Yahoo"
+      ],
+      "corroboration": 2,
+      "urls": [
+        "https://news.google.com/rss/articles/CBMiuwFBVV95cUxOTlB1MG5KcTgwOXA5SmJmd0YxMi1pTTlrLWZfdmlqd29SNVRFZ253c3FEUExYY1c0U3g0YXpZeXdObUxtMGFjU3NKNGEzYjNacHRGQU8yY05vMll2RXRyUWJ6MXo2MmoxbkR1Ti16OUJWMmozZ0lIVEJFejFZMzJkem9lNGM5MDNDOHg4dDViN0xLbUpRam1ReVF0b25ST0xyaEJyUk1rYVVSclZHamFGOEcySTJUeGR5RGRF?oc=5",
+        "https://news.google.com/rss/articles/CBMijgFBVV95cUxPbDlFWloyUExGRmZZMEtMbmg5NG5FeHNlcERyNlM5MC1XQzFFaEZsNnZyRFA1MVlGTVRoV1NHVkRUellZLWUwa3Q1ZE02V1BlRlNCeDVNcHJjaUNDY18xZF9nZ2FRZE1tQ182a3NTYTBtUllpR19KOXo1aWhVZl9mOHJudWpTbjNlVEVwMlBn?oc=5"
+      ],
+      "articles": [
+        {
+          "title": "Kenyan editor found safe after abduction, employer says - Reuters",
+          "source": "Reuters",
+          "pubDate": "2026-09-02",
+          "url": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxOTlB1MG5KcTgwOXA5SmJmd0YxMi1pTTlrLWZfdmlqd29SNVRFZ253c3FEUExYY1c0U3g0YXpZeXdObUxtMGFjU3NKNGEzYjNacHRGQU8yY05vMll2RXRyUWJ6MXo2MmoxbkR1Ti16OUJWMmozZ0lIVEJFejFZMzJkem9lNGM5MDNDOHg4dDViN0xLbUpRam1ReVF0b25ST0xyaEJyUk1rYVVSclZHamFGOEcySTJUeGR5RGRF?oc=5"
+        },
+        {
+          "title": "Kenyan editor found safe after abduction, employer says - Yahoo",
+          "source": "Yahoo",
+          "pubDate": "2026-09-02",
+          "url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxPbDlFWloyUExGRmZZMEtMbmg5NG5FeHNlcERyNlM5MC1XQzFFaEZsNnZyRFA1MVlGTVRoV1NHVkRUellZLWUwa3Q1ZE02V1BlRlNCeDVNcHJjaUNDY18xZF9nZ2FRZE1tQ182a3NTYTBtUllpR19KOXo1aWhVZl9mOHJudWpTbjNlVEVwMlBn?oc=5"
+        }
+      ],
+      "status": "duplicate",
+      "duplicateOf": "Alex Kiprotich (kiprotich-2026-09-01)",
+      "promotedAt": null,
+      "promotedRecordId": null,
+      "rejectedReason": null
+    },
+    "case-kenyan-editor-abducted-by-masked-gunmen--2026-09-02": {
+      "caseId": "case-kenyan-editor-abducted-by-masked-gunmen--2026-09-02",
+      "person": null,
+      "incidentHint": "Kenyan editor abducted by masked gunmen after his newspaper criticized government",
+      "firstSeen": "2026-09-28",
+      "lastSeen": "2026-09-28",
+      "pubDate": "2026-09-02",
+      "latestPubDate": "2026-09-02",
+      "outlets": [
+        "The Globe and Mail"
+      ],
+      "corroboration": 1,
+      "urls": [
+        "https://news.google.com/rss/articles/CBMiuAFBVV95cUxNT21CbTY5bnMzWVdqQ1UyaFFpNzcycmQyR2dycUU2ckF0dGxvZnJWTnZ0eldTWmFtXy00MXRUZzVwQi1xbHk3RFplOWNfY3BNRnZaU2YwV0dBbkJZS3A0dGRpZ1ozcVZSTmQ4T2NlSThldXI1WHl3aTZtRE92UlE4NlZISE5KWE5BMVVlOHBrQUpCNGFvMUZCXy00WUVPRnVsUnhBN2xCVmZ1RU5BVUNqeExiQlRIN1du?oc=5"
+      ],
+      "articles": [
+        {
+          "title": "Kenyan editor abducted by masked gunmen after his newspaper criticized government - The Globe and Mail",
+          "source": "The Globe and Mail",
+          "pubDate": "2026-09-02",
+          "url": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxNT21CbTY5bnMzWVdqQ1UyaFFpNzcycmQyR2dycUU2ckF0dGxvZnJWTnZ0eldTWmFtXy00MXRUZzVwQi1xbHk3RFplOWNfY3BNRnZaU2YwV0dBbkJZS3A0dGRpZ1ozcVZSTmQ4T2NlSThldXI1WHl3aTZtRE92UlE4NlZISE5KWE5BMVVlOHBrQUpCNGFvMUZCXy00WUVPRnVsUnhBN2xCVmZ1RU5BVUNqeExiQlRIN1du?oc=5"
+        }
+      ],
+      "status": "duplicate",
+      "duplicateOf": "Alex Kiprotich (kiprotich-2026-09-01)",
+      "promotedAt": null,
+      "promotedRecordId": null,
+      "rejectedReason": null
+    },
+    "alex-kiprotich-2026-09-02": {
+      "caseId": "alex-kiprotich-2026-09-02",
+      "person": "Alex Kiprotich",
+      "incidentHint": "Alex Kiprotich, Abducted Twice, is No Ordinary Standard Editor",
+      "firstSeen": "2026-09-28",
+      "lastSeen": "2026-09-28",
+      "pubDate": "2026-09-02",
+      "latestPubDate": "2026-09-02",
+      "outlets": [
+        "Business Today Kenya"
+      ],
+      "corroboration": 1,
+      "urls": [
+        "https://news.google.com/rss/articles/CBMikwFBVV95cUxOcGx2WEZ2T2hQNVp6WGVlYVpITTJ3bjFoUXZweGtWSHZSVjJmdGlqSVN2SzVzMnNyUjNIUWdmNlJMWHVzT3ZINVRvTjctNjAzOXdJLXdFRXJ3SUtxNmZSMkZ4SWp2VEk3UWM5UTVIX182M0hhd0xOUTlMcTZRZVdUT0NhLVVZX2l6N3lzckhvenNYQ1E?oc=5"
+      ],
+      "articles": [
+        {
+          "title": "Alex Kiprotich, Abducted Twice, is No Ordinary Standard Editor - Business Today Kenya",
+          "source": "Business Today Kenya",
+          "pubDate": "2026-09-02",
+          "url": "https://news.google.com/rss/articles/CBMikwFBVV95cUxOcGx2WEZ2T2hQNVp6WGVlYVpITTJ3bjFoUXZweGtWSHZSVjJmdGlqSVN2SzVzMnNyUjNIUWdmNlJMWHVzT3ZINVRvTjctNjAzOXdJLXdFRXJ3SUtxNmZSMkZ4SWp2VEk3UWM5UTVIX182M0hhd0xOUTlMcTZRZVdUT0NhLVVZX2l6N3lzckhvenNYQ1E?oc=5"
+        }
+      ],
+      "status": "duplicate",
+      "duplicateOf": "Alex Kiprotich (kiprotich-2026-09-01)",
+      "promotedAt": null,
+      "promotedRecordId": null,
+      "rejectedReason": null
+    },
+    "case-five-mandera-herders-abducted-by-al-shab-2026-08-27": {
+      "caseId": "case-five-mandera-herders-abducted-by-al-shab-2026-08-27",
+      "person": null,
+      "incidentHint": "Five Mandera herders abducted by al-Shabaab freed after elders intervene - the-star.co.ke",
+      "firstSeen": "2026-09-28",
+      "lastSeen": "2026-09-28",
+      "pubDate": "2026-08-27",
+      "latestPubDate": "2026-08-27",
+      "outlets": [
+        "the-star.co.ke"
+      ],
+      "corroboration": 1,
+      "urls": [
+        "https://news.google.com/rss/articles/CBMimgFBVV95cUxPVHV2VDEzazhEWGlTOFdxNzVtWjdKQlhaZHFEZTI3M0pBVVVCdmNTbTNRbTRlLUEtWTAtZ0szRWJRNF84eUZnVThoNm9NZ184bU5rM0MwcThnTElpdy1FVGlMNzFOZFV1ZFpSbGh1NXZxdklpV0VzUnBIMHpVSXlxd0p5QXpRRF9XOFAyTnRCME1Xamp6YldxOHFR?oc=5"
+      ],
+      "articles": [
+        {
+          "title": "Five Mandera herders abducted by al-Shabaab freed after elders intervene - the-star.co.ke",
+          "source": "the-star.co.ke",
+          "pubDate": "2026-08-27",
+          "url": "https://news.google.com/rss/articles/CBMimgFBVV95cUxPVHV2VDEzazhEWGlTOFdxNzVtWjdKQlhaZHFEZTI3M0pBVVVCdmNTbTNRbTRlLUEtWTAtZ0szRWJRNF84eUZnVThoNm9NZ184bU5rM0MwcThnTElpdy1FVGlMNzFOZFV1ZFpSbGh1NXZxdklpV0VzUnBIMHpVSXlxd0p5QXpRRF9XOFAyTnRCME1Xamp6YldxOHFR?oc=5"
+        }
+      ],
+      "status": "pending",
+      "duplicateOf": null,
+      "promotedAt": null,
+      "promotedRecordId": null,
+      "rejectedReason": null
+    },
+    "south-sudanese-2026-08-10": {
+      "caseId": "south-sudanese-2026-08-10",
+      "person": "South Sudanese",
+      "incidentHint": "South Sudanese man abducted in Kenya released after two months",
+      "firstSeen": "2026-09-28",
+      "lastSeen": "2026-09-28",
+      "pubDate": "2026-08-10",
+      "latestPubDate": "2026-08-10",
+      "outlets": [
+        "Radio Tamazuj",
+        "Punch Newspapers"
+      ],
+      "corroboration": 2,
+      "urls": [
+        "https://news.google.com/rss/articles/CBMiqwFBVV95cUxOb2NJY0o1VE1qQmNIblNrakdWQVIxZkZhNlhyaWw1cG1ENnBPYi1XdEVYRi1oVERlQnRRWTVRcUs2anNxMy1Cek4wNUFIa25BUGIxalVCOWNGeXNJbzEyckVObHRuVEhuUldDM2JvSEN2Z2tGVl9Xel9ZcmRVbWZKT1dsdkNTQzRiTTlGbkVRUTBiS2IyNDBKN05uSHQzQXg3TGFXWTEyREUxNXM?oc=5",
+        "https://news.google.com/rss/articles/CBMilAFBVV95cUxOMnJRaEVCZGZvWDlhZ2JtdmhRNjNRVk1rOWRSRUpVNzZwUnExb01LcXVjcGNtNkVOTkdTT1JYSXY1d2o3MVNoUDEtZEV1TGhwN1VKaHY3WVlxcGdpc2dPd01IMHMyaFFtM29BYzlLTjV2MkR1aDFSQW8zb2RuR05JSTdhRndiWDZER3FmUk54b2Y5RWIy?oc=5"
+      ],
+      "articles": [
+        {
+          "title": "South Sudanese man abducted in Kenya released after two months - Radio Tamazuj",
+          "source": "Radio Tamazuj",
+          "pubDate": "2026-08-10",
+          "url": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxOb2NJY0o1VE1qQmNIblNrakdWQVIxZkZhNlhyaWw1cG1ENnBPYi1XdEVYRi1oVERlQnRRWTVRcUs2anNxMy1Cek4wNUFIa25BUGIxalVCOWNGeXNJbzEyckVObHRuVEhuUldDM2JvSEN2Z2tGVl9Xel9ZcmRVbWZKT1dsdkNTQzRiTTlGbkVRUTBiS2IyNDBKN05uSHQzQXg3TGFXWTEyREUxNXM?oc=5"
+        },
+        {
+          "title": "South Sudan whistleblower abducted in Kenya released after two months - Punch Newspapers",
+          "source": "Punch Newspapers",
+          "pubDate": "2026-08-10",
+          "url": "https://news.google.com/rss/articles/CBMilAFBVV95cUxOMnJRaEVCZGZvWDlhZ2JtdmhRNjNRVk1rOWRSRUpVNzZwUnExb01LcXVjcGNtNkVOTkdTT1JYSXY1d2o3MVNoUDEtZEV1TGhwN1VKaHY3WVlxcGdpc2dPd01IMHMyaFFtM29BYzlLTjV2MkR1aDFSQW8zb2RuR05JSTdhRndiWDZER3FmUk54b2Y5RWIy?oc=5"
+        }
+      ],
+      "status": "ready",
+      "duplicateOf": null,
+      "promotedAt": null,
+      "promotedRecordId": null,
+      "rejectedReason": null
+    },
+    "case-dcp-blogger-reportedly-abducted-claims-k-2026-08-04": {
+      "caseId": "case-dcp-blogger-reportedly-abducted-claims-k-2026-08-04",
+      "person": null,
+      "incidentHint": "DCP blogger reportedly abducted, claims Kirinyaga Woman Rep",
+      "firstSeen": "2026-09-28",
+      "lastSeen": "2026-09-28",
+      "pubDate": "2026-08-04",
+      "latestPubDate": "2026-08-04",
+      "outlets": [
+        "Capital FM Africa"
+      ],
+      "corroboration": 1,
+      "urls": [
+        "https://news.google.com/rss/articles/CBMijAFBVV95cUxPeGZWUThqYnFnRWVVUnJSWEtDOGNRV0l3V0VJYzFZUUxrTk9vMTliTXhRb2xqLTlNNUdoV19SdExvd2tfSWZZNDZLY1p5dHNkV3BsTmdYN2dMM1ltQzFxaXRmWUxXa095eHBhR3o1VWdYYXY3UEtUaUFrNlhFZUFfcnZzQnlqdmxRVnpyYg?oc=5"
+      ],
+      "articles": [
+        {
+          "title": "DCP blogger reportedly abducted, claims Kirinyaga Woman Rep - Capital FM Africa",
+          "source": "Capital FM Africa",
+          "pubDate": "2026-08-04",
+          "url": "https://news.google.com/rss/articles/CBMijAFBVV95cUxPeGZWUThqYnFnRWVVUnJSWEtDOGNRV0l3V0VJYzFZUUxrTk9vMTliTXhRb2xqLTlNNUdoV19SdExvd2tfSWZZNDZLY1p5dHNkV3BsTmdYN2dMM1ltQzFxaXRmWUxXa095eHBhR3o1VWdYYXY3UEtUaUFrNlhFZUFfcnZzQnlqdmxRVnpyYg?oc=5"
+        }
+      ],
+      "status": "pending",
+      "duplicateOf": null,
+      "promotedAt": null,
+      "promotedRecordId": null,
+      "rejectedReason": null
+    }
+  }
+}

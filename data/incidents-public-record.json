@@ -1,7 +1,7 @@
 {
   "dataset": "KAMPS public-record abduction / enforced-disappearance / related police-killing incidents, Kenya 2024-2026",
-  "count": 29,
-  "compiled_at": "2026-09-27T07:55:26Z",
+  "count": 33,
+  "compiled_at": "2026-09-28T07:56:52.165Z",
   "methodology": "Curated from sources fetched directly with curl (HTTP 200 verified at retrieval time) or from references extracted from Wikipedia wikitext fetched via the MediaWiki API. No fabricated entries; every entry has at least one real sourceUrl. datePrecision 'month' used when only the month is documented.",
   "sources": [
     "https://www.aljazeera.com/news/2026/6/25/two-years-on-kenyan-families-still-seek-justice-after-gen-z-protests",
@@ -22,7 +22,9 @@
     "https://en.wikipedia.org/wiki/Kenya_Finance_Bill_protests",
     "https://capitalfm.africa/wajirs-dela-mca-yussuf-reunites-with-family-after-missing-for-six-months/",
     "https://capitalfm.africa/martin-mwau-second-man-who-went-missing-from-mlolongo-found-at-city-mortuary/",
-    "https://capitalfm.africa/one-of-the-mlolongo-3-abductees-found-dead-in-ruai/"
+    "https://capitalfm.africa/one-of-the-mlolongo-3-abductees-found-dead-in-ruai/",
+    "https://www.kenyans.co.ke/news/127342-activist-mulinge-muteti-found-dumped-machakos-after-days-disappearance",
+    "https://www.the-star.co.ke/news/2026-09-26-activist-collins-otieno-found-along-thika-road"
   ],
   "context_statistics": [
     {
@@ -399,6 +401,30 @@
       "sourceName": "KNCHR",
       "sourceUrl": "https://www.knchr.org/Articles/ArtMID/2432/ArticleID/1262/The-KNCHR-Condemns-the-Abduction-of-Standard-Group-Associate-Editor-Alex-Kiprotich",
       "notes": "Standard Group Associate Editor abducted on the night of 1 September 2026; found safe shortly after. KNCHR condemned the abduction on 3 September and noted the Inspector-General's commitment to investigate through the Anti-Abduction Unit."
+    },
+    {
+      "id": "mulinge-2026-09-25",
+      "date": "2026-09-25",
+      "datePrecision": "day",
+      "person": "Boniface Mulinge Muteti",
+      "location": "Machakos (Lukenya, Athi River)",
+      "status": "returned",
+      "category": "abduction",
+      "sourceName": "kenyans.co.ke",
+      "sourceUrl": "https://www.kenyans.co.ke/news/127342-activist-mulinge-muteti-found-dumped-machakos-after-days-disappearance",
+      "notes": "Verified via cross-source corroboration: 3+ independent outlets (Capital FM Africa, standardmedia.co.ke, Tuko News). Promoted from the curation queue on 2026-09-28 by queue-watcher operator, web-verified 2026-09-28. Corroborating coverage: https://allafrica.com/stories/202609250306.html ; https://www.kenyamoja.com/video/activist-muteti-mulinge-found-alive-after-four-days-citizen-tv-480921 ; https://www.standardmedia.co.ke/article/2001585666/missing-activist-muteti-mulinge-found-dumped-alive-in-machakos Human rights activist, one of the six Parliament protesters abducted 25 June 2026 (separate entry in this record). Went missing about four days after Nairobi protests, around 21 September 2026. Found early Friday 25 September around 03:00, dumped by abductors in Lukenya, Athi River, Machakos County; walked a long distance to a petrol station where a good Samaritan assisted. Hospitalised with injuries; alleges torture by police. Confirmation attributed to human rights official Hussein Khaled."
+    },
+    {
+      "id": "otieno-2026-09-26",
+      "date": "2026-09-26",
+      "datePrecision": "day",
+      "person": "Collins Otieno",
+      "location": "Nairobi (Thika Road)",
+      "status": "returned",
+      "category": "abduction",
+      "sourceName": "The Star (Kenya)",
+      "sourceUrl": "https://www.the-star.co.ke/news/2026-09-26-activist-collins-otieno-found-along-thika-road",
+      "notes": "Verified via cross-source corroboration: 3+ independent outlets (kenyans.co.ke, Pulse Kenya, Tuko News). Promoted from the curation queue on 2026-09-28 by queue-watcher operator, web-verified 2026-09-28. Corroborating coverage: https://citizen.digital/article/missing-activist-collins-otieno-found-dumped-along-thika-road-rushed-to-hospital-n390923 Human rights activist who disappeared while seeking help to trace fellow activist Boniface Mulinge Muteti (found 25 September; separate entry in this record). Reportedly missing three to six days, around 20 to 23 September 2026. Found Saturday 26 September around 04:30, dumped along Thika Road, Nairobi; a boda boda rider found him and rushed him to hospital. Unable to speak initially; nursing serious injuries. Second of the two September activists found dumped that week."
     }
   ],
   "coverage_notes": "Entries limited to publicly reported, individually identifiable incidents with at least one verifiable source (fetched or Wikipedia-reference-verified). Aggregate statistics (e.g., HRW/KNCHR totals) are stored separately in context_statistics. AP News returns 403 to automated fetches; the one AP-sourced entry (Osama Otero) is kept because its reference was extracted from the fetched Wikipedia wikitext. Paywalled Nation Africa articles were not used as primary sourceUrls. Two incidents (Turkish citizens; Ugandan activists) occurred partly outside Kenya but are directly part of Kenya's abduction pattern."

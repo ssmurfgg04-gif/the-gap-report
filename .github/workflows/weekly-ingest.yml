@@ -10,8 +10,15 @@
 #   1. ACLED weekly aggregates  (needs ACLED_EMAIL + ACLED_PASSWORD secrets)
 #   2. GDELT media volume       (keyless)
 #   3. News watch               (Google News RSS, Bing News RSS, KNCHR index; keyless)
+#      -> curation queue watch  (clusters the fresh leads, counts independent
+#         outlets per case, dedups against the documented record, and flags
+#         cases that are ONE VERIFICATION AWAY from the documented count)
 #   4. Missing Voices refresh   (keyless, polite 1.5s delays)
 #   5. ReliefWeb v2             (needs RELIEFWEB_APPNAME secret; skipped while pending)
+#
+# After the digest issue is filed, partner webhooks fire: every endpoint in
+# the DIGEST_WEBHOOK_URL secret (comma-separated; Slack/Discord/generic JSON
+# auto-detected) gets the headline numbers and the issue link.
 #
 # Manual runs: workflow_dispatch from the Actions tab.
 
@@ -36,7 +43,8 @@ jobs:
     env:
       ACLED_EMAIL: ${{ secrets.ACLED_EMAIL }}
       ACLED_PASSWORD: ${{ secrets.ACLED_PASSWORD }}
-      RELIEFWEB_APPNAME: ${{ secrets.RELIEWEB_APPNAME }}
+      RELIEFWEB_APPNAME: ${{ secrets.RELIEFWEB_APPNAME }}
+      DIGEST_WEBHOOK_URL: ${{ secrets.DIGEST_WEBHOOK_URL }}
 
     steps:
       - uses: actions/checkout@v4
@@ -59,6 +67,10 @@ jobs:
       - name: News watch sweep (Google News, Bing News, KNCHR)
         continue-on-error: true
         run: node scripts/news-watch.mjs
+
+      - name: Curation queue watch (corroboration + record dedup)
+        continue-on-error: true
+        run: node scripts/curation-queue.mjs
 
       - name: Missing Voices refresh
         continue-on-error: true
@@ -116,4 +128,14 @@ jobs:
         run: |
           TITLE="KAMPS weekly digest, $(date -u +%F)"
           gh label create "weekly-digest" --color b60200 --description "Automated weekly data digest" 2>/dev/null || true
-          gh issue create --title "$TITLE" --body-file digest.md --label weekly-digest
+          gh issue create --title "$TITLE" --body-file digest.md --label weekly-digest > issue-url.txt
+          cat issue-url.txt
+
+      # Partner ping: headline numbers + digest link to every endpoint listed
+      # in DIGEST_WEBHOOK_URL (comma-separated). Slack/Discord/generic JSON
+      # formats are auto-detected from the URL shape. Opt-in: silent until
+      # the repo secret is set.
+      - name: Ping partner webhook (weekly digest)
+        if: env.DIGEST_WEBHOOK_URL != ''
+        continue-on-error: true
+        run: node scripts/notify-webhook.mjs digest.md "$(cat issue-url.txt)"
