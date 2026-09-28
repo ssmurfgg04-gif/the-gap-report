@@ -57,10 +57,10 @@
     {
       "file": "incidents-public-record.json",
       "format": "JSON {count, sources[], context_statistics[], incidents[]}",
-      "rows_or_features": "33 incidents (33 rows; queue promotions appended with corroboration trail)",
+      "rows_or_features": "34 incidents (34 rows; queue promotions appended with corroboration trail)",
       "source": "Primary news articles fetched and verified with curl (HTTP 200): Al Jazeera (3), BBC News (4), Capital FM Kenya (6), Citizen Digital (2), The Star (3), The Standard (1), KNCHR (1); plus Wikipedia wikitext fetched via API (Kenya Finance Bill protests, 2025 Kenyan protests, 2024/2025 in Kenya, Death of Albert Ojwang, Maverick Aoko) with reference URLs extracted; one AP News reference kept via Wikipedia-verification (AP blocks automated fetch, HTTP 403)",
       "license": "Facts compiled with source attribution; underlying articles copyrighted by respective publishers (fair-use citation for research)",
-      "retrieved_at": "2026-09-28T07:56:52.165Z",
+      "retrieved_at": "2026-09-28T08:26:15.471Z",
       "quality": "verified",
       "notes": "Sept 2026 refresh: Kiprotich abduction added; June 2026 Parliament six named per KNCHR; Kiarie/Oloo/Duba named; KNCHR 35-case Reparations Framework + 11-case protest stats added."
     },

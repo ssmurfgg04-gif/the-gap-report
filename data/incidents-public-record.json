@@ -1,7 +1,7 @@
 {
   "dataset": "KAMPS public-record abduction / enforced-disappearance / related police-killing incidents, Kenya 2024-2026",
-  "count": 33,
-  "compiled_at": "2026-09-28T07:56:52.165Z",
+  "count": 34,
+  "compiled_at": "2026-09-28T08:26:15.471Z",
   "methodology": "Curated from sources fetched directly with curl (HTTP 200 verified at retrieval time) or from references extracted from Wikipedia wikitext fetched via the MediaWiki API. No fabricated entries; every entry has at least one real sourceUrl. datePrecision 'month' used when only the month is documented.",
   "sources": [
     "https://www.aljazeera.com/news/2026/6/25/two-years-on-kenyan-families-still-seek-justice-after-gen-z-protests",
@@ -24,7 +24,8 @@
     "https://capitalfm.africa/martin-mwau-second-man-who-went-missing-from-mlolongo-found-at-city-mortuary/",
     "https://capitalfm.africa/one-of-the-mlolongo-3-abductees-found-dead-in-ruai/",
     "https://www.kenyans.co.ke/news/127342-activist-mulinge-muteti-found-dumped-machakos-after-days-disappearance",
-    "https://www.the-star.co.ke/news/2026-09-26-activist-collins-otieno-found-along-thika-road"
+    "https://www.the-star.co.ke/news/2026-09-26-activist-collins-otieno-found-along-thika-road",
+    "https://www.radiotamazuj.org/en/news/article/south-sudanese-man-abducted-in-kenya-released-after-two-months"
   ],
   "context_statistics": [
     {
@@ -389,6 +390,18 @@
       "sourceName": "The Standard (AFP)",
       "sourceUrl": "https://www.standardmedia.co.ke/national/article/2001551677/one-killed-in-fresh-nairobi-protests-after-alleged-abductions",
       "notes": "One person killed (three shot) as police opened fire at protests demanding release of abducted protesters; Reuters also reported (via Wikipedia: Kenya Finance Bill protests)."
+    },
+    {
+      "id": "gaddhaffy-2026-08-08",
+      "date": "2026-08-08",
+      "datePrecision": "day",
+      "person": "Athorbey Al-Gaddhaffy-Dit",
+      "location": "Nairobi (abduction); Juba, South Sudan (detention)",
+      "status": "returned",
+      "category": "abduction",
+      "sourceName": "radiotamazuj.org",
+      "sourceUrl": "https://www.radiotamazuj.org/en/news/article/south-sudanese-man-abducted-in-kenya-released-after-two-months",
+      "notes": "Verified via cross-source corroboration: 2+ independent outlets (Radio Tamazuj, Punch Newspapers). Promoted from the curation queue on 2026-09-28 by queue-watcher operator. Corroborating coverage: https://capitalfm.africa/south-sudan-whistleblower-athorbey-released-after-nearly-two-months-in-detention/ ; https://punchng.com/south-sudan-whistleblower-abducted-in-kenya-released-after-two-months/ ; https://www.eastleighvoice.co.ke/2026/08/11/whistleblower-released-following-abduction-and-deportation-to-juba/ ; https://bodexng.com/2026/08/south-sudan-whistleblower-abducted-in-kenya-released-after-two-months/ ; https://capitalfm.africa/rights-groups-demand-urgent-safeguards-for-businessman-reportedly-abducted-in-nairobi-and-moved-to-south-sudan/ South Sudanese graft whistleblower and Nairobi businessman Athorbey Al-Gaddhaffy-Dit (full name Athorbey Al-Gaddhaffy-Dit Guet, also known as Gaddafi; styled Gaddhaffy Athorbey by Capital FM and Gadafi Athorbey Guet by Amnesty Kenya), aged 51, Kenyan-South Sudanese dual national from Jonglei, had repeatedly warned that his life was in danger for exposing corruption linked to South Sudan's ruling elite. Abducted at gunpoint by armed masked men at about 03:00 on Wednesday 10 June 2026 as he left a casino in Nairobi (per information his wife received from police; AFP agency reporting) and unlawfully deported to South Sudan, where he was held at a military detention facility in Juba for nearly two months. Amnesty International Kenya publicly demanded urgent safeguards for him on 12 June 2026. Released on 8 August 2026 after investigations 'did not reveal any wrongdoing' (family statement), returned to Nairobi with deteriorated health and is receiving medical treatment; Amnesty Kenya announced his return on 11 August 2026 and demanded a transparent investigation and accountability for all responsible."
     },
     {
       "id": "kiprotich-2026-09-01",

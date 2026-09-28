@@ -23,13 +23,13 @@ Engine run over the data window 2024-06-01 to 2026-09-30.
 
 ## The numbers
 
-- **241 documented incidents** in the monitoring window (+2 since last digest), 207 county-located.
+- **242 documented incidents** in the monitoring window (+3 since last digest), 208 county-located.
 - Zones: 5 critical, 10 elevated. Highest: Nairobi at index 86.5.
 - ACLED trailing 12 months: 45 abduction-coded events, 271 violence-against-civilians events.
 
 ## Curator queue
 
-- 1 ready (one verification away), 2 pending, 6 duplicate.
+- 3 promoted this cycle, 0 ready, 2 pending, 6 duplicate.
 
 ## Action-level alerts
 
@@ -74,12 +74,12 @@ for (const r of received) {
   } else if (r.path === "/chan") {
     if (!("content" in parsed)) { pass = false; console.log("FAIL: discord payload missing content"); }
   } else {
-    if (parsed.numbers?.documentedIncidents !== 241) { pass = false; console.log("FAIL: generic numbers wrong", parsed.numbers); }
+    if (parsed.numbers?.documentedIncidents !== 242) { pass = false; console.log("FAIL: generic numbers wrong", parsed.numbers); }
     if (parsed.url !== "https://github.com/ssmurfgg04-gif/the-gap-report/issues/2") { pass = false; console.log("FAIL: url missing"); }
   }
 }
 const text0 = JSON.parse(received.find(r => r.path === "/bridge").body).text;
-if (!text0.includes("241 documented incidents +2 this week")) { pass = false; console.log("FAIL: delta not parsed:", text0); }
+if (!text0.includes("242 documented incidents +3 this week")) { pass = false; console.log("FAIL: delta not parsed:", text0); }
 if (!text0.includes("5 critical / 10 elevated")) { pass = false; console.log("FAIL: zones not parsed"); }
 if (!text0.includes("2 critical and 1 elevated action-level alerts")) { pass = false; console.log("FAIL: alerts not parsed"); }
 if (!text0.includes("issues/2")) { pass = false; console.log("FAIL: issue link missing"); }

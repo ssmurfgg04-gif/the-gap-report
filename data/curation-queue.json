@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-28T07:56:52.165Z",
+  "generatedAt": "2026-09-28T08:26:15.471Z",
   "queue": {
     "collins-otieno-2026-09-26": {
       "caseId": "collins-otieno-2026-09-26",
@@ -311,39 +311,70 @@
     },
     "south-sudanese-2026-08-10": {
       "caseId": "south-sudanese-2026-08-10",
-      "person": "South Sudanese",
-      "incidentHint": "South Sudanese man abducted in Kenya released after two months",
+      "person": "Athorbey Al-Gaddhaffy-Dit",
+      "incidentHint": "South Sudanese graft whistleblower abducted in Nairobi, deported to Juba, released after two months",
       "firstSeen": "2026-09-28",
       "lastSeen": "2026-09-28",
       "pubDate": "2026-08-10",
       "latestPubDate": "2026-08-10",
       "outlets": [
         "Radio Tamazuj",
-        "Punch Newspapers"
+        "Capital FM Kenya",
+        "Punch Newspapers",
+        "The Eastleigh Voice",
+        "BodexNG"
       ],
-      "corroboration": 2,
+      "corroboration": 5,
       "urls": [
-        "https://news.google.com/rss/articles/CBMiqwFBVV95cUxOb2NJY0o1VE1qQmNIblNrakdWQVIxZkZhNlhyaWw1cG1ENnBPYi1XdEVYRi1oVERlQnRRWTVRcUs2anNxMy1Cek4wNUFIa25BUGIxalVCOWNGeXNJbzEyckVObHRuVEhuUldDM2JvSEN2Z2tGVl9Xel9ZcmRVbWZKT1dsdkNTQzRiTTlGbkVRUTBiS2IyNDBKN05uSHQzQXg3TGFXWTEyREUxNXM?oc=5",
-        "https://news.google.com/rss/articles/CBMilAFBVV95cUxOMnJRaEVCZGZvWDlhZ2JtdmhRNjNRVk1rOWRSRUpVNzZwUnExb01LcXVjcGNtNkVOTkdTT1JYSXY1d2o3MVNoUDEtZEV1TGhwN1VKaHY3WVlxcGdpc2dPd01IMHMyaFFtM29BYzlLTjV2MkR1aDFSQW8zb2RuR05JSTdhRndiWDZER3FmUk54b2Y5RWIy?oc=5"
+        "https://www.radiotamazuj.org/en/news/article/south-sudanese-man-abducted-in-kenya-released-after-two-months",
+        "https://capitalfm.africa/south-sudan-whistleblower-athorbey-released-after-nearly-two-months-in-detention/",
+        "https://punchng.com/south-sudan-whistleblower-abducted-in-kenya-released-after-two-months/",
+        "https://www.eastleighvoice.co.ke/2026/08/11/whistleblower-released-following-abduction-and-deportation-to-juba/",
+        "https://bodexng.com/2026/08/south-sudan-whistleblower-abducted-in-kenya-released-after-two-months/",
+        "https://capitalfm.africa/rights-groups-demand-urgent-safeguards-for-businessman-reportedly-abducted-in-nairobi-and-moved-to-south-sudan/"
       ],
       "articles": [
         {
-          "title": "South Sudanese man abducted in Kenya released after two months - Radio Tamazuj",
+          "title": "South Sudanese man abducted in Kenya released after two months",
           "source": "Radio Tamazuj",
           "pubDate": "2026-08-10",
-          "url": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxOb2NJY0o1VE1qQmNIblNrakdWQVIxZkZhNlhyaWw1cG1ENnBPYi1XdEVYRi1oVERlQnRRWTVRcUs2anNxMy1Cek4wNUFIa25BUGIxalVCOWNGeXNJbzEyckVObHRuVEhuUldDM2JvSEN2Z2tGVl9Xel9ZcmRVbWZKT1dsdkNTQzRiTTlGbkVRUTBiS2IyNDBKN05uSHQzQXg3TGFXWTEyREUxNXM?oc=5"
+          "url": "https://www.radiotamazuj.org/en/news/article/south-sudanese-man-abducted-in-kenya-released-after-two-months"
         },
         {
-          "title": "South Sudan whistleblower abducted in Kenya released after two months - Punch Newspapers",
+          "title": "South Sudan whistleblower Athorbey released after nearly two months in detention",
+          "source": "Capital FM Kenya",
+          "pubDate": "2026-08-10",
+          "url": "https://capitalfm.africa/south-sudan-whistleblower-athorbey-released-after-nearly-two-months-in-detention/"
+        },
+        {
+          "title": "South Sudan Whistleblower Abducted in Kenya Released (AFP)",
           "source": "Punch Newspapers",
           "pubDate": "2026-08-10",
-          "url": "https://news.google.com/rss/articles/CBMilAFBVV95cUxOMnJRaEVCZGZvWDlhZ2JtdmhRNjNRVk1rOWRSRUpVNzZwUnExb01LcXVjcGNtNkVOTkdTT1JYSXY1d2o3MVNoUDEtZEV1TGhwN1VKaHY3WVlxcGdpc2dPd01IMHMyaFFtM29BYzlLTjV2MkR1aDFSQW8zb2RuR05JSTdhRndiWDZER3FmUk54b2Y5RWIy?oc=5"
+          "url": "https://punchng.com/south-sudan-whistleblower-abducted-in-kenya-released-after-two-months/"
+        },
+        {
+          "title": "Whistleblower released following 'abduction' and deportation to Juba",
+          "source": "The Eastleigh Voice",
+          "pubDate": "2026-08-11",
+          "url": "https://www.eastleighvoice.co.ke/2026/08/11/whistleblower-released-following-abduction-and-deportation-to-juba/"
+        },
+        {
+          "title": "South Sudan whistleblower abducted in Kenya released after two months",
+          "source": "BodexNG",
+          "pubDate": "2026-08-10",
+          "url": "https://bodexng.com/2026/08/south-sudan-whistleblower-abducted-in-kenya-released-after-two-months/"
+        },
+        {
+          "title": "Rights groups demand urgent safeguards for businessman reportedly abducted in Nairobi (June abduction report)",
+          "source": "Capital FM Kenya",
+          "pubDate": "2026-06-12",
+          "url": "https://capitalfm.africa/rights-groups-demand-urgent-safeguards-for-businessman-reportedly-abducted-in-nairobi-and-moved-to-south-sudan/"
         }
       ],
-      "status": "ready",
+      "status": "promoted",
       "duplicateOf": null,
-      "promotedAt": null,
-      "promotedRecordId": null,
+      "promotedAt": "2026-09-28T08:26:15.471Z",
+      "promotedRecordId": "gaddhaffy-2026-08-08",
       "rejectedReason": null
     },
     "case-dcp-blogger-reportedly-abducted-claims-k-2026-08-04": {

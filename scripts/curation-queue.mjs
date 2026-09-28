@@ -259,6 +259,15 @@ for (const g of groups.values()) {
   const prevCase = prevQueue[caseId];
   const dup = matchRecord(person, sorted.map(a => a.core), sorted[0].pubDate);
   const freshCorrob = outlets.length;
+  // Terminal cases (promoted/rejected) are human-verified: keep the verified
+  // fields (person, outlets, corroboration, URLs) from the previous sweep
+  // instead of rebuilding them from feed hints. The feed cannot re-verify an
+  // already-promoted case, and rebuilding would clobber e.g. the HTTP-200
+  // corroboration trail with Google News redirect links.
+  if (prevCase && ["promoted", "rejected"].includes(prevCase.status)) {
+    queue[caseId] = { ...prevCase, lastSeen: today, latestPubDate: sorted.at(-1).pubDate };
+    continue;
+  }
   queue[caseId] = {
     caseId,
     person: person ?? null,

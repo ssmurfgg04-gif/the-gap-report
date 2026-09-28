@@ -162,4 +162,7 @@ if (process.env.KAMPS_DRY_RUN !== "1") {
 }
 
 process.stdout.write(md);
-console.error(`digest written (${L.length} lines); state snapshot updated.`);
+console.error(
+  `digest written (${L.length} lines); ` +
+  (process.env.KAMPS_DRY_RUN === "1" ? "dry-run: state snapshot NOT updated." : "state snapshot updated.")
+);

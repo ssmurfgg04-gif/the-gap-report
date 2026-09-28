@@ -109,7 +109,8 @@ domain, displayed unmodified with credit). Dark mode via next-themes.
   `docs/reviews/SCORES.md`
 - **Hostile-user functional audit** (Agent E): all 17 findings fixed and
   re-verified, including a regression test that guards the documented count
-  (241 after the 2026-09-28 curation promotions; structural checks in CI mode) —
+  (242 after the 2026-09-28 curation promotions — the two September cases plus
+  the South Sudanese whistleblower; structural checks in CI mode) —
   `docs/critique-e.md`
 - Data accuracy cross-checked against raw files (population sum, county
   counts, monthly series, incident window)
