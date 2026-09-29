@@ -1,12 +1,43 @@
 {
-  "generatedAt": "2026-09-28T08:26:15.471Z",
+  "generatedAt": "2026-09-29T10:52:36.248Z",
+  "watchWindowDays": 60,
+  "note": "Persistent curation state for the weekly digest's curator queue. A case with corroboration >= 2 independent outlets is 'ready': one human verification away from entering the documented count. Promotion (curation-queue.mjs --promote) writes the verified case into incidents-public-record.json with its corroborating source URLs.",
   "queue": {
+    "case-abductions-won-t-cow-kenyans-into-silenc-2026-09-28": {
+      "caseId": "case-abductions-won-t-cow-kenyans-into-silenc-2026-09-28",
+      "person": null,
+      "incidentHint": "Abductions won't cow Kenyans into silence",
+      "firstSeen": "2026-09-29",
+      "lastSeen": "2026-09-29",
+      "pubDate": "2026-09-28",
+      "latestPubDate": "2026-09-28",
+      "outlets": [
+        "standardmedia.co.ke"
+      ],
+      "corroboration": 1,
+      "urls": [
+        "https://news.google.com/rss/articles/CBMilwFBVV95cUxPQkxpNTZUdzdtQ1JRbG5lUjk2VXZnMjEwZEdmVzROdG9Gc3l0TkgyYU1jVUNxWmxjd2c3dnoxQWhXcG52OF91S2EtOXlNa3A2cG9JVXRTNDlwVEszbFk5ckRRNEpmaUhqWDZBcEN2QnNabG5mZGFFTEJmSjNHOVVBc2thaHhBdS15RV9TVjUtLXlrSVJONHln?oc=5"
+      ],
+      "articles": [
+        {
+          "title": "Abductions won't cow Kenyans into silence - standardmedia.co.ke",
+          "source": "standardmedia.co.ke",
+          "pubDate": "2026-09-28",
+          "url": "https://news.google.com/rss/articles/CBMilwFBVV95cUxPQkxpNTZUdzdtQ1JRbG5lUjk2VXZnMjEwZEdmVzROdG9Gc3l0TkgyYU1jVUNxWmxjd2c3dnoxQWhXcG52OF91S2EtOXlNa3A2cG9JVXRTNDlwVEszbFk5ckRRNEpmaUhqWDZBcEN2QnNabG5mZGFFTEJmSjNHOVVBc2thaHhBdS15RV9TVjUtLXlrSVJONHln?oc=5"
+        }
+      ],
+      "status": "pending",
+      "duplicateOf": null,
+      "promotedAt": null,
+      "promotedRecordId": null,
+      "rejectedReason": null
+    },
     "collins-otieno-2026-09-26": {
       "caseId": "collins-otieno-2026-09-26",
       "person": "Collins Otieno",
       "incidentHint": "\"Can't speak\": Missing activist Collins Otieno found dumped along Thika Road",
       "firstSeen": "2026-09-28",
-      "lastSeen": "2026-09-28",
+      "lastSeen": "2026-09-29",
       "pubDate": "2026-09-26",
       "latestPubDate": "2026-09-26",
       "outlets": [
@@ -51,7 +82,7 @@
       "person": "Muteti Mulinge",
       "incidentHint": "Missing protester Muteti Mulinge found alive and injured in Lukenya",
       "firstSeen": "2026-09-28",
-      "lastSeen": "2026-09-28",
+      "lastSeen": "2026-09-29",
       "pubDate": "2026-09-25",
       "latestPubDate": "2026-09-25",
       "outlets": [
@@ -96,7 +127,7 @@
       "person": null,
       "incidentHint": "Missing human rights activist found after 3 days, photos emerge",
       "firstSeen": "2026-09-28",
-      "lastSeen": "2026-09-28",
+      "lastSeen": "2026-09-29",
       "pubDate": "2026-09-25",
       "latestPubDate": "2026-09-25",
       "outlets": [
@@ -120,12 +151,41 @@
       "promotedRecordId": null,
       "rejectedReason": null
     },
+    "case-kenyan-editor-found-safe-after-abduction-2026-09-13": {
+      "caseId": "case-kenyan-editor-found-safe-after-abduction-2026-09-13",
+      "person": null,
+      "incidentHint": "Kenyan editor found safe after abduction by armed men",
+      "firstSeen": "2026-09-29",
+      "lastSeen": "2026-09-29",
+      "pubDate": "2026-09-13",
+      "latestPubDate": "2026-09-13",
+      "outlets": [
+        "Modern Ghana"
+      ],
+      "corroboration": 1,
+      "urls": [
+        "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE1qeTJRSjVLeFVzQTljZkJJOWFxWnlYV3RLMHZTY3hqTnBNRXN5NkcteXNJeFJkYkdTOG5aUFlrOUF6ZGlIVXU4ekFmNUoxYWJCLTIxY1Z4c0VYcjJEcjlJMzRLNGpmdmPSAVxBVV95cUxNRkY2N2c3b3JhVTlnTVB6cmxqaU5EV05mZnc2OE5IY0FSTndOd1QzWUJ5VmhkSk41amo3amdfSk5fZlR2VTNaQnJSejMxTkdZNnFXb3JLVkk4eHRQNA?oc=5"
+      ],
+      "articles": [
+        {
+          "title": "Kenyan editor found safe after abduction by armed men - Modern Ghana",
+          "source": "Modern Ghana",
+          "pubDate": "2026-09-13",
+          "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE1qeTJRSjVLeFVzQTljZkJJOWFxWnlYV3RLMHZTY3hqTnBNRXN5NkcteXNJeFJkYkdTOG5aUFlrOUF6ZGlIVXU4ekFmNUoxYWJCLTIxY1Z4c0VYcjJEcjlJMzRLNGpmdmPSAVxBVV95cUxNRkY2N2c3b3JhVTlnTVB6cmxqaU5EV05mZnc2OE5IY0FSTndOd1QzWUJ5VmhkSk41amo3amdfSk5fZlR2VTNaQnJSejMxTkdZNnFXb3JLVkk4eHRQNA?oc=5"
+        }
+      ],
+      "status": "duplicate",
+      "duplicateOf": "Alex Kiprotich (kiprotich-2026-09-01)",
+      "promotedAt": null,
+      "promotedRecordId": null,
+      "rejectedReason": null
+    },
     "case-kenya-standard-group-editor-found-safe-f-2026-09-10": {
       "caseId": "case-kenya-standard-group-editor-found-safe-f-2026-09-10",
       "person": null,
       "incidentHint": "Kenya: Standard Group editor found safe following abduction / FIP - International Federation of Journalists",
       "firstSeen": "2026-09-28",
-      "lastSeen": "2026-09-28",
+      "lastSeen": "2026-09-29",
       "pubDate": "2026-09-10",
       "latestPubDate": "2026-09-10",
       "outlets": [
@@ -156,41 +216,12 @@
       "promotedRecordId": null,
       "rejectedReason": null
     },
-    "case-kenyan-editor-found-safe-after-abduction-2026-09-08": {
-      "caseId": "case-kenyan-editor-found-safe-after-abduction-2026-09-08",
-      "person": null,
-      "incidentHint": "Kenyan editor found safe after abduction by armed men",
-      "firstSeen": "2026-09-28",
-      "lastSeen": "2026-09-28",
-      "pubDate": "2026-09-08",
-      "latestPubDate": "2026-09-08",
-      "outlets": [
-        "Modern Ghana"
-      ],
-      "corroboration": 1,
-      "urls": [
-        "https://news.google.com/rss/articles/CBMiZkFVX3lxTE5CY0JGZUx5LW5yWFYybWtjNVlzWDc2VWFaNTRab0tJWFo3YzkxTWZpeDF0UV8tZUM2TTk0YjNPd1VSMUtwd1pCVmQyY1JQUDBoUkpjeTFMSjdIVzlRMTdwUm1MZm9NZ9IBXEFVX3lxTE1GRjY3ZzdvcmFVOWdNUHpybGppTkRXTmZmdzY4TkhjQVJOd053VDNZQnlWaGRKTjVqajdqZ19KTl9mVHZVM1pCclJ6MzFOR1k2cVdvcktWSTh4dFA0?oc=5"
-      ],
-      "articles": [
-        {
-          "title": "Kenyan editor found safe after abduction by armed men - Modern Ghana",
-          "source": "Modern Ghana",
-          "pubDate": "2026-09-08",
-          "url": "https://news.google.com/rss/articles/CBMiZkFVX3lxTE5CY0JGZUx5LW5yWFYybWtjNVlzWDc2VWFaNTRab0tJWFo3YzkxTWZpeDF0UV8tZUM2TTk0YjNPd1VSMUtwd1pCVmQyY1JQUDBoUkpjeTFMSjdIVzlRMTdwUm1MZm9NZ9IBXEFVX3lxTE1GRjY3ZzdvcmFVOWdNUHpybGppTkRXTmZmdzY4TkhjQVJOd053VDNZQnlWaGRKTjVqajdqZ19KTl9mVHZVM1pCclJ6MzFOR1k2cVdvcktWSTh4dFA0?oc=5"
-        }
-      ],
-      "status": "duplicate",
-      "duplicateOf": "Alex Kiprotich (kiprotich-2026-09-01)",
-      "promotedAt": null,
-      "promotedRecordId": null,
-      "rejectedReason": null
-    },
     "case-kenyan-editor-found-safe-after-abduction-2026-09-02": {
       "caseId": "case-kenyan-editor-found-safe-after-abduction-2026-09-02",
       "person": null,
       "incidentHint": "Kenyan editor found safe after abduction, employer says",
       "firstSeen": "2026-09-28",
-      "lastSeen": "2026-09-28",
+      "lastSeen": "2026-09-29",
       "pubDate": "2026-09-02",
       "latestPubDate": "2026-09-02",
       "outlets": [
@@ -227,7 +258,7 @@
       "person": null,
       "incidentHint": "Kenyan editor abducted by masked gunmen after his newspaper criticized government",
       "firstSeen": "2026-09-28",
-      "lastSeen": "2026-09-28",
+      "lastSeen": "2026-09-29",
       "pubDate": "2026-09-02",
       "latestPubDate": "2026-09-02",
       "outlets": [
@@ -256,7 +287,7 @@
       "person": "Alex Kiprotich",
       "incidentHint": "Alex Kiprotich, Abducted Twice, is No Ordinary Standard Editor",
       "firstSeen": "2026-09-28",
-      "lastSeen": "2026-09-28",
+      "lastSeen": "2026-09-29",
       "pubDate": "2026-09-02",
       "latestPubDate": "2026-09-02",
       "outlets": [
@@ -285,7 +316,7 @@
       "person": null,
       "incidentHint": "Five Mandera herders abducted by al-Shabaab freed after elders intervene - the-star.co.ke",
       "firstSeen": "2026-09-28",
-      "lastSeen": "2026-09-28",
+      "lastSeen": "2026-09-29",
       "pubDate": "2026-08-27",
       "latestPubDate": "2026-08-27",
       "outlets": [
@@ -314,7 +345,7 @@
       "person": "Athorbey Al-Gaddhaffy-Dit",
       "incidentHint": "South Sudanese graft whistleblower abducted in Nairobi, deported to Juba, released after two months",
       "firstSeen": "2026-09-28",
-      "lastSeen": "2026-09-28",
+      "lastSeen": "2026-09-29",
       "pubDate": "2026-08-10",
       "latestPubDate": "2026-08-10",
       "outlets": [
@@ -382,7 +413,7 @@
       "person": null,
       "incidentHint": "DCP blogger reportedly abducted, claims Kirinyaga Woman Rep",
       "firstSeen": "2026-09-28",
-      "lastSeen": "2026-09-28",
+      "lastSeen": "2026-09-29",
       "pubDate": "2026-08-04",
       "latestPubDate": "2026-08-04",
       "outlets": [

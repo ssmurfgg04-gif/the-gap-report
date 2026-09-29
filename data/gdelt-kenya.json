@@ -1,33 +1,25 @@
 {
-  "generatedAt": "2026-09-27T16:41:54.178Z",
+  "generatedAt": "2026-09-29T10:52:30.143Z",
   "status": "ok",
-  "query": "kenya (abduction OR abducted OR kidnapped OR \"enforced disappearance\") sourcelang:eng",
+  "query": "abduction kenya sourcelang:eng",
   "endpoint": "https://api.gdeltproject.org/api/v2/doc/doc (mode=TimelineVolRaw)",
   "series": "Article Count",
   "timeline": [
     {
-      "date": "2025-10-03",
-      "volume": 3
-    },
-    {
-      "date": "2025-10-04",
-      "volume": 3
-    },
-    {
       "date": "2025-10-05",
-      "volume": 1
+      "volume": 0
     },
     {
       "date": "2025-10-06",
-      "volume": 5
+      "volume": 0
     },
     {
       "date": "2025-10-07",
-      "volume": 4
+      "volume": 1
     },
     {
       "date": "2025-10-08",
-      "volume": 2
+      "volume": 1
     },
     {
       "date": "2025-10-09",
@@ -35,43 +27,43 @@
     },
     {
       "date": "2025-10-10",
-      "volume": 7
-    },
-    {
-      "date": "2025-10-11",
-      "volume": 2
-    },
-    {
-      "date": "2025-10-12",
-      "volume": 2
-    },
-    {
-      "date": "2025-10-13",
-      "volume": 1
-    },
-    {
-      "date": "2025-10-14",
       "volume": 5
     },
     {
+      "date": "2025-10-11",
+      "volume": 1
+    },
+    {
+      "date": "2025-10-12",
+      "volume": 1
+    },
+    {
+      "date": "2025-10-13",
+      "volume": 0
+    },
+    {
+      "date": "2025-10-14",
+      "volume": 2
+    },
+    {
       "date": "2025-10-15",
-      "volume": 4
+      "volume": 2
     },
     {
       "date": "2025-10-16",
-      "volume": 4
+      "volume": 1
     },
     {
       "date": "2025-10-17",
-      "volume": 2
+      "volume": 1
     },
     {
       "date": "2025-10-18",
-      "volume": 2
+      "volume": 0
     },
     {
       "date": "2025-10-19",
-      "volume": 1
+      "volume": 0
     },
     {
       "date": "2025-10-20",
@@ -83,27 +75,27 @@
     },
     {
       "date": "2025-10-22",
-      "volume": 3
+      "volume": 0
     },
     {
       "date": "2025-10-23",
-      "volume": 4
+      "volume": 3
     },
     {
       "date": "2025-10-24",
-      "volume": 7
-    },
-    {
-      "date": "2025-10-25",
-      "volume": 2
-    },
-    {
-      "date": "2025-10-26",
       "volume": 1
     },
     {
+      "date": "2025-10-25",
+      "volume": 1
+    },
+    {
+      "date": "2025-10-26",
+      "volume": 0
+    },
+    {
       "date": "2025-10-27",
-      "volume": 8
+      "volume": 0
     },
     {
       "date": "2025-10-28",
@@ -111,83 +103,83 @@
     },
     {
       "date": "2025-10-29",
-      "volume": 4
+      "volume": 2
     },
     {
       "date": "2025-10-30",
-      "volume": 3
+      "volume": 2
     },
     {
       "date": "2025-10-31",
-      "volume": 10
+      "volume": 3
     },
     {
       "date": "2025-11-01",
-      "volume": 154
+      "volume": 1
     },
     {
       "date": "2025-11-02",
-      "volume": 2
+      "volume": 0
     },
     {
       "date": "2025-11-03",
-      "volume": 3
+      "volume": 1
     },
     {
       "date": "2025-11-04",
-      "volume": 3
+      "volume": 1
     },
     {
       "date": "2025-11-05",
-      "volume": 6
+      "volume": 2
     },
     {
       "date": "2025-11-06",
-      "volume": 11
-    },
-    {
-      "date": "2025-11-07",
-      "volume": 6
-    },
-    {
-      "date": "2025-11-08",
-      "volume": 9
-    },
-    {
-      "date": "2025-11-09",
-      "volume": 6
-    },
-    {
-      "date": "2025-11-10",
-      "volume": 9
-    },
-    {
-      "date": "2025-11-11",
-      "volume": 6
-    },
-    {
-      "date": "2025-11-12",
-      "volume": 9
-    },
-    {
-      "date": "2025-11-13",
       "volume": 3
     },
     {
-      "date": "2025-11-14",
+      "date": "2025-11-07",
+      "volume": 4
+    },
+    {
+      "date": "2025-11-08",
       "volume": 2
+    },
+    {
+      "date": "2025-11-09",
+      "volume": 2
+    },
+    {
+      "date": "2025-11-10",
+      "volume": 4
+    },
+    {
+      "date": "2025-11-11",
+      "volume": 3
+    },
+    {
+      "date": "2025-11-12",
+      "volume": 7
+    },
+    {
+      "date": "2025-11-13",
+      "volume": 2
+    },
+    {
+      "date": "2025-11-14",
+      "volume": 1
     },
     {
       "date": "2025-11-15",
-      "volume": 2
+      "volume": 0
     },
     {
       "date": "2025-11-16",
-      "volume": 2
+      "volume": 0
     },
     {
       "date": "2025-11-17",
-      "volume": 1
+      "volume": 0
     },
     {
       "date": "2025-11-18",
@@ -195,19 +187,19 @@
     },
     {
       "date": "2025-11-19",
-      "volume": 4
+      "volume": 1
     },
     {
       "date": "2025-11-20",
-      "volume": 11
+      "volume": 7
     },
     {
       "date": "2025-11-21",
-      "volume": 8
+      "volume": 3
     },
     {
       "date": "2025-11-22",
-      "volume": 3
+      "volume": 2
     },
     {
       "date": "2025-11-23",
@@ -215,15 +207,15 @@
     },
     {
       "date": "2025-11-24",
-      "volume": 1
+      "volume": 0
     },
     {
       "date": "2025-11-25",
-      "volume": 2
+      "volume": 1
     },
     {
       "date": "2025-11-26",
-      "volume": 4
+      "volume": 1
     },
     {
       "date": "2025-11-27",
@@ -231,7 +223,7 @@
     },
     {
       "date": "2025-11-28",
-      "volume": 3
+      "volume": 2
     },
     {
       "date": "2025-11-29",
@@ -247,7 +239,7 @@
     },
     {
       "date": "2025-12-02",
-      "volume": 3
+      "volume": 0
     },
     {
       "date": "2025-12-03",
@@ -255,11 +247,11 @@
     },
     {
       "date": "2025-12-04",
-      "volume": 2
+      "volume": 0
     },
     {
       "date": "2025-12-05",
-      "volume": 1
+      "volume": 0
     },
     {
       "date": "2025-12-06",
@@ -267,19 +259,19 @@
     },
     {
       "date": "2025-12-07",
-      "volume": 2
+      "volume": 0
     },
     {
       "date": "2025-12-08",
-      "volume": 2
+      "volume": 1
     },
     {
       "date": "2025-12-09",
-      "volume": 11
+      "volume": 9
     },
     {
       "date": "2025-12-10",
-      "volume": 4
+      "volume": 1
     },
     {
       "date": "2025-12-11",
@@ -291,7 +283,7 @@
     },
     {
       "date": "2025-12-13",
-      "volume": 1
+      "volume": 0
     },
     {
       "date": "2025-12-14",
@@ -311,7 +303,7 @@
     },
     {
       "date": "2025-12-18",
-      "volume": 4
+      "volume": 0
     },
     {
       "date": "2025-12-19",
@@ -319,19 +311,19 @@
     },
     {
       "date": "2025-12-20",
-      "volume": 1
+      "volume": 0
     },
     {
       "date": "2025-12-21",
-      "volume": 3
+      "volume": 0
     },
     {
       "date": "2025-12-22",
-      "volume": 2
+      "volume": 0
     },
     {
       "date": "2025-12-23",
-      "volume": 2
+      "volume": 0
     },
     {
       "date": "2025-12-24",
@@ -343,7 +335,7 @@
     },
     {
       "date": "2025-12-26",
-      "volume": 1
+      "volume": 0
     },
     {
       "date": "2025-12-27",
@@ -351,7 +343,7 @@
     },
     {
       "date": "2025-12-28",
-      "volume": 4
+      "volume": 2
     },
     {
       "date": "2025-12-29",
@@ -363,11 +355,11 @@
     },
     {
       "date": "2025-12-31",
-      "volume": 3
+      "volume": 1
     },
     {
       "date": "2026-01-01",
-      "volume": 3
+      "volume": 0
     },
     {
       "date": "2026-01-02",
@@ -375,11 +367,11 @@
     },
     {
       "date": "2026-01-03",
-      "volume": 2
+      "volume": 1
     },
     {
       "date": "2026-01-04",
-      "volume": 2
+      "volume": 1
     },
     {
       "date": "2026-01-05",
@@ -387,23 +379,23 @@
     },
     {
       "date": "2026-01-06",
-      "volume": 3
-    },
-    {
-      "date": "2026-01-07",
-      "volume": 2
-    },
-    {
-      "date": "2026-01-08",
-      "volume": 3
-    },
-    {
-      "date": "2026-01-09",
       "volume": 1
     },
     {
-      "date": "2026-01-10",
+      "date": "2026-01-07",
+      "volume": 1
+    },
+    {
+      "date": "2026-01-08",
       "volume": 2
+    },
+    {
+      "date": "2026-01-09",
+      "volume": 0
+    },
+    {
+      "date": "2026-01-10",
+      "volume": 1
     },
     {
       "date": "2026-01-11",
@@ -411,51 +403,51 @@
     },
     {
       "date": "2026-01-12",
-      "volume": 4
+      "volume": 0
     },
     {
       "date": "2026-01-13",
-      "volume": 5
+      "volume": 0
     },
     {
       "date": "2026-01-14",
-      "volume": 5
-    },
-    {
-      "date": "2026-01-15",
-      "volume": 25
-    },
-    {
-      "date": "2026-01-16",
-      "volume": 3
-    },
-    {
-      "date": "2026-01-17",
-      "volume": 19
-    },
-    {
-      "date": "2026-01-18",
-      "volume": 17
-    },
-    {
-      "date": "2026-01-19",
       "volume": 1
     },
     {
+      "date": "2026-01-15",
+      "volume": 1
+    },
+    {
+      "date": "2026-01-16",
+      "volume": 1
+    },
+    {
+      "date": "2026-01-17",
+      "volume": 0
+    },
+    {
+      "date": "2026-01-18",
+      "volume": 0
+    },
+    {
+      "date": "2026-01-19",
+      "volume": 0
+    },
+    {
       "date": "2026-01-20",
-      "volume": 3
+      "volume": 1
     },
     {
       "date": "2026-01-21",
-      "volume": 3
+      "volume": 0
     },
     {
       "date": "2026-01-22",
-      "volume": 5
+      "volume": 0
     },
     {
       "date": "2026-01-23",
-      "volume": 2
+      "volume": 1
     },
     {
       "date": "2026-01-24",
@@ -463,23 +455,23 @@
     },
     {
       "date": "2026-01-25",
-      "volume": 2
+      "volume": 1
     },
     {
       "date": "2026-01-26",
-      "volume": 5
-    },
-    {
-      "date": "2026-01-27",
       "volume": 2
     },
     {
+      "date": "2026-01-27",
+      "volume": 0
+    },
+    {
       "date": "2026-01-28",
-      "volume": 3
+      "volume": 1
     },
     {
       "date": "2026-01-29",
-      "volume": 1
+      "volume": 0
     },
     {
       "date": "2026-01-30",
@@ -499,35 +491,35 @@
     },
     {
       "date": "2026-02-03",
-      "volume": 2
+      "volume": 0
     },
     {
       "date": "2026-02-04",
-      "volume": 1
+      "volume": 0
     },
     {
       "date": "2026-02-05",
-      "volume": 3
+      "volume": 0
     },
     {
       "date": "2026-02-06",
-      "volume": 1
+      "volume": 0
     },
     {
       "date": "2026-02-07",
-      "volume": 1
+      "volume": 0
     },
     {
       "date": "2026-02-08",
-      "volume": 1
+      "volume": 0
     },
     {
       "date": "2026-02-09",
-      "volume": 3
+      "volume": 2
     },
     {
       "date": "2026-02-10",
-      "volume": 1
+      "volume": 0
     },
     {
       "date": "2026-02-11",
@@ -535,51 +527,51 @@
     },
     {
       "date": "2026-02-12",
-      "volume": 1
+      "volume": 0
     },
     {
       "date": "2026-02-13",
-      "volume": 1
+      "volume": 0
     },
     {
       "date": "2026-02-14",
-      "volume": 1
+      "volume": 0
     },
     {
       "date": "2026-02-15",
-      "volume": 1
+      "volume": 0
     },
     {
       "date": "2026-02-16",
-      "volume": 1
+      "volume": 0
     },
     {
       "date": "2026-02-17",
-      "volume": 1
+      "volume": 0
     },
     {
       "date": "2026-02-18",
-      "volume": 6
+      "volume": 1
     },
     {
       "date": "2026-02-19",
-      "volume": 1
+      "volume": 0
     },
     {
       "date": "2026-02-20",
-      "volume": 3
+      "volume": 0
     },
     {
       "date": "2026-02-21",
-      "volume": 2
-    },
-    {
-      "date": "2026-02-22",
       "volume": 1
     },
     {
+      "date": "2026-02-22",
+      "volume": 0
+    },
+    {
       "date": "2026-02-23",
-      "volume": 4
+      "volume": 2
     },
     {
       "date": "2026-02-24",
@@ -587,11 +579,11 @@
     },
     {
       "date": "2026-02-25",
-      "volume": 2
+      "volume": 0
     },
     {
       "date": "2026-02-26",
-      "volume": 1
+      "volume": 0
     },
     {
       "date": "2026-02-27",
@@ -603,27 +595,27 @@
     },
     {
       "date": "2026-03-01",
-      "volume": 1
+      "volume": 0
     },
     {
       "date": "2026-03-02",
-      "volume": 1
+      "volume": 0
     },
     {
       "date": "2026-03-03",
-      "volume": 3
+      "volume": 1
     },
     {
       "date": "2026-03-04",
-      "volume": 3
+      "volume": 2
     },
     {
       "date": "2026-03-05",
-      "volume": 3
+      "volume": 0
     },
     {
       "date": "2026-03-06",
-      "volume": 2
+      "volume": 1
     },
     {
       "date": "2026-03-07",
@@ -631,7 +623,7 @@
     },
     {
       "date": "2026-03-08",
-      "volume": 2
+      "volume": 0
     },
     {
       "date": "2026-03-09",
@@ -639,15 +631,15 @@
     },
     {
       "date": "2026-03-10",
-      "volume": 4
+      "volume": 1
     },
     {
       "date": "2026-03-11",
-      "volume": 1
+      "volume": 0
     },
     {
       "date": "2026-03-12",
-      "volume": 1
+      "volume": 0
     },
     {
       "date": "2026-03-13",
@@ -671,15 +663,15 @@
     },
     {
       "date": "2026-03-18",
-      "volume": 4
+      "volume": 0
     },
     {
       "date": "2026-03-19",
-      "volume": 3
+      "volume": 2
     },
     {
       "date": "2026-03-20",
-      "volume": 2
+      "volume": 1
     },
     {
       "date": "2026-03-21",
@@ -687,23 +679,23 @@
     },
     {
       "date": "2026-03-22",
-      "volume": 1
+      "volume": 0
     },
     {
       "date": "2026-03-23",
-      "volume": 3
+      "volume": 1
     },
     {
       "date": "2026-03-24",
-      "volume": 11
+      "volume": 3
     },
     {
       "date": "2026-03-25",
-      "volume": 4
+      "volume": 1
     },
     {
       "date": "2026-03-26",
-      "volume": 1
+      "volume": 0
     },
     {
       "date": "2026-03-27",
@@ -711,11 +703,11 @@
     },
     {
       "date": "2026-03-28",
-      "volume": 1
+      "volume": 0
     },
     {
       "date": "2026-03-29",
-      "volume": 2
+      "volume": 0
     },
     {
       "date": "2026-03-30",
@@ -727,7 +719,7 @@
     },
     {
       "date": "2026-04-01",
-      "volume": 1
+      "volume": 0
     },
     {
       "date": "2026-04-02",
@@ -739,7 +731,7 @@
     },
     {
       "date": "2026-04-04",
-      "volume": 1
+      "volume": 0
     },
     {
       "date": "2026-04-05",
@@ -759,11 +751,11 @@
     },
     {
       "date": "2026-04-09",
-      "volume": 1
+      "volume": 0
     },
     {
       "date": "2026-04-10",
-      "volume": 1
+      "volume": 0
     },
     {
       "date": "2026-04-11",
@@ -771,7 +763,7 @@
     },
     {
       "date": "2026-04-12",
-      "volume": 3
+      "volume": 2
     },
     {
       "date": "2026-04-13",
@@ -779,7 +771,7 @@
     },
     {
       "date": "2026-04-14",
-      "volume": 2
+      "volume": 1
     },
     {
       "date": "2026-04-15",
@@ -787,15 +779,15 @@
     },
     {
       "date": "2026-04-16",
-      "volume": 3
+      "volume": 0
     },
     {
       "date": "2026-04-17",
-      "volume": 2
+      "volume": 0
     },
     {
       "date": "2026-04-18",
-      "volume": 1
+      "volume": 0
     },
     {
       "date": "2026-04-19",
@@ -803,15 +795,15 @@
     },
     {
       "date": "2026-04-20",
-      "volume": 1
+      "volume": 0
     },
     {
       "date": "2026-04-21",
-      "volume": 3
+      "volume": 1
     },
     {
       "date": "2026-04-22",
-      "volume": 2
+      "volume": 1
     },
     {
       "date": "2026-04-23",
@@ -819,19 +811,19 @@
     },
     {
       "date": "2026-04-24",
-      "volume": 2
+      "volume": 0
     },
     {
       "date": "2026-04-25",
-      "volume": 2
-    },
-    {
-      "date": "2026-04-26",
       "volume": 1
     },
     {
+      "date": "2026-04-26",
+      "volume": 0
+    },
+    {
       "date": "2026-04-27",
-      "volume": 2
+      "volume": 1
     },
     {
       "date": "2026-04-28",
@@ -851,11 +843,11 @@
     },
     {
       "date": "2026-05-02",
-      "volume": 2
+      "volume": 0
     },
     {
       "date": "2026-05-03",
-      "volume": 1
+      "volume": 0
     },
     {
       "date": "2026-05-04",
@@ -871,7 +863,7 @@
     },
     {
       "date": "2026-05-07",
-      "volume": 2
+      "volume": 0
     },
     {
       "date": "2026-05-08",
@@ -891,7 +883,7 @@
     },
     {
       "date": "2026-05-12",
-      "volume": 4
+      "volume": 3
     },
     {
       "date": "2026-05-13",
@@ -899,7 +891,7 @@
     },
     {
       "date": "2026-05-14",
-      "volume": 1
+      "volume": 0
     },
     {
       "date": "2026-05-15",
@@ -919,7 +911,7 @@
     },
     {
       "date": "2026-05-19",
-      "volume": 1
+      "volume": 0
     },
     {
       "date": "2026-05-20",
@@ -939,11 +931,11 @@
     },
     {
       "date": "2026-05-24",
-      "volume": 1
+      "volume": 0
     },
     {
       "date": "2026-05-25",
-      "volume": 3
+      "volume": 1
     },
     {
       "date": "2026-05-26",
@@ -951,11 +943,11 @@
     },
     {
       "date": "2026-05-27",
-      "volume": 3
+      "volume": 2
     },
     {
       "date": "2026-05-28",
-      "volume": 2
+      "volume": 1
     },
     {
       "date": "2026-05-29",
@@ -971,11 +963,11 @@
     },
     {
       "date": "2026-06-01",
-      "volume": 1
+      "volume": 0
     },
     {
       "date": "2026-06-02",
-      "volume": 3
+      "volume": 1
     },
     {
       "date": "2026-06-03",
@@ -999,19 +991,19 @@
     },
     {
       "date": "2026-06-08",
-      "volume": 3
+      "volume": 2
     },
     {
       "date": "2026-06-09",
-      "volume": 6
-    },
-    {
-      "date": "2026-06-10",
       "volume": 5
     },
     {
-      "date": "2026-06-11",
+      "date": "2026-06-10",
       "volume": 4
+    },
+    {
+      "date": "2026-06-11",
+      "volume": 3
     },
     {
       "date": "2026-06-12",
@@ -1023,27 +1015,27 @@
     },
     {
       "date": "2026-06-14",
-      "volume": 3
+      "volume": 0
     },
     {
       "date": "2026-06-15",
-      "volume": 24
+      "volume": 2
     },
     {
       "date": "2026-06-16",
-      "volume": 3
+      "volume": 2
     },
     {
       "date": "2026-06-17",
-      "volume": 3
+      "volume": 1
     },
     {
       "date": "2026-06-18",
-      "volume": 4
+      "volume": 0
     },
     {
       "date": "2026-06-19",
-      "volume": 1
+      "volume": 0
     },
     {
       "date": "2026-06-20",
@@ -1059,19 +1051,19 @@
     },
     {
       "date": "2026-06-23",
-      "volume": 4
+      "volume": 3
     },
     {
       "date": "2026-06-24",
-      "volume": 3
+      "volume": 1
     },
     {
       "date": "2026-06-25",
-      "volume": 3
+      "volume": 2
     },
     {
       "date": "2026-06-26",
-      "volume": 2
+      "volume": 0
     },
     {
       "date": "2026-06-27",
@@ -1083,7 +1075,7 @@
     },
     {
       "date": "2026-06-29",
-      "volume": 1
+      "volume": 0
     },
     {
       "date": "2026-06-30",
@@ -1099,15 +1091,15 @@
     },
     {
       "date": "2026-07-07",
-      "volume": 9
+      "volume": 6
     },
     {
       "date": "2026-07-08",
-      "volume": 4
+      "volume": 2
     },
     {
       "date": "2026-07-09",
-      "volume": 2
+      "volume": 0
     },
     {
       "date": "2026-07-10",
@@ -1123,7 +1115,7 @@
     },
     {
       "date": "2026-07-13",
-      "volume": 3
+      "volume": 1
     },
     {
       "date": "2026-07-14",
@@ -1131,7 +1123,7 @@
     },
     {
       "date": "2026-07-15",
-      "volume": 1
+      "volume": 0
     },
     {
       "date": "2026-07-16",
@@ -1155,27 +1147,27 @@
     },
     {
       "date": "2026-07-21",
-      "volume": 2
+      "volume": 0
     },
     {
       "date": "2026-07-22",
-      "volume": 1
+      "volume": 0
     },
     {
       "date": "2026-07-23",
-      "volume": 8
+      "volume": 6
     },
     {
       "date": "2026-07-24",
-      "volume": 3
-    },
-    {
-      "date": "2026-07-25",
       "volume": 1
     },
     {
+      "date": "2026-07-25",
+      "volume": 0
+    },
+    {
       "date": "2026-07-26",
-      "volume": 2
+      "volume": 0
     },
     {
       "date": "2026-07-27",
@@ -1183,19 +1175,19 @@
     },
     {
       "date": "2026-07-28",
-      "volume": 1
+      "volume": 0
     },
     {
       "date": "2026-07-29",
-      "volume": 1
+      "volume": 0
     },
     {
       "date": "2026-07-30",
-      "volume": 1
+      "volume": 0
     },
     {
       "date": "2026-07-31",
-      "volume": 3
+      "volume": 1
     },
     {
       "date": "2026-08-01",
@@ -1207,19 +1199,19 @@
     },
     {
       "date": "2026-08-03",
-      "volume": 1
+      "volume": 0
     },
     {
       "date": "2026-08-04",
-      "volume": 6
-    },
-    {
-      "date": "2026-08-05",
       "volume": 1
     },
     {
+      "date": "2026-08-05",
+      "volume": 0
+    },
+    {
       "date": "2026-08-06",
-      "volume": 2
+      "volume": 0
     },
     {
       "date": "2026-08-07",
@@ -1243,15 +1235,15 @@
     },
     {
       "date": "2026-08-12",
-      "volume": 2
+      "volume": 0
     },
     {
       "date": "2026-08-13",
-      "volume": 2
+      "volume": 0
     },
     {
       "date": "2026-08-14",
-      "volume": 2
+      "volume": 0
     },
     {
       "date": "2026-08-15",
@@ -1271,11 +1263,11 @@
     },
     {
       "date": "2026-08-19",
-      "volume": 4
+      "volume": 2
     },
     {
       "date": "2026-08-20",
-      "volume": 1
+      "volume": 0
     },
     {
       "date": "2026-08-21",
@@ -1283,7 +1275,7 @@
     },
     {
       "date": "2026-08-22",
-      "volume": 2
+      "volume": 0
     },
     {
       "date": "2026-08-23",
@@ -1295,7 +1287,7 @@
     },
     {
       "date": "2026-08-25",
-      "volume": 2
+      "volume": 1
     },
     {
       "date": "2026-08-26",
@@ -1303,7 +1295,7 @@
     },
     {
       "date": "2026-08-27",
-      "volume": 3
+      "volume": 1
     },
     {
       "date": "2026-08-28",
@@ -1315,11 +1307,11 @@
     },
     {
       "date": "2026-08-30",
-      "volume": 1
+      "volume": 0
     },
     {
       "date": "2026-08-31",
-      "volume": 2
+      "volume": 0
     },
     {
       "date": "2026-09-01",
@@ -1327,11 +1319,11 @@
     },
     {
       "date": "2026-09-02",
-      "volume": 9
+      "volume": 7
     },
     {
       "date": "2026-09-03",
-      "volume": 9
+      "volume": 6
     },
     {
       "date": "2026-09-04",
@@ -1339,15 +1331,15 @@
     },
     {
       "date": "2026-09-05",
-      "volume": 3
+      "volume": 1
     },
     {
       "date": "2026-09-06",
-      "volume": 4
+      "volume": 3
     },
     {
       "date": "2026-09-07",
-      "volume": 1
+      "volume": 0
     },
     {
       "date": "2026-09-08",
@@ -1383,7 +1375,7 @@
     },
     {
       "date": "2026-09-22",
-      "volume": 2
+      "volume": 0
     },
     {
       "date": "2026-09-23",
@@ -1400,58 +1392,64 @@
     {
       "date": "2026-09-27",
       "volume": 0
+    },
+    {
+      "date": "2026-09-28",
+      "volume": 0
+    },
+    {
+      "date": "2026-09-29",
+      "volume": 0
     }
   ],
   "monthly": [
     {
       "month": "2025-10",
-      "volume": 97
+      "volume": 34
     },
     {
       "month": "2025-11",
-      "volume": 274
-    },
-    {
-      "month": "2025-12",
       "volume": 54
     },
     {
+      "month": "2025-12",
+      "volume": 22
+    },
+    {
       "month": "2026-01",
-      "volume": 127
+      "volume": 20
     },
     {
       "month": "2026-02",
-      "volume": 44
+      "volume": 11
     },
     {
       "month": "2026-03",
-      "volume": 62
+      "volume": 22
     },
     {
       "month": "2026-04",
-      "volume": 33
+      "volume": 12
     },
     {
       "month": "2026-05",
-      "volume": 23
+      "volume": 10
     },
     {
       "month": "2026-06",
-      "volume": 94
+      "volume": 47
     },
     {
       "month": "2026-07",
-      "volume": 48
+      "volume": 23
     },
     {
       "month": "2026-08",
-      "volume": 37
+      "volume": 11
     },
     {
       "month": "2026-09",
-      "volume": 43
+      "volume": 32
     }
-  ],
-  "lastAttemptAt": "2026-09-27T16:48:39.004Z",
-  "attemptNote": "This run's fetch was rate limited; the timeline below is the last successful pull."
+  ]
 }

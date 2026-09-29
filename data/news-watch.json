@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-27T16:48:49.618Z",
+  "generatedAt": "2026-09-29T10:52:36.184Z",
   "feeds": [
     "Google News RSS (3 queries)",
     "Bing News RSS",
@@ -14,6 +14,17 @@
   "note": "Discovery layer only: keyword-matched news coverage and the KNCHR statement index. No row in here counts as an incident; humans verify and promote documented cases into incidents-public-record.json with a fetched source URL.",
   "articles": [
     {
+      "title": "Abductions won't cow Kenyans into silence - standardmedia.co.ke",
+      "url": "https://news.google.com/rss/articles/CBMilwFBVV95cUxPQkxpNTZUdzdtQ1JRbG5lUjk2VXZnMjEwZEdmVzROdG9Gc3l0TkgyYU1jVUNxWmxjd2c3dnoxQWhXcG52OF91S2EtOXlNa3A2cG9JVXRTNDlwVEszbFk5ckRRNEpmaUhqWDZBcEN2QnNabG5mZGFFTEJmSjNHOVVBc2thaHhBdS15RV9TVjUtLXlrSVJONHln?oc=5",
+      "source": "standardmedia.co.ke",
+      "pubDate": "2026-09-28",
+      "matchedTerms": [
+        "abduct",
+        "abduction"
+      ],
+      "feed": "google-news:g-abduction"
+    },
+    {
       "title": "Missing Activist Found Dumped Along Thika Road, Rushed to Hospital - kenyans.co.ke",
       "url": "https://news.google.com/rss/articles/CBMitgFBVV95cUxOeFgydlNPa19va25qUFY0ZUpOLXI2dHhJSVR0d3NqWHRlQjlTTFVXZ3JENnhoMVFnSXphMFdqVF92UVdXSnJrVTJ2UVJXVDkwbUdLUGRtaThCbllrbkRUNWUwbldTUVpQTEtlTE5oMW0wcEFoaXlHTW1xbjB6b0k0WUx3SmxySmhLZTlJX1NLa0c1ZEREbHZaMkhoRWRncDVRb0paQ01yZVJPOFBDU3E2ME5IcFYwUQ?oc=5",
       "source": "kenyans.co.ke",
@@ -25,9 +36,9 @@
       "feed": "google-news:g-missing"
     },
     {
-      "title": "Another missing activist found dumped along Thika Road, rushed to hospital - Pulse Kenya",
+      "title": "Another missing activist found dumped along Thika Road, rushed to hospital - pulse.co.ke",
       "url": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxPYV9XZ2Q2RWdzXzlhbVFnUDZRV0UxT1RPX3dXdTFGUHFUTFllZ1ZDa0hoMjZWbTNya0tYcjFQM3l1MkcxaWhtMS1rbHFDQ0E0SXdSYnI1N09YR2ktRFdfMXlaQzRDbUM3QmJRLTZtRGtKZjhudV9vcHhabVpIM3lkcHNSc1ZCWHBfN3hKaVg4V2ZsVkx1SzIxcUtDR2hpWTRnYWgwWUxsbWV5U0ZRMDRSZk54d19pM2tyTHlDdTMxUU8?oc=5",
-      "source": "Pulse Kenya",
+      "source": "pulse.co.ke",
       "pubDate": "2026-09-26",
       "matchedTerms": [
         "missing",
@@ -58,15 +69,25 @@
       "feed": "google-news:g-abduction"
     },
     {
-      "title": "Tech firm launches emergency QR code to curb rising child abductions - educationnews.co.ke",
+      "title": "Tech firm launches emergency QR code to curb rising child abductions - Education News",
       "url": "https://news.google.com/rss/articles/CBMingFBVV95cUxOLUJmN3FTaGF0Wll1WkpneDdhSzVaTUNzTXUzeU1CSFI3RWNBaXlXRkZ5THY3bDkwSFBhamlOUEY1X1NsSFJkMWxjc1BGeVlvV1pnQ05taVhMeEtfSG43aHFkVW45MXctWnFPeTQybE5rOUx1OWthcW5TbGNOWGFicjFjUmFiOVg1M21ZXzE2a2FKdGxRek9oNzl3TUEtdw?oc=5",
-      "source": "educationnews.co.ke",
+      "source": "Education News",
       "pubDate": "2026-09-25",
       "matchedTerms": [
         "abduct",
         "abduction"
       ],
       "feed": "google-news:g-abduction"
+    },
+    {
+      "title": "Missing activist Muteti Mulinge found in Lukenya - the-star.co.ke",
+      "url": "https://news.google.com/rss/articles/CBMilgFBVV95cUxNeFV5SGlneUw5UWtYQkNyRE5SVmVtck1kdU82TGhqMFpFckVLZVhlVzdXNy1mWThLTlR1c2ZkdDd0anN0ZVlEX00yNWZ6SF9HMlFnQnRlQjBSUUVMRlQxV1YyLW4ydmE3ckJ3c3o2VkFRcGdWa1VGdDdkLUY4UmlEak5iVV9uT1NrNlBFZWVKbWNVZkZ4aWc?oc=5",
+      "source": "the-star.co.ke",
+      "pubDate": "2026-09-25",
+      "matchedTerms": [
+        "missing"
+      ],
+      "feed": "google-news:g-missing"
     },
     {
       "title": "Missing protester Muteti Mulinge found alive and injured in Lukenya - Capital FM Africa",
@@ -76,17 +97,6 @@
       "matchedTerms": [
         "missing",
         "found alive"
-      ],
-      "feed": "google-news:g-missing"
-    },
-    {
-      "title": "Missing activist, Muteti Mulinge, found dumped alive in Machakos - standardmedia.co.ke",
-      "url": "https://news.google.com/rss/articles/CBMizgFBVV95cUxOdS15RTJoVmkzdWloWFdTbWhPY19haVRVQzAtZ1htemdpODcwQkRUeGxLRFcydHVFb2VqMWRtUjRLNjRCZGNCbUl0MDQ0Uklma1U5M1VlWksxTUNCQUJicFVFZmhMME9iRTQ4NWp6MDVoaTlQSEdRYkdpVm9oNWlRbU1SZm5Zd20yV3F3V3RLU2RjTmgzbTNVeHQ4QjgxalYxajJkMFRZWXplbDllSXhxc09uUVhlU2U0Mjd4QUJsdnRVS19ncE5NUk5iZnM3Z9IBzgFBVV95cUxOdS15RTJoVmkzdWloWFdTbWhPY19haVRVQzAtZ1htemdpODcwQkRUeGxLRFcydHVFb2VqMWRtUjRLNjRCZGNCbUl0MDQ0Uklma1U5M1VlWksxTUNCQUJicFVFZmhMME9iRTQ4NWp6MDVoaTlQSEdRYkdpVm9oNWlRbU1SZm5Zd20yV3F3V3RLU2RjTmgzbTNVeHQ4QjgxalYxajJkMFRZWXplbDllSXhxc09uUVhlU2U0Mjd4QUJsdnRVS19ncE5NUk5iZnM3Zw?oc=5",
-      "source": "standardmedia.co.ke",
-      "pubDate": "2026-09-25",
-      "matchedTerms": [
-        "missing",
-        "dumped"
       ],
       "feed": "google-news:g-missing"
     },
@@ -143,6 +153,18 @@
       "feed": "google-news:g-disappearance"
     },
     {
+      "title": "Kenyan editor found safe after abduction by armed men - Modern Ghana",
+      "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE1qeTJRSjVLeFVzQTljZkJJOWFxWnlYV3RLMHZTY3hqTnBNRXN5NkcteXNJeFJkYkdTOG5aUFlrOUF6ZGlIVXU4ekFmNUoxYWJCLTIxY1Z4c0VYcjJEcjlJMzRLNGpmdmPSAVxBVV95cUxNRkY2N2c3b3JhVTlnTVB6cmxqaU5EV05mZnc2OE5IY0FSTndOd1QzWUJ5VmhkSk41amo3amdfSk5fZlR2VTNaQnJSejMxTkdZNnFXb3JLVkk4eHRQNA?oc=5",
+      "source": "Modern Ghana",
+      "pubDate": "2026-09-13",
+      "matchedTerms": [
+        "abduct",
+        "abduction",
+        "found safe"
+      ],
+      "feed": "google-news:g-abduction"
+    },
+    {
       "title": "Kenya: Standard Group editor found safe following abduction / FIP - International Federation of Journalists - IFJ",
       "url": "https://news.google.com/rss/articles/CBMi5wFBVV95cUxNQnRBMnFMaDhodWVIeXZKREZGS1k4czRlRHNUT3dvVjk0NFJCZGoyWFJsUk01N1RLX0F0UjlKVUtrRGV2ejVMcUZ0Tzlic0FUUXRhajlTQy1TNEVIUWx6ZGNoTGRRZE9Qc3pRUDFLdlB2eHFVcXItOGdqaENkZlVrb0RSOHd6N3NzWXBya3B2NjFLcDFfbm9DVm1tU01Nc0d6YUJIczRlbUEyclVPMkNmX1ZzWXlqMEwxYXAzbVY1U25PWXk2OGo3MHdtV1VUbDJMWG5VRmpUOElFWW13VGFsV0VDZkZieFk?oc=5",
       "source": "International Federation of Journalists - IFJ",
@@ -159,18 +181,6 @@
       "url": "https://news.google.com/rss/articles/CBMi1gJBVV95cUxOcm9IemstR0F3TXYyX3RQZ3hLNi03dGZ4OWJfM1YyckRtMHk3ellXZTBHQXlyWDNoTE11amZ6TG1LYkZRNHY5NktZUXBQZmpTYllILVpoQ21uUHVLSTgtNGJMNXZfR1ByZThybi1qNFVlcGYxSDZMeTROTE5WV2pEUE1BZTd5RlExVHpqb1RGakdZVkxyTzNqdDAzUk5UV2dKOUUyNld3WmE5TldlSkI5cFAxQ2puSktoSFd2U2ZqMURxZFZEdmdibVlhWm96ZmxIR1pjWGkwUDlsejg0Rl9RSFFyYlJLcUVPSXIxajRaNktUYzVDT3h5NXVJSTZjbHdzR0haSjlfRnBSRl9SUm1LWmZSX1QyazVuaTFrUWdjOHFLVXVkMFp3Qk1LTDhHcXFCbVdSX1dmVWk0TmlaYldIYURNRE5UX1dHdVE1UWowSll4bUZ6WFE?oc=5",
       "source": "International Federation of Journalists - IFJ",
       "pubDate": "2026-09-10",
-      "matchedTerms": [
-        "abduct",
-        "abduction",
-        "found safe"
-      ],
-      "feed": "google-news:g-abduction"
-    },
-    {
-      "title": "Kenyan editor found safe after abduction by armed men - Modern Ghana",
-      "url": "https://news.google.com/rss/articles/CBMiZkFVX3lxTE5CY0JGZUx5LW5yWFYybWtjNVlzWDc2VWFaNTRab0tJWFo3YzkxTWZpeDF0UV8tZUM2TTk0YjNPd1VSMUtwd1pCVmQyY1JQUDBoUkpjeTFMSjdIVzlRMTdwUm1MZm9NZ9IBXEFVX3lxTE1GRjY3ZzdvcmFVOWdNUHpybGppTkRXTmZmdzY4TkhjQVJOd053VDNZQnlWaGRKTjVqajdqZ19KTl9mVHZVM1pCclJ6MzFOR1k2cVdvcktWSTh4dFA0?oc=5",
-      "source": "Modern Ghana",
-      "pubDate": "2026-09-08",
       "matchedTerms": [
         "abduct",
         "abduction",
@@ -245,9 +255,9 @@
       "feed": "google-news:g-abduction"
     },
     {
-      "title": "BAKE brands Alex Kiprotich abduction as a direct & coordinated attack on the media - hapakenya.com",
+      "title": "BAKE brands Alex Kiprotich abduction as a direct & coordinated attack on the media - HapaKenya -",
       "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxNWHM2eXZzNTlsS0p0R2QzZE9zOXFpVHI1X0FUamJRU0VjWFcxNnhSdHRad3NuSVJpMm4zallsdFIxR0VFQnBXWWtpNFM5d0NhRzJXRVhYcjNXXzVKTXVaSVdXOTJ5UkI3akVTVVowOEFaN0ZpS0ZBSzRKV2ZGSU13MWpjenUtck9KUkVpc295MUlKdjBpTTdfN0U3LXN4cktlckV1cmFHZTZ0dW5NenJNU1dvUUE?oc=5",
-      "source": "hapakenya.com",
+      "source": "HapaKenya -",
       "pubDate": "2026-09-03",
       "matchedTerms": [
         "abduct",
@@ -334,9 +344,9 @@
       "feed": "google-news:g-abduction"
     },
     {
-      "title": "KNCHR raises alarm over enforced disappearances as 46 cases emerge in 2026 - People Daily",
-      "url": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxPQnlxT2hYYmttZ0pwLXlmOHNyOUZlcTFLM0lBMHoxd1ZMWEREVzFuZ1diMXJjT0s3eF83R1dySzY4WDl6bnlDdGdrbXdZVHByYjNoMTJaMUg4MW5mVXZyUmN2UEx3V1Y4dTcwYzZSNWxUTkdpMkllcHc3dm5TUWhrcDM0RmttRWpNUXU5a1NKNS0yYkRCY0Ntd1hhdnpjRnc3cTh2RFFJT3A2Y0U?oc=5",
-      "source": "People Daily",
+      "title": "Kenya: Turn Promises On Enforced Disappearances Into Action - Amnesty to Ruto - allAfrica.com",
+      "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE0yU000LVhUNzhOdl8yX1c0Vzlqd29VaVFDNjRXQlZkMUVIMUNrQ25RQ09oWHREVFVTZC1hVTYyNWhsUVpKWjlTUW1nSUs3SVRwSTdhYnAwSmh3WTg?oc=5",
+      "source": "allAfrica.com",
       "pubDate": "2026-08-31",
       "matchedTerms": [
         "enforced disappearance"
@@ -344,9 +354,9 @@
       "feed": "google-news:g-disappearance"
     },
     {
-      "title": "Kenya: Turn Promises On Enforced Disappearances Into Action - Amnesty to Ruto - allAfrica.com",
-      "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE0yU000LVhUNzhOdl8yX1c0Vzlqd29VaVFDNjRXQlZkMUVIMUNrQ25RQ09oWHREVFVTZC1hVTYyNWhsUVpKWjlTUW1nSUs3SVRwSTdhYnAwSmh3WTg?oc=5",
-      "source": "allAfrica.com",
+      "title": "KNCHR raises alarm over enforced disappearances as 46 cases emerge in 2026 - People Daily",
+      "url": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxPQnlxT2hYYmttZ0pwLXlmOHNyOUZlcTFLM0lBMHoxd1ZMWEREVzFuZ1diMXJjT0s3eF83R1dySzY4WDl6bnlDdGdrbXdZVHByYjNoMTJaMUg4MW5mVXZyUmN2UEx3V1Y4dTcwYzZSNWxUTkdpMkllcHc3dm5TUWhrcDM0RmttRWpNUXU5a1NKNS0yYkRCY0Ntd1hhdnpjRnc3cTh2RFFJT3A2Y0U?oc=5",
+      "source": "People Daily",
       "pubDate": "2026-08-31",
       "matchedTerms": [
         "enforced disappearance"
@@ -374,9 +384,9 @@
       "feed": "google-news:g-disappearance"
     },
     {
-      "title": "Amnesty asks Ruto to act on enforced disappearances as 19 cases recorded in 2026 - citizen.digital",
+      "title": "Amnesty asks Ruto to act on enforced disappearances as 19 cases recorded in 2026 - Citizen Digital",
       "url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxQS0g4ZTd5SlVSNXVQenl3ajVuMXpTUzN2Mmt6LU04ZURPOVNnX1ZrSGFzNjljN0dndjZnNGYzemF3eW1mYjNnc1M3QlNGOGRQWnNVNlpOT2M5T0hEeG0tM2pGLXpETWs5bTFFaDJqdlhGRi1qNGlPRDlKbVBVOU9faDBEQ0g1NUt5RW1WaHpscXhpLVZ6QW5ESlR0eDZhT25SMWxoUG1YUFlfcllURUlrT1BRRjFsWXZ6NjJ3TQ?oc=5",
-      "source": "citizen.digital",
+      "source": "Citizen Digital",
       "pubDate": "2026-08-30",
       "matchedTerms": [
         "enforced disappearance"
@@ -394,9 +404,9 @@
       "feed": "google-news:g-disappearance"
     },
     {
-      "title": "OPINION: Action now! Kenya must end enforced disappearances - citizen.digital",
+      "title": "OPINION: Action now! Kenya must end enforced disappearances - Citizen Digital",
       "url": "https://news.google.com/rss/articles/CBMinwFBVV95cUxORnlPdDRVbWtyc2pvOXpYaDB2Y1AyaEs1VzVFajhueW5tQVY4WWpNcnZkZzEwNUFwVloweTdsWVFXSmZLSDZtZXY0aWJDV0ZXRXBLZHdrU3g5a0hQR0VOdFJ1N242ZkphTnozMTljc0g1TVZ5VHo4OEg0Q2RvV1FEdmswZWhwVVY4NUhIcm1JUmFsN2RHVjN0YUR4S2VuRDA?oc=5",
-      "source": "citizen.digital",
+      "source": "Citizen Digital",
       "pubDate": "2026-08-30",
       "matchedTerms": [
         "enforced disappearance"
@@ -414,22 +424,22 @@
       "feed": "google-news:g-disappearance"
     },
     {
-      "title": "19 enforced disappearances recorded in Kenya in 2026 - The Eastleigh Voice",
-      "url": "https://news.google.com/rss/articles/CBMiowFBVV95cUxQQzFSUzAzQ1Y5M0pQcW5JY2pnblRsRTNWaEhVb3FrVXQ3LVpacU5NNmNfaDNmWW9MSTJ1aUM4SlBRc2E3aDd2ckJHM1hfTVFRN1RVOWRuRFNaSnViYUU4Y1gxalZWZXlBVnVjRk1ZRmEtQVhKQVA1WWRFem9Jd1luVktuMG9LUnNVNC1fU01aclNPVWhYRDU3OHFadTZfbEdmbnVF?oc=5",
-      "source": "The Eastleigh Voice",
-      "pubDate": "2026-08-30",
-      "matchedTerms": [
-        "enforced disappearance"
-      ],
-      "feed": "google-news:g-disappearance"
-    },
-    {
       "title": "Amnesty to State: Account for missing Kenyans - the-star.co.ke",
       "url": "https://news.google.com/rss/articles/CBMikAFBVV95cUxPWUp5U1hvMWthZXd4dW9hZVlndkRTMHBmWjJjNmY3ekI1ZUxGd3dCTEU2OU1YeDlmcFcwMW5ESGtpYjJwV25hQ3pWbkcwWm1fdFpubGExc2JTTlNuY2laaXlERlRlaENXUFZnZDBXQmFISi1Nc1p4SzJHM1cwUGRtREduTW5xRlYxWmhxSkczY3k?oc=5",
       "source": "the-star.co.ke",
       "pubDate": "2026-08-30",
       "matchedTerms": [
         "missing"
+      ],
+      "feed": "google-news:g-disappearance"
+    },
+    {
+      "title": "19 enforced disappearances recorded in Kenya in 2026 - The Eastleigh Voice",
+      "url": "https://news.google.com/rss/articles/CBMiowFBVV95cUxQQzFSUzAzQ1Y5M0pQcW5JY2pnblRsRTNWaEhVb3FrVXQ3LVpacU5NNmNfaDNmWW9MSTJ1aUM4SlBRc2E3aDd2ckJHM1hfTVFRN1RVOWRuRFNaSnViYUU4Y1gxalZWZXlBVnVjRk1ZRmEtQVhKQVA1WWRFem9Jd1luVktuMG9LUnNVNC1fU01aclNPVWhYRDU3OHFadTZfbEdmbnVF?oc=5",
+      "source": "The Eastleigh Voice",
+      "pubDate": "2026-08-30",
+      "matchedTerms": [
+        "enforced disappearance"
       ],
       "feed": "google-news:g-disappearance"
     },
@@ -447,6 +457,16 @@
       "title": "Amnesty Calls on President Ruto to Turn Promises on Enforced Disappearances into Action - KDRTV",
       "url": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxPOGtzcGZWYzNoMnRITDB4aUZzTGtsRW5VWklhaXQyY002bnBIS2o5bzV6VFh2ZHdJYWYtU3p2MVBOZVZySnIzeTgySGIwZVVkLTJsWTdQNjB4MGNkSUViM0VSQ3UzMjdvLU04WUZqYTVxWHVFNUtmdXhnLVFqY2RIQWRITE9UQWQ1SjNqc0paWXc1bDlJOHlhbk9wSzhSVEI1bUFHLVJpNGQ0cVR1NHVSZW5Qd05nUXZ20gG-AUFVX3lxTE96SjdybXpmSXgwYkd3R240c1pYeVFzMHJpdXlfT0hDZ1kyWkx5VUtLNWdvcEJURkxFeE82MG9ZYkd0eFpZVU1pbVliZ0lzTU5IVW5zUko1MEhEaU1BNU50aHliUjVBNklFN2FOS3RlWDdWOHN6Z2J1bXVlbjdCcFRIM2E2Und4TWdpUHJpTWVYMUw1bEZ1Qi1QanR5V2ZPNkdnRG5xN1JkQjlHcXhQcXdUMjdxZTZ6X0cycUdKMlE?oc=5",
       "source": "KDRTV",
+      "pubDate": "2026-08-30",
+      "matchedTerms": [
+        "enforced disappearance"
+      ],
+      "feed": "google-news:g-disappearance"
+    },
+    {
+      "title": "Amnesty urges Ruto to act as Kenya records 19 enforced disappearances, 69 police killings in 2026 - Livenow Africa",
+      "url": "https://news.google.com/rss/articles/CBMi1gFBVV95cUxQSnVXVW5YYmtrWTRsWW9kUTVUUUxKU0lJVTRUbFVyM3Z4bEJDbm45TmhLcU1ORm9ab00zcGNoYlA1ZVlVZC1OMlFHVmpOQVhHMm1CekFrSExXZjZwRTZqQ1I2SmptRkN0eUFPMnVfa1ZpOHlGUWJRcjNub3V1VWoybnBBc2dnRnZESlVfTnFWT3BNZ3ZJUm1MdEVyck9oc3dnVmhfREtDaG5BVF8xREtaYk0yM1Q5aGlkRDZ5SjltdjY1aXl0ZzFxUXJKdTktUVBTZHZ5SFFB?oc=5",
+      "source": "Livenow Africa",
       "pubDate": "2026-08-30",
       "matchedTerms": [
         "enforced disappearance"
@@ -476,9 +496,9 @@
       "feed": "google-news:g-abduction"
     },
     {
-      "title": "Mathare abductions: Witness protection boss summoned - nation.africa",
+      "title": "Mathare abductions: Witness protection boss summoned - Daily Nation",
       "url": "https://news.google.com/rss/articles/CBMipwFBVV95cUxQWEJFSG9HcXJDU0FjU0I1YVJGTjc5VXJHTk1oUnVhVklSTlFZNEMxZ0JtNVNKZTBDdlU4R1QzMEZnc0Y2eGZjUno1bTlNd0JsNF9md1FVT0R3NC1Bc2VJR2t4akQ2bFJjMFZnTFllUnhXcUR2M3NqUXZETXpWVkE2TVgtYnd2ZkhrWG9jbEk5UnI0MEJLb0FQeTZfZ1hFUjhNc3JIOG84cw?oc=5",
-      "source": "nation.africa",
+      "source": "Daily Nation",
       "pubDate": "2026-08-17",
       "matchedTerms": [
         "abduct",
@@ -543,58 +563,18 @@
       "feed": "google-news:g-abduction"
     },
     {
-      "title": "Kenyan families demand answers as abduction concerns grow | DW News - Modern Ghana",
-      "url": "https://news.google.com/rss/articles/CBMiX0FVX3lxTFA3cnRzMkR2WTZiVUZXaTF4bFFEOEpEYmxDUGY0dGVwSFloZHJ5NEFkSnRFdHdqM3pBZVdBV3RtZHpXdmU5S3hMa0I4WFRqOHUyaW9TM1ZIcHBPUVhYUXpN0gFcQVVfeXFMTUNCZ2Vkckd3NFh1NzYtRkhHMnVQb2VKMTJMMTN4b3kxZDd1YUJYRFpfZGxCQ0VXWFgzT3VIZDREQlN3SmlwdjR0NXNUUWJJeWxER0F6TnVPeTFEUU4?oc=5",
-      "source": "Modern Ghana",
-      "pubDate": "2026-08-04",
-      "matchedTerms": [
-        "abduct",
-        "abduction"
-      ],
-      "feed": "google-news:g-abduction"
-    },
-    {
-      "title": "35 protest abduction victims left out of compensation list: Court told - citizen.digital",
+      "title": "35 protest abduction victims left out of compensation list: Court told - Citizen Digital",
       "url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxOc09Za2Y5ajNGWUwyRU95VzdOSndxSGJWTnZoYURiVElRT0dsRVNnZ2JVUjFFWnptNjNZb3dFa1JCWksxQnhreTBlaHBGQ3ROZUhicDhXQmlBSkhiMmhwZm5sbzlQVG5kYXhreGZCcWxHQW54WnhFb2FGem1DUHdhZEpPN3ZwOEJOYTlBWUlmc3RFUmlNdGdkRU5NTDhLY0dCS3BQYS14dkZsSkljWGc?oc=5",
-      "source": "citizen.digital",
+      "source": "Citizen Digital",
       "pubDate": "2026-07-31",
       "matchedTerms": [
         "abduct",
         "abduction"
       ],
       "feed": "google-news:g-abduction"
-    },
-    {
-      "title": "Abduction victims sue government over payout exclusion - NTV Kenya",
-      "url": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxNZkc3cXpPTlg4bU9TM1l3Q281c21OZzVKaDNxSmFydE5JUEdYQ3QzR2w3MVZHb1ZJMFRKcWl4YTlDdkxOOGZkOXp3V05pdEI1d0xMREFYN0NaTmlfaEl5Z3QtaUJXVmVpRnB1UjJzblg3Ui03ZGZIeTlHdzF5NngwUTJIZFNkZDhSeTl3?oc=5",
-      "source": "NTV Kenya",
-      "pubDate": "2026-07-29",
-      "matchedTerms": [
-        "abduct",
-        "abduction"
-      ],
-      "feed": "google-news:g-abduction"
-    },
-    {
-      "title": "334 children still missing as Kenya records 1,251 disappearances in 18 months - Capital FM Africa",
-      "url": "https://news.google.com/rss/articles/CBMipAFBVV95cUxNemhLd2dZTjlPQ1JLakNDY0N2akFrcWpSZjNpUzlsdlVrMEhIeFpNS0NPbWJfMzdNRjZDR1AwWnh3eVdMVXd0NnFIbXdrc2JQSHJ3TWJrS1o3emVmVXpkTUlpd243ejk5VWpOSWZjR1FIcjdIR01BVkJWekJzdUFraDBJcW16N0F4UEZPdmQ0Mkc1UU8yMkpod1QtdlNXSGlabzQwUQ?oc=5",
-      "source": "Capital FM Africa",
-      "pubDate": "2026-07-29",
-      "matchedTerms": [
-        "missing"
-      ],
-      "feed": "google-news:g-disappearance"
     }
   ],
   "daily": [
-    {
-      "date": "2026-08-14",
-      "count": 0
-    },
-    {
-      "date": "2026-08-15",
-      "count": 0
-    },
     {
       "date": "2026-08-16",
       "count": 0
@@ -653,7 +633,7 @@
     },
     {
       "date": "2026-08-30",
-      "count": 8
+      "count": 9
     },
     {
       "date": "2026-08-31",
@@ -689,7 +669,7 @@
     },
     {
       "date": "2026-09-08",
-      "count": 1
+      "count": 0
     },
     {
       "date": "2026-09-09",
@@ -709,7 +689,7 @@
     },
     {
       "date": "2026-09-13",
-      "count": 0
+      "count": 1
     },
     {
       "date": "2026-09-14",
@@ -766,10 +746,17 @@
     {
       "date": "2026-09-27",
       "count": 0
+    },
+    {
+      "date": "2026-09-28",
+      "count": 1
+    },
+    {
+      "date": "2026-09-29",
+      "count": 0
     }
   ],
   "knchr": {
-    "failed": true,
     "latestId": 1265,
     "statements": [
       {
@@ -823,7 +810,6 @@
         "url": "https://www.knchr.org/articles"
       }
     ],
-    "prevLatestId": 1265,
-    "note": "KNCHR fetch failed this run; the previous index is preserved."
+    "prevLatestId": 1265
   }
 }

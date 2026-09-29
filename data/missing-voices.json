@@ -1,7 +1,7 @@
 {
   "source": "Missing Voices Coalition (Police Reforms Working Group - Kenya, PRWG-K)",
   "site": "https://missingvoices.or.ke",
-  "retrieved_at": "2026-09-27T16:49:01.906Z",
+  "retrieved_at": "2026-09-29T10:52:54.783Z",
   "statistics": [
     {
       "type": "yearly_case_totals",
@@ -463,6 +463,50 @@
   "victims": [
     {
       "no": 1,
+      "name": "Denis Aremo",
+      "age": 31,
+      "sex": "Male",
+      "location": "Nyeri",
+      "mannerOfDeath": "Arrested in Kisii,died in Narumoru p)dtn",
+      "date": "2026-09-20",
+      "dateDisplay": "20 September, 2026",
+      "sourceUrl": "https://missingvoices.or.ke/voices"
+    },
+    {
+      "no": 2,
+      "name": "Michael Lewis Macharia",
+      "age": 23,
+      "sex": "Male",
+      "location": "Embu",
+      "mannerOfDeath": "shot dead during crowd control",
+      "date": "2026-09-12",
+      "dateDisplay": "12 September, 2026",
+      "sourceUrl": "https://missingvoices.or.ke/voices"
+    },
+    {
+      "no": 3,
+      "name": "Moses Munene",
+      "age": 30,
+      "sex": "Male",
+      "location": "Embu",
+      "mannerOfDeath": "shot dead in crowd control",
+      "date": "2026-09-12",
+      "dateDisplay": "12 September, 2026",
+      "sourceUrl": "https://missingvoices.or.ke/voices"
+    },
+    {
+      "no": 4,
+      "name": "Moses Munene",
+      "age": 30,
+      "sex": "Male",
+      "location": "Embu",
+      "mannerOfDeath": "shot dead in crowd control",
+      "date": "2026-09-12",
+      "dateDisplay": "12 September, 2026",
+      "sourceUrl": "https://missingvoices.or.ke/voices"
+    },
+    {
+      "no": 5,
       "name": "Unknown",
       "age": null,
       "sex": "Male",
@@ -473,7 +517,7 @@
       "sourceUrl": "https://missingvoices.or.ke/voices"
     },
     {
-      "no": 2,
+      "no": 6,
       "name": "James Onyango",
       "age": null,
       "sex": "Male",
@@ -484,7 +528,7 @@
       "sourceUrl": "https://missingvoices.or.ke/voices"
     },
     {
-      "no": 3,
+      "no": 7,
       "name": "Gideon Makau",
       "age": 44,
       "sex": "Male",
@@ -495,7 +539,7 @@
       "sourceUrl": "https://missingvoices.or.ke/voices"
     },
     {
-      "no": 4,
+      "no": 8,
       "name": "Eric Muiruri",
       "age": 21,
       "sex": "Male",
@@ -506,7 +550,7 @@
       "sourceUrl": "https://missingvoices.or.ke/voices"
     },
     {
-      "no": 5,
+      "no": 9,
       "name": "Maureen Nduku",
       "age": 44,
       "sex": "Female",
@@ -517,7 +561,7 @@
       "sourceUrl": "https://missingvoices.or.ke/voices"
     },
     {
-      "no": 6,
+      "no": 10,
       "name": "Dr Victoria Mutiso",
       "age": null,
       "sex": "Female",
@@ -528,7 +572,7 @@
       "sourceUrl": "https://missingvoices.or.ke/voices"
     },
     {
-      "no": 7,
+      "no": 11,
       "name": "Simon Kangethe",
       "age": null,
       "sex": "Male",
@@ -539,7 +583,7 @@
       "sourceUrl": "https://missingvoices.or.ke/voices"
     },
     {
-      "no": 8,
+      "no": 12,
       "name": "Beth Wanja",
       "age": 39,
       "sex": "Female",
@@ -547,50 +591,6 @@
       "mannerOfDeath": "shot by husband a police officer",
       "date": "2026-07-20",
       "dateDisplay": "20 July, 2026",
-      "sourceUrl": "https://missingvoices.or.ke/voices"
-    },
-    {
-      "no": 9,
-      "name": "Unknown",
-      "age": null,
-      "sex": "Male",
-      "location": "Eldoret",
-      "mannerOfDeath": "shot dead along Eldoret -Soy road a police recovered a pistol.",
-      "date": "2026-07-06",
-      "dateDisplay": "6 July, 2026",
-      "sourceUrl": "https://missingvoices.or.ke/voices"
-    },
-    {
-      "no": 10,
-      "name": "Unknown",
-      "age": null,
-      "sex": "Male",
-      "location": "Eldoret",
-      "mannerOfDeath": "shot dead along Eldoret -Soy road a police recovered a pistol.",
-      "date": "2026-07-06",
-      "dateDisplay": "6 July, 2026",
-      "sourceUrl": "https://missingvoices.or.ke/voices"
-    },
-    {
-      "no": 11,
-      "name": "Unknown",
-      "age": null,
-      "sex": "Male",
-      "location": "Eldoret",
-      "mannerOfDeath": "shot dead along Eldoret -Soy road a police recovered a pistol.",
-      "date": "2026-07-06",
-      "dateDisplay": "6 July, 2026",
-      "sourceUrl": "https://missingvoices.or.ke/voices"
-    },
-    {
-      "no": 12,
-      "name": "Unknown",
-      "age": null,
-      "sex": "Male",
-      "location": "Eldoret",
-      "mannerOfDeath": "short dead along Eldoret -Soy road a police recovered a pistol.",
-      "date": "2026-07-06",
-      "dateDisplay": "6 July, 2026",
       "sourceUrl": "https://missingvoices.or.ke/voices"
     },
     {
@@ -606,6 +606,50 @@
     },
     {
       "no": 14,
+      "name": "Unknown",
+      "age": null,
+      "sex": "Male",
+      "location": "Eldoret",
+      "mannerOfDeath": "shot dead along Eldoret -Soy road a police recovered a pistol.",
+      "date": "2026-07-06",
+      "dateDisplay": "6 July, 2026",
+      "sourceUrl": "https://missingvoices.or.ke/voices"
+    },
+    {
+      "no": 15,
+      "name": "Unknown",
+      "age": null,
+      "sex": "Male",
+      "location": "Eldoret",
+      "mannerOfDeath": "shot dead along Eldoret -Soy road a police recovered a pistol.",
+      "date": "2026-07-06",
+      "dateDisplay": "6 July, 2026",
+      "sourceUrl": "https://missingvoices.or.ke/voices"
+    },
+    {
+      "no": 16,
+      "name": "Unknown",
+      "age": null,
+      "sex": "Male",
+      "location": "Eldoret",
+      "mannerOfDeath": "shot dead along Eldoret -Soy road a police recovered a pistol.",
+      "date": "2026-07-06",
+      "dateDisplay": "6 July, 2026",
+      "sourceUrl": "https://missingvoices.or.ke/voices"
+    },
+    {
+      "no": 17,
+      "name": "Unknown",
+      "age": null,
+      "sex": "Male",
+      "location": "Eldoret",
+      "mannerOfDeath": "short dead along Eldoret -Soy road a police recovered a pistol.",
+      "date": "2026-07-06",
+      "dateDisplay": "6 July, 2026",
+      "sourceUrl": "https://missingvoices.or.ke/voices"
+    },
+    {
+      "no": 18,
       "name": "Vincent Ochieng",
       "age": null,
       "sex": "Male",
@@ -616,7 +660,7 @@
       "sourceUrl": "https://missingvoices.or.ke/voices"
     },
     {
-      "no": 15,
+      "no": 19,
       "name": "Cecil Ouma",
       "age": 29,
       "sex": "Male",
@@ -627,7 +671,7 @@
       "sourceUrl": "https://missingvoices.or.ke/voices"
     },
     {
-      "no": 16,
+      "no": 20,
       "name": "Awol Ku Adu aka Workumale",
       "age": null,
       "sex": "Male",
@@ -638,7 +682,7 @@
       "sourceUrl": "https://missingvoices.or.ke/voices"
     },
     {
-      "no": 17,
+      "no": 21,
       "name": "Kennedy Pastori Nduku",
       "age": null,
       "sex": "Male",
@@ -649,7 +693,7 @@
       "sourceUrl": "https://missingvoices.or.ke/voices"
     },
     {
-      "no": 18,
+      "no": 22,
       "name": "Laura Ajiambo",
       "age": 26,
       "sex": "Female",
@@ -660,7 +704,7 @@
       "sourceUrl": "https://missingvoices.or.ke/voices"
     },
     {
-      "no": 19,
+      "no": 23,
       "name": "Sylvester Muigai Ndung'u",
       "age": 17,
       "sex": "Male",
@@ -671,7 +715,7 @@
       "sourceUrl": "https://missingvoices.or.ke/voices"
     },
     {
-      "no": 20,
+      "no": 24,
       "name": "Charles Mwangi",
       "age": null,
       "sex": "Male",
@@ -682,7 +726,7 @@
       "sourceUrl": "https://missingvoices.or.ke/voices"
     },
     {
-      "no": 21,
+      "no": 25,
       "name": "unknown",
       "age": null,
       "sex": "Male",
@@ -693,7 +737,7 @@
       "sourceUrl": "https://missingvoices.or.ke/voices"
     },
     {
-      "no": 22,
+      "no": 26,
       "name": "Joseph Mwangi Wachira",
       "age": 26,
       "sex": "Male",
@@ -704,7 +748,7 @@
       "sourceUrl": "https://missingvoices.or.ke/voices"
     },
     {
-      "no": 23,
+      "no": 27,
       "name": "Brian Ndung'u",
       "age": 24,
       "sex": "Male",
@@ -715,7 +759,7 @@
       "sourceUrl": "https://missingvoices.or.ke/voices"
     },
     {
-      "no": 24,
+      "no": 28,
       "name": "Bernard Omae",
       "age": null,
       "sex": "Male",
@@ -726,7 +770,7 @@
       "sourceUrl": "https://missingvoices.or.ke/voices"
     },
     {
-      "no": 25,
+      "no": 29,
       "name": "Shadrack Onyango",
       "age": 18,
       "sex": "Male",
@@ -737,7 +781,7 @@
       "sourceUrl": "https://missingvoices.or.ke/voices"
     },
     {
-      "no": 26,
+      "no": 30,
       "name": "Allan Odhiambo",
       "age": 26,
       "sex": "Male",
@@ -748,7 +792,7 @@
       "sourceUrl": "https://missingvoices.or.ke/voices"
     },
     {
-      "no": 27,
+      "no": 31,
       "name": "Fred Odhiambo aka Papaa",
       "age": 37,
       "sex": "Male",
@@ -759,7 +803,7 @@
       "sourceUrl": "https://missingvoices.or.ke/voices"
     },
     {
-      "no": 28,
+      "no": 32,
       "name": "Macmillan Muiruri",
       "age": null,
       "sex": "Male",
@@ -770,7 +814,7 @@
       "sourceUrl": "https://missingvoices.or.ke/voices"
     },
     {
-      "no": 29,
+      "no": 33,
       "name": "Kelvin Kang'ethe",
       "age": 29,
       "sex": "Male",
@@ -781,7 +825,7 @@
       "sourceUrl": "https://missingvoices.or.ke/voices"
     },
     {
-      "no": 30,
+      "no": 34,
       "name": "Peter Githinji",
       "age": null,
       "sex": "Male",
@@ -792,7 +836,7 @@
       "sourceUrl": "https://missingvoices.or.ke/voices"
     },
     {
-      "no": 31,
+      "no": 35,
       "name": "Salim Maluni",
       "age": 54,
       "sex": "Male",
@@ -803,7 +847,7 @@
       "sourceUrl": "https://missingvoices.or.ke/voices"
     },
     {
-      "no": 32,
+      "no": 36,
       "name": "Patrick Githinji",
       "age": 25,
       "sex": "Male",
@@ -814,7 +858,7 @@
       "sourceUrl": "https://missingvoices.or.ke/voices"
     },
     {
-      "no": 33,
+      "no": 37,
       "name": "James Mwangi",
       "age": 32,
       "sex": "Male",
@@ -825,7 +869,7 @@
       "sourceUrl": "https://missingvoices.or.ke/voices"
     },
     {
-      "no": 34,
+      "no": 38,
       "name": "John Paul",
       "age": null,
       "sex": "Male",
@@ -836,7 +880,7 @@
       "sourceUrl": "https://missingvoices.or.ke/voices"
     },
     {
-      "no": 35,
+      "no": 39,
       "name": "George Njuguna Kamau",
       "age": 32,
       "sex": "Male",
@@ -847,7 +891,7 @@
       "sourceUrl": "https://missingvoices.or.ke/voices"
     },
     {
-      "no": 36,
+      "no": 40,
       "name": "Harrison Karanja",
       "age": 17,
       "sex": "Male",
@@ -858,7 +902,7 @@
       "sourceUrl": "https://missingvoices.or.ke/voices"
     },
     {
-      "no": 37,
+      "no": 41,
       "name": "Divas Wanjala",
       "age": 29,
       "sex": "Male",
@@ -869,7 +913,7 @@
       "sourceUrl": "https://missingvoices.or.ke/voices"
     },
     {
-      "no": 38,
+      "no": 42,
       "name": "Martin Rígíi",
       "age": 32,
       "sex": "Male",
@@ -880,7 +924,7 @@
       "sourceUrl": "https://missingvoices.or.ke/voices"
     },
     {
-      "no": 39,
+      "no": 43,
       "name": "Derrick Machanje",
       "age": 22,
       "sex": "Male",
@@ -891,7 +935,7 @@
       "sourceUrl": "https://missingvoices.or.ke/voices"
     },
     {
-      "no": 40,
+      "no": 44,
       "name": "Kevin Mutie",
       "age": 19,
       "sex": "Male",
@@ -902,7 +946,7 @@
       "sourceUrl": "https://missingvoices.or.ke/voices"
     },
     {
-      "no": 41,
+      "no": 45,
       "name": "Prudence Imali",
       "age": 19,
       "sex": "Female",
@@ -913,7 +957,7 @@
       "sourceUrl": "https://missingvoices.or.ke/voices"
     },
     {
-      "no": 42,
+      "no": 46,
       "name": "Joseph Kiarie",
       "age": 28,
       "sex": "Male",
@@ -924,7 +968,7 @@
       "sourceUrl": "https://missingvoices.or.ke/voices"
     },
     {
-      "no": 43,
+      "no": 47,
       "name": "Peter Kiiru",
       "age": null,
       "sex": "Male",
@@ -935,7 +979,7 @@
       "sourceUrl": "https://missingvoices.or.ke/voices"
     },
     {
-      "no": 44,
+      "no": 48,
       "name": "Denis Omondi",
       "age": 33,
       "sex": "Male",
@@ -946,7 +990,7 @@
       "sourceUrl": "https://missingvoices.or.ke/voices"
     },
     {
-      "no": 45,
+      "no": 49,
       "name": "Tony Onyango",
       "age": 23,
       "sex": "Male",
@@ -957,7 +1001,7 @@
       "sourceUrl": "https://missingvoices.or.ke/voices"
     },
     {
-      "no": 46,
+      "no": 50,
       "name": "Unknown",
       "age": null,
       "sex": "Male",
@@ -968,7 +1012,7 @@
       "sourceUrl": "https://missingvoices.or.ke/voices"
     },
     {
-      "no": 47,
+      "no": 51,
       "name": "Unknown",
       "age": null,
       "sex": "Male",
@@ -979,7 +1023,7 @@
       "sourceUrl": "https://missingvoices.or.ke/voices"
     },
     {
-      "no": 48,
+      "no": 52,
       "name": "Adam Hassan",
       "age": 24,
       "sex": "Male",
@@ -990,7 +1034,7 @@
       "sourceUrl": "https://missingvoices.or.ke/voices"
     },
     {
-      "no": 49,
+      "no": 53,
       "name": "Lucky Odhiambo",
       "age": 25,
       "sex": "Male",
@@ -1001,7 +1045,7 @@
       "sourceUrl": "https://missingvoices.or.ke/voices"
     },
     {
-      "no": 50,
+      "no": 54,
       "name": "Morris Mugo Njoka",
       "age": 32,
       "sex": "Male",
@@ -1012,7 +1056,7 @@
       "sourceUrl": "https://missingvoices.or.ke/voices"
     },
     {
-      "no": 51,
+      "no": 55,
       "name": "Patrick Kariuki",
       "age": 21,
       "sex": "Male",
@@ -1023,7 +1067,7 @@
       "sourceUrl": "https://missingvoices.or.ke/voices"
     },
     {
-      "no": 52,
+      "no": 56,
       "name": "Jack Omenda",
       "age": null,
       "sex": "Male",
@@ -1034,7 +1078,7 @@
       "sourceUrl": "https://missingvoices.or.ke/voices"
     },
     {
-      "no": 53,
+      "no": 57,
       "name": "Henry Otieno",
       "age": null,
       "sex": "Male",
@@ -1045,7 +1089,7 @@
       "sourceUrl": "https://missingvoices.or.ke/voices"
     },
     {
-      "no": 54,
+      "no": 58,
       "name": "Wilson Sanaet",
       "age": 30,
       "sex": "Male",
@@ -1056,7 +1100,7 @@
       "sourceUrl": "https://missingvoices.or.ke/voices"
     },
     {
-      "no": 55,
+      "no": 59,
       "name": "Ian Mutai",
       "age": 19,
       "sex": "Male",
@@ -1067,7 +1111,7 @@
       "sourceUrl": "https://missingvoices.or.ke/voices"
     },
     {
-      "no": 56,
+      "no": 60,
       "name": "unknown",
       "age": null,
       "sex": "Male",
@@ -1078,18 +1122,7 @@
       "sourceUrl": "https://missingvoices.or.ke/voices"
     },
     {
-      "no": 57,
-      "name": "Unknown",
-      "age": null,
-      "sex": "Male",
-      "location": "Migori",
-      "mannerOfDeath": "shot by officers from Macalder police station during crowd control",
-      "date": "2026-03-13",
-      "dateDisplay": "14 March, 2026",
-      "sourceUrl": "https://missingvoices.or.ke/voices"
-    },
-    {
-      "no": 58,
+      "no": 61,
       "name": "unknown",
       "age": null,
       "sex": "Male",
@@ -1100,7 +1133,18 @@
       "sourceUrl": "https://missingvoices.or.ke/voices"
     },
     {
-      "no": 59,
+      "no": 62,
+      "name": "Unknown",
+      "age": null,
+      "sex": "Male",
+      "location": "Migori",
+      "mannerOfDeath": "shot by officers from Macalder police station during crowd control",
+      "date": "2026-03-13",
+      "dateDisplay": "14 March, 2026",
+      "sourceUrl": "https://missingvoices.or.ke/voices"
+    },
+    {
+      "no": 63,
       "name": "Florence Nyaga",
       "age": 43,
       "sex": "Female",
@@ -1111,7 +1155,7 @@
       "sourceUrl": "https://missingvoices.or.ke/voices"
     },
     {
-      "no": 60,
+      "no": 64,
       "name": "Vincent Ayomo",
       "age": 28,
       "sex": "Male",
@@ -1122,7 +1166,7 @@
       "sourceUrl": "https://missingvoices.or.ke/voices"
     },
     {
-      "no": 61,
+      "no": 65,
       "name": "Sheryl Adhiambo",
       "age": 21,
       "sex": "Female",
@@ -1133,7 +1177,7 @@
       "sourceUrl": "https://missingvoices.or.ke/voices"
     },
     {
-      "no": 62,
+      "no": 66,
       "name": "Joseph Chege",
       "age": 24,
       "sex": "Male",
@@ -1144,7 +1188,7 @@
       "sourceUrl": "https://missingvoices.or.ke/voices"
     },
     {
-      "no": 63,
+      "no": 67,
       "name": "Joseph Chege",
       "age": 24,
       "sex": "Male",
@@ -1155,7 +1199,7 @@
       "sourceUrl": "https://missingvoices.or.ke/voices"
     },
     {
-      "no": 64,
+      "no": 68,
       "name": "Anne Muthoni Ngunjiri",
       "age": 23,
       "sex": "Female",
@@ -1166,7 +1210,7 @@
       "sourceUrl": "https://missingvoices.or.ke/voices"
     },
     {
-      "no": 65,
+      "no": 69,
       "name": "James Muruga",
       "age": 29,
       "sex": "Male",
@@ -1177,7 +1221,7 @@
       "sourceUrl": "https://missingvoices.or.ke/voices"
     },
     {
-      "no": 66,
+      "no": 70,
       "name": "Daniel Nuthu",
       "age": 41,
       "sex": "Male",
@@ -1188,7 +1232,7 @@
       "sourceUrl": "https://missingvoices.or.ke/voices"
     },
     {
-      "no": 67,
+      "no": 71,
       "name": "Kevin Maseri",
       "age": 29,
       "sex": "Male",
@@ -1199,7 +1243,7 @@
       "sourceUrl": "https://missingvoices.or.ke/voices"
     },
     {
-      "no": 68,
+      "no": 72,
       "name": "George Gathu",
       "age": 37,
       "sex": "Male",
@@ -1210,7 +1254,7 @@
       "sourceUrl": "https://missingvoices.or.ke/voices"
     },
     {
-      "no": 69,
+      "no": 73,
       "name": "Shukri Abi Ibrahim",
       "age": 19,
       "sex": "Male",
@@ -1221,7 +1265,7 @@
       "sourceUrl": "https://missingvoices.or.ke/voices"
     },
     {
-      "no": 70,
+      "no": 74,
       "name": "Dennis Iringa",
       "age": 14,
       "sex": "Male",
@@ -1232,7 +1276,7 @@
       "sourceUrl": "https://missingvoices.or.ke/voices"
     },
     {
-      "no": 71,
+      "no": 75,
       "name": "Unknown",
       "age": null,
       "sex": "Male",
@@ -1243,7 +1287,7 @@
       "sourceUrl": "https://missingvoices.or.ke/voices"
     },
     {
-      "no": 72,
+      "no": 76,
       "name": "Denis Mwangi",
       "age": null,
       "sex": "Male",
@@ -1254,7 +1298,7 @@
       "sourceUrl": "https://missingvoices.or.ke/voices"
     },
     {
-      "no": 73,
+      "no": 77,
       "name": "Unknown",
       "age": null,
       "sex": "Male",
@@ -1265,7 +1309,7 @@
       "sourceUrl": "https://missingvoices.or.ke/voices"
     },
     {
-      "no": 74,
+      "no": 78,
       "name": "Anita Kendi",
       "age": 29,
       "sex": "Female",
@@ -1276,7 +1320,7 @@
       "sourceUrl": "https://missingvoices.or.ke/voices"
     },
     {
-      "no": 75,
+      "no": 79,
       "name": "Unknown",
       "age": null,
       "sex": "Male",
@@ -1287,7 +1331,7 @@
       "sourceUrl": "https://missingvoices.or.ke/voices"
     },
     {
-      "no": 76,
+      "no": 80,
       "name": "Benedict Muthomi",
       "age": 16,
       "sex": "Female",
@@ -1298,7 +1342,7 @@
       "sourceUrl": "https://missingvoices.or.ke/voices"
     },
     {
-      "no": 77,
+      "no": 81,
       "name": "Unknown",
       "age": null,
       "sex": "Male",
@@ -1309,7 +1353,7 @@
       "sourceUrl": "https://missingvoices.or.ke/voices"
     },
     {
-      "no": 78,
+      "no": 82,
       "name": "Jackline Nyawira",
       "age": 20,
       "sex": "Female",
@@ -1320,7 +1364,7 @@
       "sourceUrl": "https://missingvoices.or.ke/voices"
     },
     {
-      "no": 79,
+      "no": 83,
       "name": "Unknown",
       "age": null,
       "sex": "Male",
@@ -1331,7 +1375,7 @@
       "sourceUrl": "https://missingvoices.or.ke/voices"
     },
     {
-      "no": 80,
+      "no": 84,
       "name": "Moses Tobiko",
       "age": 29,
       "sex": "Male",
@@ -1342,7 +1386,7 @@
       "sourceUrl": "https://missingvoices.or.ke/voices"
     },
     {
-      "no": 81,
+      "no": 85,
       "name": "Anthony Kariuki",
       "age": 19,
       "sex": "Male",
@@ -1353,7 +1397,7 @@
       "sourceUrl": "https://missingvoices.or.ke/voices"
     },
     {
-      "no": 82,
+      "no": 86,
       "name": "Unknown",
       "age": null,
       "sex": "Male",
@@ -1364,7 +1408,7 @@
       "sourceUrl": "https://missingvoices.or.ke/voices"
     },
     {
-      "no": 83,
+      "no": 87,
       "name": "Unknown",
       "age": null,
       "sex": "Male",
@@ -1375,7 +1419,7 @@
       "sourceUrl": "https://missingvoices.or.ke/voices"
     },
     {
-      "no": 84,
+      "no": 88,
       "name": "Brian Kimutai",
       "age": null,
       "sex": "Male",
@@ -1386,7 +1430,7 @@
       "sourceUrl": "https://missingvoices.or.ke/voices"
     },
     {
-      "no": 85,
+      "no": 89,
       "name": "Unknown",
       "age": null,
       "sex": null,
@@ -1397,7 +1441,7 @@
       "sourceUrl": "https://missingvoices.or.ke/voices"
     },
     {
-      "no": 86,
+      "no": 90,
       "name": "Unknown",
       "age": null,
       "sex": "Male",
@@ -1408,7 +1452,7 @@
       "sourceUrl": "https://missingvoices.or.ke/voices"
     },
     {
-      "no": 87,
+      "no": 91,
       "name": "Joseph Mbuthia",
       "age": 24,
       "sex": "Male",
@@ -1419,7 +1463,7 @@
       "sourceUrl": "https://missingvoices.or.ke/voices"
     },
     {
-      "no": 88,
+      "no": 92,
       "name": "Peter Macharia",
       "age": null,
       "sex": null,
@@ -1430,7 +1474,7 @@
       "sourceUrl": "https://missingvoices.or.ke/voices"
     },
     {
-      "no": 89,
+      "no": 93,
       "name": "Julius Muli",
       "age": null,
       "sex": null,
@@ -1441,7 +1485,7 @@
       "sourceUrl": "https://missingvoices.or.ke/voices"
     },
     {
-      "no": 90,
+      "no": 94,
       "name": "Unknown",
       "age": null,
       "sex": null,
@@ -1452,7 +1496,7 @@
       "sourceUrl": "https://missingvoices.or.ke/voices"
     },
     {
-      "no": 91,
+      "no": 95,
       "name": "Brian Arisa",
       "age": 19,
       "sex": "Male",
@@ -1463,7 +1507,7 @@
       "sourceUrl": "https://missingvoices.or.ke/voices"
     },
     {
-      "no": 92,
+      "no": 96,
       "name": "Evans Ndandu",
       "age": null,
       "sex": null,
@@ -1474,7 +1518,7 @@
       "sourceUrl": "https://missingvoices.or.ke/voices"
     },
     {
-      "no": 93,
+      "no": 97,
       "name": "Brian Arisa",
       "age": 19,
       "sex": null,
@@ -1485,7 +1529,7 @@
       "sourceUrl": "https://missingvoices.or.ke/voices"
     },
     {
-      "no": 94,
+      "no": 98,
       "name": "Felix Macharia",
       "age": null,
       "sex": "Male",
@@ -1496,55 +1540,11 @@
       "sourceUrl": "https://missingvoices.or.ke/voices"
     },
     {
-      "no": 95,
-      "name": "Harisson Mwangi",
-      "age": 37,
-      "sex": "Male",
-      "location": "Kiambu",
-      "mannerOfDeath": "Shot",
-      "date": "2025-07-07",
-      "dateDisplay": "7 July, 2025",
-      "sourceUrl": "https://missingvoices.or.ke/voices"
-    },
-    {
-      "no": 96,
-      "name": "Joseph Kagiri",
-      "age": null,
-      "sex": "Male",
-      "location": "Kajiado, Ngong",
-      "mannerOfDeath": "Shot",
-      "date": "2025-07-07",
-      "dateDisplay": "7 July, 2025",
-      "sourceUrl": "https://missingvoices.or.ke/voices"
-    },
-    {
-      "no": 97,
-      "name": "Paul Mbera",
-      "age": null,
-      "sex": "Male",
-      "location": "Nairobi",
-      "mannerOfDeath": "Shot",
-      "date": "2025-07-07",
-      "dateDisplay": "7 July, 2025",
-      "sourceUrl": "https://missingvoices.or.ke/voices"
-    },
-    {
-      "no": 98,
-      "name": "James Nayo",
-      "age": 37,
-      "sex": "Male",
-      "location": "Nakuru",
-      "mannerOfDeath": "Shot",
-      "date": "2025-07-07",
-      "dateDisplay": "7 July, 2025",
-      "sourceUrl": "https://missingvoices.or.ke/voices"
-    },
-    {
       "no": 99,
-      "name": "James Muriithi",
-      "age": 41,
+      "name": "Peter Macharia",
+      "age": 21,
       "sex": "Male",
-      "location": "Kirinyaga",
+      "location": "Kirinyaga ,Kigumo",
       "mannerOfDeath": "Shot",
       "date": "2025-07-07",
       "dateDisplay": "7 July, 2025",
@@ -1552,10 +1552,10 @@
     },
     {
       "no": 100,
-      "name": "James Gachara Wambugu",
-      "age": 17,
-      "sex": "Male",
-      "location": "Laikipia",
+      "name": "Unknown",
+      "age": null,
+      "sex": null,
+      "location": "Nyandarua,Tuaini",
       "mannerOfDeath": "Shot",
       "date": "2025-07-07",
       "dateDisplay": "7 July, 2025",
@@ -1563,7 +1563,7 @@
     },
     {
       "no": 101,
-      "name": "Evans Ndandu",
+      "name": "Julius Muli",
       "age": null,
       "sex": "Male",
       "location": "Murang'a",
@@ -1574,149 +1574,6 @@
     },
     {
       "no": 102,
-      "name": "Unknown",
-      "age": null,
-      "sex": "Male",
-      "location": "Murang'a",
-      "mannerOfDeath": "Shot",
-      "date": "2025-07-07",
-      "dateDisplay": "7 July, 2025",
-      "sourceUrl": "https://missingvoices.or.ke/voices"
-    },
-    {
-      "no": 103,
-      "name": "Unknown",
-      "age": null,
-      "sex": "Male",
-      "location": "Meru,Maua",
-      "mannerOfDeath": "Shot",
-      "date": "2025-07-07",
-      "dateDisplay": "7 July, 2025",
-      "sourceUrl": "https://missingvoices.or.ke/voices"
-    },
-    {
-      "no": 104,
-      "name": "Peter Njenga",
-      "age": 23,
-      "sex": "Male",
-      "location": "Nakuru, Naivasha",
-      "mannerOfDeath": "Shot",
-      "date": "2025-07-07",
-      "dateDisplay": "7 July, 2025",
-      "sourceUrl": "https://missingvoices.or.ke/voices"
-    },
-    {
-      "no": 105,
-      "name": "Moses Tobiko",
-      "age": 29,
-      "sex": "Male",
-      "location": "Kajiado, Kiserian",
-      "mannerOfDeath": "Shot",
-      "date": "2025-07-07",
-      "dateDisplay": "7 July, 2025",
-      "sourceUrl": "https://missingvoices.or.ke/voices"
-    },
-    {
-      "no": 106,
-      "name": "Anita Kendi",
-      "age": 29,
-      "sex": "Female",
-      "location": "Embu",
-      "mannerOfDeath": "Shot",
-      "date": "2025-07-07",
-      "dateDisplay": "7 July, 2025",
-      "sourceUrl": "https://missingvoices.or.ke/voices"
-    },
-    {
-      "no": 107,
-      "name": "Brian Kimutai",
-      "age": null,
-      "sex": "Male",
-      "location": "Kajiado, Kitengela",
-      "mannerOfDeath": "Shot",
-      "date": "2025-07-07",
-      "dateDisplay": "7 July, 2025",
-      "sourceUrl": "https://missingvoices.or.ke/voices"
-    },
-    {
-      "no": 108,
-      "name": "Unknown",
-      "age": null,
-      "sex": "Female",
-      "location": "Nakuru",
-      "mannerOfDeath": "Shot",
-      "date": "2025-07-07",
-      "dateDisplay": "7 July, 2025",
-      "sourceUrl": "https://missingvoices.or.ke/voices"
-    },
-    {
-      "no": 109,
-      "name": "Bridgett Njoki",
-      "age": 12,
-      "sex": "Female",
-      "location": "Kiambu",
-      "mannerOfDeath": "Shot",
-      "date": "2025-07-07",
-      "dateDisplay": "7 July, 2025",
-      "sourceUrl": "https://missingvoices.or.ke/voices"
-    },
-    {
-      "no": 110,
-      "name": "Ian Mbugua",
-      "age": 25,
-      "sex": "Male",
-      "location": "Kiambu,Thika",
-      "mannerOfDeath": "Shot",
-      "date": "2025-07-07",
-      "dateDisplay": "7 July, 2025",
-      "sourceUrl": "https://missingvoices.or.ke/voices"
-    },
-    {
-      "no": 111,
-      "name": "Paul Issa Mburu",
-      "age": 27,
-      "sex": "Male",
-      "location": "Kajiado, Embulbul",
-      "mannerOfDeath": "Shot",
-      "date": "2025-07-07",
-      "dateDisplay": "7 July, 2025",
-      "sourceUrl": "https://missingvoices.or.ke/voices"
-    },
-    {
-      "no": 112,
-      "name": "Peter Macharia",
-      "age": 21,
-      "sex": "Male",
-      "location": "Kirinyaga ,Kigumo",
-      "mannerOfDeath": "Shot",
-      "date": "2025-07-07",
-      "dateDisplay": "7 July, 2025",
-      "sourceUrl": "https://missingvoices.or.ke/voices"
-    },
-    {
-      "no": 113,
-      "name": "Unknown",
-      "age": null,
-      "sex": null,
-      "location": "Nyandarua,Tuaini",
-      "mannerOfDeath": "Shot",
-      "date": "2025-07-07",
-      "dateDisplay": "7 July, 2025",
-      "sourceUrl": "https://missingvoices.or.ke/voices"
-    },
-    {
-      "no": 114,
-      "name": "Julius Muli",
-      "age": null,
-      "sex": "Male",
-      "location": "Murang'a",
-      "mannerOfDeath": "Shot",
-      "date": "2025-07-07",
-      "dateDisplay": "7 July, 2025",
-      "sourceUrl": "https://missingvoices.or.ke/voices"
-    },
-    {
-      "no": 115,
       "name": "Mwangi",
       "age": null,
       "sex": "Male",
@@ -1727,7 +1584,7 @@
       "sourceUrl": "https://missingvoices.or.ke/voices"
     },
     {
-      "no": 116,
+      "no": 103,
       "name": "Anthony Maina",
       "age": 34,
       "sex": "Male",
@@ -1738,7 +1595,7 @@
       "sourceUrl": "https://missingvoices.or.ke/voices"
     },
     {
-      "no": 117,
+      "no": 104,
       "name": "Anthony Kariuki",
       "age": 19,
       "sex": "Male",
@@ -1749,7 +1606,7 @@
       "sourceUrl": "https://missingvoices.or.ke/voices"
     },
     {
-      "no": 118,
+      "no": 105,
       "name": "Jackline Nyawira",
       "age": 20,
       "sex": "Female",
@@ -1760,7 +1617,7 @@
       "sourceUrl": "https://missingvoices.or.ke/voices"
     },
     {
-      "no": 119,
+      "no": 106,
       "name": "Denis Mwangi",
       "age": null,
       "sex": "Male",
@@ -1771,7 +1628,7 @@
       "sourceUrl": "https://missingvoices.or.ke/voices"
     },
     {
-      "no": 120,
+      "no": 107,
       "name": "Paul Makori",
       "age": 37,
       "sex": "Male",
@@ -1782,43 +1639,32 @@
       "sourceUrl": "https://missingvoices.or.ke/voices"
     },
     {
-      "no": 121,
-      "name": "Anita Kendi",
-      "age": 29,
-      "sex": "Female",
-      "location": "Embu",
-      "mannerOfDeath": "Shot",
-      "date": "2025-07-07",
-      "dateDisplay": "7 July, 2025",
-      "sourceUrl": "https://missingvoices.or.ke/voices"
-    },
-    {
-      "no": 122,
-      "name": "Brian Kimutai",
+      "no": 108,
+      "name": "Jeremy Oscar",
       "age": null,
       "sex": "Male",
-      "location": "Kajiado, Kitengela",
+      "location": "Kajiado Ngong",
       "mannerOfDeath": "Shot",
       "date": "2025-07-07",
       "dateDisplay": "7 July, 2025",
       "sourceUrl": "https://missingvoices.or.ke/voices"
     },
     {
-      "no": 123,
-      "name": "Unknown",
-      "age": null,
-      "sex": "Female",
-      "location": "Nakuru",
+      "no": 109,
+      "name": "Elvis Musavi",
+      "age": 25,
+      "sex": "Male",
+      "location": "Nairobi",
       "mannerOfDeath": "Shot",
       "date": "2025-07-07",
       "dateDisplay": "7 July, 2025",
       "sourceUrl": "https://missingvoices.or.ke/voices"
     },
     {
-      "no": 124,
-      "name": "Bridgett Njoki",
-      "age": 12,
-      "sex": "Female",
+      "no": 110,
+      "name": "Laban Mwangi",
+      "age": 23,
+      "sex": "Male",
       "location": "Kiambu",
       "mannerOfDeath": "Shot",
       "date": "2025-07-07",
@@ -1826,52 +1672,19 @@
       "sourceUrl": "https://missingvoices.or.ke/voices"
     },
     {
-      "no": 125,
-      "name": "Ian Mbugua",
+      "no": 111,
+      "name": "Edward Ndambiri",
       "age": 25,
       "sex": "Male",
-      "location": "Kiambu,Thika",
+      "location": "Kirinyaga",
       "mannerOfDeath": "Shot",
       "date": "2025-07-07",
       "dateDisplay": "7 July, 2025",
       "sourceUrl": "https://missingvoices.or.ke/voices"
     },
     {
-      "no": 126,
-      "name": "Paul Issa Mburu",
-      "age": 27,
-      "sex": "Male",
-      "location": "Kajiado, Embulbul",
-      "mannerOfDeath": "Shot",
-      "date": "2025-07-07",
-      "dateDisplay": "7 July, 2025",
-      "sourceUrl": "https://missingvoices.or.ke/voices"
-    },
-    {
-      "no": 127,
-      "name": "Peter Macharia",
-      "age": 21,
-      "sex": "Male",
-      "location": "Kirinyaga ,Kigumo",
-      "mannerOfDeath": "Shot",
-      "date": "2025-07-07",
-      "dateDisplay": "7 July, 2025",
-      "sourceUrl": "https://missingvoices.or.ke/voices"
-    },
-    {
-      "no": 128,
-      "name": "Unknown",
-      "age": null,
-      "sex": null,
-      "location": "Nyandarua,Tuaini",
-      "mannerOfDeath": "Shot",
-      "date": "2025-07-07",
-      "dateDisplay": "7 July, 2025",
-      "sourceUrl": "https://missingvoices.or.ke/voices"
-    },
-    {
-      "no": 129,
-      "name": "Julius Muli",
+      "no": 112,
+      "name": "Daniel Kibiru",
       "age": null,
       "sex": "Male",
       "location": "Murang'a",
@@ -1881,7 +1694,95 @@
       "sourceUrl": "https://missingvoices.or.ke/voices"
     },
     {
-      "no": 130,
+      "no": 113,
+      "name": "Peter Macharia",
+      "age": null,
+      "sex": "Male",
+      "location": "Murang'a",
+      "mannerOfDeath": "Shot",
+      "date": "2025-07-07",
+      "dateDisplay": "7 July, 2025",
+      "sourceUrl": "https://missingvoices.or.ke/voices"
+    },
+    {
+      "no": 114,
+      "name": "Felix Macharia",
+      "age": null,
+      "sex": "Male",
+      "location": "Meru,Maua",
+      "mannerOfDeath": "Shot",
+      "date": "2025-07-07",
+      "dateDisplay": "7 July, 2025",
+      "sourceUrl": "https://missingvoices.or.ke/voices"
+    },
+    {
+      "no": 115,
+      "name": "Ephantus Kamau Waithaka",
+      "age": 30,
+      "sex": "Male",
+      "location": "Kiambu,Kikuyu",
+      "mannerOfDeath": "Shot",
+      "date": "2025-07-07",
+      "dateDisplay": "7 July, 2025",
+      "sourceUrl": "https://missingvoices.or.ke/voices"
+    },
+    {
+      "no": 116,
+      "name": "Joseph Mbuthia",
+      "age": 24,
+      "sex": "Male",
+      "location": "Nakuru",
+      "mannerOfDeath": "Shot",
+      "date": "2025-07-07",
+      "dateDisplay": "7 July, 2025",
+      "sourceUrl": "https://missingvoices.or.ke/voices"
+    },
+    {
+      "no": 117,
+      "name": "Benedict Muthomi",
+      "age": 16,
+      "sex": "Female",
+      "location": "Embu",
+      "mannerOfDeath": "Shot",
+      "date": "2025-07-07",
+      "dateDisplay": "7 July, 2025",
+      "sourceUrl": "https://missingvoices.or.ke/voices"
+    },
+    {
+      "no": 118,
+      "name": "Harisson Mwangi",
+      "age": 37,
+      "sex": "Male",
+      "location": "Kiambu",
+      "mannerOfDeath": "Shot",
+      "date": "2025-07-07",
+      "dateDisplay": "7 July, 2025",
+      "sourceUrl": "https://missingvoices.or.ke/voices"
+    },
+    {
+      "no": 119,
+      "name": "Joseph Kagiri",
+      "age": null,
+      "sex": "Male",
+      "location": "Kajiado, Ngong",
+      "mannerOfDeath": "Shot",
+      "date": "2025-07-07",
+      "dateDisplay": "7 July, 2025",
+      "sourceUrl": "https://missingvoices.or.ke/voices"
+    },
+    {
+      "no": 120,
+      "name": "Paul Mbera",
+      "age": null,
+      "sex": "Male",
+      "location": "Nairobi",
+      "mannerOfDeath": "Shot",
+      "date": "2025-07-07",
+      "dateDisplay": "7 July, 2025",
+      "sourceUrl": "https://missingvoices.or.ke/voices"
+    },
+    {
+      "no": 121,
       "name": "Mwangi",
       "age": null,
       "sex": "Male",
@@ -1892,436 +1793,161 @@
       "sourceUrl": "https://missingvoices.or.ke/voices"
     },
     {
-      "no": 131,
-      "name": "Mwangi",
+      "no": 122,
+      "name": "Anthony Maina",
+      "age": 34,
+      "sex": "Male",
+      "location": "Nairobi, Kahawa West",
+      "mannerOfDeath": "Shot",
+      "date": "2025-07-07",
+      "dateDisplay": "7 July, 2025",
+      "sourceUrl": "https://missingvoices.or.ke/voices"
+    },
+    {
+      "no": 123,
+      "name": "Anthony Kariuki",
+      "age": 19,
+      "sex": "Male",
+      "location": "Nakuru, Naivasha",
+      "mannerOfDeath": "Shot",
+      "date": "2025-07-07",
+      "dateDisplay": "7 July, 2025",
+      "sourceUrl": "https://missingvoices.or.ke/voices"
+    },
+    {
+      "no": 124,
+      "name": "Jackline Nyawira",
+      "age": 20,
+      "sex": "Female",
+      "location": "Nairobi, Githurai",
+      "mannerOfDeath": "Shot",
+      "date": "2025-07-07",
+      "dateDisplay": "7 July, 2025",
+      "sourceUrl": "https://missingvoices.or.ke/voices"
+    },
+    {
+      "no": 125,
+      "name": "Denis Mwangi",
       "age": null,
       "sex": "Male",
-      "location": null,
-      "mannerOfDeath": "Shot Dead by a police officer",
-      "date": "2025-07-06",
+      "location": "Kiambu",
+      "mannerOfDeath": "Shot",
+      "date": "2025-07-07",
+      "dateDisplay": "7 July, 2025",
+      "sourceUrl": "https://missingvoices.or.ke/voices"
+    },
+    {
+      "no": 126,
+      "name": "Paul Makori",
+      "age": 37,
+      "sex": "Male",
+      "location": "Nairobi, Kangemi",
+      "mannerOfDeath": "Shot",
+      "date": "2025-07-07",
+      "dateDisplay": "7 July, 2025",
+      "sourceUrl": "https://missingvoices.or.ke/voices"
+    },
+    {
+      "no": 127,
+      "name": "Jeremy Oscar",
+      "age": null,
+      "sex": "Male",
+      "location": "Kajiado Ngong",
+      "mannerOfDeath": "Shot",
+      "date": "2025-07-07",
+      "dateDisplay": "7 July, 2025",
+      "sourceUrl": "https://missingvoices.or.ke/voices"
+    },
+    {
+      "no": 128,
+      "name": "Elvis Musavi",
+      "age": 25,
+      "sex": "Male",
+      "location": "Nairobi",
+      "mannerOfDeath": "Shot",
+      "date": "2025-07-07",
+      "dateDisplay": "7 July, 2025",
+      "sourceUrl": "https://missingvoices.or.ke/voices"
+    },
+    {
+      "no": 129,
+      "name": "Laban Mwangi",
+      "age": 23,
+      "sex": "Male",
+      "location": "Kiambu",
+      "mannerOfDeath": "Shot",
+      "date": "2025-07-07",
+      "dateDisplay": "7 July, 2025",
+      "sourceUrl": "https://missingvoices.or.ke/voices"
+    },
+    {
+      "no": 130,
+      "name": "Edward Ndambiri",
+      "age": 25,
+      "sex": "Male",
+      "location": "Kirinyaga",
+      "mannerOfDeath": "Shot",
+      "date": "2025-07-07",
+      "dateDisplay": "7 July, 2025",
+      "sourceUrl": "https://missingvoices.or.ke/voices"
+    },
+    {
+      "no": 131,
+      "name": "Daniel Kibiru",
+      "age": null,
+      "sex": "Male",
+      "location": "Murang'a",
+      "mannerOfDeath": "Shot",
+      "date": "2025-07-07",
       "dateDisplay": "7 July, 2025",
       "sourceUrl": "https://missingvoices.or.ke/voices"
     },
     {
       "no": 132,
-      "name": "Paul Issa Mburu",
-      "age": 27,
+      "name": "Peter Macharia",
+      "age": null,
       "sex": "Male",
-      "location": "Kajiado, Embulbul",
-      "mannerOfDeath": "Shot Dead by a police officer",
-      "date": "2025-07-06",
+      "location": "Murang'a",
+      "mannerOfDeath": "Shot",
+      "date": "2025-07-07",
       "dateDisplay": "7 July, 2025",
       "sourceUrl": "https://missingvoices.or.ke/voices"
     },
     {
       "no": 133,
-      "name": "Ephantus Kamau Waithaka",
-      "age": 30,
+      "name": "Felix Macharia",
+      "age": null,
       "sex": "Male",
-      "location": null,
-      "mannerOfDeath": "Shot Dead by a police officer",
-      "date": "2025-07-06",
+      "location": "Meru,Maua",
+      "mannerOfDeath": "Shot",
+      "date": "2025-07-07",
       "dateDisplay": "7 July, 2025",
       "sourceUrl": "https://missingvoices.or.ke/voices"
     },
     {
       "no": 134,
-      "name": "James Gachara Wambugu",
-      "age": 17,
+      "name": "Ephantus Kamau Waithaka",
+      "age": 30,
       "sex": "Male",
-      "location": "Laikipia",
-      "mannerOfDeath": "Shot Dead by police officer",
-      "date": "2025-07-06",
+      "location": "Kiambu,Kikuyu",
+      "mannerOfDeath": "Shot",
+      "date": "2025-07-07",
       "dateDisplay": "7 July, 2025",
       "sourceUrl": "https://missingvoices.or.ke/voices"
     },
     {
       "no": 135,
-      "name": "Joseph Kagiri",
+      "name": "Mwangi",
       "age": null,
-      "sex": null,
-      "location": "Kajiado, Ngong",
-      "mannerOfDeath": "Shot Dead in protest",
+      "sex": "Male",
+      "location": "Meru,Maua",
+      "mannerOfDeath": "Shot Dead by police officer",
       "date": "2025-07-06",
       "dateDisplay": "7 July, 2025",
       "sourceUrl": "https://missingvoices.or.ke/voices"
     },
     {
       "no": 136,
-      "name": "Anthony Maina",
-      "age": 34,
-      "sex": "Male",
-      "location": "Nairobi, Kahawa West",
-      "mannerOfDeath": "Shot Dead by police officer",
-      "date": "2025-07-06",
-      "dateDisplay": "7 July, 2025",
-      "sourceUrl": "https://missingvoices.or.ke/voices"
-    },
-    {
-      "no": 137,
-      "name": "Laban Mwangi",
-      "age": 23,
-      "sex": null,
-      "location": "Kiambu",
-      "mannerOfDeath": "Shot Dead by a police officer",
-      "date": "2025-07-06",
-      "dateDisplay": "7 July, 2025",
-      "sourceUrl": "https://missingvoices.or.ke/voices"
-    },
-    {
-      "no": 138,
-      "name": "Joseph Mbuthia",
-      "age": 24,
-      "sex": "Male",
-      "location": "Nakuru",
-      "mannerOfDeath": "Shot Dead by police officer",
-      "date": "2025-07-06",
-      "dateDisplay": "7 July, 2025",
-      "sourceUrl": "https://missingvoices.or.ke/voices"
-    },
-    {
-      "no": 139,
-      "name": "Daniel Kibiru",
-      "age": null,
-      "sex": null,
-      "location": "Murang'a",
-      "mannerOfDeath": "Shot Dead by police officer",
-      "date": "2025-07-06",
-      "dateDisplay": "7 July, 2025",
-      "sourceUrl": "https://missingvoices.or.ke/voices"
-    },
-    {
-      "no": 140,
-      "name": "Ian Mbugua",
-      "age": 25,
-      "sex": "Male",
-      "location": "Kiambu,Thika",
-      "mannerOfDeath": "Shot Dead by police officer",
-      "date": "2025-07-06",
-      "dateDisplay": "7 July, 2025",
-      "sourceUrl": "https://missingvoices.or.ke/voices"
-    },
-    {
-      "no": 141,
-      "name": "Joseph Kagiri",
-      "age": null,
-      "sex": "Male",
-      "location": null,
-      "mannerOfDeath": "Shot Dead in protest",
-      "date": "2025-07-06",
-      "dateDisplay": "7 July, 2025",
-      "sourceUrl": "https://missingvoices.or.ke/voices"
-    },
-    {
-      "no": 142,
-      "name": "James Nayo",
-      "age": 37,
-      "sex": "Male",
-      "location": null,
-      "mannerOfDeath": "Shot Dead by a police officer",
-      "date": "2025-07-06",
-      "dateDisplay": "7 July, 2025",
-      "sourceUrl": "https://missingvoices.or.ke/voices"
-    },
-    {
-      "no": 143,
-      "name": "Anthony Kariuki",
-      "age": 19,
-      "sex": null,
-      "location": "Nakuru, Naivasha",
-      "mannerOfDeath": "Shot Dead by police officer",
-      "date": "2025-07-06",
-      "dateDisplay": "7 July, 2025",
-      "sourceUrl": "https://missingvoices.or.ke/voices"
-    },
-    {
-      "no": 144,
-      "name": "James Muriithi",
-      "age": 41,
-      "sex": "Male",
-      "location": null,
-      "mannerOfDeath": "Shot Dead by a police officer",
-      "date": "2025-07-06",
-      "dateDisplay": "7 July, 2025",
-      "sourceUrl": "https://missingvoices.or.ke/voices"
-    },
-    {
-      "no": 145,
-      "name": "Benedict Muthomi",
-      "age": 16,
-      "sex": null,
-      "location": "Embu",
-      "mannerOfDeath": "Shot Dead by police officer",
-      "date": "2025-07-06",
-      "dateDisplay": "7 July, 2025",
-      "sourceUrl": "https://missingvoices.or.ke/voices"
-    },
-    {
-      "no": 146,
-      "name": "James Gachara Wambugu",
-      "age": 17,
-      "sex": "Male",
-      "location": null,
-      "mannerOfDeath": "Shot Dead by a police officer",
-      "date": "2025-07-06",
-      "dateDisplay": "7 July, 2025",
-      "sourceUrl": "https://missingvoices.or.ke/voices"
-    },
-    {
-      "no": 147,
-      "name": "Unknown",
-      "age": null,
-      "sex": null,
-      "location": "Nakuru",
-      "mannerOfDeath": "Shot Dead by police officer",
-      "date": "2025-07-06",
-      "dateDisplay": "7 July, 2025",
-      "sourceUrl": "https://missingvoices.or.ke/voices"
-    },
-    {
-      "no": 148,
-      "name": "Unkown",
-      "age": null,
-      "sex": "Male",
-      "location": null,
-      "mannerOfDeath": "Shot Dead by a police officer",
-      "date": "2025-07-06",
-      "dateDisplay": "7 July, 2025",
-      "sourceUrl": "https://missingvoices.or.ke/voices"
-    },
-    {
-      "no": 149,
-      "name": "Paul Makori",
-      "age": 37,
-      "sex": "Male",
-      "location": "Nrb, Kangemi",
-      "mannerOfDeath": "Shot Dead during protests",
-      "date": "2025-07-06",
-      "dateDisplay": "7 July, 2025",
-      "sourceUrl": "https://missingvoices.or.ke/voices"
-    },
-    {
-      "no": 150,
-      "name": "Unknown",
-      "age": null,
-      "sex": "Male",
-      "location": null,
-      "mannerOfDeath": "Shot Dead by a police officer",
-      "date": "2025-07-06",
-      "dateDisplay": "7 July, 2025",
-      "sourceUrl": "https://missingvoices.or.ke/voices"
-    },
-    {
-      "no": 151,
-      "name": "Ephantus Kamau Waithaka",
-      "age": 30,
-      "sex": "Male",
-      "location": null,
-      "mannerOfDeath": "Shot Dead by a police officer",
-      "date": "2025-07-06",
-      "dateDisplay": "7 July, 2025",
-      "sourceUrl": "https://missingvoices.or.ke/voices"
-    },
-    {
-      "no": 152,
-      "name": "James Gachara Wambugu",
-      "age": 17,
-      "sex": "Male",
-      "location": "Laikipia",
-      "mannerOfDeath": "Shot Dead by police officer",
-      "date": "2025-07-06",
-      "dateDisplay": "7 July, 2025",
-      "sourceUrl": "https://missingvoices.or.ke/voices"
-    },
-    {
-      "no": 153,
-      "name": "Joseph Kagiri",
-      "age": null,
-      "sex": null,
-      "location": "Kajiado, Ngong",
-      "mannerOfDeath": "Shot Dead in protest",
-      "date": "2025-07-06",
-      "dateDisplay": "7 July, 2025",
-      "sourceUrl": "https://missingvoices.or.ke/voices"
-    },
-    {
-      "no": 154,
-      "name": "Anthony Maina",
-      "age": 34,
-      "sex": "Male",
-      "location": "Nairobi, Kahawa West",
-      "mannerOfDeath": "Shot Dead by police officer",
-      "date": "2025-07-06",
-      "dateDisplay": "7 July, 2025",
-      "sourceUrl": "https://missingvoices.or.ke/voices"
-    },
-    {
-      "no": 155,
-      "name": "Laban Mwangi",
-      "age": 23,
-      "sex": null,
-      "location": "Kiambu",
-      "mannerOfDeath": "Shot Dead by a police officer",
-      "date": "2025-07-06",
-      "dateDisplay": "7 July, 2025",
-      "sourceUrl": "https://missingvoices.or.ke/voices"
-    },
-    {
-      "no": 156,
-      "name": "Joseph Mbuthia",
-      "age": 24,
-      "sex": "Male",
-      "location": "Nakuru",
-      "mannerOfDeath": "Shot Dead by police officer",
-      "date": "2025-07-06",
-      "dateDisplay": "7 July, 2025",
-      "sourceUrl": "https://missingvoices.or.ke/voices"
-    },
-    {
-      "no": 157,
-      "name": "Daniel Kibiru",
-      "age": null,
-      "sex": null,
-      "location": "Murang'a",
-      "mannerOfDeath": "Shot Dead by police officer",
-      "date": "2025-07-06",
-      "dateDisplay": "7 July, 2025",
-      "sourceUrl": "https://missingvoices.or.ke/voices"
-    },
-    {
-      "no": 158,
-      "name": "Ian Mbugua",
-      "age": 25,
-      "sex": "Male",
-      "location": "Kiambu,Thika",
-      "mannerOfDeath": "Shot Dead by police officer",
-      "date": "2025-07-06",
-      "dateDisplay": "7 July, 2025",
-      "sourceUrl": "https://missingvoices.or.ke/voices"
-    },
-    {
-      "no": 159,
-      "name": "Joseph Kagiri",
-      "age": null,
-      "sex": "Male",
-      "location": null,
-      "mannerOfDeath": "Shot Dead in protest",
-      "date": "2025-07-06",
-      "dateDisplay": "7 July, 2025",
-      "sourceUrl": "https://missingvoices.or.ke/voices"
-    },
-    {
-      "no": 160,
-      "name": "Anthony Kariuki",
-      "age": 19,
-      "sex": null,
-      "location": "Nakuru, Naivasha",
-      "mannerOfDeath": "Shot Dead by police officer",
-      "date": "2025-07-06",
-      "dateDisplay": "7 July, 2025",
-      "sourceUrl": "https://missingvoices.or.ke/voices"
-    },
-    {
-      "no": 161,
-      "name": "James Nayo",
-      "age": 37,
-      "sex": "Male",
-      "location": null,
-      "mannerOfDeath": "Shot Dead by a police officer",
-      "date": "2025-07-06",
-      "dateDisplay": "7 July, 2025",
-      "sourceUrl": "https://missingvoices.or.ke/voices"
-    },
-    {
-      "no": 162,
-      "name": "Benedict Muthomi",
-      "age": 16,
-      "sex": null,
-      "location": "Embu",
-      "mannerOfDeath": "Shot Dead by police officer",
-      "date": "2025-07-06",
-      "dateDisplay": "7 July, 2025",
-      "sourceUrl": "https://missingvoices.or.ke/voices"
-    },
-    {
-      "no": 163,
-      "name": "James Muriithi",
-      "age": 41,
-      "sex": "Male",
-      "location": null,
-      "mannerOfDeath": "Shot Dead by a police officer",
-      "date": "2025-07-06",
-      "dateDisplay": "7 July, 2025",
-      "sourceUrl": "https://missingvoices.or.ke/voices"
-    },
-    {
-      "no": 164,
-      "name": "Unknown",
-      "age": null,
-      "sex": null,
-      "location": "Nakuru",
-      "mannerOfDeath": "Shot Dead by police officer",
-      "date": "2025-07-06",
-      "dateDisplay": "7 July, 2025",
-      "sourceUrl": "https://missingvoices.or.ke/voices"
-    },
-    {
-      "no": 165,
-      "name": "James Gachara Wambugu",
-      "age": 17,
-      "sex": "Male",
-      "location": null,
-      "mannerOfDeath": "Shot Dead by a police officer",
-      "date": "2025-07-06",
-      "dateDisplay": "7 July, 2025",
-      "sourceUrl": "https://missingvoices.or.ke/voices"
-    },
-    {
-      "no": 166,
-      "name": "Unkown",
-      "age": null,
-      "sex": "Male",
-      "location": null,
-      "mannerOfDeath": "Shot Dead by a police officer",
-      "date": "2025-07-06",
-      "dateDisplay": "7 July, 2025",
-      "sourceUrl": "https://missingvoices.or.ke/voices"
-    },
-    {
-      "no": 167,
-      "name": "Paul Makori",
-      "age": 37,
-      "sex": "Male",
-      "location": "Nrb, Kangemi",
-      "mannerOfDeath": "Shot Dead during protests",
-      "date": "2025-07-06",
-      "dateDisplay": "7 July, 2025",
-      "sourceUrl": "https://missingvoices.or.ke/voices"
-    },
-    {
-      "no": 168,
-      "name": "Unknown",
-      "age": null,
-      "sex": "Male",
-      "location": null,
-      "mannerOfDeath": "Shot Dead by a police officer",
-      "date": "2025-07-06",
-      "dateDisplay": "7 July, 2025",
-      "sourceUrl": "https://missingvoices.or.ke/voices"
-    },
-    {
-      "no": 169,
-      "name": "Peter Macharia",
-      "age": 21,
-      "sex": "Male",
-      "location": "Kirinyaga ,Kigumo",
-      "mannerOfDeath": "Shot Dead by police officer",
-      "date": "2025-07-06",
-      "dateDisplay": "7 July, 2025",
-      "sourceUrl": "https://missingvoices.or.ke/voices"
-    },
-    {
-      "no": 170,
       "name": "Peter Njenga",
       "age": 23,
       "sex": "Male",
@@ -2332,29 +1958,7 @@
       "sourceUrl": "https://missingvoices.or.ke/voices"
     },
     {
-      "no": 171,
-      "name": "Mwangi",
-      "age": null,
-      "sex": "Male",
-      "location": "Meru,Maua",
-      "mannerOfDeath": "Shot Dead by police officer",
-      "date": "2025-07-06",
-      "dateDisplay": "7 July, 2025",
-      "sourceUrl": "https://missingvoices.or.ke/voices"
-    },
-    {
-      "no": 172,
-      "name": "Bridgett Njoki",
-      "age": 12,
-      "sex": null,
-      "location": "Kiambu",
-      "mannerOfDeath": "Shot Dead by a stray bullet in her parents' home.",
-      "date": "2025-07-06",
-      "dateDisplay": "7 July, 2025",
-      "sourceUrl": "https://missingvoices.or.ke/voices"
-    },
-    {
-      "no": 173,
+      "no": 137,
       "name": "Ephantus Kamau Waithaka",
       "age": 30,
       "sex": "Male",
@@ -2365,18 +1969,18 @@
       "sourceUrl": "https://missingvoices.or.ke/voices"
     },
     {
-      "no": 174,
-      "name": "James Muriithi",
-      "age": 41,
+      "no": 138,
+      "name": "Bridgett Njoki",
+      "age": 12,
       "sex": null,
-      "location": "Kirinyaga",
-      "mannerOfDeath": "Shot Dead by police officer",
+      "location": "Kiambu",
+      "mannerOfDeath": "Shot Dead by a stray bullet in her parents' home.",
       "date": "2025-07-06",
       "dateDisplay": "7 July, 2025",
       "sourceUrl": "https://missingvoices.or.ke/voices"
     },
     {
-      "no": 175,
+      "no": 139,
       "name": "Harisson Mwangi",
       "age": 37,
       "sex": "Male",
@@ -2387,7 +1991,18 @@
       "sourceUrl": "https://missingvoices.or.ke/voices"
     },
     {
-      "no": 176,
+      "no": 140,
+      "name": "James Muriithi",
+      "age": 41,
+      "sex": null,
+      "location": "Kirinyaga",
+      "mannerOfDeath": "Shot Dead by police officer",
+      "date": "2025-07-06",
+      "dateDisplay": "7 July, 2025",
+      "sourceUrl": "https://missingvoices.or.ke/voices"
+    },
+    {
+      "no": 141,
       "name": "Brian Kimutai",
       "age": null,
       "sex": "Male",
@@ -2398,7 +2013,7 @@
       "sourceUrl": "https://missingvoices.or.ke/voices"
     },
     {
-      "no": 177,
+      "no": 142,
       "name": "Bridgett Njoki",
       "age": 12,
       "sex": "Female",
@@ -2409,18 +2024,7 @@
       "sourceUrl": "https://missingvoices.or.ke/voices"
     },
     {
-      "no": 178,
-      "name": "Moses Tobiko",
-      "age": 29,
-      "sex": null,
-      "location": "Kajiado, Kiserian",
-      "mannerOfDeath": "Shot Dead by police officer",
-      "date": "2025-07-06",
-      "dateDisplay": "7 July, 2025",
-      "sourceUrl": "https://missingvoices.or.ke/voices"
-    },
-    {
-      "no": 179,
+      "no": 143,
       "name": "Paul Issa Mburu",
       "age": 27,
       "sex": "Male",
@@ -2431,7 +2035,447 @@
       "sourceUrl": "https://missingvoices.or.ke/voices"
     },
     {
+      "no": 144,
+      "name": "Moses Tobiko",
+      "age": 29,
+      "sex": null,
+      "location": "Kajiado, Kiserian",
+      "mannerOfDeath": "Shot Dead by police officer",
+      "date": "2025-07-06",
+      "dateDisplay": "7 July, 2025",
+      "sourceUrl": "https://missingvoices.or.ke/voices"
+    },
+    {
+      "no": 145,
+      "name": "Peter Macharia",
+      "age": 21,
+      "sex": "Male",
+      "location": null,
+      "mannerOfDeath": "Shot Dead by a police officer",
+      "date": "2025-07-06",
+      "dateDisplay": "7 July, 2025",
+      "sourceUrl": "https://missingvoices.or.ke/voices"
+    },
+    {
+      "no": 146,
+      "name": "Anita Kendi",
+      "age": 29,
+      "sex": null,
+      "location": "Embu",
+      "mannerOfDeath": "Shot Dead by police officer",
+      "date": "2025-07-06",
+      "dateDisplay": "7 July, 2025",
+      "sourceUrl": "https://missingvoices.or.ke/voices"
+    },
+    {
+      "no": 147,
+      "name": "Jeremy Oscar",
+      "age": null,
+      "sex": "Male",
+      "location": "Kajiado Ngong",
+      "mannerOfDeath": "Shot Dead by a police officer",
+      "date": "2025-07-06",
+      "dateDisplay": "7 July, 2025",
+      "sourceUrl": "https://missingvoices.or.ke/voices"
+    },
+    {
+      "no": 148,
+      "name": "Felix Macharia",
+      "age": null,
+      "sex": "Male",
+      "location": null,
+      "mannerOfDeath": "Shot Dead by a police officer",
+      "date": "2025-07-06",
+      "dateDisplay": "7 July, 2025",
+      "sourceUrl": "https://missingvoices.or.ke/voices"
+    },
+    {
+      "no": 149,
+      "name": "Edward Ndambiri",
+      "age": 25,
+      "sex": "Male",
+      "location": "Kirinyaga",
+      "mannerOfDeath": "Shot Dead by police officer",
+      "date": "2025-07-06",
+      "dateDisplay": "7 July, 2025",
+      "sourceUrl": "https://missingvoices.or.ke/voices"
+    },
+    {
+      "no": 150,
+      "name": "Anthony Maina",
+      "age": 34,
+      "sex": "Male",
+      "location": null,
+      "mannerOfDeath": "Shot Dead by a police officer",
+      "date": "2025-07-06",
+      "dateDisplay": "7 July, 2025",
+      "sourceUrl": "https://missingvoices.or.ke/voices"
+    },
+    {
+      "no": 151,
+      "name": "Paul Makori",
+      "age": 37,
+      "sex": "Male",
+      "location": null,
+      "mannerOfDeath": "Shot Dead during protests",
+      "date": "2025-07-06",
+      "dateDisplay": "7 July, 2025",
+      "sourceUrl": "https://missingvoices.or.ke/voices"
+    },
+    {
+      "no": 152,
+      "name": "Jeremy Oscar",
+      "age": null,
+      "sex": "Male",
+      "location": null,
+      "mannerOfDeath": "Shot Dead by a police officer",
+      "date": "2025-07-06",
+      "dateDisplay": "7 July, 2025",
+      "sourceUrl": "https://missingvoices.or.ke/voices"
+    },
+    {
+      "no": 153,
+      "name": "Laban Mwangi",
+      "age": 23,
+      "sex": "Male",
+      "location": null,
+      "mannerOfDeath": "Shot Dead by a police officer",
+      "date": "2025-07-06",
+      "dateDisplay": "7 July, 2025",
+      "sourceUrl": "https://missingvoices.or.ke/voices"
+    },
+    {
+      "no": 154,
+      "name": "Jackline Nyawira",
+      "age": 20,
+      "sex": null,
+      "location": "Nairobi, Githurai",
+      "mannerOfDeath": "Shot Dead by police officer",
+      "date": "2025-07-06",
+      "dateDisplay": "7 July, 2025",
+      "sourceUrl": "https://missingvoices.or.ke/voices"
+    },
+    {
+      "no": 155,
+      "name": "Edward Ndambiri",
+      "age": 25,
+      "sex": "Male",
+      "location": null,
+      "mannerOfDeath": "Shot Dead by a police officer",
+      "date": "2025-07-06",
+      "dateDisplay": "7 July, 2025",
+      "sourceUrl": "https://missingvoices.or.ke/voices"
+    },
+    {
+      "no": 156,
+      "name": "Denis Mwangi",
+      "age": null,
+      "sex": null,
+      "location": "Kiambu",
+      "mannerOfDeath": "Shot Dead by police officer",
+      "date": "2025-07-06",
+      "dateDisplay": "7 July, 2025",
+      "sourceUrl": "https://missingvoices.or.ke/voices"
+    },
+    {
+      "no": 157,
+      "name": "Elvis Musavi",
+      "age": 25,
+      "sex": null,
+      "location": "Nairobi",
+      "mannerOfDeath": "Shot Dead by police officer",
+      "date": "2025-07-06",
+      "dateDisplay": "7 July, 2025",
+      "sourceUrl": "https://missingvoices.or.ke/voices"
+    },
+    {
+      "no": 158,
+      "name": "Peter Macharia",
+      "age": null,
+      "sex": "Male",
+      "location": null,
+      "mannerOfDeath": "Shot Dead by a police officer",
+      "date": "2025-07-06",
+      "dateDisplay": "7 July, 2025",
+      "sourceUrl": "https://missingvoices.or.ke/voices"
+    },
+    {
+      "no": 159,
+      "name": "Paul Issa Mburu",
+      "age": 27,
+      "sex": "Male",
+      "location": "Kajiado, Embulbul",
+      "mannerOfDeath": "Shot Dead by a police officer",
+      "date": "2025-07-06",
+      "dateDisplay": "7 July, 2025",
+      "sourceUrl": "https://missingvoices.or.ke/voices"
+    },
+    {
+      "no": 160,
+      "name": "Mwangi",
+      "age": null,
+      "sex": "Male",
+      "location": null,
+      "mannerOfDeath": "Shot Dead by a police officer",
+      "date": "2025-07-06",
+      "dateDisplay": "7 July, 2025",
+      "sourceUrl": "https://missingvoices.or.ke/voices"
+    },
+    {
+      "no": 161,
+      "name": "James Gachara Wambugu",
+      "age": 17,
+      "sex": "Male",
+      "location": "Laikipia",
+      "mannerOfDeath": "Shot Dead by police officer",
+      "date": "2025-07-06",
+      "dateDisplay": "7 July, 2025",
+      "sourceUrl": "https://missingvoices.or.ke/voices"
+    },
+    {
+      "no": 162,
+      "name": "Ephantus Kamau Waithaka",
+      "age": 30,
+      "sex": "Male",
+      "location": null,
+      "mannerOfDeath": "Shot Dead by a police officer",
+      "date": "2025-07-06",
+      "dateDisplay": "7 July, 2025",
+      "sourceUrl": "https://missingvoices.or.ke/voices"
+    },
+    {
+      "no": 163,
+      "name": "Anthony Maina",
+      "age": 34,
+      "sex": "Male",
+      "location": "Nairobi, Kahawa West",
+      "mannerOfDeath": "Shot Dead by police officer",
+      "date": "2025-07-06",
+      "dateDisplay": "7 July, 2025",
+      "sourceUrl": "https://missingvoices.or.ke/voices"
+    },
+    {
+      "no": 164,
+      "name": "Joseph Kagiri",
+      "age": null,
+      "sex": null,
+      "location": "Kajiado, Ngong",
+      "mannerOfDeath": "Shot Dead in protest",
+      "date": "2025-07-06",
+      "dateDisplay": "7 July, 2025",
+      "sourceUrl": "https://missingvoices.or.ke/voices"
+    },
+    {
+      "no": 165,
+      "name": "Joseph Mbuthia",
+      "age": 24,
+      "sex": "Male",
+      "location": "Nakuru",
+      "mannerOfDeath": "Shot Dead by police officer",
+      "date": "2025-07-06",
+      "dateDisplay": "7 July, 2025",
+      "sourceUrl": "https://missingvoices.or.ke/voices"
+    },
+    {
+      "no": 166,
+      "name": "Laban Mwangi",
+      "age": 23,
+      "sex": null,
+      "location": "Kiambu",
+      "mannerOfDeath": "Shot Dead by a police officer",
+      "date": "2025-07-06",
+      "dateDisplay": "7 July, 2025",
+      "sourceUrl": "https://missingvoices.or.ke/voices"
+    },
+    {
+      "no": 167,
+      "name": "Ian Mbugua",
+      "age": 25,
+      "sex": "Male",
+      "location": "Kiambu,Thika",
+      "mannerOfDeath": "Shot Dead by police officer",
+      "date": "2025-07-06",
+      "dateDisplay": "7 July, 2025",
+      "sourceUrl": "https://missingvoices.or.ke/voices"
+    },
+    {
+      "no": 168,
+      "name": "Daniel Kibiru",
+      "age": null,
+      "sex": null,
+      "location": "Murang'a",
+      "mannerOfDeath": "Shot Dead by police officer",
+      "date": "2025-07-06",
+      "dateDisplay": "7 July, 2025",
+      "sourceUrl": "https://missingvoices.or.ke/voices"
+    },
+    {
+      "no": 169,
+      "name": "Joseph Kagiri",
+      "age": null,
+      "sex": "Male",
+      "location": null,
+      "mannerOfDeath": "Shot Dead in protest",
+      "date": "2025-07-06",
+      "dateDisplay": "7 July, 2025",
+      "sourceUrl": "https://missingvoices.or.ke/voices"
+    },
+    {
+      "no": 170,
+      "name": "James Nayo",
+      "age": 37,
+      "sex": "Male",
+      "location": null,
+      "mannerOfDeath": "Shot Dead by a police officer",
+      "date": "2025-07-06",
+      "dateDisplay": "7 July, 2025",
+      "sourceUrl": "https://missingvoices.or.ke/voices"
+    },
+    {
+      "no": 171,
+      "name": "Anthony Kariuki",
+      "age": 19,
+      "sex": null,
+      "location": "Nakuru, Naivasha",
+      "mannerOfDeath": "Shot Dead by police officer",
+      "date": "2025-07-06",
+      "dateDisplay": "7 July, 2025",
+      "sourceUrl": "https://missingvoices.or.ke/voices"
+    },
+    {
+      "no": 172,
+      "name": "James Muriithi",
+      "age": 41,
+      "sex": "Male",
+      "location": null,
+      "mannerOfDeath": "Shot Dead by a police officer",
+      "date": "2025-07-06",
+      "dateDisplay": "7 July, 2025",
+      "sourceUrl": "https://missingvoices.or.ke/voices"
+    },
+    {
+      "no": 173,
+      "name": "Benedict Muthomi",
+      "age": 16,
+      "sex": null,
+      "location": "Embu",
+      "mannerOfDeath": "Shot Dead by police officer",
+      "date": "2025-07-06",
+      "dateDisplay": "7 July, 2025",
+      "sourceUrl": "https://missingvoices.or.ke/voices"
+    },
+    {
+      "no": 174,
+      "name": "James Gachara Wambugu",
+      "age": 17,
+      "sex": "Male",
+      "location": null,
+      "mannerOfDeath": "Shot Dead by a police officer",
+      "date": "2025-07-06",
+      "dateDisplay": "7 July, 2025",
+      "sourceUrl": "https://missingvoices.or.ke/voices"
+    },
+    {
+      "no": 175,
+      "name": "Unknown",
+      "age": null,
+      "sex": null,
+      "location": "Nakuru",
+      "mannerOfDeath": "Shot Dead by police officer",
+      "date": "2025-07-06",
+      "dateDisplay": "7 July, 2025",
+      "sourceUrl": "https://missingvoices.or.ke/voices"
+    },
+    {
+      "no": 176,
+      "name": "Paul Makori",
+      "age": 37,
+      "sex": "Male",
+      "location": "Nrb, Kangemi",
+      "mannerOfDeath": "Shot Dead during protests",
+      "date": "2025-07-06",
+      "dateDisplay": "7 July, 2025",
+      "sourceUrl": "https://missingvoices.or.ke/voices"
+    },
+    {
+      "no": 177,
+      "name": "Unkown",
+      "age": null,
+      "sex": "Male",
+      "location": null,
+      "mannerOfDeath": "Shot Dead by a police officer",
+      "date": "2025-07-06",
+      "dateDisplay": "7 July, 2025",
+      "sourceUrl": "https://missingvoices.or.ke/voices"
+    },
+    {
+      "no": 178,
+      "name": "Peter Macharia",
+      "age": 21,
+      "sex": "Male",
+      "location": "Kirinyaga ,Kigumo",
+      "mannerOfDeath": "Shot Dead by police officer",
+      "date": "2025-07-06",
+      "dateDisplay": "7 July, 2025",
+      "sourceUrl": "https://missingvoices.or.ke/voices"
+    },
+    {
+      "no": 179,
+      "name": "Unknown",
+      "age": null,
+      "sex": "Male",
+      "location": null,
+      "mannerOfDeath": "Shot Dead by a police officer",
+      "date": "2025-07-06",
+      "dateDisplay": "7 July, 2025",
+      "sourceUrl": "https://missingvoices.or.ke/voices"
+    },
+    {
       "no": 180,
+      "name": "Mwangi",
+      "age": null,
+      "sex": "Male",
+      "location": "Meru,Maua",
+      "mannerOfDeath": "Shot Dead by police officer",
+      "date": "2025-07-06",
+      "dateDisplay": "7 July, 2025",
+      "sourceUrl": "https://missingvoices.or.ke/voices"
+    },
+    {
+      "no": 181,
+      "name": "Jackline Nyawira",
+      "age": 20,
+      "sex": null,
+      "location": "Nairobi, Githurai",
+      "mannerOfDeath": "Shot Dead by police officer",
+      "date": "2025-07-06",
+      "dateDisplay": "7 July, 2025",
+      "sourceUrl": "https://missingvoices.or.ke/voices"
+    },
+    {
+      "no": 182,
+      "name": "Edward Ndambiri",
+      "age": 25,
+      "sex": "Male",
+      "location": null,
+      "mannerOfDeath": "Shot Dead by a police officer",
+      "date": "2025-07-06",
+      "dateDisplay": "7 July, 2025",
+      "sourceUrl": "https://missingvoices.or.ke/voices"
+    },
+    {
+      "no": 183,
+      "name": "Denis Mwangi",
+      "age": null,
+      "sex": null,
+      "location": "Kiambu",
+      "mannerOfDeath": "Shot Dead by police officer",
+      "date": "2025-07-06",
+      "dateDisplay": "7 July, 2025",
+      "sourceUrl": "https://missingvoices.or.ke/voices"
+    },
+    {
+      "no": 184,
       "name": "Corporal Chesise",
       "age": null,
       "sex": "Male",
@@ -2442,7 +2486,7 @@
       "sourceUrl": "https://missingvoices.or.ke/voices"
     },
     {
-      "no": 181,
+      "no": 185,
       "name": "Martin Mwendwa",
       "age": null,
       "sex": "Male",
@@ -2453,7 +2497,7 @@
       "sourceUrl": "https://missingvoices.or.ke/voices"
     },
     {
-      "no": 182,
+      "no": 186,
       "name": "Martin Mwendwa",
       "age": null,
       "sex": null,
@@ -2464,7 +2508,7 @@
       "sourceUrl": "https://missingvoices.or.ke/voices"
     },
     {
-      "no": 183,
+      "no": 187,
       "name": "Unknown",
       "age": null,
       "sex": "Male",
@@ -2475,7 +2519,7 @@
       "sourceUrl": "https://missingvoices.or.ke/voices"
     },
     {
-      "no": 184,
+      "no": 188,
       "name": "Unknown",
       "age": null,
       "sex": null,
@@ -2486,7 +2530,7 @@
       "sourceUrl": "https://missingvoices.or.ke/voices"
     },
     {
-      "no": 185,
+      "no": 189,
       "name": "Unknown",
       "age": null,
       "sex": null,
@@ -2497,7 +2541,7 @@
       "sourceUrl": "https://missingvoices.or.ke/voices"
     },
     {
-      "no": 186,
+      "no": 190,
       "name": "David Mwangi",
       "age": 19,
       "sex": "Male",
@@ -2508,7 +2552,7 @@
       "sourceUrl": "https://missingvoices.or.ke/voices"
     },
     {
-      "no": 187,
+      "no": 191,
       "name": "Garson Mutisya",
       "age": 33,
       "sex": "Male",
@@ -2519,7 +2563,7 @@
       "sourceUrl": "https://missingvoices.or.ke/voices"
     },
     {
-      "no": 188,
+      "no": 192,
       "name": "Ian Muhindi",
       "age": 33,
       "sex": "Male",
@@ -2530,7 +2574,7 @@
       "sourceUrl": "https://missingvoices.or.ke/voices"
     },
     {
-      "no": 189,
+      "no": 193,
       "name": "Dennis Njuguna",
       "age": 19,
       "sex": "Male",
@@ -2541,7 +2585,7 @@
       "sourceUrl": "https://missingvoices.or.ke/voices"
     },
     {
-      "no": 190,
+      "no": 194,
       "name": "Ken Ouma",
       "age": null,
       "sex": "Male",
@@ -2552,7 +2596,7 @@
       "sourceUrl": "https://missingvoices.or.ke/voices"
     },
     {
-      "no": 191,
+      "no": 195,
       "name": "Unknown",
       "age": null,
       "sex": "Male",
@@ -2563,7 +2607,7 @@
       "sourceUrl": "https://missingvoices.or.ke/voices"
     },
     {
-      "no": 192,
+      "no": 196,
       "name": "Fred Wanyonyi",
       "age": null,
       "sex": "Male",
@@ -2574,7 +2618,7 @@
       "sourceUrl": "https://missingvoices.or.ke/voices"
     },
     {
-      "no": 193,
+      "no": 197,
       "name": "Unknown",
       "age": null,
       "sex": "Male",
@@ -2585,7 +2629,7 @@
       "sourceUrl": "https://missingvoices.or.ke/voices"
     },
     {
-      "no": 194,
+      "no": 198,
       "name": "Makau Mualako",
       "age": 23,
       "sex": "Male",
@@ -2596,7 +2640,7 @@
       "sourceUrl": "https://missingvoices.or.ke/voices"
     },
     {
-      "no": 195,
+      "no": 199,
       "name": "Abdul Juma Okello",
       "age": 21,
       "sex": "Male",
@@ -2607,7 +2651,7 @@
       "sourceUrl": "https://missingvoices.or.ke/voices"
     },
     {
-      "no": 196,
+      "no": 200,
       "name": "Timothy Bwibo",
       "age": null,
       "sex": "Male",
@@ -2618,7 +2662,7 @@
       "sourceUrl": "https://missingvoices.or.ke/voices"
     },
     {
-      "no": 197,
+      "no": 201,
       "name": "Victor Otieno",
       "age": 24,
       "sex": "Male",
@@ -2629,7 +2673,7 @@
       "sourceUrl": "https://missingvoices.or.ke/voices"
     },
     {
-      "no": 198,
+      "no": 202,
       "name": "Unknown",
       "age": null,
       "sex": "Male",
@@ -2640,7 +2684,7 @@
       "sourceUrl": "https://missingvoices.or.ke/voices"
     },
     {
-      "no": 199,
+      "no": 203,
       "name": "Reagan Omondi",
       "age": 23,
       "sex": "Male",
@@ -2651,7 +2695,7 @@
       "sourceUrl": "https://missingvoices.or.ke/voices"
     },
     {
-      "no": 200,
+      "no": 204,
       "name": "Unknown",
       "age": null,
       "sex": "Male",
@@ -2662,7 +2706,7 @@
       "sourceUrl": "https://missingvoices.or.ke/voices"
     },
     {
-      "no": 201,
+      "no": 205,
       "name": "Kelvin Njau",
       "age": 23,
       "sex": "Male",
@@ -2673,7 +2717,7 @@
       "sourceUrl": "https://missingvoices.or.ke/voices"
     },
     {
-      "no": 202,
+      "no": 206,
       "name": "Unknown",
       "age": 24,
       "sex": "Male",
@@ -2684,7 +2728,7 @@
       "sourceUrl": "https://missingvoices.or.ke/voices"
     },
     {
-      "no": 203,
+      "no": 207,
       "name": "Unknown",
       "age": null,
       "sex": "Male",
@@ -2695,7 +2739,7 @@
       "sourceUrl": "https://missingvoices.or.ke/voices"
     },
     {
-      "no": 204,
+      "no": 208,
       "name": "Unknown",
       "age": null,
       "sex": "Female",
@@ -2706,7 +2750,7 @@
       "sourceUrl": "https://missingvoices.or.ke/voices"
     },
     {
-      "no": 205,
+      "no": 209,
       "name": "Abdul Juma Okello",
       "age": 21,
       "sex": "Male",
@@ -2717,56 +2761,12 @@
       "sourceUrl": "https://missingvoices.or.ke/voices"
     },
     {
-      "no": 206,
+      "no": 210,
       "name": "Victor Otieno",
       "age": 24,
       "sex": null,
       "location": "Kiambu,Juja",
       "mannerOfDeath": "Shot Dead by police from Juja police station",
-      "date": "2025-06-24",
-      "dateDisplay": "25 June, 2025",
-      "sourceUrl": "https://missingvoices.or.ke/voices"
-    },
-    {
-      "no": 207,
-      "name": "Ian Opango",
-      "age": 17,
-      "sex": null,
-      "location": "KAJIADO, Ongata Rongai",
-      "mannerOfDeath": "Shot Dead by police in Kajiado",
-      "date": "2025-06-24",
-      "dateDisplay": "25 June, 2025",
-      "sourceUrl": "https://missingvoices.or.ke/voices"
-    },
-    {
-      "no": 208,
-      "name": "Unknown",
-      "age": null,
-      "sex": null,
-      "location": "Machakos,Matuu",
-      "mannerOfDeath": "Shot Dead by police in Matuu",
-      "date": "2025-06-24",
-      "dateDisplay": "25 June, 2025",
-      "sourceUrl": "https://missingvoices.or.ke/voices"
-    },
-    {
-      "no": 209,
-      "name": "Drey Mwandi",
-      "age": null,
-      "sex": "Male",
-      "location": "Unknown",
-      "mannerOfDeath": "Unknown",
-      "date": "2025-06-24",
-      "dateDisplay": "25 June, 2025",
-      "sourceUrl": "https://missingvoices.or.ke/voices"
-    },
-    {
-      "no": 210,
-      "name": "Unknown Youth",
-      "age": 24,
-      "sex": "Male",
-      "location": "Nyandarua,Olkalou",
-      "mannerOfDeath": "Shot Dead in protest in Olkalou",
       "date": "2025-06-24",
       "dateDisplay": "25 June, 2025",
       "sourceUrl": "https://missingvoices.or.ke/voices"

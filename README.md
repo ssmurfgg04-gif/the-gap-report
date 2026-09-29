@@ -9,7 +9,7 @@ aggregate-only protective alerts. The original Gap Report landscape analysis
 
 [![Weekly data pipeline](https://github.com/ssmurfgg04-gif/the-gap-report/actions/workflows/weekly-ingest.yml/badge.svg)](https://github.com/ssmurfgg04-gif/the-gap-report/actions/workflows/weekly-ingest.yml)
 
-**Data current through:**<!-- data-freshness --> ACLED weekly file through 2026-09-12; Missing Voices and the news watch auto-refresh every Tuesday <!-- /data-freshness -->
+**Data current through:**<!-- data-freshness --> ACLED weekly file through 2026-09-19; Missing Voices and the news watch auto-refresh every Tuesday <!-- /data-freshness -->
 
 ## The application
 
